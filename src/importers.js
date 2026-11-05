@@ -26,11 +26,11 @@ function rowFrom({date,description,amount,externalId},options){
   // Use the same installment parsing and classification as PDF imports.
   const row=parseStatement(`${date.slice(8)}/${date.slice(5,7)}/${date.slice(0,4)} ${description} ${value}`,{...options,bank,account,source,month}).rows[0];
   if(!row)throw new Error('Não foi possível interpretar a linha.');
-  let label=classify(row.description,rules,source);
+  let label=classify(row.description,rules,source,options.mcc);
   const credit=source==='account'?(signMode==='signed'?amount>0:amount<0):amount<0;
   if(credit&&!['payment','transfer'].includes(label.kind))label={kind:source==='card'?'refund':'income',category:'Movimentações',subcategory:source==='card'?'Estorno':'Receita',review:false};
   if(source==='account'&&!credit&&!['payment','transfer'].includes(label.kind)&&label.kind==='income')label={...classify(row.description,[],source),review:true};
-  Object.assign(row,label,{bank,account});
+  Object.assign(row,label,{bank,account,mcc:options.mcc});
   // Keep original imported identity immutable when a user later edits the transaction.
   delete row.importKey;row.importKey=externalId?`ofx:${source}:${externalId}`:`${source}|${row.month}|${row.date}|${normalize(row.description)}|${row.amount}|${row.installment}|${row.total}`;
   return row;
@@ -44,8 +44,9 @@ export function parseCsv(text,options){
   const value=find(['VALOR','AMOUNT','VALOR (R$)','VALOR R$']);
   const debit=find(['DEBITO','SAIDA','DEBIT']),credit=find(['CREDITO','ENTRADA','CREDIT']);
   if(date<0||desc<0||(value<0&&(debit<0||credit<0)))throw new Error('Cabeçalhos não reconhecidos. Use Data, Descrição e Valor (ou Débito e Crédito).');
+  const mcc=find(['MCC','MERCHANT CATEGORY CODE']);
   const rows=[],unparsed=[];
-  for(const cells of all){try{const amount=value>=0?decimal(cells[value]||''):decimal(cells[credit]||'0')-Math.abs(decimal(cells[debit]||'0'));const row=rowFrom({date:validDate(cells[date]||'',options.month),description:cells[desc],amount},value<0?{...options,signMode:'signed'}:options);rows.push(row);}catch{unparsed.push(cells.join(' | '));}}
+  for(const cells of all){try{const amount=value>=0?decimal(cells[value]||''):decimal(cells[credit]||'0')-Math.abs(decimal(cells[debit]||'0'));const row=rowFrom({date:validDate(cells[date]||'',options.month),description:cells[desc],amount},{...options,mcc:mcc>=0?cells[mcc]:undefined,signMode:value<0?'signed':options.signMode});rows.push(row);}catch{unparsed.push(cells.join(' | '));}}
   return {rows,unparsed};
 }
 export function parseOfx(text,options){
@@ -53,7 +54,7 @@ export function parseOfx(text,options){
   if(!blocks.length)throw new Error('Nenhuma transação OFX encontrada.');
   const rows=[],unparsed=[];
   const val=(s,k)=>(s.match(new RegExp(`<${k}[^>]*>\\s*([^<\\r\\n]+)`,'i'))?.[1]||'').trim().replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
-  for(const b of blocks)try{const dt=val(b,'DTPOSTED').slice(0,8);const description=[val(b,'NAME'),val(b,'MEMO')].filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i).join(' · ');rows.push(rowFrom({date:`${dt.slice(0,4)}-${dt.slice(4,6)}-${dt.slice(6,8)}`,description,amount:decimal(val(b,'TRNAMT'))*(options.source==='card'?-1:1),externalId:val(b,'FITID')}, {...options,signMode:'signed'}));}catch{unparsed.push('Transação OFX sem data, descrição ou valor válido.');}
+  for(const b of blocks)try{const dt=val(b,'DTPOSTED').slice(0,8);const description=[val(b,'NAME'),val(b,'MEMO')].filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i).join(' · ');rows.push(rowFrom({date:`${dt.slice(0,4)}-${dt.slice(4,6)}-${dt.slice(6,8)}`,description,amount:decimal(val(b,'TRNAMT'))*(options.source==='card'?-1:1),externalId:val(b,'FITID')}, {...options,mcc:val(b,'SIC'),signMode:'signed'}));}catch{unparsed.push('Transação OFX sem data, descrição ou valor válido.');}
   return {rows,unparsed};
 }
 export function importText(text,format,options){if(!/^\d{4}-(0[1-9]|1[0-2])$/.test(options.month))throw new Error('Informe um mês válido.');if(format==='csv')return parseCsv(text,options);if(format==='ofx')return parseOfx(text,options);return parseStatement(text,options);}

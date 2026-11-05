@@ -116,3 +116,16 @@ test('corrige histórico Inclusão de Pagamento e pesquisa um estabelecimento pa
  const row=await page.evaluate(()=>JSON.parse(localStorage.getItem('fintrack-v1')).transactions.find(t=>t.id==='t0'));
  expect(row.amount).toBe(10000);expect(row.purchaseTotal).toBe(100000);
 });
+test('resolve 66 lançamentos como grupo e cadastra rendas CLT/PF por descontos informados',async({page})=>{
+ await page.goto('http://localhost:5173');await page.evaluate(()=>localStorage.setItem('fintrack-v1',JSON.stringify({version:1,rules:[],transactions:Array.from({length:66},(_,i)=>({id:'t'+i,date:'2026-11-01',month:'2026-11',description:i%2?'PAG*LOJA TESTE':'SUMUP*LOJA TESTE',amount:10000,installment:1,total:1,source:'card',kind:'expense',category:'Outros',subcategory:'A classificar',review:true}))})));
+ await page.reload();await page.locator('#month').fill('2026-11');await page.getByRole('button',{name:'Lançamentos',exact:true}).click();await page.getByRole('button',{name:'Para conferir',exact:true}).click();
+ await expect(page.locator('.review-groups article')).toHaveCount(1);await page.getByRole('button',{name:'Resolver 66 de uma vez'}).click();await page.locator('[name=category]').fill('Pets');await page.locator('[name=subcategory]').fill('Cuidados e produtos');await page.getByRole('button',{name:'Aplicar ao grupo'}).click();
+ await expect(page.locator('.banner')).toContainText('0 de 66');
+ await page.getByRole('button',{name:'Rendas',exact:true}).click();await page.getByRole('button',{name:'Cadastrar renda',exact:false}).click();await page.locator('[name=name]').fill('CLT');await page.locator('[name=regime]').selectOption('clt');await page.locator('[name=gross]').fill('5000');await page.locator('[name=inss]').fill('500');await page.locator('[name=ir]').fill('100');await page.locator('[name=other]').fill('200');await page.getByRole('button',{name:'Salvar renda'}).click();
+ await expect(page.locator('.main-stat')).toContainText('4.200,00');
+ await page.getByRole('button',{name:'Cadastrar renda',exact:false}).click();await page.locator('[name=name]').fill('Autônomo SP');await page.locator('[name=regime]').selectOption('pf');await page.locator('[name=gross]').fill('3000');await page.locator('[name=inss]').fill('330');await page.locator('[name=ir]').fill('100');await page.locator('[name=iss]').fill('60');await page.getByRole('button',{name:'Salvar renda'}).click();
+ await expect(page.locator('.main-stat')).toContainText('6.710,00');
+ await page.reload();await page.locator('#month').fill('2026-11');await page.getByRole('button',{name:'Rendas',exact:true}).click();await expect(page.locator('.main-stat')).toContainText('6.710,00');
+ await page.getByRole('button',{name:'Planejamento',exact:true}).click();await expect(page.locator('.planning-stats .main-stat')).toContainText('6.710,00');
+ await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'Rendas',exact:true}).click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+});

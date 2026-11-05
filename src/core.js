@@ -1,3 +1,4 @@
+import {fromMcc} from './review.js';
 import {paymentDescription,merchantKey,merchantSuggestion} from './intelligence.js';
 import {emptyFinance,validateFinance} from './finance-schema.js';
 export const CATEGORIES = {
@@ -16,13 +17,13 @@ export function parseMoney(s) { return Math.round(Number(s.replace(/R\$/g,'').re
 export function shiftMonth(month, delta) { const [y,m] = month.split('-').map(Number); const d = new Date(Date.UTC(y,m-1+delta,1)); return d.toISOString().slice(0,7); }
 export function monthLabel(month) { return new Intl.DateTimeFormat('pt-BR',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(`${month}-01T12:00:00Z`)); }
 export const isPayment=paymentDescription;
-export function classify(description,rules=[],source='card') {
+export function classify(description,rules=[],source='card',mcc) {
  const s=normalize(description);
  if(isPayment(s,source))return {kind:'payment',category:'Movimentações',subcategory:'Pagamento de fatura',review:false,classificationSource:'Identificação de pagamento de fatura'};
  const rule=rules.find(r=>normalize(r.match)===s||(r.kind==='expense'&&merchantKey(r.match)&&merchantKey(r.match)===merchantKey(s)));
  if(rule)return {kind:rule.kind,category:rule.category,subcategory:rule.subcategory,review:false,classificationSource:rule.classificationSource||'Sua classificação aprendida',evidenceUrl:rule.evidenceUrl,evidenceTitle:rule.evidenceTitle};
  if(/TRANSFERENCIA ENTRE (?:MINHAS )?CONTAS|APLICACAO|RESGATE|INVESTIMENTO/.test(s))return {kind:'transfer',category:'Movimentações',subcategory:'Transferência',review:false};
- const hit=merchantSuggestion(s);
+ const hit=fromMcc(mcc)||merchantSuggestion(s);
  return hit?{kind:'expense',...hit,review:false}:{kind:'expense',category:'Outros',subcategory:'A classificar',review:true};
 }
 export function family(t) { return `${t.bank||'C6'}|${t.account||'Principal'}|${normalize(t.description)}|${t.date}|${t.total||1}|${shiftMonth(t.month,-((t.installment||1)-1))}`; }

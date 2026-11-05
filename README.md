@@ -12,7 +12,7 @@ npm ci
 npm run dev
 ```
 
-O servidor usa a porta 5173. `npm run build` gera `dist`, publicável em hospedagem estática HTTPS. `npm run preview` permite conferir o build local. O projeto não foi publicado nem enviado ao GitHub automaticamente.
+O servidor usa a porta 5173. `npm run build` gera `dist`, publicável em hospedagem estática HTTPS. `npm run preview` permite conferir o build local. O código foi enviado ao GitHub para preparar a publicação. A ativação do GitHub Pages ainda precisa ser concluída; não há link público verificado neste momento. Consulte PUBLICACAO.md.
 
 ```sh
 npm test           # lógica financeira, importadores e migração de backups

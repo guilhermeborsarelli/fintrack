@@ -6,11 +6,24 @@ export function paymentDescription(description,source='card') {
  if(pay&&invoice)return true;
  return source==='card'&&(/\bINCLUSAO (?:DE |DO )?PAGAMENTO\b/.test(s)||/\bPAGAMENTO\s+(?:RECEBIDO|EFETUADO|CONFIRMADO)\b/.test(s)||pay&&/\bDEBITO AUTOMATICO\b/.test(s));
 }
+// Confirmed by the owner from real statement descriptors; no online lookup is claimed.
+const confirmedMerchants=[
+ {pattern:/^(?:TRACK(?: AND| E)? FIELD|TRACKANDFIELD)(?:\s|$)/,name:'TRACK AND FIELD',category:'Compras',subcategory:'Vestuário'},
+ {pattern:/^(?:BF ?SHOP|BROOKSFIELD)(?:\s|$)/,name:'BROOKSFIELD',category:'Compras',subcategory:'Vestuário'},
+ {pattern:/^TENIS LOUNGE JARDINS(?:\s|$)/,name:'TENIS LOUNGE JARDINS',category:'Lazer',subcategory:'Esportes e aulas'},
+ {pattern:/^(?:VIVARA(?:\s|$)|LOJA ?VIVARA(?:\s|\d|$))/,name:'VIVARA',category:'Compras',subcategory:'Joias e acessórios'},
+ {pattern:/^OSKLEN(?:\s|$)/,name:'OSKLEN',category:'Compras',subcategory:'Vestuário'}
+];
 export function merchantKey(description){
- return norm(description).replace(/\b(?:PARC(?:ELA)?\.?\s*)?\d{1,2}\s*\/\s*\d{1,2}\b/g,' ')
+ const key=norm(description).replace(/\b(?:PARC(?:ELA)?\.?\s*)?\d{1,2}\s*\/\s*\d{1,2}\b/g,' ')
  .replace(/^(?:(?:COMPRA|COMPRAS)\s+(?:NO\s+)?(?:DEBITO|CREDITO)\s*[-:*]?\s*)/,'')
  .replace(/^(?:(?:PAG\*?|PAGSEGURO|PICPAY|MERCADOPAGO|MERCADO PAGO|MP|SUMUP|TON|STONE|IZ|EBANX|PAYPAL)\s*[*:]\s*)/,'')
  .replace(/\b(?:LTDA|EIRELI|S\.?A\.?)\s*$/,'').replace(/[^A-Z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+ return confirmedMerchants.find(m=>m.pattern.test(key))?.name||key;
+}
+export function confirmedMerchantSuggestion(description){
+ const key=merchantKey(description),hit=confirmedMerchants.find(m=>m.name===key);
+ return hit?{category:hit.category,subcategory:hit.subcategory,classificationSource:'Estabelecimento confirmado pelo usuário',classificationConfidence:'user_confirmed'}:null;
 }
 const catalog=[
  [/\b(?:UBER EATS|IFOOD|RAPPI|ZÉ DELIVERY|ZE DELIVERY|AIQFOME|DELIVERY)\b/,'Alimentação','Delivery'],
@@ -37,6 +50,7 @@ const catalog=[
  [/TARIFA|ANUIDADE|\bIOF\b|\bJUROS\b/,'Serviços','Tarifas']
 ];
 export function merchantSuggestion(description){
+ const confirmed=confirmedMerchantSuggestion(description);if(confirmed)return confirmed;
  const s=merchantKey(description);
  // A payment facilitator alone does not reveal what was purchased.
  if(/(?:MERCADO PAGO|MERCADOPAGO|PAGSEGURO|PICPAY|PAYPAL|SUMUP|TON|STONE|EBANX)(?:\s+\d+)?/.test(s))return null;

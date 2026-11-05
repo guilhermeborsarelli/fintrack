@@ -1,13 +1,13 @@
 import {fromMcc} from './review.js';
-import {paymentDescription,merchantKey,merchantSuggestion} from './intelligence.js';
+import {paymentDescription,merchantKey,merchantSuggestion,confirmedMerchantSuggestion} from './intelligence.js';
 import {emptyFinance,validateFinance} from './finance-schema.js';
 export const CATEGORIES = {
   'Alimentação': ['Supermercado', 'Restaurantes', 'Delivery', 'Padaria'],
   'Moradia': ['Aluguel', 'Contas da casa', 'Internet', 'Casa e decoração'],
   'Transporte': ['Aplicativos', 'Combustível', 'Estacionamento', 'Transporte público'],
   'Saúde': ['Farmácia', 'Consultas', 'Plano de saúde'],
-  'Compras': ['Vestuário', 'Eletrônicos', 'Compras online', 'Outros'],
-  'Lazer': ['Assinaturas', 'Viagens', 'Entretenimento'],
+  'Compras': ['Joias e acessórios', 'Vestuário', 'Eletrônicos', 'Compras online', 'Outros'],
+  'Lazer': ['Esportes e aulas', 'Assinaturas', 'Viagens', 'Entretenimento'],
   'Educação': ['Cursos', 'Livros'], 'Serviços': ['Serviços gerais', 'Tarifas'],
   'Pets':['Cuidados e produtos'], 'Outros': ['A classificar'], 'Movimentações': ['Pagamento de fatura', 'Transferência', 'Receita', 'Estorno']
 };
@@ -23,7 +23,7 @@ export function classify(description,rules=[],source='card',mcc) {
  const rule=rules.find(r=>normalize(r.match)===s||(r.kind==='expense'&&merchantKey(r.match)&&merchantKey(r.match)===merchantKey(s)));
  if(rule)return {kind:rule.kind,category:rule.category,subcategory:rule.subcategory,review:false,classificationSource:rule.classificationSource||'Sua classificação aprendida',evidenceUrl:rule.evidenceUrl,evidenceTitle:rule.evidenceTitle};
  if(/TRANSFERENCIA ENTRE (?:MINHAS )?CONTAS|APLICACAO|RESGATE|INVESTIMENTO/.test(s))return {kind:'transfer',category:'Movimentações',subcategory:'Transferência',review:false};
- const hit=fromMcc(mcc)||merchantSuggestion(s);
+ const hit=confirmedMerchantSuggestion(s)||fromMcc(mcc)||merchantSuggestion(s);
  return hit?{kind:'expense',...hit,review:false}:{kind:'expense',category:'Outros',subcategory:'A classificar',review:true};
 }
 export function family(t) { return `${t.bank||'C6'}|${t.account||'Principal'}|${normalize(t.description)}|${t.date}|${t.total||1}|${shiftMonth(t.month,-((t.installment||1)-1))}`; }

@@ -1,3 +1,4 @@
+import {paymentDescription,merchantKey,merchantSuggestion} from './intelligence.js';
 import {emptyFinance,validateFinance} from './finance-schema.js';
 export const CATEGORIES = {
   'Alimentação': ['Supermercado', 'Restaurantes', 'Delivery', 'Padaria'],
@@ -7,38 +8,22 @@ export const CATEGORIES = {
   'Compras': ['Vestuário', 'Eletrônicos', 'Compras online', 'Outros'],
   'Lazer': ['Assinaturas', 'Viagens', 'Entretenimento'],
   'Educação': ['Cursos', 'Livros'], 'Serviços': ['Serviços gerais', 'Tarifas'],
-  'Outros': ['A classificar'], 'Movimentações': ['Pagamento de fatura', 'Transferência', 'Receita', 'Estorno']
+  'Pets':['Cuidados e produtos'], 'Outros': ['A classificar'], 'Movimentações': ['Pagamento de fatura', 'Transferência', 'Receita', 'Estorno']
 };
 export const normalize = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/\s+/g, ' ').trim();
 export const money = cents => new Intl.NumberFormat('pt-BR', {style:'currency',currency:'BRL'}).format(cents/100);
 export function parseMoney(s) { return Math.round(Number(s.replace(/R\$/g,'').replace(/\s/g,'').replace(/\./g,'').replace(',','.'))*100); }
 export function shiftMonth(month, delta) { const [y,m] = month.split('-').map(Number); const d = new Date(Date.UTC(y,m-1+delta,1)); return d.toISOString().slice(0,7); }
 export function monthLabel(month) { return new Intl.DateTimeFormat('pt-BR',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(`${month}-01T12:00:00Z`)); }
-export function isPayment(description,source='card') {
-  const s = normalize(description);
-  if(source==='account'&&!/FATURA|FAT\b|CARTAO/.test(s))return false;
-  return /PAG(?:AMENTO|TO|\.)?\s*(?:D[AE]\s+)?(?:FATURA|FAT\b|CARTAO)|FATURA\s+(?:ANTERIOR\s+)?PAGA|PAGAMENTO\s+(?:RECEBIDO|EFETUADO)|PGTO\s*(?:FAT|CARTAO)/.test(s);
-}
-export function classify(description, rules = [],source='card') {
-  const s=normalize(description);
-  if (isPayment(s,source)) return {kind:'payment',category:'Movimentações',subcategory:'Pagamento de fatura',review:false};
-  const rule=rules.find(r=>normalize(r.match)===s);
-  if(rule) return {kind:rule.kind,category:rule.category,subcategory:rule.subcategory,review:false};
-  if(/TRANSFERENCIA ENTRE (?:MINHAS )?CONTAS|APLICACAO|RESGATE|INVESTIMENTO/.test(s)) return {kind:'transfer',category:'Movimentações',subcategory:'Transferência',review:false};
-  const groups=[
-    [/MERCAD[OA]|SUPERMERC|ATACAD|CARREFOUR|ASSAI|PAO DE ACUCAR|HORTIFRUT/,'Alimentação','Supermercado'],
-    [/IFOOD|RAPPI|DELIVERY/,'Alimentação','Delivery'], [/RESTAUR|LANCHON|BURGER|PIZZA|CAFE|STARBUCKS/,'Alimentação','Restaurantes'],
-    [/PADARIA|PANIFIC/,'Alimentação','Padaria'], [/UBER|99APP|99 POP|99POP/,'Transporte','Aplicativos'],
-    [/POSTO|COMBUST|SHELL|IPIRANGA/,'Transporte','Combustível'], [/ESTACION|ESTAPAR/,'Transporte','Estacionamento'],
-    [/DROGA|FARMAC|DROGASIL|PACHECO/,'Saúde','Farmácia'], [/CLINICA|CONSULT|LABORATOR/,'Saúde','Consultas'],
-    [/NETFLIX|SPOTIFY|DISNEY|HBO|YOUTUBE|APPLE.COM\/BILL/,'Lazer','Assinaturas'],
-    [/AMAZON|MERCADOLIVRE|MERCADO LIVRE|SHOPEE/,'Compras','Compras online'],
-    [/RENNER|ZARA|RIACHUELO|C&A|NIKE/,'Compras','Vestuário'], [/ESCOLA|UDEMY|CURSO|FACULDADE/,'Educação','Cursos'],
-    [/ENEL|ENERGIA|SABESP|COPASA|CONDOMINIO/,'Moradia','Contas da casa'], [/VIVO|CLARO|TIM |INTERNET/,'Moradia','Internet'],
-    [/TARIFA|ANUIDADE|IOF|JUROS/,'Serviços','Tarifas']
-  ];
-  const hit=groups.find(([re])=>re.test(s));
-  return hit ? {kind:'expense',category:hit[1],subcategory:hit[2],review:false} : {kind:'expense',category:'Outros',subcategory:'A classificar',review:true};
+export const isPayment=paymentDescription;
+export function classify(description,rules=[],source='card') {
+ const s=normalize(description);
+ if(isPayment(s,source))return {kind:'payment',category:'Movimentações',subcategory:'Pagamento de fatura',review:false,classificationSource:'Identificação de pagamento de fatura'};
+ const rule=rules.find(r=>normalize(r.match)===s||(r.kind==='expense'&&merchantKey(r.match)&&merchantKey(r.match)===merchantKey(s)));
+ if(rule)return {kind:rule.kind,category:rule.category,subcategory:rule.subcategory,review:false,classificationSource:rule.classificationSource||'Sua classificação aprendida',evidenceUrl:rule.evidenceUrl,evidenceTitle:rule.evidenceTitle};
+ if(/TRANSFERENCIA ENTRE (?:MINHAS )?CONTAS|APLICACAO|RESGATE|INVESTIMENTO/.test(s))return {kind:'transfer',category:'Movimentações',subcategory:'Transferência',review:false};
+ const hit=merchantSuggestion(s);
+ return hit?{kind:'expense',...hit,review:false}:{kind:'expense',category:'Outros',subcategory:'A classificar',review:true};
 }
 export function family(t) { return `${t.bank||'C6'}|${t.account||'Principal'}|${normalize(t.description)}|${t.date}|${t.total||1}|${shiftMonth(t.month,-((t.installment||1)-1))}`; }
 const rawIdentity=t=>`${t.source}|${t.month}|${t.date}|${normalize(t.description)}|${t.amount}|${t.installment||1}|${t.total||1}`;
@@ -50,7 +35,8 @@ export function mergeTransactions(existing, incoming) {
   incoming.forEach(t=>{const key=identity(t), n=(counts.get(key)||0)+1; counts.set(key,n); if(n>(have.get(key)||0)) added.push(t);});
   return {transactions:[...existing,...added], added:added.length, duplicates:incoming.length-added.length};
 }
-export function parseStatement(text, {month,source='card',rules=[],bank='C6',account='Principal',signMode='legacy'}) {
+export function installmentValue(total,parts,index){const base=Math.floor(total/parts),extra=total%parts;return base+(index<=extra?1:0);}
+export function parseStatement(text, {installmentBasis='monthly',month,source='card',rules=[],bank='C6',account='Principal',signMode='legacy'}) {
   if(!/^\d{4}-(0[1-9]|1[0-2])$/.test(month)) throw new Error('Informe o mês da fatura.');
   const rows=[],unparsed=[];
   const monthNames={JAN:'01',FEV:'02',MAR:'03',ABR:'04',MAI:'05',JUN:'06',JUL:'07',AGO:'08',SET:'09',OUT:'10',NOV:'11',DEZ:'12'};
@@ -81,9 +67,10 @@ export function parseStatement(text, {month,source='card',rules=[],bank='C6',acc
     let label=classify(desc,rules,source);
     const credit=marker==='C'||marker!=='D'&&(source==='account'&&signMode==='signed'?amount>0:amount<0);
     if(credit&&!['payment','transfer'].includes(label.kind))label={kind:source==='account'?'income':'refund',category:'Movimentações',subcategory:source==='account'?'Receita':'Estorno',review:false};
-    if(source==='account'&&/PIX|TED|DOC\b/.test(normalize(desc))&&label.kind==='expense')label={...label,review:true};
+    if(source==='account'&&/PIX|TED|DOC\b/.test(normalize(desc))&&label.kind==='expense')label={...label,review:true,reviewReason:'PIX ou transferência: confirme se é gasto ou movimentação entre suas contas.'};
     if(amounts.length>1)label={...label,review:true,reviewReason:'Mais de um valor na linha: confira lançamento e saldo.'};
-    rows.push({id:crypto.randomUUID(),date,month:source==='card'?month:date.slice(0,7),description:desc,amount:Math.abs(amount),installment,total,source,bank,account,...label});
+    const purchaseTotal=total>1&&installmentBasis==='total'?Math.abs(amount):undefined;
+    rows.push({purchaseTotal,installmentBasis:purchaseTotal!==undefined?'total':'monthly',id:crypto.randomUUID(),date,month:source==='card'?month:date.slice(0,7),description:desc,amount:purchaseTotal!==undefined?installmentValue(purchaseTotal,total,installment):Math.abs(amount),installment,total,source,bank,account,...label});
   }
   for(const row of rows)row.importKey=rawIdentity(row);
   return {rows,unparsed};
@@ -103,7 +90,7 @@ export function forMonth(transactions,month) {
   for(const [key,entry] of series) {
     const diff=(Number(month.slice(0,4))-Number(entry.month.slice(0,4)))*12+Number(month.slice(5))-Number(entry.month.slice(5));
     const candidates=entry.rows.filter(t=>t.installment+diff<=t.total);
-    for(const t of candidates.slice(actualCounts.get(key)||0)) projections.push({...t,id:`forecast-${t.id}-${month}`,month,installment:t.installment+diff,projected:true,originMonth:t.month});
+    for(const t of candidates.slice(actualCounts.get(key)||0)) projections.push({...t,id:`forecast-${t.id}-${month}`,month,amount:t.purchaseTotal!==undefined?installmentValue(t.purchaseTotal,t.total,t.installment+diff):t.amount,installment:t.installment+diff,projected:true,originMonth:t.month});
   }
   return [...actual,...projections];
 }
@@ -120,6 +107,7 @@ export function validateBackup(data) {
     if(typeof t.id!=='string'||typeof t.description!=='string'||t.description.length>2000||!/^\d{4}-\d{2}-\d{2}$/.test(t.date)||!/^\d{4}-(0[1-9]|1[0-2])$/.test(t.month)||!Number.isSafeInteger(t.amount)||t.amount<0||!['expense','payment','transfer','income','refund'].includes(t.kind)||!['card','account'].includes(t.source)||!Number.isInteger(t.installment)||!Number.isInteger(t.total)||t.installment<1||t.total<t.installment||t.total>99||typeof t.category!=='string'||typeof t.subcategory!=='string') throw new Error('O backup contém lançamentos inválidos.');
   }
   for(const r of data.rules) if(typeof r.match!=='string'||typeof r.category!=='string'||typeof r.subcategory!=='string'||!['expense','payment','transfer','income','refund'].includes(r.kind)) throw new Error('Regras inválidas no backup.');
+  for(const t of data.transactions)if(t.purchaseTotal!==undefined&&(!Number.isSafeInteger(t.purchaseTotal)||t.purchaseTotal<0))throw new Error('Valor total de parcela inválido.');
   if(data.finance!==undefined)validateFinance(data.finance);
   else data.finance=emptyFinance();
   for(const t of data.transactions)if((t.bank!==undefined&&typeof t.bank!=='string')||(t.account!==undefined&&typeof t.account!=='string')||(t.importKey!==undefined&&typeof t.importKey!=='string'))throw new Error('Identificação bancária inválida.');

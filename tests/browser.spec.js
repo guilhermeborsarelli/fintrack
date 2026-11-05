@@ -102,3 +102,17 @@ test('simular cortes muda limites futuros, preserva gastos já importados e pode
  await expect(page.locator('.planning-stats .stat').filter({hasText:'Disponível para metas'})).toContainText('900,00');
  await expect(page.locator('.goal-card .goal-amount')).toContainText('R$ 0,00');
 });
+test('corrige histórico Inclusão de Pagamento e pesquisa um estabelecimento para várias compras',async({page})=>{
+ await page.goto('http://localhost:5173');await page.evaluate(()=>localStorage.setItem('fintrack-v1',JSON.stringify({version:1,rules:[],transactions:[{id:'payment',date:'2026-10-05',month:'2026-10',description:'Inclusao de Pagamento',amount:1352694,installment:1,total:1,source:'card',kind:'expense',category:'Outros',subcategory:'A classificar',review:true},...['PAG*LOJA TESTE','SUMUP*LOJA TESTE'].map((description,i)=>({id:'t'+i,date:'2026-10-06',month:'2026-10',description,amount:10000,installment:3,total:10,source:'card',kind:'expense',category:'Outros',subcategory:'A classificar',review:true}))]})));
+ await page.reload();await page.locator('#month').fill('2026-10');await expect(page.locator('.main-stat')).toContainText('200,00');
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('fintrack-v1')).transactions[0].kind)).toBe('payment');
+ await page.getByRole('button',{name:'Lançamentos',exact:true}).click();
+ await expect(page.locator('tbody')).toContainText('3 de 10');
+ await page.route('https://pt.wikipedia.org/w/api.php**',route=>route.fulfill({json:{query:{pages:{1:{pageid:123,title:'Loja Teste',extract:'Loja Teste é uma empresa de comércio eletrônico brasileira.'}}}}}));
+ await page.getByRole('button',{name:'Pesquisar estabelecimentos desconhecidos'}).click();await expect(page.locator('#modal input[type=checkbox]')).toHaveCount(1);
+ await page.getByRole('button',{name:'Pesquisar e classificar selecionados'}).click();await expect(page.getByRole('status')).toContainText('2 lançamento(s) agrupados');
+ await expect(page.locator('tbody')).toContainText('Compras online');await expect(page.locator('tbody').getByRole('link',{name:'Fonte'})).toHaveCount(2);
+ await page.getByRole('button',{name:'Editar PAG*LOJA TESTE',exact:true}).click();await page.locator('[name=amount]').fill('1000');await page.locator('[name=amountBasis]').selectOption('total');await page.getByRole('button',{name:'Salvar classificação'}).click();
+ const row=await page.evaluate(()=>JSON.parse(localStorage.getItem('fintrack-v1')).transactions.find(t=>t.id==='t0'));
+ expect(row.amount).toBe(10000);expect(row.purchaseTotal).toBe(100000);
+});

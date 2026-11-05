@@ -83,3 +83,10 @@ A demonstração usa dados fictícios separados; edições não são permitidas 
 - Limite diário de gastos flexíveis, considerando dias restantes no mês.
 - Metas compartilhadas e sincronização, com backend e permissões próprios.
 - Open Finance por integração autorizada, como etapa separada da importação manual.
+
+## Atualização de classificação e parcelas
+
+- “Inclusão de Pagamento”, abreviações e outras descrições de pagamento de cartão ficam fora dos gastos. O carregamento reclassifica lançamentos antigos reconhecidos, sem exigir reimportação; correções explicitamente travadas pelo usuário são preservadas.
+- Nomes são normalizados para reconhecer intermediadores como `PAG*`/`SUMUP*`. Correções aprendidas resolvem descrições equivalentes. Intermediador sem estabelecimento continua ambíguo. Evidência de classificação não elimina pendências financeiras de saldo, PIX ou valores ambíguos.
+- Na prévia e em Lançamentos, **Pesquisar estabelecimentos desconhecidos** oferece grupos únicos de nomes para seleção. Só os nomes selecionados são consultados na API pública da Wikipédia; nunca são enviados PDF, senha, data ou valor. Números, PIX e descrições sensíveis são excluídos. A consulta exige nome exato e contexto de empresa/atividade, mostra link da fonte, aprende o resultado e mantém desconhecidos pendentes. É uma consulta restrita à Wikipédia, não busca geral na web nem um modelo de IA. Empresas locais podem não ter verbete. Falhas de rede/CORS são informadas, sem inventar categorias. O teste automatizado usa resposta simulada para a consulta externa; disponibilidade da API ao vivo não foi verificada neste ambiente.
+- Em documentos cujos valores parcelados já são mensais (padrão), não dividimos novamente. A tela mostra a parcela atual e total, como “3 de 10”. Ao importar ou editar, é possível informar explicitamente que o valor é o **custo total da compra**, para dividi-lo pelas parcelas. Restos de centavos são distribuídos nas primeiras parcelas. Essa conversão não é aplicada automaticamente ao histórico, pois não é seguro inferir se um valor antigo é mensal ou total.

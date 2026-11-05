@@ -2,13 +2,13 @@ import {fromMcc} from './review.js';
 import {paymentDescription,merchantKey,merchantSuggestion,confirmedMerchantSuggestion} from './intelligence.js';
 import {emptyFinance,validateFinance} from './finance-schema.js';
 export const CATEGORIES = {
-  'Alimentação': ['Supermercado', 'Restaurantes', 'Delivery', 'Padaria'],
+  'Alimentação': ['Supermercado', 'Restaurantes', 'Delivery', 'Padaria', 'Doces e lanches', 'Alimentos e conveniência'],
   'Moradia': ['Aluguel', 'Contas da casa', 'Internet', 'Casa e decoração'],
-  'Transporte': ['Aplicativos', 'Combustível', 'Estacionamento', 'Transporte público'],
+  'Transporte': ['Aplicativos', 'Combustível', 'Estacionamento', 'Transporte público', 'Trens e ônibus'],
   'Saúde': ['Farmácia', 'Consultas', 'Plano de saúde'],
-  'Compras': ['Joias e acessórios', 'Vestuário', 'Eletrônicos', 'Compras online', 'Outros'],
-  'Lazer': ['Esportes e aulas', 'Assinaturas', 'Viagens', 'Entretenimento'],
-  'Educação': ['Cursos', 'Livros'], 'Serviços': ['Serviços gerais', 'Tarifas'],
+  'Compras': ['Conveniência', 'Joias e acessórios', 'Vestuário', 'Eletrônicos', 'Compras online', 'Outros'],
+  'Lazer': ['Esportes e aulas', 'Pontos e milhas', 'Loterias e apostas', 'Assinaturas', 'Viagens', 'Entretenimento'],
+  'Educação': ['Cursos', 'Livros'], 'Serviços': ['Serviços gerais', 'Tarifas', 'Software e serviços digitais'],
   'Pets':['Cuidados e produtos'], 'Outros': ['A classificar'], 'Movimentações': ['Pagamento de fatura', 'Transferência', 'Receita', 'Estorno']
 };
 export const normalize = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/\s+/g, ' ').trim();

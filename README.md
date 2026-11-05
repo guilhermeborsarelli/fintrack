@@ -102,3 +102,9 @@ A pesquisa técnica, evidências, limitações e requisitos para o motor fiscal 
 ### Analisar todas as pendências de uma vez
 
 Em **Lançamentos → Compartilhar pendências**, o app gera uma prévia editável e um arquivo `meu-bolso-pendencias.json`, agrupado por estabelecimento e motivo. O relatório inclui a versão do app, contagens e nomes, sem campos de valores, datas, contas, rendas, PDFs ou senhas. Movimentações de conta potencialmente pessoais e identificadores numéricos longos são omitidos; nomes ainda podem conter informações pessoais, então revise antes de compartilhar. Nada é enviado automaticamente. O arquivo pode ser anexado à conversa de suporte para analisar os casos em conjunto, sem copiar um por um. Essa exportação não resolve ou oculta pendências por si só.
+
+### Ampliação do reconhecimento por ramo
+
+O catálogo reconhece assinaturas de software e criadores, reservas de viagem, companhias aéreas, trens, transporte público, pontos/milhas, loterias, eletrônicos, delivery, doces e lojas de conveniência. Prefixos numéricos são removidos para marcas já confirmadas; por exemplo, um identificador de filial antes de BF Shop não impede a correspondência com Brooksfield. O intermediador `TON` é tratado como prefixo, não como qualquer ocorrência dessas letras dentro de outro estabelecimento. Em compras com prefixo IFD, atividades específicas como farmácia, produtos para pets e entretenimento têm precedência sobre o canal de delivery.
+
+Essas regras também reclassificam o histórico pendente ao carregar o app, preservando valores, datas, parcelas e correções manuais. Reconhecer o estabelecimento não encerra pendências sobre valor em reais, cotação ou saldo. A redução das pendências depende das descrições de cada arquivo; não há garantia de atingir a meta de 5% em todo extrato.

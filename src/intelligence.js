@@ -8,7 +8,7 @@ export function paymentDescription(description,source='card') {
 }
 // Confirmed by the owner from real statement descriptors; no online lookup is claimed.
 const confirmedMerchants=[
- {pattern:/^MATE$/,name:'MATE',category:'Alimentação',subcategory:'Restaurantes'},
+ {pattern:/^MATE(?: DOCE)?$/,name:'MATE',category:'Alimentação',subcategory:'Restaurantes'},
  {pattern:/^(?:TRACK(?: AND| E)? FIELD|TRACKANDFIELD)(?:\s|$)/,name:'TRACK AND FIELD',category:'Compras',subcategory:'Vestuário'},
  {pattern:/^(?:BF ?SHOP|BROOKSFIELD)(?:\s|$)/,name:'BROOKSFIELD',category:'Compras',subcategory:'Vestuário'},
  {pattern:/^TENIS LOUNGE JARDINS(?:\s|$)/,name:'TENIS LOUNGE JARDINS',category:'Lazer',subcategory:'Esportes e aulas'},
@@ -20,13 +20,32 @@ export function merchantKey(description){
  .replace(/^(?:(?:COMPRA|COMPRAS)\s+(?:NO\s+)?(?:DEBITO|CREDITO)\s*[-:*]?\s*)/,'')
  .replace(/^(?:(?:PAG\*?|PAGSEGURO|PICPAY|MERCADOPAGO|MERCADO PAGO|MP|SUMUP|TON|STONE|IZ|EBANX|PAYPAL)\s*[*:]\s*)/,'')
  .replace(/\b(?:LTDA|EIRELI|S\.?A\.?)\s*$/,'').replace(/[^A-Z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
- return confirmedMerchants.find(m=>m.pattern.test(key))?.name||key;
+ const confirmed=confirmedMerchants.find(m=>m.pattern.test(key)||m.pattern.test(key.replace(/^\d{1,4}\s+/,'')));
+ return confirmed?.name||key;
 }
 export function confirmedMerchantSuggestion(description){
  const key=merchantKey(description),hit=confirmedMerchants.find(m=>m.name===key);
  return hit?{category:hit.category,subcategory:hit.subcategory,classificationSource:'Estabelecimento confirmado pelo usuário',classificationConfidence:'user_confirmed'}:null;
 }
 const catalog=[
+ // Specific activity takes precedence over a checkout/delivery channel.
+ [/\b(?:PETSHOP|PET SHOP|PETZ|COBASI|PETLOVE|VETERINAR|RACOES|DOGS DAY)\b/,'Pets','Cuidados e produtos'],
+ [/\b(?:COMEDY|COMEDIA|STAND UP)\b/,'Lazer','Entretenimento'],
+ [/\b(?:OPENAI|CHATGPT|ANTHROPIC|CLAUDE)\b|MICROSOFT\s+(?:SUBSCRIPTION|365)|OFFICE\s*365/,'Serviços','Software e serviços digitais'],
+ [/\b(?:PREMIERE|PATREON)\b/,'Lazer','Assinaturas'],
+ [/\b(?:LIVELO|CLUBE LIV)\b/,'Lazer','Pontos e milhas'],
+ [/\b(?:IBERIA|OMIO|HOTEISCOM|HOTEIS COM|HOTELS COM|TRAVEL RESERVATION)\b/,'Lazer','Viagens'],
+ [/\b(?:RAIL EUROPE|TRAINLINE)\b/,'Transporte','Trens e ônibus'],
+ [/\b(?:BILHUNICO|BILHETE UNICO|EMV METRE|EMV METRO)\b/,'Transporte','Transporte público'],
+ [/^ZUL(?:\s+\d+)?\s+CARTOES\b|\bZUL DIGITAL\b/,'Transporte','Estacionamento'],
+ [/\b(?:KABUM|LG ELECTRONICS|PAUTA DISTRIBUICAO)\b/,'Compras','Eletrônicos'],
+ [/\bSHOPPER\b/,'Alimentação','Supermercado'],
+ [/\b(?:KOPENHAGEN|SORVET|SORVETERIA)\w*/,'Alimentação','Doces e lanches'],
+ [/\b(?:KOZINHA|COZINHA|LANCHES|PASTEL)\b/,'Alimentação','Restaurantes'],
+ [/\bSEARA ALIMENTOS\b/,'Alimentação','Alimentos e conveniência'],
+ [/^CONVENIENCIAS$/,'Compras','Conveniência'],
+ [/\bLOTERIASONLINE\w*/,'Lazer','Loterias e apostas'],
+ [/\b99FOOD\b/,'Alimentação','Delivery'],
  [/\b(?:UBER EATS|IFOOD|RAPPI|ZÉ DELIVERY|ZE DELIVERY|AIQFOME|DELIVERY)\b/,'Alimentação','Delivery'],
  [/\b(?:CARREFOUR|ATACADAO|ASSAI|PAO DE ACUCAR|EXTRA MERCADO|SUPERMERCADOS?|SUPERMERCADO|MERCADO(?!\s+(?:LIVRE|PAGO))|ATACADISTA|ATACADO|HORTIFRUTI?|GPA|BEM BARATO|SONDA|DIA SUPERMERCADO|SAVEGNAGO|BISTEK|MUFFATO|ANGELONI|ZAFFARI|GIASSI|BOURBON|SUPER NOSSO|PREZUNIC)\b/,'Alimentação','Supermercado'],
  [/RESTAUR|LANCHON|BURGER|PIZZA|CHURRASC|SUSHI|STEAK|BOTECO|MC ?DONALD|MCDONALD|OUTBACK|SUBWAY|STARBUCKS|\bCAFE\b/,'Alimentação','Restaurantes'],
@@ -48,13 +67,14 @@ const catalog=[
  [/CINEMA|CINEMARK|CINEPOLIS|INGRESSO COM|SYMPLA|TEATRO/,'Lazer','Entretenimento'],
  [/LATAM|AZUL LINHAS|GOL LINHAS|AIRBNB|BOOKING|HOTEL|POUSADA|DECOLAR/,'Lazer','Viagens'],
  [/PETSHOP|PET SHOP|PETZ|COBASI|PETLOVE|VETERINAR/,'Pets','Cuidados e produtos'],
- [/TARIFA|ANUIDADE|\bIOF\b|\bJUROS\b/,'Serviços','Tarifas']
+ [/TARIFA|ANUIDADE|\bIOF\b|\bJUROS\b/,'Serviços','Tarifas'],
+ [/^IFD\s+/,'Alimentação','Delivery']
 ];
 export function merchantSuggestion(description){
  const confirmed=confirmedMerchantSuggestion(description);if(confirmed)return confirmed;
  const s=merchantKey(description);
  // A payment facilitator alone does not reveal what was purchased.
- if(/(?:MERCADO PAGO|MERCADOPAGO|PAGSEGURO|PICPAY|PAYPAL|SUMUP|TON|STONE|EBANX)(?:\s+\d+)?/.test(s))return null;
+ if(/^(?:MERCADO PAGO|MERCADOPAGO|PAGSEGURO|PICPAY|PAYPAL|SUMUP|TON|STONE|EBANX)(?:\s|$)/.test(s))return null;
  const hit=catalog.find(([re])=>re.test(s));
  return hit?{category:hit[1],subcategory:hit[2],classificationSource:'Regras de estabelecimento',classificationConfidence:'high'}:null;
 }

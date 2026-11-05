@@ -98,3 +98,7 @@ A aba Lançamentos mostra a taxa real de pendências e, em **Para conferir**, ag
 A aba **Rendas**, separada do planejamento, permite CLT, autônomo pessoa física, MEI e Simples. **Ainda não calcula automaticamente as alíquotas e obrigações fiscais.** Até a verificação das fontes vigentes, calcula o líquido somente subtraindo do bruto os tributos/descontos/custos informados pelo usuário. Isso não é apuração tributária nem substitui ajuste anual. Rendas antigas permanecem como líquidos já informados.
 
 A pesquisa técnica, evidências, limitações e requisitos para o motor fiscal de São Paulo capital estão em [docs/PESQUISA-CLASSIFICACAO-E-TRIBUTOS.md](docs/PESQUISA-CLASSIFICACAO-E-TRIBUTOS.md). Fontes governamentais foram bloqueadas pela política de rede; os domínios necessários foram salvos no rascunho do ambiente e ainda precisam de aplicação pelo produto.
+
+### Analisar todas as pendências de uma vez
+
+Em **Lançamentos → Compartilhar pendências**, o app gera uma prévia editável e um arquivo `meu-bolso-pendencias.json`, agrupado por estabelecimento e motivo. O relatório inclui a versão do app, contagens e nomes, sem campos de valores, datas, contas, rendas, PDFs ou senhas. Movimentações de conta potencialmente pessoais e identificadores numéricos longos são omitidos; nomes ainda podem conter informações pessoais, então revise antes de compartilhar. Nada é enviado automaticamente. O arquivo pode ser anexado à conversa de suporte para analisar os casos em conjunto, sem copiar um por um. Essa exportação não resolve ou oculta pendências por si só.

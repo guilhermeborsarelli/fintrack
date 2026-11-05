@@ -129,3 +129,11 @@ test('resolve 66 lançamentos como grupo e cadastra rendas CLT/PF por descontos 
  await page.getByRole('button',{name:'Planejamento',exact:true}).click();await expect(page.locator('.planning-stats .main-stat')).toContainText('6.710,00');
  await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'Rendas',exact:true}).click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
+test('compartilha diagnóstico único das 61 pendências sem valores e contas',async({page})=>{
+ await page.goto('http://localhost:5173');await page.evaluate(()=>localStorage.setItem('fintrack-v1',JSON.stringify({version:1,rules:[],transactions:Array.from({length:61},(_,i)=>({id:'pending-'+i,date:'2026-11-01',month:'2026-11',description:i%2?'PAG*COMERCIO DESCONHECIDO':'SUMUP*COMERCIO DESCONHECIDO',amount:999999,bank:'PRIVATE BANK',account:'PRIVATE ACCOUNT',installment:1,total:1,source:'card',kind:'expense',category:'Outros',subcategory:'A classificar',review:true}))})));
+ await page.reload();await page.locator('#month').fill('2026-11');await page.getByRole('button',{name:'Lançamentos',exact:true}).click();
+ await page.getByRole('button',{name:'Compartilhar pendências',exact:true}).click();await expect(page.locator('#modal')).toContainText('61 pendências: 61 por estabelecimento');
+ const report=JSON.parse(await page.locator('#report-content').inputValue());expect(report.resumo.pendentes).toBe(61);expect(report.estabelecimentos).toHaveLength(1);expect(report.estabelecimentos[0].quantidade).toBe(61);
+ const download=page.waitForEvent('download');await page.getByRole('button',{name:'Baixar arquivo de pendências'}).click();const file=await download;expect(file.suggestedFilename()).toBe('meu-bolso-pendencias.json');
+ const {readFile}=await import('node:fs/promises');const text=await readFile(await file.path(),'utf8');for(const value of ['999999','PRIVATE ACCOUNT','PRIVATE BANK','2026-11-01'])expect(text).not.toContain(value);
+});

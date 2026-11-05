@@ -8,6 +8,7 @@ export function paymentDescription(description,source='card') {
 }
 // Confirmed by the owner from real statement descriptors; no online lookup is claimed.
 const confirmedMerchants=[
+ {pattern:/^MATE$/,name:'MATE',category:'Alimentação',subcategory:'Restaurantes'},
  {pattern:/^(?:TRACK(?: AND| E)? FIELD|TRACKANDFIELD)(?:\s|$)/,name:'TRACK AND FIELD',category:'Compras',subcategory:'Vestuário'},
  {pattern:/^(?:BF ?SHOP|BROOKSFIELD)(?:\s|$)/,name:'BROOKSFIELD',category:'Compras',subcategory:'Vestuário'},
  {pattern:/^TENIS LOUNGE JARDINS(?:\s|$)/,name:'TENIS LOUNGE JARDINS',category:'Lazer',subcategory:'Esportes e aulas'},

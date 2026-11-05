@@ -48,17 +48,19 @@ test('custo total explícito é convertido em parcelas sem perder centavos',()=>
  assert.equal(rows[0].amount+forMonth(rows,'2026-12')[0].amount+forMonth(rows,'2027-01')[0].amount,10000);
 });
 test('estabelecimentos reais confirmados pelo usuário classificam sem revisão',()=>{
- const cases=[['track and field','Compras','Vestuário'],['TRACK&FIELD IGUATEMI','Compras','Vestuário'],['bf shop','Compras','Vestuário'],['BROOKSFIELD SHOPPING','Compras','Vestuário'],['TENIS LOUNGE JARDINS -','Lazer','Esportes e aulas'],['VIVARA LOJAVIVARA-7448 -','Compras','Joias e acessórios'],['OSKLEN CIDADE SAO PAUL -','Compras','Vestuário']];
+ const cases=[['Mate','Alimentação','Restaurantes'],['PAG*Mate','Alimentação','Restaurantes'],['track and field','Compras','Vestuário'],['TRACK&FIELD IGUATEMI','Compras','Vestuário'],['bf shop','Compras','Vestuário'],['BROOKSFIELD SHOPPING','Compras','Vestuário'],['TENIS LOUNGE JARDINS -','Lazer','Esportes e aulas'],['VIVARA LOJAVIVARA-7448 -','Compras','Joias e acessórios'],['OSKLEN CIDADE SAO PAUL -','Compras','Vestuário']];
  for(const [description,category,subcategory] of cases){const result=classify(description);assert.equal(result.category,category,description);assert.equal(result.subcategory,subcategory,description);assert.equal(result.review,false,description);assert.equal(result.classificationSource,'Estabelecimento confirmado pelo usuário');}
  assert.equal(classify('BF SHOPPING DESCONHECIDO').review,true);
+ assert.equal(classify('MATERIAL ELETRICO').review,true);
+ assert.equal(classify('MATE COURO').review,true);
  assert.equal(classify('TENIS LOUNGE JARDINS',[],'card','8299').category,'Lazer');
 });
 test('corrige histórico real sem alterar valores, datas, identidades ou parcelas',()=>{
- const entries=[['TENIS LOUNGE JARDINS -','2026-10-01',10000,12,12],['VIVARA LOJAVIVARA-7448 -','2026-07-02',20000,5,10],['OSKLEN CIDADE SAO PAUL -','2026-10-03',30000,2,3]];
+ const entries=[['Mate','2026-10-04',5000,1,1],['TENIS LOUNGE JARDINS -','2026-10-01',10000,12,12],['VIVARA LOJAVIVARA-7448 -','2026-07-02',20000,5,10],['OSKLEN CIDADE SAO PAUL -','2026-10-03',30000,2,3]];
  const old=entries.map(([description,date,amount,installment,total],i)=>({id:String(i),description,date,amount,installment,total,month:'2026-11',source:'card',kind:'expense',category:'Outros',subcategory:'A classificar',review:true,importKey:'original-'+i}));
  const fixed=repairTransactions(old);
  for(let i=0;i<fixed.length;i++){assert.equal(fixed[i].review,false);for(const key of ['amount','date','month','installment','total','id','importKey'])assert.equal(fixed[i][key],old[i][key],key);}
- assert.equal(summary(fixed).total,60000);
+ assert.equal(summary(fixed).total,65000);
  assert.equal(forMonth(fixed,'2026-12').find(t=>t.description.startsWith('TENIS')),undefined);
  assert.equal(forMonth(fixed,'2026-12').find(t=>t.description.startsWith('VIVARA')).amount,20000);
  assert.equal(forMonth(fixed,'2026-12').find(t=>t.description.startsWith('OSKLEN')).amount,30000);

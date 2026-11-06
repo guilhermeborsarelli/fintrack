@@ -7,8 +7,10 @@ export const LANG_LABEL = {pt: 'Português', en: 'English', es: 'Español'};
 let current = 'pt';
 export function detectLang(saved) {
   if (LANGS.includes(saved)) return saved;
-  const nav = (globalThis.navigator?.language || 'pt').slice(0, 2).toLowerCase();
-  return LANGS.includes(nav) ? nav : 'en';
+  // Produto brasileiro: se o português estiver entre os idiomas do navegador, abre em português.
+  const prefs = (globalThis.navigator?.languages?.length ? globalThis.navigator.languages : [globalThis.navigator?.language || 'pt']).map(l => String(l).slice(0, 2).toLowerCase());
+  if (prefs.includes('pt')) return 'pt';
+  return prefs.find(l => LANGS.includes(l)) || 'en';
 }
 export const setLang = l => { current = LANGS.includes(l) ? l : 'pt'; };
 export const getLang = () => current;
@@ -25,7 +27,7 @@ const UI = {
     adult: 'Tenho 18 anos ou mais', registerSubmit: 'Criar conta e entrar', authNote: 'Sua conta e o seu bar ficam guardados neste aparelho.',
     mustBeAdult: 'O Home Tender é para maiores de 18 anos.', drinkResponsibly: 'Beba com moderação. Venda de bebidas alcoólicas proibida para menores de 18 anos.',
     logout: 'Sair', tabHome: 'Início', tabClassics: 'Clássicos', tabRiffs: 'Variações', tabBar: 'Meu Bar', tabTools: 'Utensílios',
-    search: 'Buscar drink ou ingrediente…', allBases: 'Todas as bases', all: 'Todos', noResults: 'Nenhum drink encontrado.',
+    search: 'Buscar drink ou ingrediente…', searchShort: 'Buscar drink…', allBases: 'Todas as bases', all: 'Todos', noResults: 'Nenhum drink encontrado.',
     classicsKicker: 'Lista oficial IBA', classicsTitle: 'Os Clássicos', classicsLede: 'O cânone da International Bartenders Association em três capítulos: os inesquecíveis da Era de Ouro, os clássicos contemporâneos do século XX e os drinks da nova era que já viraram referência.',
     riffsKicker: 'Conhecidos no mundo todo', riffsTitle: 'Variações consagradas', riffsLede: 'Drinks que não estão na lista oficial, mas que qualquer bartender conhece. Cada um nasce de um clássico: troca-se a base, ajusta-se o doce, muda-se o copo. Quando o seu bar não fecha um clássico, ou quando você não gosta de um ingrediente, é daqui que vem a resposta.',
     recipes: n => `${n} receita${n === 1 ? '' : 's'}`,
@@ -68,7 +70,7 @@ const UI = {
     adult: 'I am of legal drinking age', registerSubmit: 'Create account and sign in', authNote: 'Your account and your bar are stored on this device.',
     mustBeAdult: 'Home Tender is for adults of legal drinking age.', drinkResponsibly: 'Please drink responsibly. Alcohol is for adults of legal drinking age only.',
     logout: 'Sign out', tabHome: 'Home', tabClassics: 'Classics', tabRiffs: 'Variations', tabBar: 'My Bar', tabTools: 'Tools',
-    search: 'Search a drink or ingredient…', allBases: 'All bases', all: 'All', noResults: 'No drinks found.',
+    search: 'Search a drink or ingredient…', searchShort: 'Search drinks…', allBases: 'All bases', all: 'All', noResults: 'No drinks found.',
     classicsKicker: 'Official IBA list', classicsTitle: 'The Classics', classicsLede: 'The International Bartenders Association canon in three chapters: the unforgettables of the Golden Age, the contemporary classics of the 20th century and the new-era drinks that have already become references.',
     riffsKicker: 'Known worldwide', riffsTitle: 'Renowned variations', riffsLede: 'Drinks that are not on the official list but every bartender knows. Each one is born from a classic: swap the base, adjust the sweetness, change the glass. When your bar can’t make a classic, or you dislike an ingredient, this is where the answer comes from.',
     recipes: n => `${n} recipe${n === 1 ? '' : 's'}`,
@@ -111,7 +113,7 @@ const UI = {
     adult: 'Tengo 18 años o más', registerSubmit: 'Crear cuenta y entrar', authNote: 'Tu cuenta y tu bar se guardan en este dispositivo.',
     mustBeAdult: 'Home Tender es solo para mayores de 18 años.', drinkResponsibly: 'Bebe con moderación. Prohibida la venta de alcohol a menores de 18 años.',
     logout: 'Salir', tabHome: 'Inicio', tabClassics: 'Clásicos', tabRiffs: 'Variaciones', tabBar: 'Mi Bar', tabTools: 'Utensilios',
-    search: 'Buscar cóctel o ingrediente…', allBases: 'Todas las bases', all: 'Todos', noResults: 'No se encontraron cócteles.',
+    search: 'Buscar cóctel o ingrediente…', searchShort: 'Buscar cóctel…', allBases: 'Todas las bases', all: 'Todos', noResults: 'No se encontraron cócteles.',
     classicsKicker: 'Lista oficial IBA', classicsTitle: 'Los Clásicos', classicsLede: 'El canon de la International Bartenders Association en tres capítulos: los inolvidables de la Edad de Oro, los clásicos contemporáneos del siglo XX y los cócteles de la nueva era que ya son referencia.',
     riffsKicker: 'Conocidos en todo el mundo', riffsTitle: 'Variaciones consagradas', riffsLede: 'Cócteles que no están en la lista oficial, pero que todo bartender conoce. Cada uno nace de un clásico: se cambia la base, se ajusta el dulzor, se cambia la copa. Cuando tu bar no alcanza para un clásico, o no te gusta un ingrediente, la respuesta está aquí.',
     recipes: n => `${n} receta${n === 1 ? '' : 's'}`,
@@ -157,26 +159,26 @@ const ING = {
   grappa: ['Grappa', 'Grappa'], grand_marnier: ['Grand Marnier', 'Grand Marnier'], frangelico: ['Frangelico (hazelnut liqueur)', 'Frangelico (licor de avellana)'],
   licor_maracuja: ['Passion fruit liqueur', 'Licor de maracuyá'], pimenta_jamaica: ['Allspice dram', 'Licor de pimienta de Jamaica (allspice dram)'], cynar: ['Cynar', 'Cynar'],
   jerez: ['Sherry (Amontillado / Palo Cortado)', 'Jerez (amontillado / palo cortado)'], maracuja: ['Passion fruit (purée or syrup)', 'Maracuyá (puré o jarabe)'],
-  flor_sabugueiro: ['Elderflower cordial', 'Cordial de flor de saúco'], camomila: ['Chamomile (tea or cordial)', 'Manzanilla (infusión o cordial)'], pimenta_dedo: ['Red chili pepper', 'Ají rojo'], cravo: ['Cloves', 'Clavo de olor'],
-  gin: ['Gin', 'Ginebra'], vodka: ['Vodka', 'Vodka'], rum_branco: ['White rum', 'Ron blanco'], rum_escuro: ['Aged rum (or dark rum)', 'Ron añejo / oscuro'], cachaca: ['Cachaça', 'Cachaça'],
+  flor_sabugueiro: ['Elderflower cordial', 'Cordial de flor de saúco'], camomila: ['Chamomile (tea or cordial)', 'Manzanilla (infusión o cordial)'], pimenta_dedo: ['Fresh red chili', 'Chile rojo fresco (ají / guindilla)'], cravo: ['Cloves', 'Clavo de olor'],
+  gin: ['Gin', 'Ginebra'], vodka: ['Vodka', 'Vodka'], rum_branco: ['White rum', 'Ron blanco'], rum_escuro: ['Aged or dark rum', 'Ron añejo / oscuro'], cachaca: ['Cachaça', 'Cachaça'],
   tequila: ['100% agave tequila', 'Tequila 100% agave'], mezcal: ['Mezcal', 'Mezcal'], bourbon: ['Bourbon / rye whiskey', 'Bourbon / whiskey de centeno'], scotch: ['Scotch whisky', 'Whisky escocés'],
   scotch_islay: ['Peated Islay Scotch', 'Whisky turbado de Islay'], irish: ['Irish whiskey', 'Whiskey irlandés'], conhaque: ['Cognac / brandy', 'Coñac / brandy'], calvados: ['Calvados (apple brandy)', 'Calvados (brandy de manzana)'],
   pisco: ['Pisco', 'Pisco'], absinto: ['Absinthe / pastis', 'Absenta / pastis'], triple_sec: ['Triple sec / Cointreau / curaçao', 'Triple sec / Cointreau / curazao'], maraschino: ['Maraschino liqueur', 'Licor marrasquino'],
   chartreuse_verde: ['Green Chartreuse', 'Chartreuse verde'], chartreuse_amarelo: ['Yellow Chartreuse', 'Chartreuse amarillo'], violette: ['Crème de violette', 'Crème de violette'], apricot: ['Apricot brandy', 'Apricot brandy (licor de albaricoque)'],
   cacau: ['Crème de cacao', 'Crema de cacao'], menta: ['Crème de menthe', 'Crema de menta'], drambuie: ['Drambuie', 'Drambuie'], benedictine: ['Bénédictine D.O.M.', 'Bénédictine D.O.M.'], amaretto: ['Amaretto', 'Amaretto'],
-  galliano: ['Galliano', 'Galliano'], licor_cafe: ['Coffee liqueur', 'Licor de café'], cassis: ['Crème de cassis', 'Crème de cassis'], mure: ['Crème de mûre (blackberry)', 'Crème de mûre (mora)'],
-  framboesa_licor: ['Raspberry liqueur', 'Licor de frambuesa'], cherry_heering: ['Cherry liqueur (Cherry Heering)', 'Licor de cereza (Cherry Heering)'], pessego_licor: ['Peach schnapps', 'Licor de durazno'], falernum: ['Falernum', 'Falernum'],
-  vermute_tinto: ['Sweet (rosso) vermouth', 'Vermut rojo'], vermute_seco: ['Dry vermouth', 'Vermut seco'], lillet: ['Lillet Blanc / white vermouth', 'Lillet Blanc / vermut blanco'], campari: ['Campari', 'Campari'], aperol: ['Aperol', 'Aperol'],
+  galliano: ['Galliano', 'Galliano'], licor_cafe: ['Coffee liqueur', 'Licor de café'], licor_43: ['Licor 43', 'Licor 43'], baileys: ['Baileys Irish Cream', 'Baileys (crema de whisky irlandés)'], cassis: ['Crème de cassis', 'Crème de cassis'], mure: ['Crème de mûre (blackberry)', 'Crème de mûre (mora)'],
+  framboesa_licor: ['Raspberry liqueur', 'Licor de frambuesa'], cherry_heering: ['Cherry liqueur (Cherry Heering)', 'Licor de cereza (Cherry Heering)'], pessego_licor: ['Peach schnapps', 'Licor de durazno (melocotón)'], falernum: ['Falernum', 'Falernum'],
+  vermute_tinto: ['Sweet vermouth (rosso)', 'Vermut rojo (rosso)'], vermute_seco: ['Dry vermouth', 'Vermut seco'], lillet: ['Lillet Blanc / white vermouth', 'Lillet Blanc / vermut blanco'], campari: ['Campari', 'Campari'], aperol: ['Aperol', 'Aperol'],
   fernet: ['Fernet-Branca', 'Fernet-Branca'], amaro: ['Amaro (Nonino or similar)', 'Amaro (Nonino o similar)'], porto: ['Ruby port', 'Oporto ruby'], vinho_branco: ['Dry white wine', 'Vino blanco seco'], vinho_tinto: ['Red wine', 'Vino tinto'],
   espumante: ['Champagne / sparkling wine / Prosecco', 'Champagne / espumante / Prosecco'], soda: ['Soda water', 'Agua con gas'], tonica: ['Tonic water', 'Agua tónica'], ginger_beer: ['Ginger beer', 'Ginger beer'], ginger_ale: ['Ginger ale', 'Ginger ale'],
-  cola: ['Cola', 'Refresco de cola'], soda_toranja: ['Grapefruit soda', 'Refresco de pomelo'], limao: ['Lime', 'Lima (limón verde)'], siciliano: ['Lemon', 'Limón (amarillo)'], laranja: ['Orange / orange juice', 'Naranja / jugo de naranja'],
-  toranja: ['Grapefruit juice', 'Jugo de pomelo'], abacaxi: ['Pineapple juice', 'Jugo de piña'], cranberry: ['Cranberry juice', 'Jugo de arándano rojo'], tomate: ['Tomato juice', 'Jugo de tomate'], pessego_pure: ['White peach purée', 'Puré de durazno blanco'],
+  cola: ['Cola', 'Refresco de cola'], soda_toranja: ['Grapefruit soda', 'Refresco de pomelo (toronja)'], limao: ['Lime', 'Lima (limón verde)'], siciliano: ['Lemon', 'Limón (amarillo)'], laranja: ['Orange / orange juice', 'Naranja / jugo de naranja'],
+  toranja: ['Grapefruit juice', 'Jugo de pomelo (toronja)'], abacaxi: ['Pineapple juice', 'Jugo de piña'], cranberry: ['Cranberry juice', 'Jugo de arándano rojo'], tomate: ['Tomato juice', 'Jugo de tomate'], pessego_pure: ['White peach purée', 'Puré de durazno blanco (melocotón)'],
   acucar: ['Sugar / simple syrup', 'Azúcar / jarabe simple'], mel: ['Honey', 'Miel'], agave: ['Agave syrup', 'Jarabe de agave'], grenadine: ['Grenadine (pomegranate syrup)', 'Granadina (jarabe de granada)'], orgeat: ['Orgeat (almond syrup)', 'Orgeat (jarabe de almendras)'],
   xarope_framboesa: ['Raspberry syrup', 'Jarabe de frambuesa'], creme_coco: ['Cream of coconut', 'Crema de coco'], canela: ['Cinnamon / cinnamon syrup', 'Canela / jarabe de canela'], angostura: ['Angostura bitters', 'Amargo de Angostura'],
-  peychauds: ['Peychaud’s bitters', 'Amargo Peychaud’s'], bitter_laranja: ['Orange bitters', 'Amargo de naranja'], ovo: ['Eggs (white / yolk)', 'Huevos (clara / yema)'], creme_leite: ['Fresh cream', 'Crema de leche'], cafe: ['Espresso / coffee', 'Espresso / café'],
+  peychauds: ['Peychaud’s bitters', 'Amargo Peychaud’s'], bitter_laranja: ['Orange bitters', 'Amargo de naranja'], ovo: ['Eggs (white / yolk)', 'Huevos (clara / yema)'], creme_leite: ['Heavy cream', 'Crema de leche (nata)'], cafe: ['Espresso / coffee', 'Espresso / café'],
   flor_laranjeira: ['Orange flower water', 'Agua de azahar'], baunilha: ['Vanilla extract', 'Extracto de vainilla'], molho_ingles: ['Worcestershire sauce', 'Salsa inglesa'], tabasco: ['Tabasco', 'Tabasco'], hortela: ['Mint', 'Hierbabuena'],
   manjericao: ['Basil', 'Albahaca'], gengibre: ['Fresh ginger', 'Jengibre fresco'], sal: ['Salt', 'Sal'], pimenta: ['Black pepper', 'Pimienta negra'], salsao: ['Celery', 'Apio'], noz_moscada: ['Nutmeg', 'Nuez moscada'],
-  cereja: ['Cocktail / maraschino cherry', 'Cereza al marrasquino'], azeitona: ['Green olive', 'Aceituna verde'], amora: ['Blackberries / raspberries', 'Moras / frambuesas'], agua: ['Water', 'Agua'], agua_quente: ['Hot water', 'Agua caliente']
+  cereja: ['Maraschino cherries', 'Cerezas al marrasquino'], azeitona: ['Green olive', 'Aceituna verde'], amora: ['Blackberries / raspberries', 'Moras / frambuesas'], agua: ['Water', 'Agua'], agua_quente: ['Hot water', 'Agua caliente']
 };
 
 const GROUP = {
@@ -261,7 +263,7 @@ const PHRASE = {
   'frutas vermelhas frescas': ['fresh berries', 'frutos rojos frescos'], 'frutas vermelhas e quartos de rodela de laranja e limão-siciliano': ['fresh berries and quarter wheels of orange and lemon', 'frutos rojos y cuartos de rodaja de naranja y limón'], '2 fatias finas': ['2 thin slices', '2 rodajas finas'],
   'uma pimenta vermelha': ['a red chili pepper', 'un ají rojo'], 'ramo de hortelã e, se quiser, rodela de laranja': ['mint sprig and, optionally, an orange slice', 'rama de hierbabuena y, si quieres, rodaja de naranja'], 'rhum agricole da Martinica': ['Martinique rhum agricole', 'rhum agricole de Martinica'],
   'três cerejas e um pedaço retangular de abacaxi': ['three cherries and a rectangular chunk of pineapple', 'tres cerezas y un trozo rectangular de piña'], 'branca e suave': ['white, smooth', 'blanca y suave'], 'xarope de mel com camomila': ['honey syrup made with chamomile', 'jarabe de miel con manzanilla'],
-  'cordial': ['cordial', 'cordial'], 'casca de limão-siciliano e uvas brancas': ['lemon zest and white grapes', 'cáscara de limón y uvas blancas'], 'folha de manjericão': ['basil leaf', 'hoja de albahaca'], 'Cointreau': ['Cointreau', 'Cointreau'],
+  'cordial': ['cordial', 'cordial'], 'casca de limão-siciliano e uvas brancas': ['lemon zest and white grapes', 'cáscara de limón y uvas blancas'], 'folha de manjericão': ['basil leaf', 'hoja de albahaca'], 'Cointreau': ['Cointreau', 'Cointreau'], 'espresso recém-tirado': ['freshly pulled espresso', 'espresso recién hecho'], 'chocolate ralado (opcional)': ['grated chocolate (optional)', 'chocolate rallado (opcional)'],
   // notas
   'de preferência cítrica': ['citrus vodka preferred', 'de preferencia cítrico'], 'verde': ['green', 'verde'], 'branco': ['white', 'blanco'], 'quente': ['hot', 'caliente'], 'levemente batido': ['lightly whipped', 'ligeramente batida'],
   '30 ml jamaicano + 30 ml da Martinica, ou só um rum envelhecido': ['30 ml Jamaican + 30 ml Martinique, or just one aged rum', '30 ml jamaicano + 30 ml de Martinica, o un solo ron añejo'], 'curaçau laranja': ['orange curaçao', 'curazao de naranja'],

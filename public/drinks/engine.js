@@ -74,7 +74,7 @@ export function amount(line) {
 export function ingredientName(id) { return INGREDIENTS[id]?.name || id; }
 
 // Marcas e nomes próprios mantêm a maiúscula dentro da frase (Campari, Angostura, Scotch...).
-const PROPER = /^(Campari|Aperol|Cynar|Fernet|Drambuie|Bénédictine|Galliano|Grand Marnier|Frangelico|Angostura|Peychaud|Lillet|Tabasco|Worcestershire|Scotch|Irish|Champagne|Cointreau|Chartreuse|Prosecco|Cherry Heering)/;
+const PROPER = /^(Campari|Aperol|Cynar|Fernet|Drambuie|Bénédictine|Galliano|Grand Marnier|Frangelico|Angostura|Peychaud|Lillet|Tabasco|Worcestershire|Scotch|Irish|Champagne|Cointreau|Chartreuse|Prosecco|Cherry Heering|Licor 43|Baileys)/;
 const lower = s => PROPER.test(s) ? s : s.charAt(0).toLowerCase() + s.slice(1);
 
 /** Passo a passo no idioma pedido: roteiro próprio do drink (traduzido) ou gerado a partir do método. */

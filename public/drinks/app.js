@@ -17,7 +17,11 @@ const store = {
 
 const auth = createAuth();
 const IBA_CATS = ['unforgettable', 'contemporary', 'newera'];
-const state = {user: null, bar: new Set(), cat: 'all', base: 'all', q: '', barQ: '', lastList: 'classicos'};
+const state = {user: null, bar: new Set(), cat: 'all', base: 'all', q: '', barQ: '', lastList: 'classicos', openGroups: new Set(['Destilados'])};
+const wide = () => globalThis.matchMedia?.('(min-width: 960px)').matches;
+// Altura real da barra superior, para os filtros fixos logo abaixo dela no celular.
+const topbarEl = document.querySelector('.topbar');
+if (topbarEl && globalThis.ResizeObserver) new ResizeObserver(() => document.documentElement.style.setProperty('--top-h', `${topbarEl.offsetHeight}px`)).observe(topbarEl);
 setLang(detectLang(store.get('hometender.lang', null)));
 
 const barKey = () => `hometender.bar.${state.user?.email || 'convidado'}`;
@@ -30,7 +34,7 @@ const saveBar = () => store.set(barKey(), [...state.bar]);
 // ── Textos traduzidos ──
 const dName = d => nameFor(d, getLang());
 const ingName = id => trIngredient(id, ingredientName(id));
-const shortIng = id => ingName(id).split(' / ')[0].replace(/\s*\(.*\)$/, '');
+const shortIng = id => ingName(id).replace(/\s*\(.*\)$/, '').split(' / ')[0];
 const ingredientLine = d => [...new Set(d.ing.filter(l => !l.opt && !BASICS.has(l.id)).map(l => shortIng(l.id)))].join(' · ');
 const glassOf = d => trGlass(d.glass, GLASSES[d.glass]);
 const img = id => `img/drinks/${id}.webp`;
@@ -97,11 +101,13 @@ function renderMenu(mode = menuMode) {
   const head = riffs ? pageHead(t('riffsKicker'), t('riffsTitle'), t('riffsLede')) : pageHead(t('classicsKicker'), t('classicsTitle'), t('classicsLede'));
   const chips = riffs ? '' : `<div class="chips" role="group">${[['all', t('all')], ...IBA_CATS.map(k => [k, catLabel(k)])].map(([k, label]) => `<button class="chip ${state.cat === k ? 'on' : ''}" data-cat="${k}" aria-pressed="${state.cat === k}">${esc(label)}</button>`).join('')}</div>`;
   view.innerHTML = `${head}
+    <div class="filters">
     <div class="toolbar" role="search">
-      <label class="field"><span class="sr">${esc(t('search'))}</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21"/></svg><input id="q" type="search" placeholder="${esc(t('search'))}" value="${esc(state.q)}" autocomplete="off"></label>
+      <label class="field"><span class="sr">${esc(t('search'))}</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21"/></svg><input id="q" type="search" placeholder="${esc(t(globalThis.matchMedia?.('(max-width: 699px)').matches ? 'searchShort' : 'search'))}" value="${esc(state.q)}" autocomplete="off"></label>
       <label class="field select"><span class="sr">${esc(t('allBases'))}</span><select id="base"><option value="all">${esc(t('allBases'))}</option>${bases.map(b => `<option value="${esc(b)}" ${state.base === b ? 'selected' : ''}>${esc(trBase(b))}</option>`).join('')}</select></label>
     </div>
     ${chips}
+    </div>
     ${sections || `<p class="empty">${esc(t('noResults'))}</p>`}`;
   view.querySelector('#q').addEventListener('input', e => {
     state.q = e.target.value; const pos = e.target.selectionStart; renderMenu();
@@ -146,17 +152,15 @@ function renderDrink(id) {
         <h2 id="recipe-h" class="sheet-title">${esc(dName(d))}</h2>
         <p class="sheet-meta"><span class="diff" data-level="${level}" aria-hidden="true"><i></i><i></i><i></i></span>${esc(t('diffLevels')[level])} · ≈ ${prepMinutes(d)} min · ${esc(tm('methods', d.method))}</p>
         <div class="sheet-orn">${ornament(180)}</div>
-        <div class="sheet-grid">
-          <section class="sheet-block">
+        <section class="sheet-block">
             <h3>${esc(t('glass'))}</h3>
-            <div class="glass-row"><span class="glass-mini">${glassSVG(d.glass, 46)}</span><div><strong>${esc(g.name)}</strong><p>${esc(g.desc)}</p></div></div>
-          </section>
-          <section class="sheet-block">
+            <div class="glass-row"><span class="glass-mini">${glassSVG(d.glass, 46)}</span><div><strong>${esc(g.name)}</strong><p>${esc(glassWhyFor(d, lang) || g.desc)}</p></div></div>
+        </section>
+        <section class="sheet-block">
             <h3>${esc(t('tools'))}</h3>
             <ul class="sheet-tools">${tools.map(tid => `<li>${toolSVG(tid, 26)}<span>${esc(trTool(tid, TOOLS[tid]).name)}</span></li>`).join('')}</ul>
             ${impro.length ? `<details class="impro"><summary>${esc(t('improvise'))}</summary><ul>${impro.map(([tid, txt]) => `<li><strong>${esc(trTool(tid, TOOLS[tid]).name)}:</strong> ${esc(txt)}</li>`).join('')}</ul></details>` : ''}
-          </section>
-        </div>
+        </section>
         <section class="sheet-block">
           <h3>${esc(t('ingredients'))}</h3>
           <ul class="sheet-ing">${ingRows}</ul>
@@ -196,7 +200,6 @@ function renderDrink(id) {
 
       ${recipe}
 
-      <section class="drink-sec glass-sec"><h2>${esc(t('whyGlass'))}</h2><h3>${esc(g.name)}</h3><p>${esc(glassWhyFor(d, lang))}</p></section>
 
       ${parent ? `<section class="drink-sec related"><h2>${esc(t('originClassic'))}</h2><div class="grid small">${card(parent)}</div></section>` : ''}
       ${kids.length ? `<section class="drink-sec related"><h2>${esc(t('riffsOfThis'))}</h2><div class="grid small">${kids.map(k => card(k)).join('')}</div></section>` : ''}
@@ -244,7 +247,9 @@ function renderBar() {
   const groups = GROUPS.map(gp => {
     const ids = Object.entries(INGREDIENTS).filter(([id, v]) => v.group === gp && !BASICS.has(id) && (!q || normalize(v.name).includes(q) || normalize(ingName(id)).includes(q)));
     if (!ids.length) return '';
-    return `<fieldset class="ing-group"><legend>${esc(trGroup(gp))}</legend><div class="ing-chips">${ids.map(([id]) => `<button type="button" class="ing ${state.bar.has(id) ? 'on' : ''}" data-ing="${id}" aria-pressed="${state.bar.has(id)}">${esc(ingName(id))}</button>`).join('')}</div></fieldset>`;
+    const n = ids.filter(([id]) => state.bar.has(id)).length;
+    const open = q || wide() || state.openGroups.has(gp) || n > 0;
+    return `<details class="ing-group" data-group="${esc(gp)}" ${open ? 'open' : ''}><summary><span class="grp-name">${esc(trGroup(gp))}</span><span class="grp-count" ${n ? '' : 'hidden'}>${n}</span></summary><div class="ing-chips">${ids.map(([id]) => `<button type="button" class="ing ${state.bar.has(id) ? 'on' : ''}" data-ing="${id}" aria-pressed="${state.bar.has(id)}">${esc(ingName(id))}</button>`).join('')}</div></details>`;
   }).join('');
   view.innerHTML = `${pageHead(t('barKicker'), t('barTitle'), t('barLede'))}
     <div class="bar-layout">
@@ -267,9 +272,12 @@ function renderBar() {
     state.bar.has(id) ? state.bar.delete(id) : state.bar.add(id);
     b.classList.toggle('on'); b.setAttribute('aria-pressed', state.bar.has(id));
     saveBar(); renderResults();
+    const grp = b.closest('.ing-group'), cnt = grp?.querySelector('.grp-count');
+    if (cnt) { const n = grp.querySelectorAll('.ing.on').length; cnt.textContent = n; cnt.hidden = !n; }
     view.querySelector('#clear').disabled = !state.bar.size;
     view.querySelector('#bar-count').textContent = t('selected', state.bar.size);
   });
+  view.querySelectorAll('.ing-group').forEach(g => g.addEventListener('toggle', () => { g.open ? state.openGroups.add(g.dataset.group) : state.openGroups.delete(g.dataset.group); }));
   view.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => { PRESETS[b.dataset.preset].forEach(id => state.bar.add(id)); saveBar(); renderBar(); }));
   view.querySelector('#clear').addEventListener('click', () => { state.bar.clear(); saveBar(); renderBar(); });
   view.querySelector('#fab').addEventListener('click', e => { e.preventDefault(); view.querySelector('#results').scrollIntoView({behavior: 'smooth'}); });

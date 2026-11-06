@@ -1,31 +1,53 @@
-# Home Tender · Coquetéis Clássicos
+# Home Tender
 
-App de drinks independente, em `public/drinks/`, com estética noir dos anos 40. Não usa build nem dependências: são módulos ES estáticos que o Vite copia para `dist/drinks/`.
+App de coquetéis clássicos em `public/drinks/` (publicado em `/drinks/`). Módulos ES estáticos, sem build; o Vite copia tudo para `dist/drinks/`.
 
 * Publicado (GitHub Pages): `https://guilhermeborsarelli.github.io/fintrack/drinks/`
-* Local: `npm run dev` e abra `http://localhost:5173/drinks/index.html` (em dev, `/drinks/` sem `index.html` cai no app de finanças)
+* Local: `npm run dev` e abra `http://localhost:5173/drinks/index.html`
 
-## Referência
+## Conteúdo
 
-As receitas seguem a **lista oficial da IBA (International Bartenders Association)**, a referência da coquetelaria internacional desde 1961, nas três categorias: *The Unforgettables*, *Contemporary Classics* e *New Era Drinks*. Medidas em ml, como na especificação IBA.
+* **Receitas**: os 102 coquetéis da lista oficial da IBA (34 em cada categoria: The Unforgettables, Contemporary Classics, New Era Drinks), conferidos um a um com as fichas de iba-world.com (copo, medidas, guarnição; cópia em `tools/generate-photos/iba-specs.json`), em ml, mais variações consagradas fora da lista, cada uma ligada ao clássico de origem (`parent`).
+* **Histórias e "por que este copo"**: `stories/` (português, inglês e espanhol). Origens disputadas são apresentadas como tal.
+* **Introdução**: `content.js`. Conceito, linha do tempo, livros de referência (Jerry Thomas, Savoy, Embury, DeGroff, Wondrich, Dave Arnold, Cocktail Codex) e a tendência de fazer drinks em casa.
 
-As **adaptações reconhecidas** são coquetéis consagrados fora da lista IBA (Savoy Cocktail Book, Harry's ABC, Trader Vic, clássicos modernos de bartenders de referência). Cada uma aponta o clássico IBA de que deriva (`parent`).
+## Idiomas
 
-## Abas
+`i18n.js` traz a interface e os dados traduzidos; `steps-i18n.js`, os passos de preparo. O seletor PT/EN/ES fica no canto superior direito e a escolha é salva no aparelho.
 
-* **Cardápio**: menu em cartão de papel com ilustração, ingredientes e copo de cada drink. Busca, filtro por categoria e por destilado base.
-* **Meu Bar**: o usuário marca os ingredientes que tem (salvo só no aparelho). O app mostra a *sugestão da casa*: um clássico IBA possível; se nenhum fecha, uma adaptação reconhecida. Também lista o que está "quase lá" e qual ingrediente falta.
-* **Copos & Utensílios**: glossário ilustrado.
+## Fotos dos drinks
 
-Toda ficha de drink mostra o desenho, o copo, os utensílios, os ingredientes com medidas, o preparo passo a passo e a guarnição.
+`img/drinks/<id>.webp` são renderizações 3D próprias: estúdio com fundo preto, bancada espelhada, spot de cima e halo atrás do copo. Para regenerar depois de mudar receitas ou cores:
+
+```sh
+npm run render:drinks            # todos
+npm run render:drinks -- negroni # só alguns
+```
+
+O script (`tools/render-drinks/`) monta a cena em Three.js e renderiza no Chromium headless. A cor do líquido vem de `color`/`color2` em `data.js`; copo, gelo, espuma e guarnições também vêm dos dados do drink.
+
+## Login
+
+Hoje a conta é **local**: nome, e-mail e um hash PBKDF2-SHA256 da senha ficam no `localStorage` do aparelho, e cada conta tem o seu "Meu Bar". Isso não fecha o conteúdo (os arquivos do site são públicos) e a conta não acompanha o usuário em outro aparelho.
+
+Para um app pago é preciso um backend:
+
+1. **Autenticação**: Supabase Auth ou Firebase Auth (e-mail/senha, Google, Apple).
+2. **Conteúdo protegido**: receitas, histórias e fotos servidas por API ou banco com regra de acesso por assinatura (por exemplo, Supabase com Row Level Security), não como arquivos públicos.
+3. **Pagamento**: Stripe ou Mercado Pago (assinatura), com webhook que marca o usuário como assinante.
+4. **Hospedagem**: Vercel, Netlify ou Cloudflare Pages com funções serverless; para lojas de aplicativos, empacotar como PWA/TWA ou com Capacitor.
 
 ## Arquivos
 
 | Arquivo | Conteúdo |
 | --- | --- |
 | `data.js` | Ingredientes, copos, utensílios e receitas |
-| `engine.js` | Correspondência com o bar do usuário, utensílios derivados do método, passo a passo |
-| `art.js` | Ilustrações SVG em aquarela (copo, líquido, gelo, guarnições, arabescos dourados) |
-| `app.js`, `style.css`, `index.html` | Interface |
+| `engine.js` | Correspondência com o bar do usuário, utensílios, preparo em 3 idiomas |
+| `i18n.js`, `steps-i18n.js` | Traduções |
+| `stories/` | Histórias e o porquê de cada copo |
+| `content.js` | Introdução e créditos das fotos |
+| `auth.js` | Contas locais |
+| `art.js` | Ícones dos utensílios |
+| `img/` | Fotos de abertura (Wikimedia Commons, créditos no app) e renders 3D dos drinks |
 
-Testes: `tests/drinks.test.js` (rodam junto com `npm test`).
+Testes: `tests/drinks.test.js` (rodam com `npm test`).

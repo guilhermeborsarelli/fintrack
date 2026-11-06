@@ -53,3 +53,71 @@ test('todo drink tem copo, utensílios, preparo e desenho', () => {
     assert.doesNotMatch(svg, /NaN|undefined/, d.id);
   }
 });
+
+import {createAuth} from '../public/drinks/auth.js';
+const memoryStorage = () => { const m = new Map(); return {getItem: k => m.has(k) ? m.get(k) : null, setItem: (k, v) => m.set(k, String(v)), removeItem: k => m.delete(k), dump: m}; };
+
+test('conta local: cria, entra, recusa senha errada e não guarda a senha', async () => {
+  const storage = memoryStorage();
+  const auth = createAuth(storage);
+  assert.equal(auth.current(), null);
+  const user = await auth.register({name: 'Ana Brito', email: ' Ana@Exemplo.com ', password: 'segredo1'});
+  assert.deepEqual(user, {email: 'ana@exemplo.com', name: 'Ana Brito'});
+  assert.equal(auth.current().name, 'Ana Brito');
+  assert.doesNotMatch([...storage.dump.values()].join(''), /segredo1/);
+  auth.logout();
+  assert.equal(auth.current(), null);
+  await assert.rejects(auth.login({email: 'ana@exemplo.com', password: 'errada'}), /incorretos/);
+  await assert.rejects(auth.login({email: 'ninguem@exemplo.com', password: 'segredo1'}), /incorretos/);
+  assert.equal((await auth.login({email: 'ANA@exemplo.com', password: 'segredo1'})).name, 'Ana Brito');
+  await assert.rejects(auth.register({name: 'Ana', email: 'ana@exemplo.com', password: 'outra123'}), /Já existe/);
+  await assert.rejects(auth.register({name: 'Bia', email: 'bia@', password: 'segredo1'}), /e-mail/);
+  await assert.rejects(auth.register({name: 'Bia', email: 'bia@exemplo.com', password: '123'}), /6 caracteres/);
+});
+
+import {existsSync} from 'node:fs';
+import {STORIES, storyFor, glassWhyFor} from '../public/drinks/stories/index.js';
+import {setLang, trIngredient, trPhrase, _dictionaries} from '../public/drinks/i18n.js';
+import {INGREDIENTS} from '../public/drinks/data.js';
+
+test('todo drink tem foto 3D, história e porquê do copo nos três idiomas', () => {
+  for (const d of DRINKS) {
+    assert.ok(existsSync(new URL(`../public/drinks/img/drinks/${d.id}.webp`, import.meta.url)), `foto ${d.id}`);
+    assert.ok(STORIES[d.id], `história ${d.id}`);
+    for (const lang of ['pt', 'en', 'es']) {
+      assert.ok(storyFor(d.id, lang).length > 80, `${d.id} ${lang}`);
+      assert.ok(glassWhyFor(d, lang).length > 40, `copo ${d.id} ${lang}`);
+    }
+  }
+  assert.equal(Object.keys(STORIES).length, DRINKS.length);
+});
+
+test('preparo e dados traduzidos em inglês e espanhol, sem lacunas', () => {
+  for (const lang of ['en', 'es']) {
+    setLang(lang);
+    for (const id of Object.keys(INGREDIENTS)) assert.ok(_dictionaries.ING[id], `ingrediente ${id}`);
+    for (const d of DRINKS) {
+      const steps = stepsFor(d, lang);
+      assert.ok(steps.length >= 2, `${d.id} ${lang}`);
+      for (const s of steps) assert.doesNotMatch(s, /undefined|\$\{/, `${d.id} ${lang}: ${s}`);
+      if (d.gtext) assert.ok(_dictionaries.PHRASE[d.gtext], `guarnição sem tradução: ${d.gtext}`);
+      for (const l of d.ing) {
+        if (l.q) assert.ok(_dictionaries.PHRASE[l.q], `quantidade sem tradução: ${l.q}`);
+        if (l.note) assert.ok(_dictionaries.PHRASE[l.note], `nota sem tradução: ${l.note}`);
+      }
+    }
+  }
+  setLang('pt');
+  assert.equal(trIngredient('limao', 'Limão taiti (lime)'), 'Limão taiti (lime)');
+  assert.equal(trPhrase('a gosto'), 'a gosto');
+});
+
+import {readFileSync} from 'node:fs';
+test('lista oficial IBA completa: 102 coquetéis, 34 por categoria, todos com ficha oficial', () => {
+  const specs = JSON.parse(readFileSync(new URL('../tools/generate-photos/iba-specs.json', import.meta.url), 'utf8'));
+  const iba = DRINKS.filter(d => d.cat !== 'adaptation');
+  assert.equal(iba.length, 102);
+  for (const cat of ['unforgettable', 'contemporary', 'newera']) assert.equal(iba.filter(d => d.cat === cat).length, 34, cat);
+  const catName = {unforgettable: 'The unforgettables', contemporary: 'Contemporary Classics', newera: 'New Era'};
+  for (const d of iba) { assert.ok(specs[d.id], `ficha ${d.id}`); assert.equal(specs[d.id].category, catName[d.cat], `categoria ${d.id}`); }
+});

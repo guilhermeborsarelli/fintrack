@@ -51,6 +51,10 @@ function colorWord(hex) {
   return `${l < .4 ? 'deep ' : l > .7 ? 'light ' : ''}${base}`;
 }
 
+export function shortPrompt(d) {
+  return promptFor(d).split(' Pure black seamless background.')[0].replace('Professional studio product photograph of the ', '');
+}
+
 export function promptFor(d) {
   const glass = GLASS_SHOT[d.glass] || trGlass(d.glass, GLASSES[d.glass]).name;
   const ings = [...new Set(d.ing.filter(l => !l.opt && !['agua', 'agua_quente', 'gelo'].includes(l.id)).map(l => trIngredient(l.id, ingredientName(l.id)).split(' / ')[0]))].join(', ');
@@ -64,7 +68,7 @@ export function promptFor(d) {
   ].filter(Boolean).join(', ');
   const garnish = d.gtext ? `Garnish: ${trPhrase(d.gtext)}.` : 'No garnish.';
   return [
-    `Professional studio product photograph of a ${d.name} cocktail (${ings}) in ${glass}, ${ICE[d.serve] || ''}, ${look}.`,
+    `Professional studio product photograph of the ${d.name} cocktail (${ings}) in ${glass}, ${ICE[d.serve] || ''}, ${look}.`,
     garnish,
     'Pure black seamless background. Dramatic overhead spotlight with soft rim light outlining the glass, the liquid glowing from within.',
     'Glossy black reflective surface with a subtle mirror reflection under the glass. Fine condensation droplets on cold glass, crystal-clear glass with sharp highlights.',
@@ -90,6 +94,10 @@ async function main() {
   const done = new Set(fs.existsSync(DONE_FILE) ? JSON.parse(fs.readFileSync(DONE_FILE, 'utf8')) : []);
   const list = DRINKS.filter(d => (!ids.length || ids.includes(d.id)) && (force || !done.has(d.id)));
   if (onlyPrompts) { for (const d of list) console.log(`\n# ${d.id}\n${promptFor(d)}`); return; }
+  if (args.includes('--list')) { // lista curta para gerar à mão num chat (o estilo vai uma vez só, no início)
+    list.forEach((d, k) => console.log(`${String(k + 1).padStart(3, '0')} · ${d.name} [${d.id}]\n${shortPrompt(d)}\n`));
+    return;
+  }
   const {default: sharp} = await import('sharp').catch(() => ({default: null}));
   for (const d of list) {
     const t = Date.now();

@@ -1,135 +1,193 @@
-import {CATEGORIES, DRINKS, DRINK_BY_ID, INGREDIENTS, GROUPS, GLASSES, TOOLS, BASICS, BASE_LABEL} from './data.js';
+import {DRINKS, DRINK_BY_ID, INGREDIENTS, GROUPS, GLASSES, TOOLS, BASICS, BASE_LABEL} from './data.js';
 import {analyzeBar, toolsFor, stepsFor, amount, ingredientName, parentOf, childrenOf, searchDrinks, normalize, missingFor} from './engine.js';
-import {drinkSVG, glassSVG, toolSVG, ornament, divider, cornerFlourish, artDefs} from './art.js';
+import {toolSVG} from './art.js';
 import {createAuth} from './auth.js';
 import {introHTML, creditsHTML} from './content.js';
+import {storyFor, glassWhyFor, nameFor} from './stories/index.js';
+import {LANGS, detectLang, setLang, getLang, t, tm, trIngredient, trGroup, trPhrase, trBase, trGlass, trTool, catLabel, catShort} from './i18n.js';
 
 const view = document.getElementById('view');
-const sheet = document.getElementById('sheet');
-const sheetCard = sheet.querySelector('.sheet');
-document.body.insertAdjacentHTML('afterbegin', artDefs());
-const CORNERS = ['tl', 'tr', 'bl', 'br'].map(c => `<span class="corner ${c}" aria-hidden="true">${cornerFlourish(58)}</span>`).join('');
-
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 
-// ── Estado (o bar do usuário fica só neste aparelho) ──
+// ── Armazenamento local ──
 const store = {
   get(key, fallback) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch { return fallback; } },
   set(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* modo privado */ } }
 };
+
 const auth = createAuth();
-const state = {
-  user: null, bar: new Set(),
-  cat: {classicos: 'all', adaptacoes: 'adaptation'}, base: 'all', q: '', barQ: ''
-};
+const IBA_CATS = ['unforgettable', 'contemporary', 'newera'];
+const state = {user: null, bar: new Set(), cat: 'all', base: 'all', q: '', barQ: '', lastList: 'classicos'};
+setLang(detectLang(store.get('hometender.lang', null)));
+
 const barKey = () => `hometender.bar.${state.user?.email || 'convidado'}`;
 function loadBar() {
-  // O bar de cada pessoa fica separado; o bar salvo antes das contas passa para a primeira conta.
   const saved = store.get(barKey(), null) ?? store.get('barnoir.bar', []);
   state.bar = new Set(saved.filter(id => INGREDIENTS[id]));
 }
 const saveBar = () => store.set(barKey(), [...state.bar]);
-const IBA_CATS = ['unforgettable', 'contemporary', 'newera'];
 
-const PRESETS = {
-  'Bar de casa': ['cachaca', 'vodka', 'limao', 'acucar', 'laranja', 'soda', 'cola', 'hortela'],
-  'Bar do aperitivo': ['gin', 'campari', 'vermute_tinto', 'vermute_seco', 'aperol', 'espumante', 'soda', 'laranja', 'siciliano'],
-  'Bar do whiskey': ['bourbon', 'scotch', 'vermute_tinto', 'angostura', 'acucar', 'siciliano', 'mel', 'cereja', 'soda']
-};
+// ── Textos traduzidos ──
+const dName = d => nameFor(d, getLang());
+const ingName = id => trIngredient(id, ingredientName(id));
+const shortIng = id => ingName(id).split(' / ')[0].replace(/\s*\(.*\)$/, '');
+const ingredientLine = d => [...new Set(d.ing.filter(l => !l.opt && !BASICS.has(l.id)).map(l => shortIng(l.id)))].join(' · ');
+const glassOf = d => trGlass(d.glass, GLASSES[d.glass]);
+const img = id => `img/drinks/${id}.webp`;
+const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 
-const ingredientLine = d => [...new Set(d.ing.filter(l => !l.opt && !BASICS.has(l.id)).map(l => ingredientName(l.id).split(' / ')[0].replace(/\s*\(.*\)$/, '')))].join(' · ');
+let authMode = 'login';
+function applyStaticTexts() {
+  document.documentElement.lang = {pt: 'pt-BR', en: 'en', es: 'es'}[getLang()];
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  document.querySelectorAll('[data-lang-switch]').forEach(box => {
+    box.innerHTML = LANGS.map(l => `<button type="button" data-lang="${l}" aria-pressed="${l === getLang()}">${l.toUpperCase()}</button>`).join('');
+  });
+  document.getElementById('auth-submit').textContent = authMode === 'register' ? t('registerSubmit') : t('login');
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-lang]'); if (!b) return;
+  setLang(b.dataset.lang); store.set('hometender.lang', getLang());
+  applyStaticTexts(); rendered = null;
+  if (state.user) route();
+});
 
-// ── Cabeçalho editorial das páginas ──
-const pageHead = (kicker, title, lede) => `<header class="page-head"><p class="kicker">${kicker}</p><h1>${title}</h1>${lede ? `<p>${lede}</p>` : ''}<div class="page-orn">${ornament(200)}</div></header>`;
+// ── Componentes ──
+const pageHead = (kicker, title, lede) => `<header class="page-head"><p class="kicker">${esc(kicker)}</p><h1>${esc(title)}</h1>${lede ? `<p>${esc(lede)}</p>` : ''}</header>`;
+
+function card(d, {sub = null} = {}) {
+  const parent = parentOf(d);
+  const kicker = sub ?? (d.cat === 'adaptation' ? t('riffOf', parent ? dName(parent) : '') : catShort(d.cat));
+  return `<a class="card" href="#/drink/${d.id}">
+    <span class="card-img"><img src="${img(d.id)}" alt="${esc(dName(d))}" loading="lazy" decoding="async"></span>
+    <span class="card-body">${kicker ? `<span class="card-kicker">${esc(kicker)}</span>` : ''}<span class="card-name">${esc(dName(d))}</span><span class="card-ing">${esc(ingredientLine(d))}</span></span>
+  </a>`;
+}
 
 // ── Início ──
 function renderIntro() {
   const iba = DRINKS.filter(d => d.cat !== 'adaptation').length;
-  view.innerHTML = introHTML({name: state.user?.name, counts: {iba, adapt: DRINKS.length - iba}});
+  const showcase = ['negroni', 'dry-martini', 'old-fashioned', 'margarita', 'mojito', 'espresso-martini'].map(id => ({id, name: dName(DRINK_BY_ID[id])}));
+  view.innerHTML = introHTML({name: state.user?.name, counts: {iba, adapt: DRINKS.length - iba}, showcase, labels: {classics: t('classicsTitle'), riffs: t('riffsTitle'), bar: t('barTitle')}});
   view.querySelectorAll('.intro-index a').forEach(a => a.addEventListener('click', e => {
     e.preventDefault(); view.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior: 'smooth', block: 'start'});
   }));
 }
 
-// ── Cardápio (Clássicos IBA ou Adaptações) ──
+// ── Catálogo (Clássicos IBA ou Variações) ──
 let menuMode = 'classicos';
 function renderMenu(mode = menuMode) {
-  if (mode !== menuMode) { state.q = ''; state.base = 'all'; }
-  menuMode = mode;
-  const adapt = mode === 'adaptacoes';
-  const pool = DRINKS.filter(d => adapt ? d.cat === 'adaptation' : d.cat !== 'adaptation');
+  if (mode !== menuMode) { state.q = ''; state.base = 'all'; state.cat = 'all'; }
+  menuMode = mode; state.lastList = mode;
+  const riffs = mode === 'variacoes';
+  const pool = DRINKS.filter(d => riffs ? d.cat === 'adaptation' : d.cat !== 'adaptation');
   const bases = [...new Set(pool.map(d => BASE_LABEL[d.base]).filter(Boolean))];
   let list = searchDrinks(state.q, pool);
   if (state.base !== 'all') list = list.filter(d => BASE_LABEL[d.base] === state.base);
-  const sel = state.cat[mode];
-  const cats = adapt ? ['adaptation'] : sel === 'all' ? IBA_CATS : [sel];
+  const cats = riffs ? ['adaptation'] : state.cat === 'all' ? IBA_CATS : [state.cat];
   const sections = cats.map(cat => {
     const items = list.filter(d => d.cat === cat);
     if (!items.length) return '';
-    const c = CATEGORIES[cat];
-    return `<section class="menu-card" aria-labelledby="h-${cat}">
-      ${CORNERS}
-      <p class="menu-script">${adapt ? 'Fora da lista, dentro do cânone' : 'Lista oficial IBA'}</p>
-      <h2 class="menu-cat" id="h-${cat}">${esc(c.label)}</h2>
-      <p class="menu-en">${esc(c.en)} · ${items.length} receita${items.length > 1 ? 's' : ''}</p>
-      <div class="menu-orn">${ornament(200)}</div>
-      <ul class="menu-list">${items.map(menuItem).join('')}</ul>
+    return `<section class="shelf" aria-labelledby="h-${cat}">
+      ${riffs ? '' : `<div class="shelf-head"><h2 id="h-${cat}">${esc(catLabel(cat))}</h2><span>${esc(t('recipes', items.length))}</span></div>`}
+      <div class="grid">${items.map(d => card(d, riffs ? {} : {sub: ''})).join('')}</div>
     </section>`;
   }).join('');
-  const head = adapt
-    ? pageHead('Variações consagradas', 'Adaptações reconhecidas', 'Drinks que não estão na lista oficial da IBA, mas que qualquer bartender de respeito conhece. Cada um nasce de um clássico: troca-se a base, ajusta-se o doce, muda-se o copo. Quando o seu bar não fecha um clássico, é daqui que vem a resposta.')
-    : pageHead('O cânone', 'Clássicos IBA', 'A lista oficial da International Bartenders Association em três capítulos: os inesquecíveis da Era de Ouro, os clássicos contemporâneos do século XX e os drinks da nova era que já viraram referência. Toque em um drink para ver copo, utensílios e preparo.');
-  const chips = adapt ? '' : `<div class="chips" role="group" aria-label="Categoria">
-      ${[['all', 'Todos'], ...IBA_CATS.map(k => [k, CATEGORIES[k].label])].map(([k, label]) => `<button class="chip ${sel === k ? 'on' : ''}" data-cat="${k}" aria-pressed="${sel === k}">${esc(label)}</button>`).join('')}
-    </div>`;
+  const head = riffs ? pageHead(t('riffsKicker'), t('riffsTitle'), t('riffsLede')) : pageHead(t('classicsKicker'), t('classicsTitle'), t('classicsLede'));
+  const chips = riffs ? '' : `<div class="chips" role="group">${[['all', t('all')], ...IBA_CATS.map(k => [k, catLabel(k)])].map(([k, label]) => `<button class="chip ${state.cat === k ? 'on' : ''}" data-cat="${k}" aria-pressed="${state.cat === k}">${esc(label)}</button>`).join('')}</div>`;
   view.innerHTML = `${head}
     <div class="toolbar" role="search">
-      <label class="field"><span class="sr">Buscar</span><input id="q" type="search" placeholder="Buscar drink ou ingrediente…" value="${esc(state.q)}" autocomplete="off"></label>
-      <label class="field select"><span class="sr">Destilado base</span><select id="base"><option value="all">Todas as bases</option>${bases.map(b => `<option ${state.base === b ? 'selected' : ''}>${esc(b)}</option>`).join('')}</select></label>
+      <label class="field"><span class="sr">${esc(t('search'))}</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21"/></svg><input id="q" type="search" placeholder="${esc(t('search'))}" value="${esc(state.q)}" autocomplete="off"></label>
+      <label class="field select"><span class="sr">${esc(t('allBases'))}</span><select id="base"><option value="all">${esc(t('allBases'))}</option>${bases.map(b => `<option value="${esc(b)}" ${state.base === b ? 'selected' : ''}>${esc(trBase(b))}</option>`).join('')}</select></label>
     </div>
     ${chips}
-    ${sections || `<p class="empty">Nenhum drink com esse nome por aqui.</p>`}`;
-  view.querySelector('#q').addEventListener('input', e => { state.q = e.target.value; rerenderMenuKeepFocus(); });
+    ${sections || `<p class="empty">${esc(t('noResults'))}</p>`}`;
+  view.querySelector('#q').addEventListener('input', e => {
+    state.q = e.target.value; const pos = e.target.selectionStart; renderMenu();
+    const q = view.querySelector('#q'); q.focus(); q.setSelectionRange(pos, pos);
+  });
   view.querySelector('#base').addEventListener('change', e => { state.base = e.target.value; renderMenu(); });
-  view.querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', () => { state.cat[mode] = b.dataset.cat; renderMenu(); }));
+  view.querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', () => { state.cat = b.dataset.cat; renderMenu(); }));
 }
 
-function rerenderMenuKeepFocus() {
-  const pos = view.querySelector('#q').selectionStart;
-  renderMenu();
-  const q = view.querySelector('#q'); q.focus(); q.setSelectionRange(pos, pos);
-}
+// ── Página do drink ──
+function renderDrink(id) {
+  const d = DRINK_BY_ID[id];
+  if (!d) { location.hash = '#/classicos'; return; }
+  const lang = getLang();
+  const parent = parentOf(d);
+  const kids = childrenOf(d);
+  const g = glassOf(d);
+  const showHave = state.bar.size > 0;
+  const missing = showHave ? missingFor(d, state.bar) : [];
+  const ingRows = d.ing.filter(l => !(l.id === 'agua' && !l.q && !l.ml)).map(l => {
+    const has = BASICS.has(l.id) || [l.id, ...(l.alt || [])].some(x => state.bar.has(x));
+    const mark = showHave ? `<span class="have ${has ? 'yes' : l.opt ? 'opt' : 'no'}" title="${esc(has ? t('youHave') : t('youLack'))}"></span>` : '';
+    const alt = l.alt ? ` <em>${esc(t('or'))} ${esc(l.alt.map(ingName).join(' / '))}</em>` : '';
+    const note = l.note ? ` <em>(${esc(trPhrase(l.note))})</em>` : '';
+    const qty = l.ml != null ? `${String(l.ml).replace('.', lang === 'en' ? '.' : ',')} ml` : trPhrase(amount(l));
+    return `<li>${mark}<span class="ing-name">${esc(ingName(l.id))}${alt}${note}${l.opt ? ` <em>· ${esc(t('optional'))}</em>` : ''}</span><span class="ing-qty">${esc(qty)}</span></li>`;
+  }).join('');
+  view.innerHTML = `
+    <article class="drink">
+      <a class="back" href="#/${state.lastList}">← ${esc(t('back'))}</a>
+      <header class="drink-hero">
+        <div class="drink-photo"><img src="${img(d.id)}" alt="${esc(dName(d))}"></div>
+        <div class="drink-intro">
+          <p class="kicker">${esc(catShort(d.cat))}</p>
+          <h1>${esc(dName(d))}</h1>
+          ${parent ? `<p class="drink-parent">${esc(t('riffPrefix', dName(parent)))}<a href="#/drink/${parent.id}">${esc(dName(parent))}</a></p>` : ''}
+          <p class="drink-ing">${esc(ingredientLine(d))}</p>
+          <dl class="facts">
+            <div><dt>${esc(t('glass'))}</dt><dd>${esc(g.name)}</dd></div>
+            <div><dt>${esc(t('method'))}</dt><dd>${esc(tm('methods', d.method))}</dd></div>
+            <div><dt>${esc(t('garnish'))}</dt><dd>${esc(d.gtext ? cap(trPhrase(d.gtext)) : '—')}</dd></div>
+            <div><dt>${esc({pt: 'Serviço', en: 'Serve', es: 'Servicio'}[lang])}</dt><dd>${esc(tm('serveLabel', d.serve))}</dd></div>
+          </dl>
+          ${showHave ? `<p class="status ${missing.length ? 'no' : 'yes'}">${esc(missing.length ? t('lacks', missing.map(ingName).join(', ')) : t('canMake'))}</p>` : ''}
+        </div>
+      </header>
 
-function menuItem(d) {
-  return `<li><a class="menu-item" href="#/drink/${d.id}">
-    <span class="menu-art">${drinkSVG(d, {size: 104})}</span>
-    <span class="menu-text">
-      <span class="menu-name">${esc(d.name)}</span>
-      <span class="menu-rule" aria-hidden="true"></span>
-      <span class="menu-ing">${esc(ingredientLine(d))}</span>
-      <span class="menu-glass">${esc(GLASSES[d.glass].name)}</span>
-    </span>
-  </a><span class="menu-div">${divider(220)}</span></li>`;
+      <section class="drink-sec story"><h2>${esc(t('story'))}</h2><p>${esc(storyFor(d.id, lang))}</p></section>
+
+      <div class="drink-cols">
+        <section class="drink-sec"><h2>${esc(t('ingredients'))}</h2><ul class="ing-list">${ingRows}</ul></section>
+        <section class="drink-sec"><h2>${esc(t('method'))}</h2><ol class="steps">${stepsFor(d, lang).map(s => `<li>${esc(s)}</li>`).join('')}</ol></section>
+      </div>
+
+      <div class="drink-cols">
+        <section class="drink-sec glass-sec"><h2>${esc(t('whyGlass'))}</h2><h3>${esc(g.name)}</h3><p>${esc(glassWhyFor(d, lang))}</p></section>
+        <section class="drink-sec"><h2>${esc(t('tools'))}</h2><ul class="tool-list">${toolsFor(d).map(tid => `<li>${toolSVG(tid, 26)}<span>${esc(trTool(tid, TOOLS[tid]).name)}</span></li>`).join('')}</ul></section>
+      </div>
+
+      ${parent ? `<section class="drink-sec related"><h2>${esc(t('originClassic'))}</h2><div class="grid small">${card(parent)}</div></section>` : ''}
+      ${kids.length ? `<section class="drink-sec related"><h2>${esc(t('riffsOfThis'))}</h2><div class="grid small">${kids.map(k => card(k)).join('')}</div></section>` : ''}
+    </article>`;
+  document.title = `${dName(d)} · Home Tender`;
 }
 
 // ── Meu Bar ──
+const PRESETS = {
+  presetHome: ['cachaca', 'vodka', 'limao', 'acucar', 'laranja', 'soda', 'cola', 'hortela'],
+  presetAperitivo: ['gin', 'campari', 'vermute_tinto', 'vermute_seco', 'aperol', 'espumante', 'soda', 'laranja', 'siciliano'],
+  presetWhiskey: ['bourbon', 'scotch', 'vermute_tinto', 'angostura', 'acucar', 'siciliano', 'mel', 'cereja', 'soda']
+};
+
 function renderBar() {
   const q = normalize(state.barQ);
-  const groups = GROUPS.map(g => {
-    const ids = Object.entries(INGREDIENTS).filter(([id, v]) => v.group === g && !BASICS.has(id) && (!q || normalize(v.name).includes(q)));
+  const groups = GROUPS.map(gp => {
+    const ids = Object.entries(INGREDIENTS).filter(([id, v]) => v.group === gp && !BASICS.has(id) && (!q || normalize(v.name).includes(q) || normalize(ingName(id)).includes(q)));
     if (!ids.length) return '';
-    return `<fieldset class="ing-group"><legend>${esc(g)}</legend><div class="ing-chips">${ids.map(([id, v]) => `<button type="button" class="ing ${state.bar.has(id) ? 'on' : ''}" data-ing="${id}" aria-pressed="${state.bar.has(id)}">${esc(v.name)}</button>`).join('')}</div></fieldset>`;
+    return `<fieldset class="ing-group"><legend>${esc(trGroup(gp))}</legend><div class="ing-chips">${ids.map(([id]) => `<button type="button" class="ing ${state.bar.has(id) ? 'on' : ''}" data-ing="${id}" aria-pressed="${state.bar.has(id)}">${esc(ingName(id))}</button>`).join('')}</div></fieldset>`;
   }).join('');
-  view.innerHTML = `
-    ${pageHead('Personalizado', 'Meu Bar', 'Marque o que existe na sua prateleira. O Home Tender procura primeiro um clássico da IBA; se nenhum fechar, sugere uma adaptação reconhecida.')}
+  view.innerHTML = `${pageHead(t('barKicker'), t('barTitle'), t('barLede'))}
     <div class="bar-layout">
-      <section class="bar-picker paper" aria-labelledby="bar-h">
-        <p class="menu-script">Meu Bar</p>
-        <h2 id="bar-h" class="menu-cat">O que há na sua prateleira?</h2>
-        <p class="lede">Marque o que você tem. Gelo e água a casa já providencia. O bartender responde com um clássico da IBA ou, se não fechar, com uma adaptação reconhecida.</p>
-        <div class="presets">${Object.keys(PRESETS).map(p => `<button type="button" class="chip ghost" data-preset="${esc(p)}">+ ${esc(p)}</button>`).join('')}<button type="button" class="chip ghost danger" id="clear" ${state.bar.size ? '' : 'disabled'}>Limpar</button></div>
-        <label class="field"><span class="sr">Filtrar ingredientes</span><input id="barq" type="search" placeholder="Filtrar ingredientes…" value="${esc(state.barQ)}" autocomplete="off"></label>
-        <div id="groups">${groups || '<p class="empty">Nenhum ingrediente com esse nome.</p>'}</div>
+      <section class="panel bar-picker" aria-labelledby="bar-h">
+        <div class="panel-head"><h2 id="bar-h">${esc(t('barShelf'))}</h2><span id="bar-count">${esc(t('selected', state.bar.size))}</span></div>
+        <div class="presets">${Object.keys(PRESETS).map(p => `<button type="button" class="chip ghost" data-preset="${p}">+ ${esc(t(p))}</button>`).join('')}<button type="button" class="chip ghost danger" id="clear" ${state.bar.size ? '' : 'disabled'}>${esc(t('clear'))}</button></div>
+        <label class="field"><span class="sr">${esc(t('barFilter'))}</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 L21 21"/></svg><input id="barq" type="search" placeholder="${esc(t('barFilter'))}" value="${esc(state.barQ)}" autocomplete="off"></label>
+        <div id="groups">${groups || `<p class="empty">${esc(t('noResults'))}</p>`}</div>
       </section>
       <section class="bar-results" id="results" aria-live="polite"></section>
     </div>
@@ -145,6 +203,7 @@ function renderBar() {
     b.classList.toggle('on'); b.setAttribute('aria-pressed', state.bar.has(id));
     saveBar(); renderResults();
     view.querySelector('#clear').disabled = !state.bar.size;
+    view.querySelector('#bar-count').textContent = t('selected', state.bar.size);
   });
   view.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => { PRESETS[b.dataset.preset].forEach(id => state.bar.add(id)); saveBar(); renderBar(); }));
   view.querySelector('#clear').addEventListener('click', () => { state.bar.clear(); saveBar(); renderBar(); });
@@ -152,50 +211,39 @@ function renderBar() {
   renderResults();
 }
 
-function resultCard(row, kind) {
-  const d = row.drink;
-  const parent = parentOf(d);
-  const tag = kind === 'near'
-    ? `<span class="tag miss">Falta: ${esc(row.missing.map(ingredientName).join(', '))}</span>`
-    : d.cat === 'adaptation' ? `<span class="tag adapt">Adaptação de ${esc(parent?.name || '')}</span>` : `<span class="tag iba">${esc(CATEGORIES[d.cat].short)}</span>`;
-  return `<li><a class="result" href="#/drink/${d.id}">
-    <span class="result-art">${drinkSVG(d, {size: 64})}</span>
-    <span class="result-body"><span class="result-name">${esc(d.name)}</span>${tag}<span class="result-meta">${esc(GLASSES[d.glass].name)}</span></span>
-  </a></li>`;
+function resultRow(row, near = false) {
+  const d = row.drink; const parent = parentOf(d);
+  const tag = near ? `<span class="tag miss">${esc(t('missing'))}: ${esc(row.missing.map(ingName).join(', '))}</span>`
+    : d.cat === 'adaptation' ? `<span class="tag riff">${esc(t('riffOf', parent ? dName(parent) : ''))}</span>` : `<span class="tag iba">${esc(catShort(d.cat))}</span>`;
+  return `<li><a class="result" href="#/drink/${d.id}"><img src="${img(d.id)}" alt="" loading="lazy"><span class="result-body"><span class="result-name">${esc(dName(d))}</span>${tag}</span></a></li>`;
 }
 
 function renderResults() {
-  const box = view.querySelector('#results');
-  const fab = view.querySelector('#fab');
+  const box = view.querySelector('#results'); const fab = view.querySelector('#fab');
   if (!state.bar.size) {
-    box.innerHTML = `<div class="paper results-empty"><p class="menu-script">À espera</p><p class="lede">O bartender aguarda. Escolha ao menos um ingrediente e ele sugere o drink.</p>${drinkSVG(DRINK_BY_ID['dry-martini'], {size: 110})}</div>`;
+    box.innerHTML = `<div class="panel waiting"><img src="${img('dry-martini')}" alt=""><h3>${esc(t('waitingTitle'))}</h3><p>${esc(t('waitingText'))}</p></div>`;
     fab.hidden = true; return;
   }
   const r = analyzeBar(state.bar);
   const total = r.classics.length + r.adaptations.length;
-  fab.hidden = false;
-  fab.textContent = total ? `Ver ${total} drink${total > 1 ? 's' : ''} ↓` : 'Ver sugestões ↓';
+  fab.hidden = false; fab.textContent = total ? t('seeDrinks', total) : t('seeSuggestions');
   let html = '';
   if (r.featured) {
     const d = r.featured.drink; const parent = parentOf(d);
-    html += `<article class="featured paper">
-      ${CORNERS}
-      <p class="menu-script">Sugestão da casa</p>
-      ${r.mode === 'adaptation' ? `<p class="verdict">Nenhum clássico da IBA fecha com a sua prateleira. Mas a coquetelaria tem resposta: uma adaptação reconhecida${parent ? ` do <strong>${esc(parent.name)}</strong>` : ''}.</p>` : `<p class="verdict">Com o que você tem, dá para servir um clássico oficial.</p>`}
-      <a class="featured-link" href="#/drink/${d.id}">
-        ${drinkSVG(d, {size: 150})}
-        <span class="featured-name">${esc(d.name)}</span>
-        <span class="menu-ing">${esc(ingredientLine(d))}</span>
-        <span class="menu-glass">${esc(GLASSES[d.glass].name)} · ${esc(toolsFor(d).map(t => TOOLS[t].name).slice(0, 3).join(', '))}</span>
-        <span class="btn">Ver receita completa</span>
-      </a>
+    html += `<article class="featured">
+      <a href="#/drink/${d.id}" class="featured-img"><img src="${img(d.id)}" alt="${esc(dName(d))}"></a>
+      <div class="featured-body">
+        <p class="kicker">${esc(t('housePick'))}</p>
+        <h3>${esc(dName(d))}</h3>
+        <p class="verdict">${esc(r.mode === 'adaptation' ? t('pickRiff', parent ? dName(parent) : '') : t('pickClassic'))}</p>
+        <p class="drink-ing">${esc(ingredientLine(d))}</p>
+        <a class="btn" href="#/drink/${d.id}">${esc(t('seeRecipe'))}</a>
+      </div>
     </article>`;
-  } else {
-    html += `<article class="featured paper"><p class="menu-script">Hmm…</p><p class="verdict">Ainda não fecha nenhum clássico nem adaptação reconhecida. Veja abaixo o que falta para chegar lá.</p></article>`;
-  }
-  if (r.classics.length) html += `<h3 class="res-h">Clássicos IBA possíveis <span>${r.classics.length}</span></h3><ul class="results">${r.classics.map(x => resultCard(x)).join('')}</ul>`;
-  if (r.adaptations.length) html += `<h3 class="res-h">Adaptações reconhecidas <span>${r.adaptations.length}</span></h3><ul class="results">${r.adaptations.map(x => resultCard(x)).join('')}</ul>`;
-  if (r.near.length) html += `<h3 class="res-h">Quase lá <span>${r.near.length}</span></h3><ul class="results">${r.near.map(x => resultCard(x, 'near')).join('')}</ul>`;
+  } else html += `<article class="panel"><p class="verdict">${esc(t('pickNone'))}</p></article>`;
+  if (r.classics.length) html += `<h3 class="res-h">${esc(t('possibleClassics'))} <span>${r.classics.length}</span></h3><ul class="results">${r.classics.map(x => resultRow(x)).join('')}</ul>`;
+  if (r.adaptations.length) html += `<h3 class="res-h">${esc(t('possibleRiffs'))} <span>${r.adaptations.length}</span></h3><ul class="results">${r.adaptations.map(x => resultRow(x)).join('')}</ul>`;
+  if (r.near.length) html += `<h3 class="res-h">${esc(t('almost'))} <span>${r.near.length}</span></h3><ul class="results">${r.near.map(x => resultRow(x, true)).join('')}</ul>`;
   box.innerHTML = html;
 }
 
@@ -203,106 +251,31 @@ function renderResults() {
 function renderGlossary() {
   const usage = id => DRINKS.filter(d => d.glass === id);
   const toolUse = id => DRINKS.filter(d => toolsFor(d).includes(id)).length;
-  view.innerHTML = `${pageHead('Atrás do balcão', 'Copos & Utensílios', 'Cada drink clássico tem o seu copo e as suas ferramentas. Conheça o que cada um faz e em quais receitas aparece.')}
-    <section class="menu-card">
-      ${CORNERS}
-      <p class="menu-script">A casa</p><h2 class="menu-cat">Os Copos</h2><p class="menu-en">Glassware</p>
-      <div class="menu-orn">${ornament(200)}</div>
-      <ul class="gloss-grid">${Object.entries(GLASSES).map(([id, g]) => `<li class="gloss">
-        <span class="gloss-art">${glassSVG(id, 72)}</span>
-        <h3>${esc(g.name)}</h3><p>${esc(g.desc)}</p>
-        <p class="gloss-uses">${usage(id).slice(0, 6).map(d => `<a href="#/drink/${d.id}">${esc(d.name)}</a>`).join(' · ')}</p>
-      </li>`).join('')}</ul>
+  view.innerHTML = `${pageHead(t('toolsKicker'), t('tabTools'), t('toolsLede'))}
+    <section class="shelf"><div class="shelf-head"><h2>${esc(t('glassesTitle'))}</h2></div>
+      <div class="grid glasses">${Object.keys(GLASSES).map(id => { const g = trGlass(id, GLASSES[id]); const u = usage(id); return `<article class="gloss">
+        <span class="card-img"><img src="${img(u[0].id)}" alt="" loading="lazy"></span>
+        <div class="gloss-body"><h3>${esc(g.name)}</h3><p>${esc(g.desc)}</p><p class="uses">${u.slice(0, 5).map(d => `<a href="#/drink/${d.id}">${esc(dName(d))}</a>`).join(' · ')}</p></div>
+      </article>`; }).join('')}</div>
     </section>
-    <section class="menu-card">
-      ${CORNERS}
-      <p class="menu-script">Atrás do balcão</p><h2 class="menu-cat">Os Utensílios</h2><p class="menu-en">Barware</p>
-      <div class="menu-orn">${ornament(200)}</div>
-      <ul class="gloss-grid tools">${Object.entries(TOOLS).map(([id, t]) => `<li class="gloss">
-        <span class="gloss-art tool">${toolSVG(id, 48)}</span>
-        <h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p><p class="gloss-uses">Usado em ${toolUse(id)} receita${toolUse(id) === 1 ? '' : 's'}</p>
-      </li>`).join('')}</ul>
+    <section class="shelf"><div class="shelf-head"><h2>${esc(t('toolsTitle'))}</h2></div>
+      <div class="tools-grid">${Object.keys(TOOLS).map(id => { const tl = trTool(id, TOOLS[id]); return `<article class="tool"><span class="tool-ico">${toolSVG(id, 40)}</span><div><h3>${esc(tl.name)}</h3><p>${esc(tl.desc)}</p><p class="uses">${esc(t('usedIn', toolUse(id)))}</p></div></article>`; }).join('')}</div>
     </section>
     ${creditsHTML()}`;
 }
-
-// ── Ficha do drink ──
-function openDrink(id) {
-  const d = DRINK_BY_ID[id];
-  if (!d) { location.hash = '#/classicos'; return; }
-  const parent = parentOf(d);
-  const kids = childrenOf(d);
-  const tools = toolsFor(d);
-  const g = GLASSES[d.glass];
-  const showHave = state.bar.size > 0;
-  const missing = showHave ? missingFor(d, state.bar) : [];
-  const ingRows = d.ing.filter(l => !(l.id === 'agua' && !l.q && !l.ml)).map(l => {
-    const has = BASICS.has(l.id) || [l.id, ...(l.alt || [])].some(x => state.bar.has(x));
-    const mark = showHave ? `<span class="have ${has ? 'yes' : l.opt ? 'opt' : 'no'}" aria-label="${has ? 'Você tem' : 'Você não tem'}">${has ? '✓' : l.opt ? '–' : '✕'}</span>` : '';
-    const alt = l.alt ? ` <em>ou ${esc(l.alt.map(ingredientName).join(' / '))}</em>` : '';
-    const note = l.note ? ` <em>(${esc(l.note)})</em>` : '';
-    return `<li>${mark}<span class="ing-name">${esc(ingredientName(l.id))}${alt}${note}${l.opt ? ' <em>· opcional</em>' : ''}</span><span class="dots" aria-hidden="true"></span><span class="ing-qty">${esc(amount(l))}</span></li>`;
-  }).join('');
-  sheetCard.innerHTML = `
-    <button class="close" type="button" aria-label="Fechar">✕</button>
-    <div class="sheet-inner">
-    ${CORNERS}
-    <p class="sheet-cat">${esc(CATEGORIES[d.cat].short)}</p>
-    <div class="sheet-art">${drinkSVG(d, {size: 190})}</div>
-    <h2 id="sheet-title" class="sheet-title">${esc(d.name)}</h2>
-    ${parent ? `<p class="sheet-parent">Adaptação reconhecida do <a href="#/drink/${parent.id}">${esc(parent.name)}</a></p>` : ''}
-    ${d.note ? `<p class="sheet-note">${esc(d.note)}</p>` : ''}
-    ${showHave ? `<p class="sheet-status ${missing.length ? 'no' : 'yes'}">${missing.length ? `Para o seu bar falta: ${esc(missing.map(ingredientName).join(', '))}` : 'Dá para fazer com o seu bar.'}</p>` : ''}
-    <div class="menu-orn">${ornament(180)}</div>
-    <div class="sheet-grid">
-      <section class="sheet-block glass-block">
-        <h3>O Copo</h3>
-        <div class="glass-row"><span class="glass-mini">${glassSVG(d.glass, 46)}</span><div><strong>${esc(g.name)}</strong><p>${esc(g.desc)}</p></div></div>
-      </section>
-      <section class="sheet-block">
-        <h3>Os Utensílios</h3>
-        <ul class="tool-list">${tools.map(t => `<li>${toolSVG(t, 26)}<span>${esc(TOOLS[t].name)}</span></li>`).join('')}</ul>
-      </section>
-    </div>
-    <section class="sheet-block">
-      <h3>Ingredientes</h3>
-      <ul class="ing-list">${ingRows}</ul>
-    </section>
-    <section class="sheet-block">
-      <h3>Preparo</h3>
-      <ol class="steps">${stepsFor(d).map(s => `<li>${esc(s)}</li>`).join('')}</ol>
-      ${d.gtext ? `<p class="garnish"><span>Guarnição</span> ${esc(d.gtext.charAt(0).toUpperCase() + d.gtext.slice(1))}</p>` : ''}
-    </section>
-    ${kids.length ? `<section class="sheet-block"><h3>Adaptações reconhecidas</h3><p class="kids">${kids.map(k => `<a class="chip" href="#/drink/${k.id}">${esc(k.name)}</a>`).join(' ')}</p></section>` : ''}
-    </div>
-  `;
-  sheet.hidden = false;
-  document.body.classList.add('locked');
-  sheetCard.scrollTop = 0;
-  sheetCard.querySelector('.close').addEventListener('click', closeDrink);
-  sheetCard.querySelector('.close').focus({preventScroll: true});
-  document.title = `${d.name} · Home Tender`;
-}
-
-let lastTab = 'inicio';
-function closeDrink() { location.hash = `#/${lastTab}`; }
-function hideSheet() { sheet.hidden = true; document.body.classList.remove('locked'); }
-sheet.addEventListener('click', e => { if (e.target === sheet) closeDrink(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !sheet.hidden) closeDrink(); });
 
 // ── Capa e login ──
 const cover = document.getElementById('cover');
 const shell = document.getElementById('shell');
 const form = document.getElementById('auth-form');
 const authError = document.getElementById('auth-error');
-let authMode = 'login';
 
 function setAuthMode(mode) {
   authMode = mode;
   document.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.mode === mode)));
   form.querySelectorAll('[data-only="register"]').forEach(el => { el.hidden = mode !== 'register'; });
   form.elements['password'].autocomplete = mode === 'register' ? 'new-password' : 'current-password';
-  document.getElementById('auth-submit').textContent = mode === 'register' ? 'Criar conta e entrar' : 'Entrar';
+  document.getElementById('auth-submit').textContent = mode === 'register' ? t('registerSubmit') : t('login');
   authError.hidden = true;
 }
 document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => setAuthMode(b.dataset.mode)));
@@ -314,13 +287,12 @@ form.addEventListener('submit', async e => {
   try {
     const f = form.elements;
     const data = {name: f['name'].value, email: f['email'].value, password: f['password'].value};
-    if (authMode === 'register' && !f['adult'].checked) throw new Error('O Home Tender é para maiores de 18 anos.');
+    if (authMode === 'register' && !f['adult'].checked) throw new Error(t('mustBeAdult'));
     state.user = authMode === 'register' ? await auth.register(data) : await auth.login(data);
     form.reset();
     enterApp();
-  } catch (err) {
-    authError.textContent = err.message; authError.hidden = false;
-  } finally { submit.disabled = false; }
+  } catch (err) { authError.textContent = err.message; authError.hidden = false; }
+  finally { submit.disabled = false; }
 });
 
 document.getElementById('logout').addEventListener('click', () => {
@@ -329,45 +301,47 @@ document.getElementById('logout').addEventListener('click', () => {
 });
 
 function showCover() {
-  hideSheet();
   shell.hidden = true; cover.hidden = false;
   setAuthMode(auth.hasAccounts() ? 'login' : 'register');
-  document.title = 'Home Tender · O bartender da sua casa';
+  document.title = 'Home Tender';
 }
 
 function enterApp() {
   cover.hidden = true; shell.hidden = false;
   document.getElementById('user-name').textContent = state.user.name.split(' ')[0];
   loadBar(); rendered = null;
-  if (!location.hash || location.hash === '#/' ) location.hash = '#/inicio';
-  route();
-  window.scrollTo({top: 0});
+  if (!location.hash || location.hash === '#/') location.hash = '#/inicio';
+  route(); window.scrollTo({top: 0});
 }
 
 // ── Rotas ──
-const TABS = {inicio: renderIntro, classicos: () => renderMenu('classicos'), adaptacoes: () => renderMenu('adaptacoes'), bar: renderBar, utensilios: renderGlossary};
-const ALIASES = {cardapio: 'classicos'};
+const TABS = {inicio: renderIntro, classicos: () => renderMenu('classicos'), variacoes: () => renderMenu('variacoes'), bar: renderBar, utensilios: renderGlossary};
+const ALIASES = {cardapio: 'classicos', adaptacoes: 'variacoes'};
+const TAB_TITLE = {inicio: 'tabHome', classicos: 'tabClassics', variacoes: 'tabRiffs', bar: 'tabBar', utensilios: 'tabTools'};
 let rendered = null;
+const scrollMemo = {};
 function route() {
   if (!state.user) { showCover(); return; }
   let [, tab = 'inicio', id] = location.hash.replace(/^#/, '').split('/');
   tab = ALIASES[tab] || tab;
+  if (rendered && rendered !== 'drink') scrollMemo[rendered] = window.scrollY;
   if (tab === 'drink') {
-    if (!rendered) { TABS[lastTab](); rendered = lastTab; markTab(lastTab); }
-    openDrink(decodeURIComponent(id || ''));
-    return;
+    if (rendered && rendered !== 'drink') state.lastList = rendered;
+    renderDrink(decodeURIComponent(id || '')); rendered = 'drink';
+    markTab(state.lastList); window.scrollTo({top: 0}); return;
   }
-  hideSheet();
-  document.title = 'Home Tender · Coquetéis Clássicos';
-  const t = TABS[tab] ? tab : 'inicio';
-  if (rendered !== t) { TABS[t](); rendered = t; }
-  if (lastTab !== t) window.scrollTo({top: 0});
-  lastTab = t;
-  markTab(t);
+  const tabName = TABS[tab] ? tab : 'inicio';
+  document.title = `Home Tender · ${t(TAB_TITLE[tabName])}`;
+  const fromDrink = rendered === 'drink';
+  if (rendered !== tabName) TABS[tabName]();
+  rendered = tabName;
+  window.scrollTo({top: fromDrink ? (scrollMemo[tabName] || 0) : 0});
+  markTab(tabName);
 }
-function markTab(t) {
-  document.querySelectorAll('[data-tab]').forEach(a => { const on = a.dataset.tab === t; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
+function markTab(tab) {
+  document.querySelectorAll('[data-tab]').forEach(a => { const on = a.dataset.tab === tab; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
 }
 window.addEventListener('hashchange', route);
+applyStaticTexts();
 state.user = auth.current();
 if (state.user) enterApp(); else showCover();

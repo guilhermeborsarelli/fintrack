@@ -1,5 +1,7 @@
 // Home Tender — regras: o que dá para fazer com o bar do usuário, utensílios e preparo.
 import {DRINKS, DRINK_BY_ID, INGREDIENTS, GLASSES, TOOLS, BASICS} from './data.js';
+import {getLang, setLang, trGlass, trIngredient, trPhrase} from './i18n.js';
+import {STEPS, TEMPLATES} from './steps-i18n.js';
 
 const CITRUS = new Set(['limao', 'siciliano', 'laranja', 'toranja']);
 const ORDER = {unforgettable: 0, contemporary: 1, newera: 2, adaptation: 3};
@@ -72,49 +74,48 @@ export function amount(line) {
 export function ingredientName(id) { return INGREDIENTS[id]?.name || id; }
 
 const lower = s => s.charAt(0).toLowerCase() + s.slice(1);
-const joinPt = parts => parts.length <= 1 ? parts.join('') : parts.slice(0, -1).join(', ') + ' e ' + parts.at(-1);
-const shortName = id => lower(ingredientName(id).split(' / ')[0].replace(/\s*\(.*\)$/, ''));
 
-/** Passo a passo: usa o roteiro próprio do drink ou gera a partir do método. */
-export function stepsFor(drink) {
-  if (drink.steps) return drink.steps;
-  const glass = GLASSES[drink.glass];
-  const main = [...new Set(drink.ing.filter(l => !l.top && !l.opt && l.id !== 'ovo').map(l => shortName(l.id)))];
-  const tops = drink.ing.filter(l => l.top).map(l => shortName(l.id));
-  const garnish = drink.gtext ? `Decore com ${drink.gtext}.` : null;
-  const steps = [];
-  const up = drink.serve === 'up' || drink.serve === 'neat';
-  const cold = glass.the.startsWith('o ') ? 'gelado' : 'gelada';
-  if (up) steps.push(`Gele ${glass.the} (com gelo e água ou no congelador).`);
-  if (drink.rim === 'salt') steps.push(`Passe limão na borda d${glass.the} e mergulhe a borda no sal.`);
-  if (drink.rim === 'sugar') steps.push(`Passe limão na borda d${glass.the} e mergulhe a borda no açúcar.`);
-  if (drink.method === 'shake') {
-    steps.push(`Na coqueteleira, junte ${joinPt(main)}.`);
-    if (drink.egg && drink.ing.some(l => l.id === 'ovo' && !l.opt)) {
-      steps.push('Adicione a clara e bata sem gelo por 10 s (dry shake) para emulsionar.');
-      steps.push('Encha de gelo e bata vigorosamente por mais 10–12 s.');
-    } else if (drink.egg) {
-      steps.push('Se usar clara, bata primeiro sem gelo (dry shake). Depois encha de gelo e bata por 10–12 s.');
-    } else steps.push('Encha de gelo e bata vigorosamente por 10–12 s.');
-    if (up) steps.push(`Faça a dupla coagem (hawthorne + peneira) para ${glass.the} ${cold}, sem gelo.`);
-    else if (drink.serve === 'crushed') steps.push(`Coe sobre gelo picado n${glass.the}.`);
-    else steps.push(`Coe sobre gelo novo n${glass.the}.`);
-  } else if (drink.method === 'stir') {
-    steps.push(`No copo misturador, junte ${joinPt(main)}.`);
-    steps.push('Encha de gelo e mexa com a colher bailarina por 20–30 s, até gelar e diluir.');
-    steps.push(up ? `Coe com o coador julep para ${glass.the} ${cold}.` : `Coe sobre gelo novo n${glass.the}.`);
-  } else if (drink.method === 'blend') {
-    steps.push(`No liquidificador, junte ${joinPt(main)} e uma concha de gelo picado.`);
-    steps.push('Bata até ficar liso e cremoso.');
-    steps.push(`Sirva n${glass.the}.`);
-  } else {
-    if (!up && drink.serve !== 'hot') steps.push(`Encha ${glass.the} com ${drink.serve === 'crushed' ? 'gelo picado' : 'gelo'}.`);
-    steps.push(`Adicione ${joinPt(main)}.`);
-    if (!tops.length) steps.push('Mexa delicadamente com a colher bailarina.');
-  }
-  if (tops.length) steps.push(`Complete com ${joinPt(tops)} e misture delicadamente, de baixo para cima.`);
-  if (garnish) steps.push(garnish);
-  return steps;
+/** Passo a passo no idioma pedido: roteiro próprio do drink (traduzido) ou gerado a partir do método. */
+export function stepsFor(drink, lang = getLang()) {
+  if (drink.steps) return lang === 'pt' ? drink.steps : (STEPS[drink.id]?.[lang] || drink.steps);
+  const T = TEMPLATES[lang] || TEMPLATES.pt;
+  const prevLang = getLang(); setLang(lang);
+  try {
+    const glass = trGlass(drink.glass, GLASSES[drink.glass]);
+    const shortName = id => lower(trIngredient(id, ingredientName(id)).split(' / ')[0].replace(/\s*\(.*\)$/, ''));
+    const joinL = parts => parts.length <= 1 ? parts.join('') : parts.slice(0, -1).join(', ') + ` ${T.and} ` + parts.at(-1);
+    const main = [...new Set(drink.ing.filter(l => !l.top && !l.opt && l.id !== 'ovo').map(l => shortName(l.id)))];
+    const tops = drink.ing.filter(l => l.top).map(l => shortName(l.id));
+    const steps = [];
+    const up = drink.serve === 'up' || drink.serve === 'neat';
+    if (up) steps.push(T.chill(glass));
+    if (drink.rim === 'salt') steps.push(T.rimSalt(glass));
+    if (drink.rim === 'sugar') steps.push(T.rimSugar(glass));
+    if (drink.method === 'shake') {
+      steps.push(T.shakeIn(joinL(main)));
+      if (drink.egg && drink.ing.some(l => l.id === 'ovo' && !l.opt)) { steps.push(T.dryShake); steps.push(T.shakeAfterDry); }
+      else if (drink.egg) steps.push(T.optionalEgg);
+      else steps.push(T.shake);
+      if (up) steps.push(T.doubleStrain(glass));
+      else if (drink.serve === 'crushed') steps.push(T.strainCrushed(glass));
+      else steps.push(T.strainRocks(glass));
+    } else if (drink.method === 'stir') {
+      steps.push(T.stirIn(joinL(main)));
+      steps.push(T.stir);
+      steps.push(up ? T.stirStrainUp(glass) : T.strainRocks(glass));
+    } else if (drink.method === 'blend') {
+      steps.push(T.blendIn(joinL(main)));
+      steps.push(T.blend);
+      steps.push(T.serveIn(glass));
+    } else {
+      if (!up && drink.serve !== 'hot') steps.push(T.fill(glass, drink.serve === 'crushed'));
+      steps.push(T.add(joinL(main)));
+      if (!tops.length) steps.push(T.stirGently);
+    }
+    if (tops.length) steps.push(T.top(joinL(tops)));
+    if (drink.gtext) steps.push(T.garnish(trPhrase(drink.gtext)));
+    return steps;
+  } finally { setLang(prevLang); }
 }
 
 export function parentOf(drink) { return drink.parent ? DRINK_BY_ID[drink.parent] : null; }
@@ -124,7 +125,7 @@ export function childrenOf(drink) { return DRINKS.filter(d => d.parent === drink
 export function searchDrinks(query, drinks = DRINKS) {
   const q = normalize(query.trim());
   if (!q) return drinks;
-  return drinks.filter(d => normalize(d.name).includes(q) || d.ing.some(l => normalize(ingredientName(l.id)).includes(q)));
+  return drinks.filter(d => normalize(d.name).includes(q) || d.ing.some(l => normalize(ingredientName(l.id)).includes(q) || normalize(trIngredient(l.id, ingredientName(l.id))).includes(q)));
 }
 
 export function normalize(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }

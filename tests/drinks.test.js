@@ -74,3 +74,40 @@ test('conta local: cria, entra, recusa senha errada e não guarda a senha', asyn
   await assert.rejects(auth.register({name: 'Bia', email: 'bia@', password: 'segredo1'}), /e-mail/);
   await assert.rejects(auth.register({name: 'Bia', email: 'bia@exemplo.com', password: '123'}), /6 caracteres/);
 });
+
+import {existsSync} from 'node:fs';
+import {STORIES, storyFor, glassWhyFor} from '../public/drinks/stories/index.js';
+import {setLang, trIngredient, trPhrase, _dictionaries} from '../public/drinks/i18n.js';
+import {INGREDIENTS} from '../public/drinks/data.js';
+
+test('todo drink tem foto 3D, história e porquê do copo nos três idiomas', () => {
+  for (const d of DRINKS) {
+    assert.ok(existsSync(new URL(`../public/drinks/img/drinks/${d.id}.webp`, import.meta.url)), `foto ${d.id}`);
+    assert.ok(STORIES[d.id], `história ${d.id}`);
+    for (const lang of ['pt', 'en', 'es']) {
+      assert.ok(storyFor(d.id, lang).length > 80, `${d.id} ${lang}`);
+      assert.ok(glassWhyFor(d, lang).length > 40, `copo ${d.id} ${lang}`);
+    }
+  }
+  assert.equal(Object.keys(STORIES).length, DRINKS.length);
+});
+
+test('preparo e dados traduzidos em inglês e espanhol, sem lacunas', () => {
+  for (const lang of ['en', 'es']) {
+    setLang(lang);
+    for (const id of Object.keys(INGREDIENTS)) assert.ok(_dictionaries.ING[id], `ingrediente ${id}`);
+    for (const d of DRINKS) {
+      const steps = stepsFor(d, lang);
+      assert.ok(steps.length >= 2, `${d.id} ${lang}`);
+      for (const s of steps) assert.doesNotMatch(s, /undefined|\$\{/, `${d.id} ${lang}: ${s}`);
+      if (d.gtext) assert.ok(_dictionaries.PHRASE[d.gtext], `guarnição sem tradução: ${d.gtext}`);
+      for (const l of d.ing) {
+        if (l.q) assert.ok(_dictionaries.PHRASE[l.q], `quantidade sem tradução: ${l.q}`);
+        if (l.note) assert.ok(_dictionaries.PHRASE[l.note], `nota sem tradução: ${l.note}`);
+      }
+    }
+  }
+  setLang('pt');
+  assert.equal(trIngredient('limao', 'Limão taiti (lime)'), 'Limão taiti (lime)');
+  assert.equal(trPhrase('a gosto'), 'a gosto');
+});

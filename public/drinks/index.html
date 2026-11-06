@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0b0a09">
+  <meta name="theme-color" content="#0b0b0c">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Tender">
-  <meta name="description" content="Home Tender: o bartender da sua casa. Os coquetéis clássicos oficiais da IBA, com história, receitas, copos, utensílios e sugestões a partir do seu bar.">
-  <title>Home Tender · Coquetéis Clássicos</title>
+  <meta name="description" content="Home Tender: the classic cocktails of the IBA official list, with history, recipes, glassware, tools and suggestions from your own bar. Português, English, Español.">
+  <title>Home Tender</title>
   <link rel="icon" href="icon.svg">
   <link rel="apple-touch-icon" href="icon.svg">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" as="image" href="img/cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,75 +23,71 @@
   <section class="cover" id="cover" hidden aria-labelledby="cover-title">
     <img class="cover-photo" src="img/cover.jpg" alt="" aria-hidden="true">
     <div class="cover-shade" aria-hidden="true"></div>
+    <div class="cover-top"><div class="lang-switch" data-lang-switch></div></div>
     <div class="cover-inner">
       <div class="cover-brand">
         <svg class="monogram" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width=".8"/><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width=".4"/><path d="M19 22 H45 L32 37 Z M32 37 V48 M25 48 H39" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="36" cy="27" r="2" fill="currentColor"/></svg>
-        <p class="eyebrow">Coquetelaria clássica · Est. 1947</p>
+        <p class="eyebrow" data-i18n="eyebrow"></p>
         <h1 id="cover-title" class="brand-title">Home Tender</h1>
-        <p class="cover-tag">O bartender da sua casa</p>
+        <p class="cover-tag" data-i18n="tagline"></p>
       </div>
 
       <div class="cover-grid">
         <div class="cover-intro">
-          <p class="cover-lede">Os grandes coquetéis do mundo, como os bartenders aprendem a fazer: com as receitas oficiais da International Bartenders Association, a história por trás de cada copo e o passo a passo para servir em casa como num bar de hotel.</p>
+          <p class="cover-lede" data-i18n="coverLede"></p>
           <ul class="cover-features">
-            <li><span class="feat-num">I</span><div><strong>O cânone oficial</strong><span>Os clássicos da IBA com medidas exatas, copo e utensílios.</span></div></li>
-            <li><span class="feat-num">II</span><div><strong>O seu bar</strong><span>Diga o que tem na prateleira e receba a sugestão da casa.</span></div></li>
-            <li><span class="feat-num">III</span><div><strong>A história</strong><span>De 1806 aos dias de hoje: a cultura por trás do balcão.</span></div></li>
+            <li><span class="feat-num">I</span><div><strong data-i18n="feat1"></strong><span data-i18n="feat1d"></span></div></li>
+            <li><span class="feat-num">II</span><div><strong data-i18n="feat2"></strong><span data-i18n="feat2d"></span></div></li>
+            <li><span class="feat-num">III</span><div><strong data-i18n="feat3"></strong><span data-i18n="feat3d"></span></div></li>
           </ul>
         </div>
 
         <div class="auth-card" id="auth">
           <div class="auth-tabs" role="tablist">
-            <button type="button" role="tab" id="tab-login" aria-selected="true" data-mode="login">Entrar</button>
-            <button type="button" role="tab" id="tab-register" aria-selected="false" data-mode="register">Criar conta</button>
+            <button type="button" role="tab" aria-selected="true" data-mode="login" data-i18n="login"></button>
+            <button type="button" role="tab" aria-selected="false" data-mode="register" data-i18n="register"></button>
           </div>
           <form id="auth-form" novalidate>
-            <label class="auth-field" data-only="register" hidden><span>Nome</span><input name="name" autocomplete="name" placeholder="Como devemos chamar você"></label>
-            <label class="auth-field"><span>E-mail</span><input name="email" type="email" autocomplete="email" inputmode="email" placeholder="voce@exemplo.com" required></label>
-            <label class="auth-field"><span>Senha</span><input name="password" type="password" autocomplete="current-password" placeholder="Mínimo de 6 caracteres" required minlength="6"></label>
-            <label class="auth-check" data-only="register" hidden><input type="checkbox" name="adult"> <span>Tenho 18 anos ou mais</span></label>
+            <label class="auth-field" data-only="register" hidden><span data-i18n="name"></span><input name="name" autocomplete="name" data-i18n-ph="namePh"></label>
+            <label class="auth-field"><span data-i18n="email"></span><input name="email" type="email" autocomplete="email" inputmode="email" placeholder="voce@exemplo.com" required></label>
+            <label class="auth-field"><span data-i18n="password"></span><input name="password" type="password" autocomplete="current-password" data-i18n-ph="passwordPh" required minlength="6"></label>
+            <label class="auth-check" data-only="register" hidden><input type="checkbox" name="adult"> <span data-i18n="adult"></span></label>
             <p class="auth-error" id="auth-error" role="alert" hidden></p>
-            <button class="auth-submit" type="submit" id="auth-submit">Entrar</button>
-            <p class="auth-note">Sua conta e o seu bar ficam guardados neste aparelho.</p>
+            <button class="auth-submit" type="submit" id="auth-submit"></button>
+            <p class="auth-note" data-i18n="authNote"></p>
           </form>
         </div>
       </div>
-      <p class="cover-foot">Beba com moderação. Venda de bebidas alcoólicas proibida para menores de 18 anos.</p>
+      <p class="cover-foot" data-i18n="drinkResponsibly"></p>
     </div>
   </section>
 
   <!-- App -->
   <div class="shell" id="shell" hidden>
-    <div class="blinds" aria-hidden="true"></div>
     <header class="topbar">
-      <a class="topbar-brand" href="#/inicio" aria-label="Home Tender, início">
+      <a class="topbar-brand" href="#/inicio" aria-label="Home Tender">
         <svg class="monogram" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M19 22 H45 L32 37 Z M32 37 V48 M25 48 H39" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         <span>Home Tender</span>
       </a>
-      <nav class="tabs" aria-label="Seções">
-        <a href="#/inicio" data-tab="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 L12 4 L20.5 11 M6 9.5 V20 H18 V9.5 M10 20 V14 H14 V20"/></svg><span>Início</span></a>
-        <a href="#/classicos" data-tab="classicos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5 H20 L12 13 Z M12 13 V20 M8 20 H16 M14.5 8.5 L17 5"/></svg><span>Clássicos</span></a>
-        <a href="#/adaptacoes" data-tab="adaptacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7 H16 Q16 13 10 13 Q4 13 4 7 Z M10 13 V20 M6.5 20 H13.5 M19 2.5 L19.8 4.7 L22 5.5 L19.8 6.3 L19 8.5 L18.2 6.3 L16 5.5 L18.2 4.7 Z"/></svg><span>Adaptações</span></a>
-        <a href="#/bar" data-tab="bar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2.5 H14 V6.5 Q17 8 17 12 V21 H7 V12 Q7 8 10 6.5 Z M7 14 H17 M7 18 H17"/></svg><span>Meu Bar</span></a>
-        <a href="#/utensilios" data-tab="utensilios"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 2.5 H14.5 V5 H9.5 Z M8 5 H16 L15 9 H9 Z M9 9 H15 L16.5 21 H7.5 Z"/></svg><span>Utensílios</span></a>
+      <nav class="tabs" aria-label="Menu">
+        <a href="#/inicio" data-tab="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 L12 4 L20.5 11 M6 9.5 V20 H18 V9.5 M10 20 V14 H14 V20"/></svg><span data-i18n="tabHome"></span></a>
+        <a href="#/classicos" data-tab="classicos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5 H20 L12 13 Z M12 13 V20 M8 20 H16 M14.5 8.5 L17 5"/></svg><span data-i18n="tabClassics"></span></a>
+        <a href="#/variacoes" data-tab="variacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7 H16 Q16 13 10 13 Q4 13 4 7 Z M10 13 V20 M6.5 20 H13.5 M19 2.5 L19.8 4.7 L22 5.5 L19.8 6.3 L19 8.5 L18.2 6.3 L16 5.5 L18.2 4.7 Z"/></svg><span data-i18n="tabRiffs"></span></a>
+        <a href="#/bar" data-tab="bar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2.5 H14 V6.5 Q17 8 17 12 V21 H7 V12 Q7 8 10 6.5 Z M7 14 H17 M7 18 H17"/></svg><span data-i18n="tabBar"></span></a>
+        <a href="#/utensilios" data-tab="utensilios"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 2.5 H14.5 V5 H9.5 Z M8 5 H16 L15 9 H9 Z M9 9 H15 L16.5 21 H7.5 Z"/></svg><span data-i18n="tabTools"></span></a>
       </nav>
-      <div class="topbar-user">
+      <div class="topbar-right">
+        <div class="lang-switch" data-lang-switch></div>
         <span class="user-name" id="user-name"></span>
-        <button type="button" class="logout" id="logout">Sair</button>
+        <button type="button" class="logout" id="logout" data-i18n="logout"></button>
       </div>
     </header>
 
     <main id="view" tabindex="-1"></main>
 
     <footer class="colophon">
-      <p>Receitas segundo a lista oficial da International Bartenders Association (IBA): <em>The Unforgettables</em>, <em>Contemporary Classics</em> e <em>New Era Drinks</em>. Adaptações: coquetéis de referência fora da lista IBA, sempre derivados de um clássico dela.</p>
-      <p>Beba com moderação. Venda proibida para menores de 18 anos.</p>
+      <p>Home Tender · <span data-i18n="drinkResponsibly"></span></p>
     </footer>
-  </div>
-
-  <div class="sheet-backdrop" id="sheet" hidden>
-    <article class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title"></article>
   </div>
 
   <script type="module" src="app.js"></script>

@@ -10,6 +10,11 @@ const view = document.getElementById('view');
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 
 // ── Armazenamento local ──
+// Versão de desenvolvimento: deixa entrar sem cadastro. Mude para false antes do lançamento.
+const DEV_FREE_ENTRY = true;
+const GUEST_KEY = 'hometender.devguest';
+const guestUser = () => ({email: 'visitante', name: store.get(GUEST_KEY, null)?.name || t('guest'), guest: true});
+
 const store = {
   get(key, fallback) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch { return fallback; } },
   set(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* modo privado */ } }
@@ -186,12 +191,6 @@ function renderDrink(id) {
           <h1>${esc(dName(d))}</h1>
           ${parent ? `<p class="drink-parent">${esc(t('riffPrefix', dName(parent)))}<a href="#/drink/${parent.id}">${esc(dName(parent))}</a></p>` : ''}
           <p class="drink-ing">${esc(ingredientLine(d))}</p>
-          <dl class="facts">
-            <div><dt>${esc(t('glass'))}</dt><dd>${esc(g.name)}</dd></div>
-            <div><dt>${esc(t('method'))}</dt><dd>${esc(tm('methods', d.method))}</dd></div>
-            <div><dt>${esc(t('garnish'))}</dt><dd>${esc(d.gtext ? cap(trPhrase(d.gtext)) : '—')}</dd></div>
-            <div><dt>${esc({pt: 'Serviço', en: 'Serve', es: 'Servicio'}[lang])}</dt><dd>${esc(tm('serveLabel', d.serve))}</dd></div>
-          </dl>
           ${showHave ? `<p class="status ${missing.length ? 'no' : 'yes'}">${esc(missing.length ? t('lacks', missing.map(ingName).join(', ')) : t('canMake'))}</p>` : ''}
         </div>
       </header>
@@ -368,7 +367,16 @@ form.addEventListener('submit', async e => {
   finally { submit.disabled = false; }
 });
 
+const devEnter = document.getElementById('dev-enter');
+devEnter.hidden = !DEV_FREE_ENTRY;
+devEnter.addEventListener('click', () => {
+  const name = form.elements['name'].value.trim();
+  store.set(GUEST_KEY, {name: name || null});
+  state.user = guestUser(); form.reset(); enterApp();
+});
+
 document.getElementById('logout').addEventListener('click', () => {
+  try { localStorage.removeItem(GUEST_KEY); } catch { /* modo privado */ }
   auth.logout(); state.user = null; rendered = null; state.bar = new Set();
   location.hash = '#/inicio'; showCover();
 });
@@ -416,5 +424,5 @@ function markTab(tab) {
 }
 window.addEventListener('hashchange', route);
 applyStaticTexts();
-state.user = auth.current();
+state.user = auth.current() || (DEV_FREE_ENTRY && store.get(GUEST_KEY, null) ? guestUser() : null);
 if (state.user) enterApp(); else showCover();

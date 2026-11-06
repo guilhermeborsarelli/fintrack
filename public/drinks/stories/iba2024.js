@@ -8,7 +8,7 @@ export default {
   cardinale: [
     'Nasceu em Roma nos anos 1950 e, segundo a tradição, foi criado para um cardeal, daí o nome e a cor vermelho-cardinalício. É um primo seco do Negroni: gin, vermute seco e um toque de Campari, mexidos e servidos sem gelo.',
     'Born in Rome in the 1950s and, by tradition, created for a cardinal, hence the name and the cardinal-red colour. A dry cousin of the Negroni: gin, dry vermouth and a touch of Campari, stirred and served straight up.',
-    'Nació en Roma en los años 50 y, según la tradición, fue creado para un cardenal, de ahí el nombre y el color rojo cardenalicio. Un primo seco del Negroni: ginebra, vermut seco y un toque de Campari, mezclados y servidos sin hielo.'
+    'Nació en Roma en los años 50 y, según la tradición, fue creado para un cardenal, de ahí el nombre y el color rojo cardenalicio. Un primo seco del Negroni: ginebra, vermut seco y un toque de Campari, revueltos y servidos sin hielo.'
   ],
   garibaldi: [
     'Homenagem a Giuseppe Garibaldi, herói da unificação italiana. O Campari, de Milão, representa o norte; a laranja, da Sicília, o sul; e a cor lembra as camisas vermelhas dos seus voluntários. Na versão moderna, o suco é batido até ficar aerado e fofo.',
@@ -18,7 +18,7 @@ export default {
   'rabo-de-galo': [
     'O segundo drink brasileiro da lista oficial. Nasceu em São Paulo por volta dos anos 1950, quando as marcas de vermute promoviam a mistura com cachaça; o nome é a tradução literal de "cock tail". Clássico dos botecos, ganhou na versão IBA um toque de Cynar, o amaro de alcachofra.',
     'The second Brazilian drink on the official list. It was born in São Paulo around the 1950s, when vermouth brands promoted mixing it with cachaça; the name is a literal translation of "cock tail". A classic of Brazilian corner bars, its IBA version adds a touch of Cynar, the artichoke amaro.',
-    'El segundo trago brasileño de la lista oficial. Nació en São Paulo hacia los años 50, cuando las marcas de vermut promovían mezclarlo con cachaça; el nombre es la traducción literal de "cock tail". Clásico de los botecos, en la versión IBA suma un toque de Cynar, el amaro de alcachofa.'
+    'El segundo cóctel brasileño de la lista oficial. Nació en São Paulo hacia los años 50, cuando las marcas de vermut promovían mezclarlo con cachaça; el nombre es la traducción literal de "cock tail". Clásico de los botecos, los bares de barrio de Brasil, en la versión IBA suma un toque de Cynar, el amaro de alcachofa.'
   ],
   'chartreuse-swizzle': [
     'Criado no início dos anos 2000 por Marcovaldo Dionysos, em São Francisco, para um concurso de drinks com Chartreuse. Usa a técnica caribenha do swizzle: misturar sobre gelo picado girando uma haste entre as mãos até o copo gelar por fora.',
@@ -53,22 +53,22 @@ export default {
   'missionarys-downfall': [
     'Outra criação de Donn Beach nos anos 1940: um frozen de rum branco, licor de pêssego, mel, abacaxi e muita hortelã, batido no liquidificador. Verde, refrescante e herbal, é um dos tiki drinks mais leves.',
     'Another Donn Beach creation of the 1940s: a frozen drink of white rum, peach brandy, honey, pineapple and plenty of mint, blended. Green, refreshing and herbal, one of the lightest tiki drinks.',
-    'Otra creación de Donn Beach en los años 40: un frozen de ron blanco, brandy de durazno, miel, piña y mucha hierbabuena, licuado. Verde, refrescante y herbal, uno de los tragos tiki más ligeros.'
+    'Otra creación de Donn Beach en los años 40: un frozen de ron blanco, brandy de durazno, miel, piña y mucha hierbabuena, licuado. Verde, refrescante y herbal, uno de los cócteles tiki más ligeros.'
   ],
   'pisco-punch': [
     'O drink da corrida do ouro em São Francisco: servido a partir dos anos 1870 no saloon Bank Exchange, cujo dono, Duncan Nicol, levou a receita secreta para o túmulo quando a Lei Seca fechou o bar. Pisco, abacaxi, limão, cravo e um toque de vinho branco.',
     'The drink of gold-rush San Francisco: served from the 1870s at the Bank Exchange saloon, whose owner Duncan Nicol took the secret recipe to his grave when Prohibition closed the bar. Pisco, pineapple, lemon, cloves and a touch of white wine.',
-    'El trago de la fiebre del oro en San Francisco: servido desde la década de 1870 en el saloon Bank Exchange, cuyo dueño, Duncan Nicol, se llevó la receta secreta a la tumba cuando la Ley Seca cerró el bar. Pisco, piña, limón, clavo y un toque de vino blanco.'
+    'El cóctel de la fiebre del oro en San Francisco: servido desde la década de 1870 en el saloon Bank Exchange, cuyo dueño, Duncan Nicol, se llevó la receta secreta a la tumba cuando la Ley Seca cerró el bar. Pisco, piña, limón, clavo y un toque de vino blanco.'
   ],
   'porn-star-martini': [
     'Criado em 2002 por Douglas Ankrah no LAB Bar, em Londres (primeiro chamado Maverick Martini). Vodka de baunilha e maracujá, com uma dose de champagne servida à parte. Provocador no nome e muito popular, virou um dos drinks mais pedidos do Reino Unido.',
     'Created in 2002 by Douglas Ankrah at LAB Bar in London (first called the Maverick Martini). Vanilla vodka and passion fruit, with a shot of Champagne on the side. Provocative in name and hugely popular, it became one of the UK’s most ordered drinks.',
-    'Creado en 2002 por Douglas Ankrah en el LAB Bar de Londres (primero se llamó Maverick Martini). Vodka de vainilla y maracuyá, con un shot de champagne aparte. Provocador en el nombre y muy popular, se volvió uno de los tragos más pedidos del Reino Unido.'
+    'Creado en 2002 por Douglas Ankrah en el LAB Bar de Londres (primero se llamó Maverick Martini). Vodka de vainilla y maracuyá, con un shot de champagne aparte. Provocador en el nombre y muy popular, se volvió uno de los cócteles más pedidos del Reino Unido.'
   ],
   'sherry-cobbler': [
     'O drink da moda nos EUA nas décadas de 1830 e 1840, tão popular que ajudou a difundir o gelo picado e o canudo. Charles Dickens o mencionou em Martin Chuzzlewit (1844). Jerez, açúcar e cítricos sobre gelo picado, coroados com frutas.',
     'America’s fashionable drink of the 1830s and 1840s, so popular it helped spread crushed ice and the drinking straw. Charles Dickens mentioned it in Martin Chuzzlewit (1844). Sherry, sugar and citrus over crushed ice, crowned with fruit.',
-    'El trago de moda en EE. UU. en las décadas de 1830 y 1840, tan popular que ayudó a difundir el hielo picado y la pajita. Charles Dickens lo mencionó en Martin Chuzzlewit (1844). Jerez, azúcar y cítricos sobre hielo picado, coronados con frutas.'
+    'El cóctel de moda en EE. UU. en las décadas de 1830 y 1840, tan popular que ayudó a difundir el hielo picado y la pajita. Charles Dickens lo mencionó en Martin Chuzzlewit (1844). Jerez, azúcar y cítricos sobre hielo picado, coronados con frutas.'
   ],
   'spicy-fifty': [
     'Criado por Salvatore Calabrese, o "maestro" italiano dos bares de Londres, no clube Fifty, em St James’s, nos anos 2000. Vodka de baunilha, flor de sabugueiro, mel, limão e pimenta vermelha: doce, floral e picante na medida.',
@@ -93,7 +93,7 @@ export default {
   'trinidad-sour': [
     'Criado em 2009 por Giuseppe González no Clover Club, em Nova York. Ousado: usa 45 ml de Angostura, o bitter de Trinidad normalmente usado em gotas, como base do drink. Com orgeat, limão e um pouco de rye, fica surpreendentemente equilibrado.',
     'Created in 2009 by Giuseppe González at the Clover Club in New York. Bold: it uses 45 ml of Angostura, the Trinidad bitters normally used by the dash, as the base. With orgeat, lemon and a little rye, it is surprisingly balanced.',
-    'Creado en 2009 por Giuseppe González en el Clover Club de Nueva York. Audaz: usa 45 ml de Angostura, el amargo de Trinidad que normalmente se usa en gotas, como base del trago. Con orgeat, limón y un poco de centeno, resulta sorprendentemente equilibrado.'
+    'Creado en 2009 por Giuseppe González en el Clover Club de Nueva York. Audaz: usa 45 ml de Angostura, el amargo de Trinidad que normalmente se usa en gotas, como base del cóctel. Con orgeat, limón y un poco de centeno, resulta sorprendentemente equilibrado.'
   ],
   've-n-to': [
     'Um clássico italiano contemporâneo atribuído ao bartender Samuele Ambrosi, de Treviso. Celebra o Vêneto ("Ve.n.to") e a grappa, o destilado do bagaço de uva da região, com limão, mel e camomila: delicado, floral e muito italiano.',

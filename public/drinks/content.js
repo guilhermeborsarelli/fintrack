@@ -12,7 +12,7 @@ export const PHOTOS = {
   martini: {src: 'img/martini.jpg', alt: ['Dry Martini em taça coquetel sobre um balcão', 'A Dry Martini in a cocktail glass on a bar', 'Un Dry Martini en copa de cóctel sobre la barra'], author: 'Douglas Perkins', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Martini_glass_low_angle.jpg'},
   sourCoupe: {src: 'img/sour-coupe.jpg', alt: ['Coquetel sour vermelho em taça coupe', 'A red sour cocktail in a coupe', 'Un cóctel sour rojo en copa coupé'], author: 'Erich Wagner (eventografie.de)', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Whiskey_Sour1.jpg'},
   sourBalcao: {src: 'img/sour-balcao.jpg', alt: ['Whiskey Sour com espuma no balcão', 'A Whiskey Sour with foam on the bar', 'Un Whiskey Sour con espuma en la barra'], author: 'Will Shenton', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Whiskey_Sour_Served_Up.jpg'},
-  noite: {src: 'img/sours-noite.jpg', alt: ['Dois drinks com luzes de bar ao fundo', 'Two drinks with bar lights behind', 'Dos tragos con luces de bar al fondo'], author: 'Dktue', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Whiskey_Sour_im_Collegium_in_T%C3%BCbingen.jpg'},
+  noite: {src: 'img/sours-noite.jpg', alt: ['Dois drinks com luzes de bar ao fundo', 'Two drinks with bar lights behind', 'Dos cócteles con luces de bar al fondo'], author: 'Dktue', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Whiskey_Sour_im_Collegium_in_T%C3%BCbingen.jpg'},
   prateleira: {src: 'img/prateleira.jpg', alt: ['Prateleira iluminada de um bar', 'An illuminated back bar', 'Estantería iluminada de un bar'], author: '4028mdk09', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Barbestand.JPG'},
   oldFashioned: {src: 'img/old-fashioned.jpg', alt: ['Old Fashioned com gelo e casca de laranja', 'An Old Fashioned with ice and orange peel', 'Un Old Fashioned con hielo y cáscara de naranja'], author: 'Edcross', license: 'Domínio público / Public domain', url: 'https://commons.wikimedia.org/wiki/File:Oldfashioned-cocktail.png'}
 };
@@ -138,17 +138,17 @@ const TXT = {
     c1k: 'Capítulo I', c1t: 'Qué es un cóctel',
     c1p: [
       'Un cóctel es una composición. Se toma un destilado, con carácter, fuerza y a veces aristas, y se lo pone a dialogar con otros elementos: algo dulce, algo ácido, algo amargo y, siempre, el agua que viene del hielo. Cuando funciona, ningún ingrediente grita; todos conversan, y el resultado es mayor que la suma de las partes.',
-      'Por eso la coctelería clásica es tan precisa. Diez mililitros de más de azúcar vuelven empalagoso un trago equilibrado; diez de menos de limón, pesado. Las recetas que llegaron hasta nosotros sobrevivieron porque encontraron ese punto y fueron repetidas, copiadas y refinadas durante más de 150 años.',
-      'Los bartenders de Death & Co, en Nueva York, lo resumieron en Cocktail Codex (2018): casi todos los tragos del mundo descienden de seis raíces, Old Fashioned, Martini, Daiquiri, Sidecar, Highball y Flip. Entender esas seis estructuras es entender la coctelería, y así organiza Home Tender lo que vas a aprender.'
+      'Por eso la coctelería clásica es tan precisa. Diez mililitros de más de azúcar vuelven empalagoso un cóctel equilibrado; diez de menos de limón, pesado. Las recetas que llegaron hasta nosotros sobrevivieron porque encontraron ese punto y fueron repetidas, copiadas y refinadas durante más de 150 años.',
+      'Los bartenders de Death & Co, en Nueva York, lo resumieron en Cocktail Codex (2018): casi todos los cócteles del mundo descienden de seis raíces, Old Fashioned, Martini, Daiquiri, Sidecar, Highball y Flip. Entender esas seis estructuras es entender la coctelería, y así organiza Home Tender lo que vas a aprender.'
     ],
-    quote: 'Un buen trago es como una buena conversación: nadie habla más fuerte que nadie.', quoteCite: 'Máxima de la casa',
+    quote: 'Un buen cóctel es como una buena conversación: nadie habla más fuerte que nadie.', quoteCite: 'Máxima de la casa',
     shakerCap: 'La coctelera en acción: hielo, aire y dilución en diez segundos.',
     c2k: 'Capítulo II', c2t: 'Una breve historia', c2l: 'De un periódico del interior de Nueva York al renacimiento de los bares artesanales: los momentos que moldearon lo que bebemos hoy.',
     jerryCap: 'Brandy Punch, grabado de la guía de Jerry Thomas (1862).', nyCap: 'Nueva York en 1931: la ciudad de los speakeasies.',
     timeline: [
       ['1806', 'La primera definición', `El periódico <em>The Balance and Columbian Repository</em>, de Hudson, Nueva York, explica qué es un <em>cock-tail</em>: destilado, azúcar, agua y amargo. La fórmula sigue viva en el ${link('old-fashioned', 'Old Fashioned')}.`],
       ['1862', 'El primer manual', `Jerry Thomas publica <em>How to Mix Drinks</em>, la primera guía de bar impresa en EE. UU. Las recetas pasan de la cabeza de los bartenders al papel.`, 'jerry'],
-      ['1860–1919', 'La Edad de Oro', `El vermut llega a las barras, el hielo se produce a escala y nacen los pilares mezclados: ${link('martinez', 'Martinez')}, ${link('manhattan', 'Manhattan')} y ${link('dry-martini', 'Dry Martini')}.`],
+      ['1860–1919', 'La Edad de Oro', `El vermut llega a las barras, el hielo se produce a escala y nacen los pilares revueltos: ${link('martinez', 'Martinez')}, ${link('manhattan', 'Manhattan')} y ${link('dry-martini', 'Dry Martini')}.`],
       ['1920–1933', 'Ley Seca y exilio', `Con la prohibición en EE. UU., los bartenders emigran. Harry Craddock lleva el oficio al Savoy de Londres; Harry MacElhone dirige el Harry’s New York Bar en París; La Habana inmortaliza el ${link('daiquiri', 'Daiquiri')}.`, 'ny1931'],
       ['1934–1950', 'La fiebre tiki', `Donn Beach y Trader Vic inventan un paraíso polinesio de rones y especias: ${link('zombie', 'Zombie')}, ${link('mai-tai', 'Mai Tai')}. El ${link('moscow-mule', 'Moscow Mule')} presenta el vodka a los estadounidenses.`],
       ['1951', 'Nace la IBA', `La International Bartenders Association se funda en Torquay, Inglaterra. En 1961 sale la primera lista oficial de cócteles.`],
@@ -161,25 +161,25 @@ const TXT = {
     books: [
       ['1862', 'How to Mix Drinks', 'Jerry Thomas', 'El primer manual impreso de coctelería de EE. UU. Registró sours, fizz, flips y el Brandy Crusta.'],
       ['1930', 'The Savoy Cocktail Book', 'Harry Craddock', 'Considerado el libro de cócteles más importante jamás publicado: el retrato de la era del jazz en el American Bar del Savoy, en Londres.'],
-      ['1948', 'The Fine Art of Mixing Drinks', 'David A. Embury', 'Un abogado que pensaba como ingeniero: organizó los tragos por estructura y creó la proporción 8:2:1 para los sours.'],
+      ['1948', 'The Fine Art of Mixing Drinks', 'David A. Embury', 'Un abogado que pensaba como ingeniero: organizó los cócteles por estructura y creó la proporción 8:2:1 para los sours.'],
       ['2002', 'The Craft of the Cocktail', 'Dale DeGroff', 'El manifiesto del renacimiento: jugo fresco, técnica y respeto por las recetas clásicas.'],
       ['2007', 'Imbibe!', 'David Wondrich', 'La biografía de Jerry Thomas y la investigación histórica que devolvió las recetas originales a los bares.'],
       ['2014', 'Liquid Intelligence', 'Dave Arnold', 'La ciencia de la coctelería: dilución, temperatura, hielo y carbonatación explicados con rigor de laboratorio.'],
-      ['2018', 'Cocktail Codex', 'Alex Day, Nick Fauchald y David Kaplan', 'Los seis tragos raíz que explican casi todos los demás. Una lección de estructura premiada con el James Beard.']
+      ['2018', 'Cocktail Codex', 'Alex Day, Nick Fauchald y David Kaplan', 'Los seis cócteles raíz que explican casi todos los demás. Una lección de estructura premiada con el James Beard.']
     ],
     c4k: 'Capítulo IV', c4t: 'El bar volvió a casa',
     c4p: [
-      'Durante décadas, el cóctel fue cosa de bar: la técnica se quedaba detrás de la barra, y lo que se hacía en casa rara vez pasaba de un destilado con refresco. Eso cambió. En 2020, con los bares cerrados por la pandemia, millones de personas convirtieron la sala en barra. En el Reino Unido, una encuesta encargada por Bacardi indicó que el 43% de los encuestados intentó perfeccionar cócteles en casa durante el confinamiento, y un estudio de CGA señaló que el 60% de quienes preparaban tragos en casa pensaba seguir haciéndolo con los bares reabiertos.',
+      'Durante décadas, el cóctel fue cosa de bar: la técnica se quedaba detrás de la barra, y lo que se hacía en casa rara vez pasaba de un destilado con refresco. Eso cambió. En 2020, con los bares cerrados por la pandemia, millones de personas convirtieron la sala en barra. En el Reino Unido, una encuesta encargada por Bacardi indicó que el 43% de los encuestados intentó perfeccionar cócteles en casa durante el confinamiento, y un estudio de CGA señaló que el 60% de quienes preparaban cócteles en casa pensaba seguir haciéndolo con los bares reabiertos.',
       'Y siguieron. Comprar una botella de vermut, un frasco de Angostura y una buena coctelera dejó de ser una excentricidad. Los videos de bartenders enseñando técnicas suman millones de visualizaciones, las tiendas venden kits de bar, y recibir a los amigos con un Negroni bien hecho se volvió una forma de hospitalidad. La tendencia es beber menos, pero mejor: menos cantidad, más calidad, más comprensión de lo que hay en la copa.',
-      'La buena noticia es que no hace falta ser profesional para llegar ahí. Con técnica, medida y media docena de botellas, puedes servir en casa los mismos clásicos que los grandes bares del mundo. Home Tender fue hecho para eso: para el curioso al que le gusta preparar tragos y quiere acertar, sin perder el placer de aprender.'
+      'La buena noticia es que no hace falta ser profesional para llegar ahí. Con técnica, medida y media docena de botellas, puedes servir en casa los mismos clásicos que los grandes bares del mundo. Home Tender fue hecho para eso: para el curioso al que le gusta preparar cócteles y quiere acertar, sin perder el placer de aprender.'
     ],
-    c5k: 'Capítulo V', c5t: '¿Agitado o mezclado?',
-    c5p: 'La regla de oro es antigua y nunca falla. <strong>Agita</strong> en la coctelera todo lo que lleva cítrico, huevo, crema o jugo: la agitación incorpora aire y da una textura viva. <strong>Mezcla</strong> en el vaso mezclador todo lo que lleva solo destilados, vermuts y licores: el trago queda sedoso, translúcido y sin burbujas.',
-    rules: [['Hielo en abundancia.', 'Poco hielo se derrite rápido y agua el trago. Llena la coctelera y el vaso.'], ['Copa fría.', 'Los tragos sin hielo piden copa enfriada en el congelador o con hielo y agua.'], ['Mide siempre.', 'Usa el jigger. La coctelería clásica es una receta, no una improvisación.'], ['Cítrico al momento.', 'Exprime al momento; nunca jugo de caja.']],
-    martiniCap: 'El Dry Martini: mezclado, nunca agitado.',
+    c5k: 'Capítulo V', c5t: '¿Agitado o revuelto?',
+    c5p: 'La regla de oro es antigua y nunca falla. <strong>Agita</strong> en la coctelera todo lo que lleva cítrico, huevo, crema o jugo: la agitación incorpora aire y da una textura viva. <strong>Revuelve</strong> en el vaso mezclador todo lo que lleva solo destilados, vermuts y licores: el cóctel queda sedoso, translúcido y sin burbujas.',
+    rules: [['Hielo en abundancia.', 'Poco hielo se derrite rápido y agua el cóctel. Llena la coctelera y el vaso.'], ['Copa fría.', 'Los cócteles sin hielo piden copa enfriada en el congelador o con hielo y agua.'], ['Mide siempre.', 'Usa el jigger. La coctelería clásica es una receta, no una improvisación.'], ['Cítrico al momento.', 'Exprime al momento; nunca jugo de caja.']],
+    martiniCap: 'El Dry Martini: revuelto, nunca agitado.',
     c6k: 'Capítulo VI', c6t: 'El bar en casa',
-    c6p: `Con una ginebra, un bourbon, un ron blanco, un vermut rojo, un Campari, Angostura, limones, limas y azúcar ya puedes servir ${link('negroni', 'Negroni')}, ${link('boulevardier', 'Boulevardier')}, ${link('old-fashioned', 'Old Fashioned')}, ${link('manhattan', 'Manhattan')}, ${link('daiquiri', 'Daiquiri')} y ${link('whiskey-sour', 'Whiskey Sour')}. Los utensilios esenciales caben en un cajón: coctelera, jigger, cuchara bailarina, colador y mortero. En <a href="#/bar">Mi Bar</a>, marca lo que tienes y Home Tender te muestra qué puedes preparar ahora.`,
-    nextT: 'Por dónde empezar', nextClassics: 'La lista oficial, con historia, copa, utensilios y preparación.', nextRiffs: 'Variaciones conocidas en todo el mundo, cada una ligada a su clásico.', nextBar: 'Di qué tienes y recibe la sugerencia de la casa.',
+    c6p: `Con una ginebra, un bourbon, un ron blanco, un vermut rojo, un Campari, Angostura, limones, limas y azúcar ya puedes servir ${link('negroni', 'Negroni')}, ${link('boulevardier', 'Boulevardier')}, ${link('old-fashioned', 'Old Fashioned')}, ${link('manhattan', 'Manhattan')}, ${link('daiquiri', 'Daiquiri')} y ${link('whiskey-sour', 'Whiskey Sour')}. Los utensilios esenciales caben en un cajón: coctelera, jigger, cuchara bailarina, colador y muddler. En <a href="#/bar">Mi Bar</a>, marca lo que tienes y Home Tender te muestra qué puedes preparar ahora.`,
+    nextT: 'Por dónde empezar', nextClassics: 'La lista oficial, con historia, cristalería, utensilios y preparación.', nextRiffs: 'Variaciones conocidas en todo el mundo, cada una ligada a su clásico.', nextBar: 'Di qué tienes y recibe la sugerencia de la casa.',
     recipes: n => `${n} recetas`, personal: 'Personalizado', credits: 'Créditos de las fotos'
   }
 };
@@ -264,5 +264,5 @@ export function introHTML({name, counts, showcase = [], labels}) {
 }
 
 export function creditsHTML() {
-  return `<details class="credits"><summary>${T().credits}</summary><ul>${Object.values(PHOTOS).map(p => `<li>${esc(pick(p.alt))}: ${esc(p.author)}, <a href="${p.url}" target="_blank" rel="noopener">${esc(p.license)}</a>, Wikimedia Commons.</li>`).join('')}<li>${{pt: 'Fotos dos drinks: renderizações 3D próprias do Home Tender.', en: 'Drink photos: Home Tender’s own 3D renders.', es: 'Fotos de los tragos: renders 3D propios de Home Tender.'}[getLang()]}</li></ul></details>`;
+  return `<details class="credits"><summary>${T().credits}</summary><ul>${Object.values(PHOTOS).map(p => `<li>${esc(pick(p.alt))}: ${esc(p.author)}, <a href="${p.url}" target="_blank" rel="noopener">${esc(p.license)}</a>, Wikimedia Commons.</li>`).join('')}<li>${{pt: 'Fotos dos drinks: renderizações 3D próprias do Home Tender.', en: 'Drink photos: Home Tender’s own 3D renders.', es: 'Fotos de los cócteles: renders 3D propios de Home Tender.'}[getLang()]}</li></ul></details>`;
 }

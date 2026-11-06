@@ -16,14 +16,14 @@ export default {
     'Fernand "Pete" Petiot decía haberlo creado en el Harry’s New York Bar de París en los años 20. En 1934, ya en el King Cole Bar del Hotel St. Regis de Nueva York, lo condimentó con sal, pimienta, limón y salsa inglesa y lo rebautizó Red Snapper para sonar menos sangriento. Ganó el nombre Bloody Mary, y se convirtió en el rey del brunch.'
   ],
   caipirinha: [
-    'Nasceu no interior de São Paulo no começo do século XX; uma versão popular a liga a um remédio caseiro de cachaça, limão, alho e mel durante a gripe espanhola de 1918, que perdeu o alho e ganhou açúcar e gelo. É reconhecida por lei como bebida típica do Brasil e é o único drink brasileiro da lista oficial da IBA.',
-    'It was born in rural São Paulo in the early 20th century; a popular story ties it to a home remedy of cachaça, lime, garlic and honey during the 1918 Spanish flu, which lost the garlic and gained sugar and ice. It is recognised by Brazilian law as the country’s typical drink and is the only Brazilian drink on the IBA list.',
-    'Nació en el interior de São Paulo a principios del siglo XX; una versión popular la relaciona con un remedio casero de cachaça, lima, ajo y miel durante la gripe española de 1918, que perdió el ajo y ganó azúcar y hielo. Está reconocida por ley como bebida típica de Brasil y es el único trago brasileño de la lista oficial de la IBA.'
+    'Nasceu no interior de São Paulo no começo do século XX; uma versão popular a liga a um remédio caseiro de cachaça, limão, alho e mel durante a gripe espanhola de 1918, que perdeu o alho e ganhou açúcar e gelo. É reconhecida por lei como bebida típica do Brasil e foi o primeiro drink brasileiro a entrar na lista oficial da IBA.',
+    'It was born in rural São Paulo in the early 20th century; a popular story ties it to a home remedy of cachaça, lime, garlic and honey during the 1918 Spanish flu, which lost the garlic and gained sugar and ice. It is recognised by Brazilian law as the country’s typical drink and was the first Brazilian drink on the IBA list.',
+    'Nació en el interior de São Paulo a principios del siglo XX; una versión popular la relaciona con un remedio casero de cachaça, lima, ajo y miel durante la gripe española de 1918, que perdió el ajo y ganó azúcar y hielo. Está reconocida por ley como bebida típica de Brasil y fue el primer cóctel brasileño de la lista oficial de la IBA.'
   ],
   'champagne-cocktail': [
     'Já estava no guia de Jerry Thomas, em 1862, e é um dos coquetéis mais antigos ainda servidos. Um cubo de açúcar com bitters no fundo da taça solta um fio constante de bolhas. Virou símbolo de celebração no cinema: é o drink de Casablanca (1942).',
     'It was already in Jerry Thomas’s guide in 1862 and is one of the oldest cocktails still served. A bitters-soaked sugar cube at the bottom of the glass releases a steady stream of bubbles. It became a symbol of celebration on screen: it is the drink of Casablanca (1942).',
-    'Ya estaba en la guía de Jerry Thomas en 1862 y es uno de los cócteles más antiguos que aún se sirven. Un terrón de azúcar con amargo en el fondo de la copa suelta un hilo constante de burbujas. Se volvió símbolo de celebración en el cine: es el trago de Casablanca (1942).'
+    'Ya estaba en la guía de Jerry Thomas en 1862 y es uno de los cócteles más antiguos que aún se sirven. Un terrón de azúcar con amargo en el fondo de la copa suelta un hilo constante de burbujas. Se volvió símbolo de celebración en el cine: es el cóctel de Casablanca (1942).'
   ],
   cosmopolitan: [
     'Versões existiam nos anos 1970 e 1980, mas a receita moderna é atribuída a Toby Cecchini, no restaurante The Odeon, em Nova York, em 1988, com vodka cítrica, Cointreau, limão e cranberry. Nos anos 1990 virou fenômeno pop graças a Madonna e, depois, à série Sex and the City.',
@@ -43,12 +43,12 @@ export default {
   'french-connection': [
     'Um drink dos anos 1970 batizado em homenagem ao filme Operação França (The French Connection, 1971), com Gene Hackman. Conhaque e amaretto: um irmão do Godfather, com o conhaque francês no lugar do scotch.',
     'A 1970s drink named after the film The French Connection (1971), starring Gene Hackman. Cognac and amaretto: a sibling of the Godfather with French cognac instead of Scotch.',
-    'Un trago de los años 70 bautizado en homenaje a la película Contacto en Francia (The French Connection, 1971), con Gene Hackman. Coñac y amaretto: un hermano del Godfather, con coñac francés en lugar de whisky escocés.'
+    'Un cóctel de los años 70 bautizado en homenaje a la película Contacto en Francia (The French Connection, 1971), con Gene Hackman. Coñac y amaretto: un hermano del Godfather, con coñac francés en lugar de whisky escocés.'
   ],
   'golden-dream': [
     'Um clássico dos anos 1960, associado a Raimundo Álvarez, do Old King Cole Bar de Miami, e à onda do Galliano, o licor italiano dourado de baunilha e anis. Cremoso, cítrico e adocicado, é um típico drink de sobremesa da época.',
     'A 1960s classic associated with Raimundo Álvarez of the Old King Cole Bar in Miami and with the wave of Galliano, the golden Italian vanilla and anise liqueur. Creamy, citrusy and sweet, a typical dessert drink of the era.',
-    'Un clásico de los años 60 asociado a Raimundo Álvarez, del Old King Cole Bar de Miami, y a la ola del Galliano, el licor italiano dorado de vainilla y anís. Cremoso, cítrico y dulce, un típico trago de postre de la época.'
+    'Un clásico de los años 60 asociado a Raimundo Álvarez, del Old King Cole Bar de Miami, y a la ola del Galliano, el licor italiano dorado de vainilla y anís. Cremoso, cítrico y dulce, un típico cóctel de postre de la época.'
   ],
   grasshopper: [
     'Criado em 1918 por Philibert Guichet, do Tujague’s, um dos bares mais antigos de Nova Orleans. Ficou em segundo lugar num concurso em Nova York e virou febre nos anos 1950 e 1960 no sul dos EUA. Menta, cacau e creme: verde como um gafanhoto e com gosto de bombom de menta.',
@@ -63,7 +63,7 @@ export default {
   'horses-neck': [
     'No fim do século XIX era uma bebida sem álcool, de ginger ale com uma longa espiral de casca de limão que lembra o pescoço de um cavalo. Com o tempo, ganhou um "reforço" de brandy ou bourbon e virou o drink tradicional da Marinha Real britânica.',
     'In the late 19th century it was a non-alcoholic drink of ginger ale with a long spiral of lemon peel resembling a horse’s neck. Over time it gained a "stiffener" of brandy or bourbon and became a traditional drink of the British Royal Navy.',
-    'A finales del siglo XIX era una bebida sin alcohol de ginger ale con una larga espiral de cáscara de limón que recuerda el cuello de un caballo. Con el tiempo ganó un "refuerzo" de brandy o bourbon y se convirtió en un trago tradicional de la Marina Real británica.'
+    'A finales del siglo XIX era una bebida sin alcohol de ginger ale con una larga espiral de cáscara de limón que recuerda el cuello de un caballo. Con el tiempo ganó un "refuerzo" de brandy o bourbon y se convirtió en un cóctel tradicional de la Marina Real británica.'
   ],
   'irish-coffee': [
     'Criado em 1943 por Joe Sheridan, chef do terminal de hidroaviões de Foynes, na Irlanda, para aquecer passageiros de um voo que precisou voltar por causa do mau tempo. Em 1952, o jornalista Stanton Delaplane o levou ao Buena Vista Café, em São Francisco, que até hoje serve milhares por dia.',
@@ -73,12 +73,12 @@ export default {
   kir: [
     'Leva o nome do cônego Félix Kir, herói da Resistência e prefeito de Dijon depois da Segunda Guerra, que o servia em recepções para promover dois produtos da Borgonha: o vinho branco Aligoté e o crème de cassis. Antes, a mistura era chamada de blanc-cassis.',
     'Named after Canon Félix Kir, Resistance hero and mayor of Dijon after the Second World War, who served it at receptions to promote two Burgundy products: Aligoté white wine and crème de cassis. Before that, the mix was called blanc-cassis.',
-    'Lleva el nombre del canónigo Félix Kir, héroe de la Resistencia y alcalde de Dijon tras la Segunda Guerra Mundial, que lo servía en recepciones para promover dos productos de Borgoña: el vino blanco Aligoté y la crema de casis. Antes, la mezcla se llamaba blanc-cassis.'
+    'Lleva el nombre del canónigo Félix Kir, héroe de la Resistencia y alcalde de Dijon tras la Segunda Guerra Mundial, que lo servía en recepciones para promover dos productos de Borgoña: el vino blanco Aligoté y la crème de cassis. Antes, la mezcla se llamaba blanc-cassis.'
   ],
   'long-island': [
     'Reivindicado por Robert "Rosebud" Butt, do Oak Beach Inn, em Long Island, que diz tê-lo criado em 1972 num concurso de drinks com triple sec. Cinco destilados, limão e cola: tem cor de chá gelado e nenhum chá. Ícone dos anos 1980, é forte muito além do que parece.',
     'Claimed by Robert "Rosebud" Butt of the Oak Beach Inn on Long Island, who says he created it in 1972 for a triple sec contest. Five spirits, lemon and cola: it looks like iced tea and contains none. A 1980s icon, far stronger than it seems.',
-    'Reivindicado por Robert "Rosebud" Butt, del Oak Beach Inn de Long Island, que dice haberlo creado en 1972 en un concurso de tragos con triple sec. Cinco destilados, limón y cola: tiene color de té helado y nada de té. Ícono de los 80, mucho más fuerte de lo que parece.'
+    'Reivindicado por Robert "Rosebud" Butt, del Oak Beach Inn de Long Island, que dice haberlo creado en 1972 en un concurso de cócteles con triple sec. Cinco destilados, limón y cola: tiene color de té helado y nada de té. Ícono de los 80, mucho más fuerte de lo que parece.'
   ],
   'mai-tai': [
     'Criado em 1944 por Victor "Trader Vic" Bergeron, em Oakland, na Califórnia, para amigos do Taiti. Ao provar, um deles disse "Maita’i roa ae!" ("muito bom!", em taitiano). Rum envelhecido, curaçau, orgeat e limão: a coluna vertebral da coquetelaria tiki, muitas vezes servida errada com sucos e grenadine.',
@@ -93,22 +93,22 @@ export default {
   mimosa: [
     'Atribuída a Frank Meier, bartender do Hotel Ritz de Paris, por volta de 1925, e batizada com o nome da flor amarela da acácia-mimosa. Partes iguais de espumante e suco de laranja: o drink oficial dos brunches. Os britânicos têm uma versão quase igual, o Buck’s Fizz.',
     'Credited to Frank Meier, bartender at the Ritz in Paris, around 1925, and named after the yellow mimosa flower. Equal parts sparkling wine and orange juice: the official brunch drink. The British have an almost identical version, the Buck’s Fizz.',
-    'Atribuida a Frank Meier, bartender del Hotel Ritz de París, hacia 1925, y bautizada con el nombre de la flor amarilla de la mimosa. Partes iguales de espumante y jugo de naranja: el trago oficial del brunch. Los británicos tienen una versión casi igual, el Buck’s Fizz.'
+    'Atribuida a Frank Meier, bartender del Hotel Ritz de París, hacia 1925, y bautizada con el nombre de la flor amarilla de la mimosa. Partes iguales de espumante y jugo de naranja: el cóctel oficial del brunch. Los británicos tienen una versión casi igual, el Buck’s Fizz.'
   ],
   'mint-julep': [
     'Um drink do sul dos Estados Unidos desde o século XVIII, quando era tomado até de manhã como "tônico". O nome vem do árabe julab (água de rosas). Desde 1938 é o drink oficial do Kentucky Derby, que serve dezenas de milhares no fim de semana da corrida, sempre em copo de metal gelado.',
     'A drink of the American South since the 18th century, when it was taken even in the morning as a "tonic". The name comes from the Arabic julab (rose water). Since 1938 it has been the official drink of the Kentucky Derby, which serves tens of thousands over race weekend, always in a frosted metal cup.',
-    'Un trago del sur de EE. UU. desde el siglo XVIII, cuando se tomaba incluso por la mañana como "tónico". El nombre viene del árabe julab (agua de rosas). Desde 1938 es el trago oficial del Kentucky Derby, que sirve decenas de miles el fin de semana de la carrera, siempre en vaso metálico escarchado.'
+    'Un cóctel del sur de EE. UU. desde el siglo XVIII, cuando se tomaba incluso por la mañana como "tónico". El nombre viene del árabe julab (agua de rosas). Desde 1938 es el cóctel oficial del Kentucky Derby, que sirve decenas de miles el fin de semana de la carrera, siempre en vaso metálico escarchado.'
   ],
   mojito: [
     'Tem raízes no El Draque, bebida de aguardente, limão, açúcar e hortelã que a lenda liga ao corsário Francis Drake no século XVI. Com o rum cubano, virou Mojito em Havana e ficou famoso na Bodeguita del Medio. Fresco, herbal e efervescente, é um dos drinks mais pedidos do mundo.',
     'Its roots lie in El Draque, a drink of aguardiente, lime, sugar and mint that legend links to the privateer Francis Drake in the 16th century. With Cuban rum it became the Mojito in Havana and won fame at La Bodeguita del Medio. Fresh, herbal and sparkling, one of the most ordered drinks in the world.',
-    'Tiene raíces en El Draque, bebida de aguardiente, lima, azúcar y hierbabuena que la leyenda vincula al corsario Francis Drake en el siglo XVI. Con el ron cubano se convirtió en Mojito en La Habana y se hizo famoso en La Bodeguita del Medio. Fresco, herbal y burbujeante, uno de los tragos más pedidos del mundo.'
+    'Tiene raíces en El Draque, bebida de aguardiente, lima, azúcar y hierbabuena que la leyenda vincula al corsario Francis Drake en el siglo XVI. Con el ron cubano se convirtió en Mojito en La Habana y se hizo famoso en La Bodeguita del Medio. Fresco, herbal y burbujeante, uno de los cócteles más pedidos del mundo.'
   ],
   'moscow-mule': [
     'Uma jogada de marketing de 1941, em Los Angeles: John Martin, que tentava vender a vodca Smirnoff aos americanos, e Jack Morgan, dono do bar Cock ’n’ Bull e de um estoque encalhado de ginger beer, juntaram os dois produtos. As canecas de cobre completaram o pacote. Foi o drink que apresentou a vodca aos EUA.',
     'A 1941 marketing play in Los Angeles: John Martin, trying to sell Smirnoff vodka to Americans, and Jack Morgan, owner of the Cock ’n’ Bull bar and of an unsold stock of ginger beer, combined the two products. Copper mugs completed the package. It was the drink that introduced America to vodka.',
-    'Una jugada de marketing de 1941 en Los Ángeles: John Martin, que intentaba vender vodka Smirnoff a los estadounidenses, y Jack Morgan, dueño del bar Cock ’n’ Bull y de un stock de ginger beer sin vender, juntaron ambos productos. Las tazas de cobre completaron el paquete. Fue el trago que presentó el vodka a EE. UU.'
+    'Una jugada de marketing de 1941 en Los Ángeles: John Martin, que intentaba vender vodka Smirnoff a los estadounidenses, y Jack Morgan, dueño del bar Cock ’n’ Bull y de un stock de ginger beer sin vender, juntaron ambos productos. Las tazas de cobre completaron el paquete. Fue el cóctel que presentó el vodka a EE. UU.'
   ],
   'pina-colada': [
     'Porto Rico reivindica dois criadores: Ramón "Monchito" Marrero, no Caribe Hilton de San Juan, em 1954, e Ramón Portas Mingot, no restaurante Barrachina, em 1963. O que ninguém discute é o papel do creme de coco Coco López, lançado na ilha nos anos 1950. Desde 1978 é a bebida oficial de Porto Rico.',
@@ -123,7 +123,7 @@ export default {
   'sea-breeze': [
     'Nos anos 1920 o nome designava drinks de gin com grenadine. A versão atual, de vodka, cranberry e toranja, nasceu nos anos 1970 e 1980, impulsionada pelas campanhas da Ocean Spray para vender suco de cranberry. Leve, ácido e frutado: um drink de verão.',
     'In the 1920s the name referred to gin drinks with grenadine. Today’s version, with vodka, cranberry and grapefruit, emerged in the 1970s and 1980s, driven by Ocean Spray campaigns to sell cranberry juice. Light, tart and fruity: a summer drink.',
-    'En los años 20 el nombre designaba tragos de ginebra con granadina. La versión actual, de vodka, arándano rojo y pomelo, nació en los 70 y 80, impulsada por campañas de Ocean Spray para vender jugo de arándano. Ligero, ácido y frutal: un trago de verano.'
+    'En los años 20 el nombre designaba cócteles de ginebra con granadina. La versión actual, de vodka, arándano rojo y pomelo, nació en los 70 y 80, impulsada por campañas de Ocean Spray para vender jugo de arándano. Ligero, ácido y frutal: un cóctel de verano.'
   ],
   'sex-on-the-beach': [
     'Nasceu na Flórida no fim dos anos 1980, durante uma promoção para vender licor de pêssego em bares de praia frequentados por estudantes nas férias de primavera. O nome provocativo fez o resto. Doce, frutado e colorido, é um dos símbolos da coquetelaria pop dos anos 1980.',
@@ -138,7 +138,7 @@ export default {
   'tequila-sunrise': [
     'A versão original, dos anos 1930, era do Arizona Biltmore Hotel, com crème de cassis. A moderna, de tequila, laranja e grenadine, nasceu no início dos anos 1970 no bar The Trident, em Sausalito, Califórnia. Os Rolling Stones a adotaram na turnê de 1972, e os Eagles fizeram uma música com o nome.',
     'The original 1930s version came from the Arizona Biltmore Hotel and used crème de cassis. The modern one, with tequila, orange and grenadine, was born in the early 1970s at The Trident bar in Sausalito, California. The Rolling Stones adopted it on their 1972 tour, and the Eagles wrote a song named after it.',
-    'La versión original, de los años 30, era del Arizona Biltmore Hotel y llevaba crema de casis. La moderna, de tequila, naranja y granadina, nació a inicios de los 70 en el bar The Trident de Sausalito, California. Los Rolling Stones la adoptaron en su gira de 1972, y los Eagles le dedicaron una canción.'
+    'La versión original, de los años 30, era del Arizona Biltmore Hotel y llevaba crème de cassis. La moderna, de tequila, naranja y granadina, nació a inicios de los 70 en el bar The Trident de Sausalito, California. Los Rolling Stones la adoptaron en su gira de 1972, y los Eagles le dedicaron una canción.'
   ],
   vesper: [
     'Inventado por Ian Fleming no livro Casino Royale (1953): James Bond pede gin, vodka e Kina Lillet, batidos até ficar gelado, e o batiza em homenagem a Vesper Lynd, a agente dupla do romance. O Kina Lillet original não existe mais; hoje usa-se Lillet Blanc.',

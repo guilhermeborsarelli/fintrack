@@ -3,7 +3,7 @@ export default {
   gimlet: [
     'Nasceu na Marinha Real britânica: desde 1867, a lei obrigava os navios a levar suco de limão contra o escorbuto, e Lauchlin Rose criou um cordial de limão que se conservava sem álcool. Misturado ao gin dos oficiais, virou o Gimlet. A versão moderna troca o cordial por limão fresco e açúcar. Em O Longo Adeus, de Raymond Chandler, é o drink de Philip Marlowe.',
     'It was born in the British Royal Navy: from 1867 the law required ships to carry lime juice against scurvy, and Lauchlin Rose created a lime cordial that kept without alcohol. Mixed with the officers’ gin, it became the Gimlet. The modern version swaps the cordial for fresh lime and sugar. In Raymond Chandler’s The Long Goodbye it is Philip Marlowe’s drink.',
-    'Nació en la Marina Real británica: desde 1867 la ley obligaba a los barcos a llevar jugo de lima contra el escorbuto, y Lauchlin Rose creó un cordial de lima que se conservaba sin alcohol. Mezclado con la ginebra de los oficiales, se convirtió en el Gimlet. La versión moderna cambia el cordial por lima fresca y azúcar. En El largo adiós de Raymond Chandler es el trago de Philip Marlowe.'
+    'Nació en la Marina Real británica: desde 1867 la ley obligaba a los barcos a llevar jugo de lima contra el escorbuto, y Lauchlin Rose creó un cordial de lima que se conservaba sin alcohol. Mezclado con la ginebra de los oficiales, se convirtió en el Gimlet. La versión moderna cambia el cordial por lima fresca y azúcar. En El largo adiós de Raymond Chandler es el cóctel de Philip Marlowe.'
   ],
   'gin-rickey': [
     'Washington, década de 1880: no bar Shoomaker’s, o lobista Joe Rickey tomava bourbon com limão e água com gás, sem açúcar. A versão com gin, mais refrescante, dominou os verões e virou a padrão. F. Scott Fitzgerald a pôs nas mãos dos personagens de O Grande Gatsby.',
@@ -32,13 +32,13 @@ export default {
   ],
   caipiroska: [
     'A caipirinha feita com vodca, que se espalhou pelos bares brasileiros e europeus a partir dos anos 1980. Mais neutra que a cachaça, deixa o limão e o açúcar em destaque. No Brasil também é chamada de caipivodca.',
-    'The caipirinha made with vodka, which spread through Brazilian and European bars from the 1980s. More neutral than cachaça, it puts lime and sugar in the spotlight. In Brazil it is also called caipivodca.',
-    'La caipiriña hecha con vodka, que se difundió por los bares brasileños y europeos desde los años 80. Más neutra que la cachaça, deja en primer plano la lima y el azúcar. En Brasil también se llama caipivodca.'
+    'The Caipirinha made with vodka, which spread through Brazilian and European bars from the 1980s. More neutral than cachaça, it puts lime and sugar in the spotlight. In Brazil it is also called caipivodca.',
+    'La Caipirinha hecha con vodka, que se difundió por los bares brasileños y europeos desde los años 80. Más neutra que la cachaça, deja en primer plano la lima y el azúcar. En Brasil también se llama caipivodca.'
   ],
   caipirissima: [
     'A caipirinha com rum branco no lugar da cachaça. Um pouco mais leve e adocicada, aproxima a receita brasileira do Daiquiri cubano, mostrando como a mesma estrutura atravessa o Caribe e a América do Sul.',
-    'The caipirinha with white rum instead of cachaça. Slightly lighter and sweeter, it brings the Brazilian recipe close to the Cuban Daiquiri, showing how the same structure travels across the Caribbean and South America.',
-    'La caipiriña con ron blanco en lugar de cachaça. Un poco más ligera y dulce, acerca la receta brasileña al Daiquiri cubano, mostrando cómo la misma estructura recorre el Caribe y Sudamérica.'
+    'The Caipirinha with white rum instead of cachaça. Slightly lighter and sweeter, it brings the Brazilian recipe close to the Cuban Daiquiri, showing how the same structure travels across the Caribbean and South America.',
+    'La Caipirinha con ron blanco en lugar de cachaça. Un poco más ligera y dulce, acerca la receta brasileña al Daiquiri cubano, mostrando cómo la misma estructura recorre el Caribe y Sudamérica.'
   ],
   'ti-punch': [
     'O "petit punch" das Antilhas francesas, especialmente da Martinica, feito com rhum agricole, destilado de caldo de cana fresco. Rum, um disco de limão e xarope de cana, cada um no seu copo: diz a tradição local que "chacun prépare sa propre mort" (cada um prepara a própria morte).',
@@ -53,7 +53,7 @@ export default {
   'vodka-martini': [
     'Com a popularização da vodca nos EUA nos anos 1950, o Martini ganhou uma versão sem gin, chamada às vezes de Kangaroo. James Bond a imortalizou pedindo-a "batida, não mexida". Mais limpa e neutra que a versão de gin.',
     'As vodka took off in the US in the 1950s, the Martini gained a gin-free version, sometimes called the Kangaroo. James Bond immortalised it by ordering it "shaken, not stirred". Cleaner and more neutral than the gin version.',
-    'Con la popularización del vodka en EE. UU. en los años 50, el Martini ganó una versión sin ginebra, a veces llamada Kangaroo. James Bond la inmortalizó pidiéndola "agitada, no mezclada". Más limpia y neutra que la de ginebra.'
+    'Con la popularización del vodka en EE. UU. en los años 50, el Martini ganó una versión sin ginebra, a veces llamada Kangaroo. James Bond la inmortalizó pidiéndola "agitado, no revuelto". Más limpia y neutra que la de ginebra.'
   ],
   'gin-and-it': [
     'O "It" é de Italian vermouth. Gin e vermute tinto em partes iguais eram o pedido de todo pub britânico entre os anos 1920 e 1950. É, na prática, o Martinez sem o maraschino e o ancestral direto do Martini.',
@@ -83,7 +83,7 @@ export default {
   'kir-royal': [
     'A versão "real" do Kir, com champagne no lugar do vinho branco. Ícone das celebrações francesas, prova como um único ingrediente transforma um drink do dia a dia em brinde de festa.',
     'The "royal" version of the Kir, with Champagne instead of white wine. An icon of French celebrations, it shows how a single ingredient turns an everyday drink into a party toast.',
-    'La versión "real" del Kir, con champagne en lugar de vino blanco. Ícono de las celebraciones francesas, demuestra cómo un solo ingrediente convierte un trago cotidiano en un brindis de fiesta.'
+    'La versión "real" del Kir, con champagne en lugar de vino blanco. Ícono de las celebraciones francesas, demuestra cómo un solo ingrediente convierte un cóctel cotidiano en un brindis de fiesta.'
   ],
   'rum-old-fashioned': [
     'A fórmula original do coquetel (destilado, açúcar, água e bitters) aplicada a um rum envelhecido. Virou um clássico do renascimento dos bares de rum nos anos 2000 e mostra como a mesma estrutura revela um destilado inteiro.',
@@ -93,12 +93,12 @@ export default {
   'brandy-old-fashioned': [
     'É o drink do estado de Wisconsin, nos EUA, onde a tradição de brandy é forte desde a Exposição Mundial de Chicago de 1893, quando a região teria se apaixonado pelo destilado. Lá, costuma levar fruta macerada e um toque de refrigerante.',
     'It is the drink of the US state of Wisconsin, where a strong brandy tradition dates back to the 1893 Chicago World’s Fair, when the region supposedly fell for the spirit. There it usually has muddled fruit and a splash of soda.',
-    'Es el trago del estado de Wisconsin, en EE. UU., donde la tradición del brandy viene de la Exposición Mundial de Chicago de 1893, cuando la región se habría enamorado de este destilado. Allí suele llevar fruta macerada y un toque de refresco.'
+    'Es el cóctel del estado de Wisconsin, en EE. UU., donde la tradición del brandy viene de la Exposición Mundial de Chicago de 1893, cuando la región se habría enamorado de este destilado. Allí suele llevar fruta macerada y un toque de refresco.'
   ],
   'oaxaca-old-fashioned': [
     'Criado em 2007 por Phil Ward no Death & Co, em Nova York: tequila reposado e mezcal no lugar do whiskey, com agave e bitters. Foi um dos drinks que apresentaram o mezcal aos bares de coquetelaria do mundo inteiro.',
     'Created in 2007 by Phil Ward at Death & Co in New York: reposado tequila and mezcal in place of whiskey, with agave and bitters. It was one of the drinks that introduced mezcal to cocktail bars worldwide.',
-    'Creado en 2007 por Phil Ward en Death & Co, en Nueva York: tequila reposado y mezcal en lugar de whiskey, con agave y amargo. Fue uno de los tragos que presentaron el mezcal a los bares de coctelería de todo el mundo.'
+    'Creado en 2007 por Phil Ward en Death & Co, en Nueva York: tequila reposado y mezcal en lugar de whiskey, con agave y amargo. Fue uno de los cócteles que presentaron el mezcal a los bares de coctelería de todo el mundo.'
   ],
   'gold-rush': [
     'Criado no início dos anos 2000 por T.J. Siegal no Milk & Honey, em Nova York. É um Whiskey Sour com xarope de mel no lugar do açúcar: simples, redondo e equilibrado, e serviu de base para o Penicillin.',
@@ -133,12 +133,12 @@ export default {
   'el-diablo': [
     'Aparece em 1946 no livro de Trader Vic como "Mexican El Diablo". Tequila, cassis, limão e ginger beer: um drink vermelho-escuro, picante e frutado, de uma época em que a tequila ainda era novidade nos bares americanos.',
     'It appears in 1946 in Trader Vic’s book as the "Mexican El Diablo". Tequila, cassis, lime and ginger beer: a deep-red, spicy, fruity drink from a time when tequila was still new to American bars.',
-    'Aparece en 1946 en el libro de Trader Vic como "Mexican El Diablo". Tequila, casis, lima y ginger beer: un trago rojo oscuro, picante y frutal, de una época en que el tequila aún era novedad en los bares estadounidenses.'
+    'Aparece en 1946 en el libro de Trader Vic como "Mexican El Diablo". Tequila, crème de cassis, lima y ginger beer: un cóctel rojo oscuro, picante y frutal, de una época en que el tequila aún era novedad en los bares estadounidenses.'
   ],
   batanga: [
     'Criado em 1961 por Don Javier Delgado Corona no bar La Capilla, na cidade de Tequila, no México. Tequila, cola e limão em copo com borda de sal, mexido, segundo a tradição, com a mesma faca usada para cortar o limão.',
     'Created in 1961 by Don Javier Delgado Corona at La Capilla bar in the town of Tequila, Mexico. Tequila, cola and lime in a salt-rimmed glass, stirred, by tradition, with the same knife used to cut the lime.',
-    'Creado en 1961 por Don Javier Delgado Corona en el bar La Capilla, en el pueblo de Tequila, México. Tequila, cola y limón en vaso con borde de sal, mezclado, según la tradición, con el mismo cuchillo con el que se cortó el limón.'
+    'Creado en 1961 por Don Javier Delgado Corona en el bar La Capilla, en el pueblo de Tequila, México. Tequila, cola y limón en vaso con borde de sal, revuelto, según la tradición, con el mismo cuchillo con el que se cortó el limón.'
   ],
   screwdriver: [
     'Diz a lenda que trabalhadores americanos de petróleo no Oriente Médio, nos anos 1940, misturavam vodca e suco de laranja e mexiam com uma chave de fenda (screwdriver). Simples e popular, é o primo sem bolhas da Mimosa.',
@@ -163,12 +163,12 @@ export default {
   'white-russian': [
     'O Black Russian com creme por cima apareceu nos anos 1960 e ganhou status de culto em 1998, como o drink do personagem "The Dude" no filme O Grande Lebowski. Doce, cremoso e com café: um drink de sobremesa sem cerimônia.',
     'The Black Russian topped with cream appeared in the 1960s and gained cult status in 1998 as the drink of "The Dude" in The Big Lebowski. Sweet, creamy and coffee-laced: an unpretentious dessert drink.',
-    'El Black Russian con crema encima apareció en los años 60 y alcanzó estatus de culto en 1998 como el trago de "The Dude" en El gran Lebowski. Dulce, cremoso y con café: un trago de postre sin ceremonias.'
+    'El Black Russian con crema encima apareció en los años 60 y alcanzó estatus de culto en 1998 como el cóctel de "The Dude" en El gran Lebowski. Dulce, cremoso y con café: un cóctel de postre sin ceremonias.'
   ],
   godfather: [
     'Um drink dos anos 1970 com scotch e amaretto, batizado em referência ao filme O Poderoso Chefão (1972). Diz-se que era o favorito de Marlon Brando, mas a história nunca foi confirmada. Doce, amendoado e encorpado.',
     'A 1970s drink of Scotch and amaretto named after the film The Godfather (1972). It is said to have been Marlon Brando’s favourite, though that was never confirmed. Sweet, nutty and full-bodied.',
-    'Un trago de los años 70 con whisky escocés y amaretto, bautizado en referencia a la película El padrino (1972). Se dice que era el favorito de Marlon Brando, aunque nunca se confirmó. Dulce, almendrado y con cuerpo.'
+    'Un cóctel de los años 70 con whisky escocés y amaretto, bautizado en referencia a la película El padrino (1972). Se dice que era el favorito de Marlon Brando, aunque nunca se confirmó. Dulce, almendrado y con cuerpo.'
   ],
   godmother: [
     'A "madrinha" do Godfather, com vodca no lugar do scotch. Mais leve e neutra, deixa o amaretto aparecer. Nasceu na mesma onda dos anos 1970, quando o licor de amêndoas italiano dominava os bares.',
@@ -183,7 +183,7 @@ export default {
   'jack-rose': [
     'Popular no início do século XX, feito com applejack (brandy de maçã americano) ou calvados, grenadine e limão, e de cor rosada. É o drink que Jake Barnes toma em Paris em O Sol Também se Levanta (1926), de Hemingway.',
     'Popular in the early 20th century, made with applejack (American apple brandy) or calvados, grenadine and lime, and rose-coloured. It is the drink Jake Barnes has in Paris in Hemingway’s The Sun Also Rises (1926).',
-    'Popular a principios del siglo XX, hecho con applejack (brandy de manzana estadounidense) o calvados, granadina y lima, de color rosado. Es el trago que toma Jake Barnes en París en Fiesta (The Sun Also Rises, 1926), de Hemingway.'
+    'Popular a principios del siglo XX, hecho con applejack (brandy de manzana estadounidense) o calvados, granadina y lima, de color rosado. Es el cóctel que toma Jake Barnes en París en Fiesta (The Sun Also Rises, 1926), de Hemingway.'
   ],
   'ward-eight': [
     'Criado em 1898 no restaurante Locke-Ober, em Boston, para celebrar a eleição de Martin Lomasney ao legislativo estadual pelo distrito 8 (Ward Eight). Um whiskey sour com laranja e grenadine.',
@@ -193,7 +193,7 @@ export default {
   bronx: [
     'Atribuído a Johnny Solon, bartender do Waldorf-Astoria, por volta de 1900, que o teria batizado depois de visitar o zoológico do Bronx. Gin, vermute tinto e seco e suco de laranja: foi um dos drinks mais populares dos EUA antes da Lei Seca.',
     'Credited to Johnny Solon, bartender at the Waldorf-Astoria, around 1900, who supposedly named it after a visit to the Bronx Zoo. Gin, sweet and dry vermouth and orange juice: one of America’s most popular drinks before Prohibition.',
-    'Atribuido a Johnny Solon, bartender del Waldorf-Astoria, hacia 1900, que lo habría bautizado tras visitar el zoológico del Bronx. Ginebra, vermut rojo y seco y jugo de naranja: uno de los tragos más populares de EE. UU. antes de la Ley Seca.'
+    'Atribuido a Johnny Solon, bartender del Waldorf-Astoria, hacia 1900, que lo habría bautizado tras visitar el zoológico del Bronx. Ginebra, vermut rojo, vermut seco y jugo de naranja: uno de los cócteles más populares de EE. UU. antes de la Ley Seca.'
   ],
   'hot-toddy': [
     'Uma bebida quente do século XVIII, de origem escocesa, com nome que remete à "taddy", bebida de palmeira da Índia britânica. Whisky, mel, limão e água quente: o remédio caseiro para o frio e o resfriado em todo o mundo de língua inglesa.',

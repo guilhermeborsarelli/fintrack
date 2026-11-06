@@ -121,3 +121,21 @@ test('lista oficial IBA completa: 102 coquetéis, 34 por categoria, todos com fi
   const catName = {unforgettable: 'The unforgettables', contemporary: 'Contemporary Classics', newera: 'New Era'};
   for (const d of iba) { assert.ok(specs[d.id], `ficha ${d.id}`); assert.equal(specs[d.id].category, catName[d.cat], `categoria ${d.id}`); }
 });
+
+test('nome da marca não muda e o preparo traduzido sai sem resíduos', async () => {
+  const html = readFileSync(new URL('../public/drinks/index.html', import.meta.url), 'utf8');
+  assert.match(html, /<h1 id="cover-title" class="brand-title">Home Tender<\/h1>/);
+  assert.match(html, /<title>Home Tender<\/title>/);
+  const {t} = await import('../public/drinks/i18n.js');
+  for (const lang of ['pt', 'en', 'es']) {
+    setLang(lang);
+    assert.match(t('mustBeAdult'), /Home Tender/, `${lang}: marca preservada`);
+    for (const d of DRINKS) {
+      for (const s of stepsFor(d, lang)) {
+        assert.equal((s.match(/\(/g) || []).length, (s.match(/\)/g) || []).length, `${lang} ${d.id}: parênteses em "${s}"`);
+        assert.doesNotMatch(s, /\bde el\b|\btrago/, `${lang} ${d.id}: "${s}"`);
+      }
+    }
+  }
+  setLang('pt');
+});

@@ -87,7 +87,7 @@ function renderMenu(mode = menuMode) {
   if (state.base !== 'all') list = list.filter(d => BASE_LABEL[d.base] === state.base);
   const cats = riffs ? ['adaptation'] : state.cat === 'all' ? IBA_CATS : [state.cat];
   const sections = cats.map(cat => {
-    const items = list.filter(d => d.cat === cat);
+    const items = list.filter(d => d.cat === cat).sort((a, b) => dName(a).localeCompare(dName(b)));
     if (!items.length) return '';
     return `<section class="shelf" aria-labelledby="h-${cat}">
       ${riffs ? '' : `<div class="shelf-head"><h2 id="h-${cat}">${esc(catLabel(cat))}</h2><span>${esc(t('recipes', items.length))}</span></div>`}

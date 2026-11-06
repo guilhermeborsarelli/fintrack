@@ -2,9 +2,21 @@
 // (o português está em data.js, no campo `steps` de cada drink).
 
 export const STEPS = {
+  'remember-the-maine': {
+    en: ['Pour the absinthe into the coupe and swirl to coat the inside; discard the excess.', 'In the mixing glass with ice, combine the rye, vermouth and cherry brandy.', 'Stir until well chilled.', 'Strain into the rinsed coupe and express the lemon zest over the top.'],
+    es: ['Vierte la absenta en la copa coupé y gírala para cubrir todo el interior; descarta el exceso.', 'En el vaso mezclador con hielo, junta el centeno, el vermut y el cherry brandy.', 'Mezcla hasta enfriar bien.', 'Cuela en la copa perfumada y exprime la cáscara de limón por encima.']
+  },
+  'chartreuse-swizzle': {
+    en: ['Put all the ingredients in the tall glass and fill with crushed ice.', 'Swizzle vigorously with a swizzle stick (or bar spoon), spinning it between your palms.', 'Top with more crushed ice.', 'Garnish with mint leaves and grated nutmeg.'],
+    es: ['Coloca todos los ingredientes en el vaso alto y llénalo de hielo picado.', 'Con un swizzle stick (o la cuchara bailarina), mezcla con energía girándolo entre las manos.', 'Completa con más hielo picado.', 'Decora con hojas de hierbabuena y nuez moscada rallada.']
+  },
+  'pisco-punch': {
+    en: ['In the shaker, gently mash the syrup with the cloves.', 'Add the pisco, pineapple and lemon; shake hard with ice.', 'Double strain into a large goblet.', 'Top with the white wine and stir gently.'],
+    es: ['En la coctelera, machaca suavemente el jarabe con los clavos.', 'Añade el pisco, la piña y el limón; agita con fuerza con hielo.', 'Haz el doble colado en una copa grande.', 'Completa con el vino blanco y mezcla con suavidad.']
+  },
   'brandy-crusta': {
-    en: ['Run lemon around the rim of a small glass and build the sugar "crust".', 'Line the inside of the glass with one long strip of lemon peel.', 'In the shaker, combine cognac, maraschino, curaçao, lemon juice, syrup and bitters. Shake with ice.', 'Strain into the prepared glass.'],
-    es: ['Pasa limón por el borde de una copa pequeña y forma la "costra" de azúcar.', 'Forra el interior de la copa con una larga tira de cáscara de limón.', 'En la coctelera, junta coñac, marrasquino, curazao, jugo de limón, jarabe y amargo. Agita con hielo.', 'Cuela en la copa preparada.']
+    en: ['Run lemon around the rim of a small glass and build the sugar "crust".', 'Line the inside of the glass with one long strip of lemon peel.', 'In the mixing glass, combine cognac, maraschino, curaçao, lemon juice, syrup and bitters. Stir with ice.', 'Strain into the prepared glass.'],
+    es: ['Pasa limón por el borde de una copa pequeña y forma la "costra" de azúcar.', 'Forra el interior de la copa con una larga tira de cáscara de limón.', 'En el vaso mezclador, junta coñac, marrasquino, curazao, jugo de limón, jarabe y amargo. Mezcla con hielo.', 'Cuela en la copa preparada.']
   },
   negroni: {
     en: ['Fill the old fashioned glass with ice.', 'Add gin, Campari and sweet vermouth.', 'Stir gently with the bar spoon for a few seconds.', 'Garnish with a half orange wheel.'],
@@ -15,8 +27,8 @@ export const STEPS = {
     es: ['En el vaso old fashioned, coloca el terrón de azúcar, empápalo con el Angostura y un chorrito de agua.', 'Macera hasta disolver el azúcar.', 'Añade un hielo grande y el whiskey.', 'Mezcla con la cuchara bailarina hasta enfriar.', 'Exprime la cáscara de naranja sobre el trago y decora con ella y la cereza.']
   },
   'planters-punch': {
-    en: ['Fill the collins glass with ice.', 'Add the rum, lime juice and sugar syrup.', 'Stir well with the bar spoon.', 'Dash the Angostura on top and garnish with orange peel.'],
-    es: ['Llena el vaso collins de hielo.', 'Añade el ron, el jugo de lima y el jarabe.', 'Mezcla bien con la cuchara bailarina.', 'Pon los golpes de Angostura por encima y decora con cáscara de naranja.']
+    en: ['Fill a small tumbler with ice.', 'Add the rum, lime juice and cane syrup.', 'Stir well with the bar spoon.', 'Dash the Angostura on top and garnish with orange peel.'],
+    es: ['Llena un vaso bajo de hielo.', 'Añade el ron, el jugo de lima y el jarabe de caña.', 'Mezcla bien con la cuchara bailarina.', 'Pon los golpes de Angostura por encima y decora con cáscara de naranja.']
   },
   'ramos-fizz': {
     en: ['Combine every ingredient except the soda water in the shaker.', 'Dry shake without ice for 2 minutes to build the foam.', 'Add ice and shake hard for another minute.', 'Strain into the highball glass, no ice.', 'Top slowly with soda so the foam rises above the rim.'],
@@ -31,8 +43,8 @@ export const STEPS = {
     es: ['Coloca el puré de durazno blanco en la copa flauta fría.', 'Completa lentamente con el Prosecco, mezclando con suavidad.']
   },
   'bloody-mary': {
-    en: ['In the mixing glass, combine vodka, tomato juice, lemon, Worcestershire, Tabasco, salt and pepper.', 'With ice, "roll" the drink from one glass to another to mix without aerating the tomato.', 'Serve in the highball glass over ice.', 'Garnish with the celery stalk and a lemon wedge.'],
-    es: ['En el vaso mezclador, junta vodka, jugo de tomate, limón, salsa inglesa, Tabasco, sal y pimienta.', 'Con hielo, "rueda" el trago de un vaso a otro (rolling) para mezclar sin airear el tomate.', 'Sirve en el vaso highball con hielo.', 'Decora con la rama de apio y un gajo de limón.']
+    en: ['In the mixing glass, combine vodka, tomato juice, lemon, Worcestershire, Tabasco, salt and pepper.', 'With ice, "roll" the drink from one glass to another to mix without aerating the tomato.', 'Serve in a rocks glass over ice.', 'Garnish with the celery stalk and a lemon wedge.'],
+    es: ['En el vaso mezclador, junta vodka, jugo de tomate, limón, salsa inglesa, Tabasco, sal y pimienta.', 'Con hielo, "rueda" el trago de un vaso a otro (rolling) para mezclar sin airear el tomate.', 'Sirve en un vaso bajo (rocks) con hielo.', 'Decora con la rama de apio y un gajo de limón.']
   },
   caipirinha: {
     en: ['Cut the lime into small wedges, removing the white core (it makes the drink bitter).', 'In the old fashioned glass, muddle the wedges with the sugar.', 'Fill the glass with ice and add the cachaça.', 'Stir with the bar spoon.'],

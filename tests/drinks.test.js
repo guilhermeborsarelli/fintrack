@@ -111,3 +111,13 @@ test('preparo e dados traduzidos em inglês e espanhol, sem lacunas', () => {
   assert.equal(trIngredient('limao', 'Limão taiti (lime)'), 'Limão taiti (lime)');
   assert.equal(trPhrase('a gosto'), 'a gosto');
 });
+
+import {readFileSync} from 'node:fs';
+test('lista oficial IBA completa: 102 coquetéis, 34 por categoria, todos com ficha oficial', () => {
+  const specs = JSON.parse(readFileSync(new URL('../tools/generate-photos/iba-specs.json', import.meta.url), 'utf8'));
+  const iba = DRINKS.filter(d => d.cat !== 'adaptation');
+  assert.equal(iba.length, 102);
+  for (const cat of ['unforgettable', 'contemporary', 'newera']) assert.equal(iba.filter(d => d.cat === cat).length, 34, cat);
+  const catName = {unforgettable: 'The unforgettables', contemporary: 'Contemporary Classics', newera: 'New Era'};
+  for (const d of iba) { assert.ok(specs[d.id], `ficha ${d.id}`); assert.equal(specs[d.id].category, catName[d.cat], `categoria ${d.id}`); }
+});

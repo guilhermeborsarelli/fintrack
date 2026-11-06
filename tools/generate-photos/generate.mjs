@@ -51,30 +51,46 @@ function colorWord(hex) {
   return `${l < .4 ? 'deep ' : l > .7 ? 'light ' : ''}${base}`;
 }
 
-export function shortPrompt(d) {
-  return promptFor(d).split(' Pure black seamless background.')[0].replace('Professional studio product photograph of the ', '');
+const SPECS = JSON.parse(fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'iba-specs.json'), 'utf8'));
+const {DRINK_BY_ID} = await import(path.join(ROOT, 'public/drinks/data.js'));
+const {amount} = await import(path.join(ROOT, 'public/drinks/engine.js'));
+const STYLE = 'Pure black seamless background. Dramatic overhead spotlight with soft rim light outlining the glass, the liquid glowing from within. Glossy black reflective surface with a subtle mirror reflection under the glass. Fine condensation droplets on cold glass, crystal-clear glass with sharp highlights. Hyperrealistic, high-end commercial cocktail photography, centered, full glass visible with space around it, vertical 4:5 composition, shallow depth of field, no text, no logo, no hands, no props.';
+
+// Frase do preparo oficial IBA que diz em que copo servir
+function ibaGlassSentence(spec) {
+  return spec.method.split(/(?<=\.)\s+/).filter(x => /glass|mug|cup|tumbler|goblet|coppa|copo/i.test(x)).join(' ').trim();
 }
 
-export function promptFor(d) {
+/** Bloco do drink (sem o estilo, que vai uma vez no início da conversa). */
+export function drinkBlock(d) {
+  const spec = SPECS[d.id];
   const glass = GLASS_SHOT[d.glass] || trGlass(d.glass, GLASSES[d.glass]).name;
-  const ings = [...new Set(d.ing.filter(l => !l.opt && !['agua', 'agua_quente', 'gelo'].includes(l.id)).map(l => trIngredient(l.id, ingredientName(l.id)).split(' / ')[0]))].join(', ');
+  const parent = d.parent ? DRINK_BY_ID[d.parent] : null;
+  const recipe = spec ? spec.ingredients.join('; ')
+    : d.ing.filter(l => !['agua', 'agua_quente'].includes(l.id)).map(l => `${l.ml != null ? l.ml + ' ml' : trPhrase(amount(l))} ${trIngredient(l.id, ingredientName(l.id)).split(' / ')[0]}${l.opt ? ' (optional)' : ''}`).join('; ');
   const look = [
     `${colorWord(d.color)} liquid`,
     d.color2 && !d.layerTop ? `fading to ${colorWord(d.color2)} at the bottom` : '',
     d.layerTop && d.color2 ? `with a ${colorWord(d.color2)} layer floating on top` : '',
-    d.foam ? 'with a smooth, velvety foam on top' : '',
-    d.bubbles ? 'with fine rising bubbles' : '',
-    d.rim === 'salt' ? 'salt-rimmed' : d.rim === 'sugar' ? 'sugar-rimmed' : ''
+    d.foam ? 'smooth velvety foam on top' : '',
+    d.bubbles ? 'fine rising bubbles' : '',
+    d.rim === 'salt' ? 'salt-rimmed glass' : d.rim === 'sugar' ? 'sugar-rimmed glass' : ''
   ].filter(Boolean).join(', ');
-  const garnish = d.gtext ? `Garnish: ${trPhrase(d.gtext)}.` : 'No garnish.';
+  const ibaGarnish = spec && spec.garnish && !/^n\/?a\.?$/i.test(spec.garnish) ? spec.garnish : '';
+  const garnish = ibaGarnish ? `GARNISH (official IBA): ${ibaGarnish}` : d.gtext ? `GARNISH: ${trPhrase(d.gtext)}.` : (spec ? 'GARNISH: none (the official IBA recipe has no garnish).' : 'GARNISH: none.');
   return [
-    `Professional studio product photograph of the ${d.name} cocktail (${ings}) in ${glass}, ${ICE[d.serve] || ''}, ${look}.`,
-    garnish,
-    'Pure black seamless background. Dramatic overhead spotlight with soft rim light outlining the glass, the liquid glowing from within.',
-    'Glossy black reflective surface with a subtle mirror reflection under the glass. Fine condensation droplets on cold glass, crystal-clear glass with sharp highlights.',
-    'Hyperrealistic, high-end commercial cocktail photography, centered, full glass visible with space around it, vertical 4:5 composition, shallow depth of field, no text, no logo, no hands, no props.'
-  ].join(' ');
+    spec ? `Photo of the ${d.name} cocktail, made exactly as the official IBA recipe (International Bartenders Association).`
+      : `Photo of the ${d.name} cocktail${parent ? `, a classic variation of the ${parent.name}` : ''}, made as the classic recipe.`,
+    `GLASS (mandatory${spec ? ', official IBA standard' : ', classic standard'}): ${glass}${spec ? ` (IBA method: "${ibaGlassSentence(spec)}")` : ''}. Use exactly this glass, do not replace it with another type.`,
+    `SERVE: ${ICE[d.serve] || ''}.`,
+    `RECIPE${spec ? ' (official IBA)' : ''}: ${recipe}.`,
+    `LOOK: ${look}.`,
+    garnish
+  ].join('\n');
 }
+
+export const shortPrompt = drinkBlock;
+export function promptFor(d) { return `${drinkBlock(d)}\nSTYLE: ${STYLE}`; }
 
 async function generateOpenAI(prompt) {
   const res = await fetch('https://api.openai.com/v1/images/generations', {
@@ -95,7 +111,14 @@ async function main() {
   const list = DRINKS.filter(d => (!ids.length || ids.includes(d.id)) && (force || !done.has(d.id)));
   if (onlyPrompts) { for (const d of list) console.log(`\n# ${d.id}\n${promptFor(d)}`); return; }
   if (args.includes('--list')) { // lista curta para gerar à mão num chat (o estilo vai uma vez só, no início)
-    list.forEach((d, k) => console.log(`${String(k + 1).padStart(3, '0')} · ${d.name} [${d.id}]\n${shortPrompt(d)}\n`));
+    const order = {unforgettable: 0, contemporary: 1, newera: 2, adaptation: 3};
+    const CAT_PT = {unforgettable: 'Clássico IBA · Inesquecível', contemporary: 'Clássico IBA · Contemporâneo', newera: 'Clássico IBA · Nova Era', adaptation: 'Variação consagrada'};
+    setLang('pt');
+    const head = d => `${CAT_PT[d.cat]} · ${SPECS[d.id] ? 'copo oficial IBA' : 'copo clássico'}: ${trGlass(d.glass, GLASSES[d.glass]).name}`;
+    const sorted = [...list].sort((a, b) => order[a.cat] - order[b.cat] || a.name.localeCompare(b.name));
+    const heads = sorted.map(head);
+    setLang('en');
+    sorted.forEach((d, k) => console.log(`${String(k + 1).padStart(3, '0')} · ${d.name.toUpperCase()}\n   (${heads[k]})\n${shortPrompt(d)}\n`));
     return;
   }
   const {default: sharp} = await import('sharp').catch(() => ({default: null}));

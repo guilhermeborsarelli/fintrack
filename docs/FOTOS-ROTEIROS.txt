@@ -1,13 +1,17 @@
-HOME TENDER · ROTEIROS DAS FOTOS DOS DRINKS (121)
+HOME TENDER · ROTEIROS DAS FOTOS DOS DRINKS
+Clássicos conferidos um a um com a ficha oficial da IBA (iba-world.com): copo, receita e guarnição.
 
 COMO USAR
 1. Abra uma conversa nova no ChatGPT e cole primeiro o bloco ESTILO abaixo.
-2. Depois cole um drink de cada vez (o texto em inglês que vem abaixo de cada número).
-3. Baixe cada imagem. Se conseguir, renomeie com o número do drink (ex.: 001.png).
-   Se não der para renomear no celular, sem problema: me mande assim mesmo que eu identifico cada drink pela imagem.
-4. Junte tudo num .zip (pode mandar em vários lotes) e me envie aqui.
+2. Depois cole um drink de cada vez: todo o bloco em inglês abaixo do número
+   (da linha "Photo of..." até a linha "GARNISH...").
+3. Confira se o copo da imagem é o indicado entre parênteses (em português) logo abaixo do nome.
+   Se o ChatGPT trocar o copo, peça: "Use exactly the glass in the GLASS line".
+4. Baixe cada imagem. Se conseguir, renomeie com o número (ex.: 001.png).
+   Se não der, mande assim mesmo: eu identifico cada drink pela imagem.
+5. Junte tudo num .zip (pode ser em vários lotes) e me envie.
 
-Dica: a conta gratuita do ChatGPT tem limite de imagens por dia; pode levar alguns dias. Mande em lotes.
+Dica: a conta gratuita do ChatGPT tem limite de imagens por dia; pode levar alguns dias.
 
 ──────────── ESTILO (cole uma vez, no começo da conversa) ────────────
 I will ask you for cocktail photos, one at a time, all in exactly the SAME style:
@@ -17,369 +21,1276 @@ within, glossy black reflective surface with a subtle mirror reflection under th
 glass, fine condensation droplets on cold glass, crystal-clear glass with sharp
 highlights, hyperrealistic high-end commercial cocktail photography, the whole glass
 centered with space around it, vertical 4:5 format, no text, no logo, no hands, no
-props. Reply with the image only.
+props. Always follow the GLASS, RECIPE and GARNISH lines exactly: the glass type is
+mandatory. Reply with the image only.
 ──────────────────────────────────────────────────────────────────────
 
-001 · Alexander [alexander]
-Alexander cocktail (Cognac, Crème de cacao, Fresh cream) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid, with a smooth, velvety foam on top. Garnish: grated nutmeg.
-
-002 · Americano [americano]
-Americano cocktail (Campari, Sweet (rosso) vermouth, Soda water) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, deep red liquid. Garnish: half orange wheel and lemon peel.
-
-003 · Angel Face [angel-face]
-Angel Face cocktail (Gin, Apricot brandy, Calvados (apple brandy)) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. No garnish.
-
-004 · Aviation [aviation]
-Aviation cocktail (Gin, Maraschino liqueur, Lemon, Crème de violette) in a crystal-clear stemmed coupe glass, served straight up without ice, light pale blue-lilac liquid. Garnish: maraschino cherry (optional).
-
-005 · Between the Sheets [between-the-sheets]
-Between the Sheets cocktail (White rum, Cognac, Triple sec, Lemon) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. No garnish.
-
-006 · Boulevardier [boulevardier]
-Boulevardier cocktail (Bourbon, Campari, Sweet (rosso) vermouth) in a crystal-clear stemmed coupe glass, served straight up without ice, deep red liquid. Garnish: orange twist.
-
-007 · Brandy Crusta [brandy-crusta]
-Brandy Crusta cocktail (Cognac, Maraschino liqueur, Triple sec, Lemon, Sugar, Angostura bitters) in a large crystal wine glass, served straight up without ice, amber-orange liquid, sugar-rimmed. Garnish: sugar rim and a long lemon peel lining the glass.
-
-008 · Casino [casino]
-Casino cocktail (Gin, Maraschino liqueur, Orange bitters, Lemon) in a crystal-clear stemmed coupe glass, served straight up without ice, light golden amber liquid. Garnish: lemon peel and cherry.
-
-009 · Clover Club [clover-club]
-Clover Club cocktail (Gin, Raspberry syrup, Lemon, Eggs (white) in a crystal-clear stemmed coupe glass, served straight up without ice, red liquid, with a smooth, velvety foam on top. Garnish: fresh raspberries.
-
-010 · Daiquiri [daiquiri]
-Daiquiri cocktail (White rum, Lime, Sugar) in a crystal-clear stemmed coupe glass, served straight up without ice, light golden amber liquid. No garnish.
-
-011 · Gin Fizz [gin-fizz]
-Gin Fizz cocktail (Gin, Lemon, Sugar, Soda water) in a tall straight crystal highball glass, with clear ice cubes, crystal-clear, almost colorless liquid, with fine rising bubbles. Garnish: lemon wheel.
-
-012 · Hanky Panky [hanky-panky]
-Hanky Panky cocktail (Gin, Sweet (rosso) vermouth, Fernet-Branca) in a crystal-clear stemmed coupe glass, served straight up without ice, deep red liquid. Garnish: orange twist.
-
-013 · John Collins [john-collins]
-John Collins cocktail (Gin, Lemon, Sugar, Soda water) in a tall slim crystal collins glass, with clear ice cubes, crystal-clear, almost colorless liquid, with fine rising bubbles. Garnish: lemon wheel and cherry.
-
-014 · Last Word [last-word]
-Last Word cocktail (Gin, Green Chartreuse, Maraschino liqueur, Lime) in a crystal-clear stemmed coupe glass, served straight up without ice, pale yellow liquid. No garnish.
-
-015 · Manhattan [manhattan]
-Manhattan cocktail (Bourbon, Sweet (rosso) vermouth, Angostura bitters) in a crystal-clear V-shaped martini glass with a long thin stem, served straight up without ice, deep amber-orange liquid. Garnish: maraschino cherry.
-
-016 · Martinez [martinez]
-Martinez cocktail (Gin, Sweet (rosso) vermouth, Maraschino liqueur, Orange bitters) in a crystal-clear stemmed coupe glass, served straight up without ice, deep amber-orange liquid. Garnish: lemon twist.
-
-017 · Mary Pickford [mary-pickford]
-Mary Pickford cocktail (White rum, Maraschino liqueur, Pineapple juice, Grenadine (pomegranate syrup)) in a crystal-clear stemmed coupe glass, served straight up without ice, light red liquid, with a smooth, velvety foam on top. No garnish.
-
-018 · Monkey Gland [monkey-gland]
-Monkey Gland cocktail (Gin, Orange, Absinthe, Grenadine (pomegranate syrup)) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. No garnish.
-
-019 · Old Fashioned [old-fashioned]
-Old Fashioned cocktail (Bourbon, Sugar, Angostura bitters) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with one large clear ice cube, deep amber-orange liquid. Garnish: orange peel and cherry.
-
-020 · Paradise [paradise]
-Paradise cocktail (Gin, Apricot brandy, Orange) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. No garnish.
-
-021 · Planter's Punch [planters-punch]
-Planter's Punch cocktail (Aged, Lime, Sugar, Angostura bitters) in a tall slim crystal collins glass, with clear ice cubes, amber-orange liquid. Garnish: orange peel.
-
-022 · Porto Flip [porto-flip]
-Porto Flip cocktail (Cognac, Ruby port, Eggs (white) in a crystal-clear stemmed coupe glass, served straight up without ice, deep red liquid, with a smooth, velvety foam on top. Garnish: grated nutmeg.
-
-023 · Ramos Fizz [ramos-fizz]
-Ramos Fizz cocktail (Gin, Lime, Lemon, Sugar, Fresh cream, Eggs (white, Orange flower water, Soda water) in a tall straight crystal highball glass, served straight up without ice, light golden amber liquid, with a smooth, velvety foam on top. No garnish.
-
-024 · Rusty Nail [rusty-nail]
-Rusty Nail cocktail (Scotch whisky, Drambuie) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, amber-orange liquid. Garnish: lemon twist.
-
-025 · Sazerac [sazerac]
-Sazerac cocktail (Cognac, Absinthe, Sugar, Peychaud’s bitters) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, without ice, deep amber-orange liquid. Garnish: lemon peel (express, then discard or keep).
-
-026 · Sidecar [sidecar]
-Sidecar cocktail (Cognac, Triple sec, Lemon) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. No garnish.
-
-027 · Stinger [stinger]
-Stinger cocktail (Cognac, Crème de menthe) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. No garnish.
-
-028 · Tuxedo [tuxedo]
-Tuxedo cocktail (Gin, Dry vermouth, Maraschino liqueur, Absinthe, Orange bitters) in a crystal-clear V-shaped martini glass with a long thin stem, served straight up without ice, light golden amber liquid. Garnish: cherry and lemon twist.
-
-029 · Vieux Carré [vieux-carre]
-Vieux Carré cocktail (Bourbon, Cognac, Sweet (rosso) vermouth, Bénédictine D.O.M., Peychaud’s bitters) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, deep amber-orange liquid. Garnish: orange peel and cherry.
-
-030 · Whiskey Sour [whiskey-sour]
-Whiskey Sour cocktail (Bourbon, Lemon, Sugar) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, amber-orange liquid, with a smooth, velvety foam on top. Garnish: half orange wheel and cherry.
-
-031 · White Lady [white-lady]
-White Lady cocktail (Gin, Triple sec, Lemon) in a crystal-clear stemmed coupe glass, served straight up without ice, light golden amber liquid. No garnish.
-
-032 · Bellini [bellini]
-Bellini cocktail (Champagne, White peach purée) in a tall crystal Champagne flute, without ice, light amber-orange liquid, with fine rising bubbles. No garnish.
-
-033 · Black Russian [black-russian]
-Black Russian cocktail (Vodka, Coffee liqueur) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, very dark, almost black liquid. No garnish.
-
-034 · Bloody Mary [bloody-mary]
-Bloody Mary cocktail (Vodka, Tomato juice, Lemon, Worcestershire sauce, Salt) in a tall straight crystal highball glass, with clear ice cubes, deep red liquid. Garnish: celery stalk and lemon wedge.
-
-035 · Caipirinha [caipirinha]
-Caipirinha cocktail (Cachaça, Lime, Sugar) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, light pale yellow liquid. No garnish.
-
-036 · Champagne Cocktail [champagne-cocktail]
-Champagne Cocktail cocktail (Champagne, Cognac, Angostura bitters, Sugar) in a tall crystal Champagne flute, without ice, light golden amber liquid, with fine rising bubbles. Garnish: orange peel and cherry.
-
-037 · Cosmopolitan [cosmopolitan]
-Cosmopolitan cocktail (Vodka, Triple sec, Lime, Cranberry juice) in a crystal-clear V-shaped martini glass with a long thin stem, served straight up without ice, red liquid. Garnish: lemon twist.
-
-038 · Cuba Libre [cuba-libre]
-Cuba Libre cocktail (White rum, Cola, Lime) in a tall straight crystal highball glass, with clear ice cubes, very dark, almost black liquid, with fine rising bubbles. Garnish: lime wedge.
-
-039 · French 75 [french-75]
-French 75 cocktail (Gin, Lemon, Sugar, Champagne) in a tall crystal Champagne flute, without ice, light golden amber liquid, with fine rising bubbles. Garnish: lemon twist.
-
-040 · French Connection [french-connection]
-French Connection cocktail (Cognac, Amaretto) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, deep amber-orange liquid. No garnish.
-
-041 · Golden Dream [golden-dream]
-Golden Dream cocktail (Galliano, Triple sec, Orange, Fresh cream) in a crystal-clear stemmed coupe glass, served straight up without ice, golden amber liquid, with a smooth, velvety foam on top. No garnish.
-
-042 · Grasshopper [grasshopper]
-Grasshopper cocktail (Crème de menthe, Crème de cacao, Fresh cream) in a crystal-clear stemmed coupe glass, served straight up without ice, pale green liquid, with a smooth, velvety foam on top. Garnish: mint leaf.
-
-043 · Hemingway Special [hemingway-special]
-Hemingway Special cocktail (White rum, Grapefruit juice, Maraschino liqueur, Lime) in a crystal-clear stemmed coupe glass, served straight up without ice, light amber-orange liquid. No garnish.
-
-044 · Horse's Neck [horses-neck]
-Horse's Neck cocktail (Cognac, Ginger ale) in a tall straight crystal highball glass, with clear ice cubes, amber-orange liquid, with fine rising bubbles. Garnish: a long spiral of lemon peel.
-
-045 · Irish Coffee [irish-coffee]
-Irish Coffee cocktail (Irish whiskey, Espresso, Fresh cream, Sugar) in a clear stemmed Irish coffee glass with a handle, served hot, without ice, very dark, almost black liquid, with a smooth, velvety foam on top. No garnish.
-
-046 · Kir [kir]
-Kir cocktail (Dry white wine, Crème de cassis) in a large crystal wine glass, without ice, red liquid. No garnish.
-
-047 · Long Island Iced Tea [long-island]
-Long Island Iced Tea cocktail (Vodka, 100% agave tequila, White rum, Gin, Triple sec, Lemon, Sugar, Cola) in a tall straight crystal highball glass, with clear ice cubes, deep amber-orange liquid. Garnish: lemon wheel.
-
-048 · Mai Tai [mai-tai]
-Mai Tai cocktail (Aged, Triple sec, Orgeat (almond syrup), Lime, Sugar) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, packed with crushed ice, amber-orange liquid. Garnish: mint sprig, lime shell and pineapple spear.
-
-049 · Margarita [margarita]
-Margarita cocktail (100% agave tequila, Triple sec, Lime) in a crystal-clear stemmed coupe glass, served straight up without ice, light pale yellow liquid, salt-rimmed. Garnish: half salt rim.
-
-050 · Mimosa [mimosa]
-Mimosa cocktail (Champagne, Orange) in a tall crystal Champagne flute, without ice, amber-orange liquid, with fine rising bubbles. Garnish: orange twist (optional).
-
-051 · Mint Julep [mint-julep]
-Mint Julep cocktail (Bourbon, Mint, Sugar) in a frosted silver julep cup, packed with crushed ice, amber-orange liquid. Garnish: mint bouquet.
-
-052 · Moscow Mule [moscow-mule]
-Moscow Mule cocktail (Vodka, Lime, Ginger beer) in a polished hammered copper mug, with clear ice cubes, light golden amber liquid, with fine rising bubbles. Garnish: lime wheel.
-
-053 · Piña Colada [pina-colada]
-Piña Colada cocktail (White rum, Cream of coconut, Pineapple juice) in a curvy hurricane glass, packed with crushed ice, light golden amber liquid. Garnish: pineapple slice and cherry.
-
-054 · Pisco Sour [pisco-sour]
-Pisco Sour cocktail (Pisco, Lemon, Sugar, Eggs (white, Angostura bitters) in a crystal-clear stemmed coupe glass, served straight up without ice, light golden amber liquid, with a smooth, velvety foam on top. Garnish: drops of Angostura on the foam.
-
-055 · Sea Breeze [sea-breeze]
-Sea Breeze cocktail (Vodka, Cranberry juice, Grapefruit juice) in a tall straight crystal highball glass, with clear ice cubes, red liquid. Garnish: lime wedge.
-
-056 · Sex on the Beach [sex-on-the-beach]
-Sex on the Beach cocktail (Vodka, Peach schnapps, Orange, Cranberry juice) in a tall straight crystal highball glass, with clear ice cubes, amber-orange liquid, fading to red at the bottom. Garnish: half orange wheel.
-
-057 · Singapore Sling [singapore-sling]
-Singapore Sling cocktail (Gin, Cherry liqueur (Cherry Heering), Triple sec, Bénédictine D.O.M., Grenadine (pomegranate syrup), Pineapple juice, Lime, Angostura bitters) in a tall slim crystal collins glass, with clear ice cubes, red liquid, with a smooth, velvety foam on top. Garnish: pineapple slice and cherry.
-
-058 · Tequila Sunrise [tequila-sunrise]
-Tequila Sunrise cocktail (100% agave tequila, Orange, Grenadine (pomegranate syrup)) in a tall straight crystal highball glass, with clear ice cubes, amber-orange liquid, fading to red at the bottom. Garnish: half orange wheel and cherry.
-
-059 · Vesper [vesper]
-Vesper cocktail (Gin, Vodka, Lillet Blanc) in a crystal-clear V-shaped martini glass with a long thin stem, served straight up without ice, light golden amber liquid. Garnish: long lemon twist.
-
-060 · Zombie [zombie]
-Zombie cocktail (Aged, Falernum, Lime, Grapefruit juice, Cinnamon, Grenadine (pomegranate syrup), Absinthe, Angostura bitters) in a carved ceramic tiki mug, packed with crushed ice, amber-orange liquid. Garnish: mint sprig.
-
-061 · Bee's Knees [bees-knees]
-Bee's Knees cocktail (Gin, Lemon, Orange, Honey) in a crystal-clear stemmed coupe glass, served straight up without ice, golden amber liquid. Garnish: orange or lemon twist.
-
-062 · Bramble [bramble]
-Bramble cocktail (Gin, Lemon, Sugar, Crème de mûre (blackberry)) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, packed with crushed ice, light golden amber liquid, fading to deep pink-red at the bottom. Garnish: blackberries and lemon wheel.
-
-063 · Canchanchara [canchanchara]
-Canchanchara cocktail (White rum, Lime, Honey) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, light golden amber liquid. Garnish: lime wheel.
-
-064 · Dark 'n' Stormy [dark-n-stormy]
-Dark 'n' Stormy cocktail (Aged, Ginger beer) in a tall straight crystal highball glass, with clear ice cubes, golden amber liquid, with a very dark, almost black layer floating on top, with fine rising bubbles. Garnish: lime wedge.
-
-065 · Espresso Martini [espresso-martini]
-Espresso Martini cocktail (Vodka, Coffee liqueur, Sugar, Espresso) in a crystal-clear V-shaped martini glass with a long thin stem, served straight up without ice, very dark, almost black liquid, with a smooth, velvety foam on top. Garnish: three coffee beans.
-
-066 · Fernandito [fernandito]
-Fernandito cocktail (Fernet-Branca, Cola) in a tall straight crystal highball glass, with clear ice cubes, very dark, almost black liquid, with fine rising bubbles. No garnish.
-
-067 · French Martini [french-martini]
-French Martini cocktail (Vodka, Raspberry liqueur, Pineapple juice) in a crystal-clear V-shaped martini glass with a long thin stem, served straight up without ice, red liquid, with a smooth, velvety foam on top. Garnish: lemon twist.
-
-068 · Lemon Drop Martini [lemon-drop]
-Lemon Drop Martini cocktail (Vodka, Triple sec, Lemon) in a crystal-clear V-shaped martini glass with a long thin stem, served straight up without ice, light golden amber liquid, sugar-rimmed. Garnish: sugar rim and lemon wheel.
-
-069 · Naked and Famous [naked-and-famous]
-Naked and Famous cocktail (Mezcal, Yellow Chartreuse, Aperol, Lime) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. No garnish.
-
-070 · New York Sour [new-york-sour]
-New York Sour cocktail (Bourbon, Lemon, Sugar, Red wine) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, amber-orange liquid, with a deep red layer floating on top. No garnish.
-
-071 · Old Cuban [old-cuban]
-Old Cuban cocktail (Aged, Lime, Sugar, Mint, Angostura bitters, Champagne) in a crystal-clear stemmed coupe glass, served straight up without ice, golden amber liquid, with fine rising bubbles. Garnish: mint leaf.
-
-072 · Paloma [paloma]
-Paloma cocktail (100% agave tequila, Lime, Salt, Grapefruit soda) in a tall straight crystal highball glass, with clear ice cubes, light amber-orange liquid, with fine rising bubbles, salt-rimmed. Garnish: lime wheel (salt rim optional).
-
-073 · Paper Plane [paper-plane]
-Paper Plane cocktail (Bourbon, Amaro (Nonino or similar), Aperol, Lemon) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. No garnish.
-
-074 · Penicillin [penicillin]
-Penicillin cocktail (Scotch whisky, Lemon, Honey, Fresh ginger) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, amber-orange liquid. Garnish: candied ginger.
-
-075 · Russian Spring Punch [russian-spring-punch]
-Russian Spring Punch cocktail (Vodka, Lemon, Crème de cassis, Sugar, Champagne) in a tall straight crystal highball glass, with clear ice cubes, pink-red liquid, with fine rising bubbles. Garnish: lemon wheel and blackberry.
-
-076 · Southside [southside]
-Southside cocktail (Gin, Lime, Sugar, Mint) in a crystal-clear stemmed coupe glass, served straight up without ice, light pale yellow liquid. Garnish: mint leaf.
-
-077 · Spritz [spritz]
-Spritz cocktail (Champagne, Aperol, Soda water) in a large crystal wine glass, with clear ice cubes, amber-orange liquid, with fine rising bubbles. Garnish: half orange wheel.
-
-078 · Tommy's Margarita [tommys-margarita]
-Tommy's Margarita cocktail (100% agave tequila, Lime, Agave syrup) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, light golden amber liquid. Garnish: lime wheel.
-
-079 · Yellow Bird [yellow-bird]
-Yellow Bird cocktail (White rum, Galliano, Triple sec, Lime) in a crystal-clear stemmed coupe glass, served straight up without ice, golden amber liquid. No garnish.
-
-080 · Gimlet [gimlet]
-Gimlet cocktail (Gin, Lime, Sugar) in a crystal-clear stemmed coupe glass, served straight up without ice, light pale yellow liquid. Garnish: lime wheel.
-
-081 · Gin Rickey [gin-rickey]
-Gin Rickey cocktail (Gin, Lime, Soda water) in a tall straight crystal highball glass, with clear ice cubes, crystal-clear, almost colorless liquid, with fine rising bubbles. Garnish: lime wedge.
-
-082 · Gin Tônica [gin-tonica]
-Gin Tônica cocktail (Gin, Tonic water) in a tall straight crystal highball glass, with clear ice cubes, crystal-clear, almost colorless liquid, with fine rising bubbles. Garnish: lime wheel.
-
-083 · Gin Sour [gin-sour]
-Gin Sour cocktail (Gin, Lemon, Sugar) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, light golden amber liquid, with a smooth, velvety foam on top. Garnish: lemon twist.
-
-084 · Vodka Sour [vodka-sour]
-Vodka Sour cocktail (Vodka, Lemon, Sugar) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, crystal-clear, almost colorless liquid, with a smooth, velvety foam on top. Garnish: lemon twist.
-
-085 · Amaretto Sour [amaretto-sour]
-Amaretto Sour cocktail (Amaretto, Lemon, Sugar) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, amber-orange liquid, with a smooth, velvety foam on top. Garnish: lemon peel and cherry.
-
-086 · Caipiroska [caipiroska]
-Caipiroska cocktail (Vodka, Lime, Sugar) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, crystal-clear, almost colorless liquid. No garnish.
-
-087 · Caipiríssima [caipirissima]
-Caipiríssima cocktail (White rum, Lime, Sugar) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, crystal-clear, almost colorless liquid. No garnish.
-
-088 · Ti' Punch [ti-punch]
-Ti' Punch cocktail (White rum, Lime, Sugar) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, without ice, crystal-clear, almost colorless liquid. No garnish.
-
-089 · Rob Roy [rob-roy]
-Rob Roy cocktail (Scotch whisky, Sweet (rosso) vermouth, Angostura bitters) in a crystal-clear V-shaped martini glass with a long thin stem, served straight up without ice, deep amber-orange liquid. Garnish: cherry.
-
-090 · Vodka Martini [vodka-martini]
-Vodka Martini cocktail (Vodka, Dry vermouth) in a crystal-clear V-shaped martini glass with a long thin stem, served straight up without ice, crystal-clear, almost colorless liquid. Garnish: olive or lemon twist.
-
-091 · Gin & It [gin-and-it]
-Gin & It cocktail (Gin, Sweet (rosso) vermouth) in a crystal-clear stemmed coupe glass, served straight up without ice, deep amber-orange liquid. Garnish: orange twist.
-
-092 · Old Pal [old-pal]
-Old Pal cocktail (Bourbon, Campari, Dry vermouth) in a crystal-clear stemmed coupe glass, served straight up without ice, deep red liquid. Garnish: lemon twist.
-
-093 · Milano-Torino [milano-torino]
-Milano-Torino cocktail (Campari, Sweet (rosso) vermouth) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, deep red liquid. Garnish: half orange wheel.
-
-094 · Negroni Sbagliato [negroni-sbagliato]
-Negroni Sbagliato cocktail (Campari, Sweet (rosso) vermouth, Champagne) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, red liquid, with fine rising bubbles. Garnish: half orange wheel.
-
-095 · Bicicletta [bicicletta]
-Bicicletta cocktail (Campari, Dry white wine, Soda water) in a large crystal wine glass, with clear ice cubes, red liquid, with fine rising bubbles. Garnish: half orange wheel.
-
-096 · Kir Royal [kir-royal]
-Kir Royal cocktail (Champagne, Crème de cassis) in a tall crystal Champagne flute, without ice, pink-red liquid, with fine rising bubbles. No garnish.
-
-097 · Rum Old Fashioned [rum-old-fashioned]
-Rum Old Fashioned cocktail (Aged, Sugar, Angostura bitters) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with one large clear ice cube, deep amber-orange liquid. Garnish: orange peel.
-
-098 · Brandy Old Fashioned [brandy-old-fashioned]
-Brandy Old Fashioned cocktail (Cognac, Sugar, Angostura bitters) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with one large clear ice cube, deep amber-orange liquid. Garnish: orange peel and cherry.
-
-099 · Oaxaca Old Fashioned [oaxaca-old-fashioned]
-Oaxaca Old Fashioned cocktail (100% agave tequila, Mezcal, Agave syrup, Angostura bitters) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with one large clear ice cube, amber-orange liquid. Garnish: flamed orange peel.
-
-100 · Gold Rush [gold-rush]
-Gold Rush cocktail (Bourbon, Lemon, Honey) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with one large clear ice cube, amber-orange liquid. Garnish: lemon twist.
-
-101 · Brown Derby [brown-derby]
-Brown Derby cocktail (Bourbon, Grapefruit juice, Honey) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. Garnish: grapefruit twist.
-
-102 · Whiskey Smash [whiskey-smash]
-Whiskey Smash cocktail (Bourbon, Lemon, Sugar, Mint) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, packed with crushed ice, amber-orange liquid. Garnish: mint sprig.
-
-103 · Gin Basil Smash [gin-basil-smash]
-Gin Basil Smash cocktail (Gin, Lemon, Sugar, Basil) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, pale green liquid. Garnish: basil sprig.
-
-104 · Kentucky Mule [kentucky-mule]
-Kentucky Mule cocktail (Bourbon, Lime, Ginger beer) in a polished hammered copper mug, with clear ice cubes, amber-orange liquid, with fine rising bubbles. Garnish: mint and lime wheel.
-
-105 · Gin-Gin Mule [gin-gin-mule]
-Gin-Gin Mule cocktail (Gin, Lime, Sugar, Mint, Ginger beer) in a tall straight crystal highball glass, with clear ice cubes, light pale yellow liquid, with fine rising bubbles. Garnish: mint sprig.
-
-106 · El Diablo [el-diablo]
-El Diablo cocktail (100% agave tequila, Crème de cassis, Lime, Ginger beer) in a tall straight crystal highball glass, with clear ice cubes, light amber-orange liquid, fading to deep pink-red at the bottom, with fine rising bubbles. Garnish: lime wedge.
-
-107 · Batanga [batanga]
-Batanga cocktail (100% agave tequila, Lime, Cola, Salt) in a tall straight crystal highball glass, with clear ice cubes, very dark, almost black liquid, with fine rising bubbles, salt-rimmed. Garnish: salt rim and lime wedge.
-
-108 · Screwdriver [screwdriver]
-Screwdriver cocktail (Vodka, Orange) in a tall straight crystal highball glass, with clear ice cubes, amber-orange liquid. Garnish: orange wheel.
-
-109 · Greyhound / Salty Dog [greyhound]
-Greyhound / Salty Dog cocktail (Vodka, Grapefruit juice) in a tall straight crystal highball glass, with clear ice cubes, light amber-orange liquid, salt-rimmed. Garnish: salt rim (Salty Dog version).
-
-110 · Cape Codder [cape-codder]
-Cape Codder cocktail (Vodka, Cranberry juice) in a tall straight crystal highball glass, with clear ice cubes, red liquid. Garnish: lime wedge.
-
-111 · Whisky Highball [whisky-highball]
-Whisky Highball cocktail (Scotch whisky, Soda water) in a tall straight crystal highball glass, with clear ice cubes, light amber-orange liquid, with fine rising bubbles. Garnish: lemon twist.
-
-112 · White Russian [white-russian]
-White Russian cocktail (Vodka, Coffee liqueur, Fresh cream) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, very dark, almost black liquid, with a crystal-clear, almost colorless layer floating on top. No garnish.
-
-113 · Godfather [godfather]
-Godfather cocktail (Scotch whisky, Amaretto) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, deep amber-orange liquid. No garnish.
-
-114 · Godmother [godmother]
-Godmother cocktail (Vodka, Amaretto) in a heavy crystal old fashioned rocks glass with a thick cut-glass base, with clear ice cubes, amber-orange liquid. No garnish.
-
-115 · Corpse Reviver Nº 2 [corpse-reviver-2]
-Corpse Reviver Nº 2 cocktail (Gin, Triple sec, Lillet Blanc, Lemon, Absinthe) in a crystal-clear stemmed coupe glass, served straight up without ice, light golden amber liquid. Garnish: orange twist.
-
-116 · Jack Rose [jack-rose]
-Jack Rose cocktail (Calvados (apple brandy), Lime, Grenadine (pomegranate syrup)) in a crystal-clear stemmed coupe glass, served straight up without ice, light red liquid. No garnish.
-
-117 · Ward Eight [ward-eight]
-Ward Eight cocktail (Bourbon, Lemon, Orange, Grenadine (pomegranate syrup)) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. Garnish: cherry.
-
-118 · Bronx [bronx]
-Bronx cocktail (Gin, Sweet (rosso) vermouth, Dry vermouth, Orange) in a crystal-clear stemmed coupe glass, served straight up without ice, amber-orange liquid. Garnish: orange twist.
-
-119 · Hot Toddy [hot-toddy]
-Hot Toddy cocktail (Scotch whisky, Honey, Lemon) in a clear stemmed Irish coffee glass with a handle, served hot, without ice, amber-orange liquid. Garnish: lemon wheel and cinnamon stick.
-
-120 · Silver Fizz [silver-fizz]
-Silver Fizz cocktail (Gin, Lemon, Sugar, Eggs (white, Soda water) in a tall straight crystal highball glass, served straight up without ice, crystal-clear, almost colorless liquid, with a smooth, velvety foam on top, with fine rising bubbles. Garnish: lemon wheel.
-
-121 · Spritz Veneziano al Campari [sbagliato-americano]
-Spritz Veneziano al Campari cocktail (Champagne, Campari, Soda water) in a large crystal wine glass, with clear ice cubes, red liquid, with fine rising bubbles. Garnish: half orange wheel.
+001 · ALEXANDER
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Alexander cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Shake and strain into a chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml Cognac; 30 ml Crème de Cacao (Brown); 30 ml Fresh Cream.
+LOOK: amber-orange liquid, smooth velvety foam on top.
+GARNISH (official IBA): Sprinkle fresh ground nutmeg on top.
+
+002 · AMERICANO
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo old fashioned)
+Photo of the Americano cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Mix the ingredients directly in an old fashioned glass filled with ice cubes."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 30 ml Bitter Campari; 30 ml Sweet Red Vermouth; A splash of Soda Water.
+LOOK: deep red liquid.
+GARNISH (official IBA): Garnish with half orange slice and a lemon zest.
+
+003 · ANGEL FACE
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Angel Face cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Shake and strain into a chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml Gin; 30 ml Apricot Brandy; 30 ml Calvados.
+LOOK: amber-orange liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+004 · AVIATION
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Aviation cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Shake with cracked ice and strain into a chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml Gin; 15 ml Maraschino; Luxardo; 15 ml Fresh Lemon Juice; 1 Bar Spoon Crème de Violette.
+LOOK: light pale blue-lilac liquid.
+GARNISH (official IBA): Optional Maraschino Cherry.
+
+005 · BETWEEN THE SHEETS
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Between the Sheets cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Shake with ice and strain into a chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml White Rum; 30 ml Cognac; 30 ml Triple Sec; 20 ml Fresh Lemon Juice.
+LOOK: amber-orange liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+006 · BOULEVARDIER
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Boulevardier cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into mixing glass with ice cubes. Strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml Bourbon or Rye Whiskey; 30 ml Bitter Campari; 30 ml Sweet Red Vermouth.
+LOOK: deep red liquid.
+GARNISH (official IBA): Garnish with a orange zest, optionally a lemon zest.
+
+007 · BRANDY CRUSTA
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça de vinho)
+Photo of the Brandy Crusta cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a large crystal wine glass (IBA method: "Mix together all ingredients with ice cubes in a mixing glass and strain into a prepared slim cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 52.5 ml Brandy; 7.5 ml Maraschino; Luxardo; 1 Bar Spoon Curacao; 15 ml Fresh Lemon Juice; 1 Bar Spoon Simple Syrup; 2 Dashes Aromatic Bitters.
+LOOK: amber-orange liquid, sugar-rimmed glass.
+GARNISH (official IBA): Rub a slice of orange (or lemon) around the rim of the glass and dip it in pulverized white sugar, so that the sugar will adhere to the edge of the glass. Carefully curling place the orange/lemon peel around the inside of the glass.
+
+008 · CASINO
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo old fashioned)
+Photo of the Casino cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Pour all ingredients into cocktails shaker, shake well with ice, strain into chilled rocks glass with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 40 ml Old Tom Gin; 10 ml Maraschino; Luxardo; 10 ml Fresh Lemon Juice; 2 Dashes Orange Bitters.
+LOOK: light golden amber liquid.
+GARNISH (official IBA): Garnish with a lemon zest and a maraschino cherry.
+
+009 · CLOVER CLUB
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Clover Club cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktails shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml Gin; 15 ml Raspberry Syrup; 15 ml Fresh Lemon Juice; Few Drops of Egg White.
+LOOK: red liquid, smooth velvety foam on top.
+GARNISH (official IBA): Fresh raspberries.
+
+010 · DAIQUIRI
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Daiquiri cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 60 ml White Cuban Ron; 20 ml Fresh Lime Juice; 2 Bar Spoons Superfine Sugar.
+LOOK: light golden amber liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+011 · GIN FIZZ
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo highball)
+Photo of the Gin Fizz cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Pour into thin tall Tumbler glass , top with a splash soda water."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Gin; 30 ml Fresh Lemon Juice; 10 ml Simple Syrup; Splash of Soda Water.
+LOOK: crystal-clear, almost colorless liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with lemon slice, optional lemon zest.
+
+012 · HANKY PANKY
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Hanky Panky cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into mixing glass with ice cubes. Strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml London Dry Gin; 45 ml Sweet Red Vermouth; 7.5 ml Fernet.
+LOOK: deep red liquid.
+GARNISH (official IBA): Orange zest.
+
+013 · JOHN COLLINS
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo highball)
+Photo of the John Collins cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: ""). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Gin; 30 ml Fresh Lemon Juice; 15 ml Simple Syrup; 60 ml  Soda Water.
+LOOK: crystal-clear, almost colorless liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with lemon slice and maraschino cherry.
+
+014 · LAST WORD
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Last Word cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Shake with ice and strain into a chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 22.5 ml Gin; 22.5 ml Green Chartreuse; 22.5 ml Maraschino; Luxardo; 22.5 ml Fresh Lime Juice.
+LOOK: pale yellow liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+015 · MANHATTAN
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coquetel (Martini))
+Photo of the Manhattan cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear V-shaped martini glass with a long thin stem (IBA method: "Pour all ingredients into mixing glass with ice cubes. Strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 50 ml Rye Whiskey; 20 ml Sweet Red Vermouth; 1 dash Angostura Bitters.
+LOOK: deep amber-orange liquid.
+GARNISH (official IBA): Garnish with cocktail cherry.
+
+016 · MARTINEZ
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Martinez cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into mixing glass with ice cubes. Strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml London Dry Gin; 45 ml Sweet Red Vermouth; 1 Bar Spoon Maraschino; Luxardo; 2 Dashes Orange Bitters.
+LOOK: deep amber-orange liquid.
+GARNISH (official IBA): Lemon zest.
+
+017 · MARY PICKFORD
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Mary Pickford cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml White Rum; 45 ml Fresh Pineapple Juice; 7.5 ml Maraschino Luxardo; 5 ml Grenadine Syrup.
+LOOK: light red liquid, smooth velvety foam on top.
+GARNISH: none (the official IBA recipe has no garnish).
+
+018 · MONKEY GLAND
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Monkey Gland cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml Dry Gin; 45 ml Fresh Orange Juice; 1 Tablespoon Absinthe; 1 Tablespoon Grenadine Syrup.
+LOOK: amber-orange liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+019 · OLD FASHIONED
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo old fashioned)
+Photo of the Old Fashioned cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Place sugar cube in old fashioned glass and saturate with bitter, add few dashes of plain water. Fill the glass with ice cubes and add whiskey."). Use exactly this glass, do not replace it with another type.
+SERVE: with one large clear ice cube.
+RECIPE (official IBA): 45 ml Bourbon or Rye Whiskey; 1 Sugar Cube; Few Dashes Angostura Bitters; Few Dashes Plain Water.
+LOOK: deep amber-orange liquid.
+GARNISH (official IBA): Garnish with orange slice or zest, and a cocktail cherry.
+
+020 · PARADISE
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Paradise cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml Gin; 20 ml Apricot Brandy; 15 ml Fresh Orange Juice.
+LOOK: amber-orange liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+021 · PLANTER'S PUNCH
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo old fashioned)
+Photo of the Planter's Punch cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Pour all ingredients directly in a small tumbler or a typical terracotta glass."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Jamaican Rum; 15 ml Lime Juice; 30 ml Sugar Cane Juice.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with orange zest.
+
+022 · PORTO FLIP
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Porto Flip cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 15 ml Brandy; 45 ml Red Tawny Port Wine; 10 ml Egg Yolk.
+LOOK: deep red liquid, smooth velvety foam on top.
+GARNISH (official IBA): Sprinkle with fresh ground nutmeg.
+
+023 · RAMOS FIZZ
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo highball)
+Photo of the Ramos Fizz cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Shake for two minutes, double strain in a glass, pour the drink back in the shaker and hard shake without ice for one minute. Strain into a highball glass, top up with soda."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml Gin; 15 ml Fresh Lime Juice; 15 ml Fresh Lemon Juice; 30 ml Sugar Syrup; 60 ml Cream; 30ml Egg white; 3 Dashes Orange Flower Water; 2 Drops Vanilla Extract; Soda Water.
+LOOK: light golden amber liquid, smooth velvety foam on top.
+GARNISH: none (the official IBA recipe has no garnish).
+
+024 · REMEMBER THE MAINE
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Remember the Maine cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour the absinthe into a coupe glass and swirl to completely coat the inside. Discard the absinthe and set the glass aside. Add the other ingredients to a mixing glass and fill it 3/4 full with ice. Stir until chilled, then strain into the glass rinsed with the absinthe."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 60 ml Rye Whiskey; 22.5 ml Sweet Vermouth; 15 ml Cherry Brandy Luxardo; 7.5 ml Absinthe.
+LOOK: deep red liquid.
+GARNISH (official IBA): Garnish with lemon zest.
+
+025 · RUSTY NAIL
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo old fashioned)
+Photo of the Rusty Nail cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Pour all ingredients directly into an old fashioned glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Scotch Whisky; 25 ml Drambuie.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with lemon zest.
+
+026 · SAZERAC
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo old fashioned)
+Photo of the Sazerac cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Rinse a chilled old-fashioned glass with the absinthe, add crushed ice and set it aside. Stir the remaining ingredients over ice in a mixing glass. Discard the ice and any excess absinthe from the prepared glass, strain the mixed drink into the glass."). Use exactly this glass, do not replace it with another type.
+SERVE: without ice.
+RECIPE (official IBA): 50 ml Cognac; 10 ml Absinthe; 1 Sugar Cube; 2 Dashes Peychaud’s Bitters.
+LOOK: deep amber-orange liquid.
+GARNISH (official IBA): Garnish with lemon zest.
+
+027 · SIDECAR
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Sidecar cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 50 ml Cognac; 20 ml Triple Sec; 20 ml Fresh Lemon Juice.
+LOOK: amber-orange liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+028 · STINGER
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coquetel (Martini))
+Photo of the Stinger cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear V-shaped martini glass with a long thin stem (IBA method: "Pour all ingredients into mixing glass with ice cubes. Strain into chilled martini cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 50 ml Cognac; 20 ml White Crème de Menthe.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Optional mint leave.
+
+029 · TUXEDO
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coquetel (Martini))
+Photo of the Tuxedo cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear V-shaped martini glass with a long thin stem (IBA method: "Pour all ingredients into mixing glass with ice cubes. Strain into chilled martini cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml Old Tom Gin; 30 ml Dry Vermouth; 1/2 Bar Spoon Maraschino Luxardo; 1/4 Bar Spoon of Absinthe; 3 Dashes Orange Bitters.
+LOOK: light golden amber liquid.
+GARNISH (official IBA): Garnish with cherry and lemon zest.
+
+030 · VIEUX CARRÉ
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the Vieux Carré cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into mixing glass with ice cubes. Strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml Rye Whiskey; 30 ml Cognac; 30 ml Sweet Vermouth; 1 Bar Spoon Bénédictine; 2 Dashes Peychaud’s Bitters.
+LOOK: deep amber-orange liquid.
+GARNISH (official IBA): Garnish with orange zest and maraschino cherry.
+
+031 · WHISKEY SOUR
+   (Clássico IBA · Inesquecível · copo oficial IBA: Copo old fashioned)
+Photo of the Whiskey Sour cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Strain into cobbler glass. If served “On the rocks”, strain ingredients into old fashioned glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Bourbon Whiskey; 25 ml Fresh Lemon Juice; 20 ml Sugar Syrup; Few Drops of Egg White (Optional).
+LOOK: amber-orange liquid, smooth velvety foam on top.
+GARNISH (official IBA): Garnish with half orange slice and maraschino cherry, optionally use orange zest.
+
+032 · WHITE LADY
+   (Clássico IBA · Inesquecível · copo oficial IBA: Taça coupe)
+Photo of the White Lady cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 40 ml Gin; 30 ml Triple Sec; 20 ml Fresh Lemon Juice.
+LOOK: light golden amber liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+033 · BELLINI
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça flute)
+Photo of the Bellini cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall crystal Champagne flute (IBA method: "Pour peach puree into the mixing glass with ice, add the Prosecco wine. Stir gently and pour in a chilled flute glass."). Use exactly this glass, do not replace it with another type.
+SERVE: without ice.
+RECIPE (official IBA): 100 ml Prosecco; 50 ml White Peach Puree.
+LOOK: light amber-orange liquid, fine rising bubbles.
+GARNISH: none (the official IBA recipe has no garnish).
+
+034 · BLACK RUSSIAN
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo old fashioned)
+Photo of the Black Russian cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Pour the ingredients into the old fashioned glass filled with ice cubes. strain ingredients into old fashioned glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 50 ml Vodka; 20 ml Coffee Liqueur.
+LOOK: very dark, almost black liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+035 · BLOODY MARY
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo old fashioned)
+Photo of the Bloody Mary cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Stir gently all the ingredients in a mixing glass with ice, pour into rocks glass. NOTE: If requested served with ice, pour into highball glass."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Vodka; 90 ml Tomato Juice; 15 ml Fresh Lemon Juice; 2 dashes Worcestershire Sauce; Tabasco, Celery Salt, Pepper (Up to taste).
+LOOK: deep red liquid.
+GARNISH (official IBA): Celery, lemon wedge (Optional).
+
+036 · CAIPIRINHA
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo old fashioned)
+Photo of the Caipirinha cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Place lime and sugar into a double old fashioned glass and muddle gently. Fill the glass with cracked ice and add Cachaça."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 60 ml Cachaça; 1 Lime cut into small wedges; 4 Teaspoons White Cane Sugar.
+LOOK: light pale yellow liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+037 · CARDINALE
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça coupe)
+Photo of the Cardinale cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into mixing glass with ice cubes. Strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 40 ml Gin; 20 ml Dry Vermouth; 10 ml Bitter Campari.
+LOOK: red liquid.
+GARNISH (official IBA): Garnish with a lemon zest.
+
+038 · CHAMPAGNE COCKTAIL
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça flute)
+Photo of the Champagne Cocktail cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall crystal Champagne flute (IBA method: "Place the sugar cube with 2 dashes of bitters in a large Champagne glass, add the cognac."). Use exactly this glass, do not replace it with another type.
+SERVE: without ice.
+RECIPE (official IBA): 90 ml Chilled Champagne; 10 ml Cognac; 2 dashes Angostura bitters; Few drops of Grand Marnier (optional); 1 sugar cube.
+LOOK: light golden amber liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with orange zest and maraschino cherry.
+
+039 · CORPSE REVIVER Nº 2
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça coupe)
+Photo of the Corpse Reviver Nº 2 cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Shake well and strain in chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml Gin; 30 ml Cointreau; 30 ml Lillet Blanc; 30 ml Fresh Lemon Juice; 1 dash Absinthe.
+LOOK: light golden amber liquid.
+GARNISH (official IBA): Garnish with an orange zest.
+
+040 · COSMOPOLITAN
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça coquetel (Martini))
+Photo of the Cosmopolitan cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear V-shaped martini glass with a long thin stem (IBA method: "Shake well and strain into large cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 40 ml Vodka Citron; 15 ml Cointreau; 15 ml Fresh Lime Juice; 30 ml Cranberry Juice.
+LOOK: red liquid.
+GARNISH (official IBA): Garnish with lemon twist.
+
+041 · CUBA LIBRE
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo highball)
+Photo of the Cuba Libre cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Build all ingredients in a highball glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 50 ml White Rum; 120 ml Cola; 10 ml Fresh Lime Juice.
+LOOK: very dark, almost black liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with lime wedge.
+
+042 · FRENCH 75
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça flute)
+Photo of the French 75 cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall crystal Champagne flute (IBA method: ""). Use exactly this glass, do not replace it with another type.
+SERVE: without ice.
+RECIPE (official IBA): 30 ml Gin; 15 ml Fresh Lemon Juice; 15 ml Sugar Syrup; 60 ml Champagne.
+LOOK: light golden amber liquid, fine rising bubbles.
+GARNISH: lemon twist.
+
+043 · FRENCH CONNECTION
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo old fashioned)
+Photo of the French Connection cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Pour all ingredients directly into old fashioned glass filled with ice cubes."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 35 ml Cognac; 35 ml Amaretto.
+LOOK: deep amber-orange liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+044 · GARIBALDI
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo highball)
+Photo of the Garibaldi cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Build all ingredients in a highball glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Bitter Campari; 120 ml Freshly Squeezed Orange Juice.
+LOOK: red liquid.
+GARNISH (official IBA): Garnish with an orange wedge.
+
+045 · GRASSHOPPER
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça coupe)
+Photo of the Grasshopper cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 20 ml Crème de Cacao (White); 20 ml Crème de Menthe (Green); 20 ml Fresh Cream.
+LOOK: pale green liquid, smooth velvety foam on top.
+GARNISH (official IBA): N/A, optional mint leave.
+
+046 · HEMINGWAY SPECIAL
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça coupe)
+Photo of the Hemingway Special cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Shake well and strain into a large cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 60 ml Rum; 40 ml Grapefruit Juice; 15 ml Maraschino Luxardo; 15 ml Fresh Lime.
+LOOK: light amber-orange liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+047 · HORSE'S NECK
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo highball)
+Photo of the Horse's Neck cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Pour Cognac and ginger ale directly into highball glass with ice cubes."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 40 ml Cognac; 120 ml Ginger Ale; Dash of Angostura Bitters (optional).
+LOOK: amber-orange liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with rind of one lemon spiral.
+
+048 · IRISH COFFEE
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo Irish coffee)
+Photo of the Irish Coffee cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a clear stemmed Irish coffee glass with a handle (IBA method: "Warm black coffee is poured into a preheated Irish coffee glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served hot, without ice.
+RECIPE (official IBA): 50 ml Irish Whiskey; 120 ml Hot coffee; 50 ml Fresh cream (Chilled); 1 teaspoon Sugar.
+LOOK: very dark, almost black liquid, smooth velvety foam on top.
+GARNISH: none (the official IBA recipe has no garnish).
+
+049 · KIR
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça de vinho)
+Photo of the Kir cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a large crystal wine glass (IBA method: "Pour Crème de Cassis into glass, top up with white wine."). Use exactly this glass, do not replace it with another type.
+SERVE: without ice.
+RECIPE (official IBA): 90 ml Dry White Wine; 10 ml Crème de Cassis.
+LOOK: red liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+050 · LEMON DROP MARTINI
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça coquetel (Martini))
+Photo of the Lemon Drop Martini cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear V-shaped martini glass with a long thin stem (IBA method: "Shake well and strain into a chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml Vodka; 20 ml Triple Sec; 15 ml Fresh Squeezed Lemon Juice.
+LOOK: light golden amber liquid, sugar-rimmed glass.
+GARNISH: sugar rim and lemon wheel.
+
+051 · LONG ISLAND ICED TEA
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo highball)
+Photo of the Long Island Iced Tea cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Add all ingredients into highball glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 15 ml Vodka; 15 ml Tequila; 15 ml White rum; 15 ml Gin; 15 ml Cointreau; 25 ml Lemon juice; 30 ml Simple syrup; Top with Cola.
+LOOK: deep amber-orange liquid.
+GARNISH (official IBA): Garnish with lemon slice (Optional).
+
+052 · MAI TAI
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo old fashioned)
+Photo of the Mai Tai cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Shake and pour into a double rocks glass or an highball glass."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 30 ml Amber Jamaican Rum; 30 ml Martinique Molasses Rhum*; 15 ml Orange Curacao; 15 ml Orgeat Syrup (Almond); 30 ml Fresh Squeezed Lime Juice; 7.5 ml Simple Syrup.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with pineapple spear, mint leaves and lime peel.
+
+053 · MARGARITA
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça coupe)
+Photo of the Margarita cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Shake and strain into a chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 50 ml Tequila 100% Agave; 20 ml Triple Sec; 15 ml Freshly Squeezed Lime Juice.
+LOOK: light pale yellow liquid, salt-rimmed glass.
+GARNISH (official IBA): Half salt rim (Optional).
+
+054 · MIMOSA
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça flute)
+Photo of the Mimosa cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall crystal Champagne flute (IBA method: "Pour orange juice into flute glass and gently pour the sparkling wine."). Use exactly this glass, do not replace it with another type.
+SERVE: without ice.
+RECIPE (official IBA): 75 ml Freshly Squeezed  Orange Juice; 75 ml Prosecco.
+LOOK: amber-orange liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with orange twist (optional).
+
+055 · MINT JULEP
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo julep (metal))
+Photo of the Mint Julep cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a frosted silver julep cup (IBA method: "In Julep Stainless Steel Cup gently muddle the mint with sugar and water. Fill the glass with cracked ice, add the Bourbon and stir well until the cup frosts."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 60 ml Bourbon Whiskey; 4 fresh Mint sprigs; 1 tsp Powdered Sugar; 2 tsp Water.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with a mint sprig.
+
+056 · MOSCOW MULE
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Caneca de cobre)
+Photo of the Moscow Mule cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a polished hammered copper mug (IBA method: "In an Mule Cup or rocks glass, combine the vodka and ginger beer."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Smirnoff Vodka; 120 ml Ginger Beer; 10 ml Fresh lime juice.
+LOOK: light golden amber liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with a lime slice.
+
+057 · PIÑA COLADA
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça hurricane)
+Photo of the Piña Colada cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a curvy hurricane glass (IBA method: "Blend all the ingredients with ice in a electric blender, pour into a large glass and serve with straws."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 50 ml White Rum; 30 ml Coconut Cream; 50 ml Fresh Pineapple Juice.
+LOOK: light golden amber liquid.
+GARNISH (official IBA): Garnish with a slice of pineapple with a cocktail cherry.
+
+058 · PISCO SOUR
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça de vinho)
+Photo of the Pisco Sour cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a large crystal wine glass (IBA method: "Shake and strain into a chilled goblet glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 60 ml Pisco; 30 ml Fresh Lemon Juice; 20 ml Simple Syrup; 1 Raw whole Egg White.
+LOOK: light golden amber liquid, smooth velvety foam on top.
+GARNISH (official IBA): Few dashes of Amargo bitters on top as an aromatic garnish.
+
+059 · RABO DE GALO
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo old fashioned)
+Photo of the Rabo de Galo cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Combine all the ingredients into a rocks glass, add ice and stir briefly."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 60 ml Cachaca; 20 ml Sweet Vermouth Cinzano Rosso; 15 ml Cynar; 2 Drops Angostura (Optional).
+LOOK: deep red liquid.
+GARNISH (official IBA): Garnish with a orange twist.
+
+060 · SEA BREEZE
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo highball)
+Photo of the Sea Breeze cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Build all ingredients in a highball glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 40 ml Vodka; 120 ml Cranberry Juice; 30 ml Grapefruit Juice.
+LOOK: red liquid.
+GARNISH (official IBA): Garnish with an orange zest and cherry.
+
+061 · SEX ON THE BEACH
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo highball)
+Photo of the Sex on the Beach cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Build all ingredients in a highball glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 40 ml Vodka; 20 ml Peach Schnapps; 40 ml Fresh Orange Juice; 40 ml Cranberry Juice.
+LOOK: amber-orange liquid, fading to red at the bottom.
+GARNISH (official IBA): Garnish with half orange slice.
+
+062 · SINGAPORE SLING
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça hurricane)
+Photo of the Singapore Sling cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a curvy hurricane glass (IBA method: "Strain into Hurricane glass."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 30 ml Gin; 15 ml Cherry Sangue Morlacco; 7.5 ml Cointreau; 7.5 ml DOM Bénédictine; 120 ml Fresh Pineapple Juice; 15 ml Fresh Lime Juice; 10 ml Grenadine Syrup; A dash of Angostura bitters.
+LOOK: red liquid, smooth velvety foam on top.
+GARNISH (official IBA): Garnish with pineapple and maraschino cherry.
+
+063 · TEQUILA SUNRISE
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo highball)
+Photo of the Tequila Sunrise cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Pour tequila and orange juice directly into highball glass filled with ice cubes."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Tequila; 90 ml Fresh Orange Juice; 15 ml Grenadine Syrup.
+LOOK: amber-orange liquid, fading to red at the bottom.
+GARNISH (official IBA): Garnish with half orange slice or an orange zest.
+
+064 · VESPER
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Taça coquetel (Martini))
+Photo of the Vesper cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear V-shaped martini glass with a long thin stem (IBA method: "Shake and strain into a chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml Gin; 15 ml Vodka; 7.5 ml Lillet Blanc.
+LOOK: light golden amber liquid.
+GARNISH (official IBA): Garnish with lemon zest.
+
+065 · ZOMBIE
+   (Clássico IBA · Contemporâneo · copo oficial IBA: Copo collins)
+Photo of the Zombie cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall slim crystal collins glass (IBA method: "Serve in a tall tumbler glass."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 45 ml Jamaican dark rum; 45 ml Gold Puerto Rican rum; 30 ml Demerara Rum; 20 ml Fresh lime juice; 15 ml Falernum; 15 ml Donn’s Mix*; 1 tsp Grenadine syrup; 1 dash Angostura bitters; 6 drops Pernod.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with mint leaves.
+
+066 · BEE'S KNEES
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Bee's Knees cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Strain into a chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 52.5 ml Dry Gin; 2 teaspoons Honey Syrup; 22.5 ml Fresh Lemon Juice; 22.5 ml Fresh Orange Juice.
+LOOK: golden amber liquid.
+GARNISH (official IBA): Optionally garnish with a lemon or orange zest.
+
+067 · BRAMBLE
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo old fashioned)
+Photo of the Bramble cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Pour all ingredients into cocktail shaker except the Crème de Mûre, shake well with ice, strain into chilled old fashioned glass filled with crushed ice, then pour the blackberry liqueur (Crème de Mûre) over the top of the drink, in a circular motion."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 50 ml Gin; 25 ml Fresh Lemon Juice; 12.5 ml Sugar Syrup; 15 ml Crème de Mûre.
+LOOK: light golden amber liquid, fading to deep pink-red at the bottom.
+GARNISH (official IBA): Garnish optionally with a lemon slice and blackberries.
+
+068 · CANCHANCHARA
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo old fashioned)
+Photo of the Canchanchara cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Mix honey with water and lime juice and spread the mixture on the bottom and sides of the glass."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 60 ml Cuban Aguardiente; 15 ml Fresh Lime Juice; 15 ml Raw Honey; 50 ml Water.
+LOOK: light golden amber liquid.
+GARNISH (official IBA): Garnish with a lime wedge.
+
+069 · CHARTREUSE SWIZZLE
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo collins)
+Photo of the Chartreuse Swizzle cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall slim crystal collins glass (IBA method: "Pour all ingredients into a tall glass, add pebble ice. With the help of a swizzle stick (or cocktail spoon) mix vigorously, complete by filling the glass with more pebble ice."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 45 ml Green Chartreuse; 30 ml Fresh Pineapple Juice; 22.5 ml Fresh Lime Juice; 15 ml Falernum.
+LOOK: pale yellow liquid.
+GARNISH (official IBA): Garnish with mint leaves and grated nutmeg.
+
+070 · DARK 'N' STORMY
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo highball)
+Photo of the Dark 'n' Stormy cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "In a highball glass filled with ice pour the ginger beer and top floating with the Rum."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 60 ml Goslings Rum; 100 ml Ginger Beer.
+LOOK: golden amber liquid, with a very dark, almost black layer floating on top, fine rising bubbles.
+GARNISH (official IBA): Garnish with a lime wedge or slice.
+
+071 · DON'S SPECIAL DAIQUIRI
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça hurricane)
+Photo of the Don's Special Daiquiri cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a curvy hurricane glass (IBA method: "Blend for a few seconds in a milkshake mixer with crushed ice and pour into a footed copo glass. Fill the glass with more crushed ice."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 30 ml Gold Jamaican Rum; 15 ml Cuban Rum; 15 ml Passion Fruit Syrup; 15 ml Fresh lime juice; 15 ml Honey Syrup.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with 1/2 passion fruit
+
+072 · ESPRESSO MARTINI
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coquetel (Martini))
+Photo of the Espresso Martini cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear V-shaped martini glass with a long thin stem (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 50 ml Vodka; 30 ml Kahlúa; 10 ml Sugar Syrup; 1 strong Espresso.
+LOOK: very dark, almost black liquid, smooth velvety foam on top.
+GARNISH (official IBA): 3 coffee beans
+
+073 · FERNANDITO
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo old fashioned)
+Photo of the Fernandito cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Pour the Fernet Branca into a double old fashioned glass with ice, fill the glass up with Cola."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 50 ml Fernet Branca; Fill up with Cola.
+LOOK: very dark, almost black liquid, fine rising bubbles.
+GARNISH: none (the official IBA recipe has no garnish).
+
+074 · FRENCH MARTINI
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coquetel (Martini))
+Photo of the French Martini cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear V-shaped martini glass with a long thin stem (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml Vodka; 15 ml Raspberry Liqueur; 15 ml Fresh Pineapple Juice.
+LOOK: red liquid, smooth velvety foam on top.
+GARNISH (official IBA): Squeeze oil from lemon peel onto the drink.
+
+075 · GIN BASIL SMASH
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Gin Basil Smash cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Shake vigorously and pour into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 60ml Gin; 22.5 ml Freshly Squeezed Lemon Juice; 22.5 ml Sugar Syrup; 10 pcs Italian Basil leaves.
+LOOK: pale green liquid.
+GARNISH: basil leaf.
+
+076 · GRAND MARGARITA
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo old fashioned)
+Photo of the Grand Margarita cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Rim the rock glass with good quality sea salt. Add ice to both glass and shaker. Strain the drink into the glass."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Tequila 100% agave; 30 ml  Grand Marnier; 15 ml Fresh Lime Juice.
+LOOK: golden amber liquid, salt-rimmed glass.
+GARNISH (official IBA): Garnish with a lime slice.
+
+077 · IBA TIKI
+   (Clássico IBA · Nova Era · copo oficial IBA: Caneca tiki)
+Photo of the IBA Tiki cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a carved ceramic tiki mug (IBA method: "Strain into a chilled Tiki glass filled with pebbled ice."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 30 ml Ron Profundo Havana Club; 30 ml Ron Smoky Havana Club; 15 ml Licor Amaretto; 5 ml Licor Frangelico; 5 drops Maraschino Luxardo; 30 ml Passion Fruit Puree; 90 Fresh Pineapple Juice; 30 Fresh Lime Juice; 1 pc Gengibre Slice.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with citruses and dehydrated pineapple slice.
+
+078 · ILLEGAL
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Illegal cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Strain into a chilled cocktail glass, or “on the rocks” in a traditional clay or terracotta mug."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml Espadin Mezcal; 15 ml Jamaica Overproof White Rum; 15 ml Falernum; 1 Bar Spoon Maraschino Luxardo; 22.5 ml Fresh Lime Juice; 15 ml Simple Syrup; Few Drops of Egg White (Optional).
+LOOK: light golden amber liquid, smooth velvety foam on top.
+GARNISH: none (the official IBA recipe has no garnish).
+
+079 · JUNGLE BIRD
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo old fashioned)
+Photo of the Jungle Bird cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Strain into a rocks glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml Blackstrap rum; 22.5 ml Campari; 45 ml Pineapple juice; 15 ml Freshly Squeezed Lime juice; 15 ml Demerara sugar syrup.
+LOOK: red liquid.
+GARNISH (official IBA): Garnish with a pineapple wedge.
+
+080 · MISSIONARY'S DOWNFALL
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça hurricane)
+Photo of the Missionary's Downfall cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a curvy hurricane glass (IBA method: "Blend all the ingredients with half cup of crushed ice. Serve it in a Coppa grande."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 30 ml White rum; 15 ml Peach Brandy; 15 ml Fresh lime juice; 30 ml Honey Mix; 10 pcs Mint Leaves; 3 to 4 pcs Pineapple Chunks.
+LOOK: pale yellow liquid.
+GARNISH (official IBA): Garnish with mint sprig and a slice of pineapple.
+
+081 · NAKED AND FAMOUS
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Naked and Famous cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 22.5 ml Mezcal; 22.5 ml Yellow Chartreuse; 22.5 ml Aperol; 22.5 ml Fresh Lime Juice.
+LOOK: amber-orange liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+082 · NEW YORK SOUR
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo old fashioned)
+Photo of the New York Sour cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Strain into a chilled rocks glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 60 ml Rye Whiskey or Bourbon; 22.5 ml Simple syrup; 30 ml Fresh lemon juice; Few Drops of Egg White; 15 ml Red wine (Shiraz or Malbech).
+LOOK: amber-orange liquid, with a deep red layer floating on top.
+GARNISH (official IBA): Garnish with lemon or orange zest with cherry.
+
+083 · OLD CUBAN
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Old Cuban cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker except the wine, shake well with ice, strain into chilled elegant cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 6/8 pcs Mint Leaves; 45 ml Aged Rum; 22.5 ml Fresh Lime Juice; 30 ml Simple Syrup; 2 Dashes Angostura Bitters; 60 ml Brut Champagne or Prosecco.
+LOOK: golden amber liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with mint springs.
+
+084 · PALOMA
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo highball)
+Photo of the Paloma cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Poor the tequila into a highball glass, squeeze the lime juice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 50 ml 100% Agave Tequila; 5 ml Fresh lime; A pinch of Salt; 100 ml Pink Grapefruit Soda.
+LOOK: light amber-orange liquid, fine rising bubbles, salt-rimmed glass.
+GARNISH (official IBA): Garnish with a slice of lime.
+
+085 · PAPER PLANE
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Paper Plane cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 30 ml Bourbon Whiskey; 30 ml Amaro Nonino; 30 ml Aperol; 30 ml Fresh Lemon Juice.
+LOOK: amber-orange liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+086 · PENICILLIN
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo old fashioned)
+Photo of the Penicillin cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Fine train into a chilled Old Fashioned glass with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 60 ml Blended scotch whisky; 7.5 ml Lagavulin 16y; 22.5 ml Fresh lemon juice; 22.5 ml Honey syrup; 2-3 quarter size sliced fresh ginger.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with candied ginger slices.
+
+087 · PISCO PUNCH
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça de vinho)
+Photo of the Pisco Punch cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a large crystal wine glass (IBA method: "Shake vigorously and double strain into a large goblet."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 60 ml Pisco; 22.5 ml Fresh Pineapple Juice; 15 ml Simple Syrup; 15 ml Fresh Lemon Juice; 30 ml Dry White Wine; 3 pcs Cloves.
+LOOK: light golden amber liquid.
+GARNISH: none (the official IBA recipe has no garnish).
+
+088 · PORN STAR MARTINI
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Porn Star Martini cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into cocktail shaker, shake well with ice, double strain into a large chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 50 ml Vanilla Vodka; 20 ml Passion Fruit Liqueur; 50 ml Passion Fruit Puree; 2 Bar Spoons Vanilla Sugar; 50 ml Champagne to serve on the side.
+LOOK: amber-orange liquid, smooth velvety foam on top.
+GARNISH (official IBA): Garnish with passion fruit cup and sugar.
+
+089 · RUSSIAN SPRING PUNCH
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo highball)
+Photo of the Russian Spring Punch cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall straight crystal highball glass (IBA method: "Pour all ingredients into cocktail shaker except the sparkling wine, shake well with ice, strain into chilled tall tumbler glass filled with ice and top up with sparkling wine."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 25 ml Vodka; 25 ml Fresh Lemon Juice; 15 ml Creme de Cassis; 10 ml Sugar Syrup; Top up with Sparkling Wine.
+LOOK: pink-red liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with blackberries and optionally a lemon slice as well.
+
+090 · SHERRY COBBLER
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo julep (metal))
+Photo of the Sherry Cobbler cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a frosted silver julep cup (IBA method: "Combine sherry, sugar and 2 quarter wheels each of orange and lemon in a shaker with ice, shake briskly, strain into a Julep cocktail cup filled with crushed ice."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 45 ml Amontillado sherry; 45 ml Palo Cortado; 1 tsp Superfine Sugar (or granulated); 1/2  Orange Wheel; 1/2  Lemon Wheel.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with fresh berries, ¼ wheel each orange and lemon. Serve with straws.
+
+091 · SOUTHSIDE
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Southside cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into a cocktail shaker, shake well with ice, double-strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 60 ml London dry Gin; 30 ml Fresh Lemon  Juice; 15 ml Simple syrup; 5/6 Mint leaves; Few drops Egg white (Optional).
+LOOK: light pale yellow liquid.
+GARNISH (official IBA): Garnish with mint springs.
+
+092 · SPICY FIFTY
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Spicy Fifty cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Pour all ingredients into a cocktail shaker, shake well with ice, double-strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 50 ml Vodka Vanilla; 15 ml Elderflower Cordial; 15 ml Fresh Lime Juice; 10 ml Monin Honey Syrup; 2 thin Slices Red Chili Pepper.
+LOOK: light golden amber liquid.
+GARNISH (official IBA): Garnish with a red chili pepper.
+
+093 · SPRITZ
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça de vinho)
+Photo of the Spritz cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a large crystal wine glass (IBA method: "Build all ingredients into a wine glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 90 ml Prosecco; 60 ml Aperol; Splash of Soda water.
+LOOK: amber-orange liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with a slice of orange.
+
+094 · SUFFERING BASTARD
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo collins)
+Photo of the Suffering Bastard cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a tall slim crystal collins glass (IBA method: "Pour unstrained into a Collins glass or in the original. Bastard mug and top up with ginger beer."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 30 ml Cognac or Brandy; 30 ml Gin; 15 ml Fresh Lime Juice; 2 Dashes Angostura Bitters; Top up Ginger beer.
+LOOK: amber-orange liquid, fine rising bubbles.
+GARNISH (official IBA): Garnish with mint spring and optionally an orange slice as well.
+
+095 · THREE DOTS AND A DASH
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça hurricane)
+Photo of the Three Dots and a Dash cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a curvy hurricane glass (IBA method: "Pour all ingredients in a Blender with 12 ounces of crushed ice, flash blend, pour the drink into a footed copo glass. Fill the glass with more crushed ice."). Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE (official IBA): 45 ml Rhum Martinique Agricole; 15 ml Blended Aged Rum; 7.5 ml Falernum; 7.5 ml Allspice Saint Elizabeth15 ml Fresh Lime Juice; 15 ml Fresh Orange juice; 15 ml Honey Syrup; 2 Dashes Angostura Bitters.
+LOOK: amber-orange liquid.
+GARNISH (official IBA): Garnish with three cherries and a rectangular chunk of pineapple.
+
+096 · TIPPERARY
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coquetel (Martini))
+Photo of the Tipperary cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear V-shaped martini glass with a long thin stem (IBA method: "Pour all ingredients into mixing glass with ice cubes. Strain into chilled martini cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 50 ml Irish Whiskey; 25 ml Sweet Red Vermouth; 15 ml Green Chartreuse; 2 Dashes Angostura Bitters.
+LOOK: deep amber-orange liquid.
+GARNISH (official IBA): Garnish with a slice of orange.
+
+097 · TOMMY'S MARGARITA
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo old fashioned)
+Photo of the Tommy's Margarita cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Pour all ingredients into a cocktail shaker, shake well with ice, strain into chilled rocks glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 60 ml Tequila 100% agave; 30 ml Fresh Lime Juice; 30 ml Agave Nectar.
+LOOK: light golden amber liquid.
+GARNISH (official IBA): Garnish with a lime slice.
+
+098 · TRINIDAD SOUR
+   (Clássico IBA · Nova Era · copo oficial IBA: Taça coupe)
+Photo of the Trinidad Sour cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a crystal-clear stemmed coupe glass (IBA method: "Strain into chilled cocktail glass."). Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE (official IBA): 45 ml Angostura Bitters; 30 ml Orgeat Syrup; 22.5 ml Fresh Lemon Juice; 15 ml Rye Whiskey.
+LOOK: deep red liquid, smooth velvety foam on top.
+GARNISH: none (the official IBA recipe has no garnish).
+
+099 · VE.N.TO
+   (Clássico IBA · Nova Era · copo oficial IBA: Copo old fashioned)
+Photo of the Ve.n.to cocktail, made exactly as the official IBA recipe (International Bartenders Association).
+GLASS (mandatory, official IBA standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base (IBA method: "Strain into a chilled small tumbler glass filled with ice."). Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE (official IBA): 45 ml White Smooth Grappa; 22.5 ml Fresh lemon Juice; 15 ml Honey mix (replace water with chamomile)*; 15 ml Chamomile cordial; Few Drops of Egg White (Optional).
+LOOK: light golden amber liquid.
+GARNISH (official IBA): Garnish with lemon zest and white grapes.
+
+100 · AMARETTO SOUR
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Amaretto Sour cocktail, a classic variation of the Whiskey Sour, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 45 ml Amaretto; 20 ml Bourbon (optional); 30 ml Lemon; 7.5 ml Sugar; 15 ml egg white Eggs (white (optional).
+LOOK: amber-orange liquid, smooth velvety foam on top.
+GARNISH: lemon peel and cherry.
+
+101 · BATANGA
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the Batanga cocktail, a classic variation of the Cuba Libre, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 50 ml 100% agave tequila; 15 ml Lime; to top Cola; for the rim Salt.
+LOOK: very dark, almost black liquid, fine rising bubbles, salt-rimmed glass.
+GARNISH: salt rim and lime wedge.
+
+102 · BICICLETTA
+   (Variação consagrada · copo clássico: Taça de vinho)
+Photo of the Bicicletta cocktail, a classic variation of the Spritz, made as the classic recipe.
+GLASS (mandatory, classic standard): a large crystal wine glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 45 ml Campari; 90 ml Dry white wine; a splash Soda water.
+LOOK: red liquid, fine rising bubbles.
+GARNISH: half orange wheel.
+
+103 · BRANDY OLD FASHIONED
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Brandy Old Fashioned cocktail, a classic variation of the Old Fashioned, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with one large clear ice cube.
+RECIPE: 50 ml Cognac; 1 sugar cube Sugar; 3 dashes Angostura bitters; 1 Cocktail (optional).
+LOOK: deep amber-orange liquid.
+GARNISH: orange peel and cherry.
+
+104 · BRONX
+   (Variação consagrada · copo clássico: Taça coupe)
+Photo of the Bronx cocktail, a classic variation of the Dry Martini, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear stemmed coupe glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 30 ml Gin; 15 ml Sweet (rosso) vermouth; 15 ml Dry vermouth; 30 ml Orange.
+LOOK: amber-orange liquid.
+GARNISH: orange twist.
+
+105 · BROWN DERBY
+   (Variação consagrada · copo clássico: Taça coupe)
+Photo of the Brown Derby cocktail, a classic variation of the Whiskey Sour, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear stemmed coupe glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 45 ml Bourbon; 30 ml Grapefruit juice; 15 ml honey syrup Honey.
+LOOK: amber-orange liquid.
+GARNISH: grapefruit twist.
+
+106 · CAIPIRÍSSIMA
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Caipiríssima cocktail, a classic variation of the Caipirinha, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 60 ml White rum; 1 lime in wedges Lime; 4 teaspoons Sugar.
+LOOK: crystal-clear, almost colorless liquid.
+GARNISH: none.
+
+107 · CAIPIROSKA
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Caipiroska cocktail, a classic variation of the Caipirinha, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 60 ml Vodka; 1 lime in wedges Lime; 4 teaspoons Sugar.
+LOOK: crystal-clear, almost colorless liquid.
+GARNISH: none.
+
+108 · CAPE CODDER
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the Cape Codder cocktail, a classic variation of the Sea Breeze, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 50 ml Vodka; 120 ml Cranberry juice; 10 ml Lime (optional).
+LOOK: red liquid.
+GARNISH: lime wedge.
+
+109 · EL DIABLO
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the El Diablo cocktail, a classic variation of the Moscow Mule, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 45 ml 100% agave tequila; 15 ml Crème de cassis; 15 ml Lime; 90 ml Ginger beer.
+LOOK: light amber-orange liquid, fading to deep pink-red at the bottom, fine rising bubbles.
+GARNISH: lime wedge.
+
+110 · GIMLET
+   (Variação consagrada · copo clássico: Taça coupe)
+Photo of the Gimlet cocktail, a classic variation of the Daiquiri, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear stemmed coupe glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 60 ml Gin; 20 ml Lime; 15 ml Sugar.
+LOOK: light pale yellow liquid.
+GARNISH: lime wheel.
+
+111 · GIN & IT
+   (Variação consagrada · copo clássico: Taça coupe)
+Photo of the Gin & It cocktail, a classic variation of the Martinez, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear stemmed coupe glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 45 ml Gin; 45 ml Sweet (rosso) vermouth.
+LOOK: deep amber-orange liquid.
+GARNISH: orange twist.
+
+112 · GIN RICKEY
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the Gin Rickey cocktail, a classic variation of the Gin Fizz, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 50 ml Gin; 15 ml Lime; 120 ml Soda water.
+LOOK: crystal-clear, almost colorless liquid, fine rising bubbles.
+GARNISH: lime wedge.
+
+113 · GIN SOUR
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Gin Sour cocktail, a classic variation of the Whiskey Sour, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 50 ml Gin; 25 ml Lemon; 20 ml Sugar; 20 ml egg white Eggs (white (optional).
+LOOK: light golden amber liquid, smooth velvety foam on top.
+GARNISH: lemon twist.
+
+114 · GIN TÔNICA
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the Gin Tônica cocktail, a classic variation of the Gin Fizz, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 50 ml Gin; 150 ml Tonic water; 1 wheel Lime (optional).
+LOOK: crystal-clear, almost colorless liquid, fine rising bubbles.
+GARNISH: lime wheel.
+
+115 · GIN-GIN MULE
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the Gin-Gin Mule cocktail, a classic variation of the Moscow Mule, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 45 ml Gin; 20 ml Lime; 20 ml Sugar; 6 leaves Mint; 30 ml Ginger beer.
+LOOK: light pale yellow liquid, fine rising bubbles.
+GARNISH: mint sprig.
+
+116 · GODFATHER
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Godfather cocktail, a classic variation of the French Connection, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 45 ml Scotch whisky; 25 ml Amaretto.
+LOOK: deep amber-orange liquid.
+GARNISH: none.
+
+117 · GODMOTHER
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Godmother cocktail, a classic variation of the French Connection, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 45 ml Vodka; 25 ml Amaretto.
+LOOK: amber-orange liquid.
+GARNISH: none.
+
+118 · GOLD RUSH
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Gold Rush cocktail, a classic variation of the Whiskey Sour, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with one large clear ice cube.
+RECIPE: 60 ml Bourbon; 22.5 ml Lemon; 22.5 ml honey syrup Honey.
+LOOK: amber-orange liquid.
+GARNISH: lemon twist.
+
+119 · GOLDEN DREAM
+   (Variação consagrada · copo clássico: Taça coupe)
+Photo of the Golden Dream cocktail, a classic variation of the Alexander, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear stemmed coupe glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 20 ml Galliano; 20 ml Triple sec; 20 ml Orange; 10 ml Fresh cream.
+LOOK: golden amber liquid, smooth velvety foam on top.
+GARNISH: none.
+
+120 · GREYHOUND / SALTY DOG
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the Greyhound / Salty Dog cocktail, a classic variation of the Sea Breeze, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 50 ml Vodka; 120 ml Grapefruit juice; salt rim = Salty Dog Salt (optional).
+LOOK: light amber-orange liquid, salt-rimmed glass.
+GARNISH: salt rim (Salty Dog version).
+
+121 · HOT TODDY
+   (Variação consagrada · copo clássico: Copo Irish coffee)
+Photo of the Hot Toddy cocktail, a classic variation of the Irish Coffee, made as the classic recipe.
+GLASS (mandatory, classic standard): a clear stemmed Irish coffee glass with a handle. Use exactly this glass, do not replace it with another type.
+SERVE: served hot, without ice.
+RECIPE: 45 ml Scotch whisky; 15 ml Honey; 15 ml Lemon; 1 stick Cinnamon (optional).
+LOOK: amber-orange liquid.
+GARNISH: lemon wheel and cinnamon stick.
+
+122 · JACK ROSE
+   (Variação consagrada · copo clássico: Taça coupe)
+Photo of the Jack Rose cocktail, a classic variation of the Daiquiri, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear stemmed coupe glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 50 ml Calvados (apple brandy); 20 ml Lime; 15 ml Grenadine (pomegranate syrup).
+LOOK: light red liquid.
+GARNISH: none.
+
+123 · KENTUCKY MULE
+   (Variação consagrada · copo clássico: Caneca de cobre)
+Photo of the Kentucky Mule cocktail, a classic variation of the Moscow Mule, made as the classic recipe.
+GLASS (mandatory, classic standard): a polished hammered copper mug. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 45 ml Bourbon; 10 ml Lime; 120 ml Ginger beer.
+LOOK: amber-orange liquid, fine rising bubbles.
+GARNISH: mint and lime wheel.
+
+124 · KIR ROYAL
+   (Variação consagrada · copo clássico: Taça flute)
+Photo of the Kir Royal cocktail, a classic variation of the Kir, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall crystal Champagne flute. Use exactly this glass, do not replace it with another type.
+SERVE: without ice.
+RECIPE: 90 ml Champagne; 10 ml Crème de cassis.
+LOOK: pink-red liquid, fine rising bubbles.
+GARNISH: none.
+
+125 · MILANO-TORINO
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Milano-Torino cocktail, a classic variation of the Americano, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 30 ml Campari; 30 ml Sweet (rosso) vermouth.
+LOOK: deep red liquid.
+GARNISH: half orange wheel.
+
+126 · NEGRONI SBAGLIATO
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Negroni Sbagliato cocktail, a classic variation of the Negroni, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 30 ml Campari; 30 ml Sweet (rosso) vermouth; 30 ml Champagne.
+LOOK: red liquid, fine rising bubbles.
+GARNISH: half orange wheel.
+
+127 · OAXACA OLD FASHIONED
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Oaxaca Old Fashioned cocktail, a classic variation of the Old Fashioned, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with one large clear ice cube.
+RECIPE: 45 ml 100% agave tequila; 15 ml Mezcal; 1 bar spoon Agave syrup; 2 dashes Angostura bitters.
+LOOK: amber-orange liquid.
+GARNISH: flamed orange peel.
+
+128 · OLD PAL
+   (Variação consagrada · copo clássico: Taça coupe)
+Photo of the Old Pal cocktail, a classic variation of the Boulevardier, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear stemmed coupe glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 45 ml Bourbon; 30 ml Campari; 30 ml Dry vermouth.
+LOOK: deep red liquid.
+GARNISH: lemon twist.
+
+129 · ROB ROY
+   (Variação consagrada · copo clássico: Taça coquetel (Martini))
+Photo of the Rob Roy cocktail, a classic variation of the Manhattan, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear V-shaped martini glass with a long thin stem. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 50 ml Scotch whisky; 25 ml Sweet (rosso) vermouth; 2 dashes Angostura bitters; 1 Cocktail (optional).
+LOOK: deep amber-orange liquid.
+GARNISH: cherry.
+
+130 · RUM OLD FASHIONED
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Rum Old Fashioned cocktail, a classic variation of the Old Fashioned, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with one large clear ice cube.
+RECIPE: 50 ml Aged; 1 cube or 5 ml syrup Sugar; 2 dashes Angostura bitters.
+LOOK: deep amber-orange liquid.
+GARNISH: orange peel.
+
+131 · SCREWDRIVER
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the Screwdriver cocktail, a classic variation of the Mimosa, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 50 ml Vodka; 100 ml Orange.
+LOOK: amber-orange liquid.
+GARNISH: orange wheel.
+
+132 · SILVER FIZZ
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the Silver Fizz cocktail, a classic variation of the Gin Fizz, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 45 ml Gin; 30 ml Lemon; 15 ml Sugar; 1 egg white Eggs (white; to top Soda water.
+LOOK: crystal-clear, almost colorless liquid, smooth velvety foam on top, fine rising bubbles.
+GARNISH: lemon wheel.
+
+133 · SPRITZ VENEZIANO AL CAMPARI
+   (Variação consagrada · copo clássico: Taça de vinho)
+Photo of the Spritz Veneziano al Campari cocktail, a classic variation of the Spritz, made as the classic recipe.
+GLASS (mandatory, classic standard): a large crystal wine glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 90 ml Champagne; 60 ml Campari; a splash Soda water.
+LOOK: red liquid, fine rising bubbles.
+GARNISH: half orange wheel.
+
+134 · TI' PUNCH
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Ti' Punch cocktail, a classic variation of the Daiquiri, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: without ice.
+RECIPE: 50 ml White rum; 1 coin of peel with some flesh Lime; 1 teaspoon (cane syrup) Sugar.
+LOOK: crystal-clear, almost colorless liquid.
+GARNISH: none.
+
+135 · VODKA MARTINI
+   (Variação consagrada · copo clássico: Taça coquetel (Martini))
+Photo of the Vodka Martini cocktail, a classic variation of the Dry Martini, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear V-shaped martini glass with a long thin stem. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 60 ml Vodka; 10 ml Dry vermouth; 1 Green olive (optional).
+LOOK: crystal-clear, almost colorless liquid.
+GARNISH: olive or lemon twist.
+
+136 · VODKA SOUR
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Vodka Sour cocktail, a classic variation of the Whiskey Sour, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 50 ml Vodka; 25 ml Lemon; 20 ml Sugar; 20 ml egg white Eggs (white (optional).
+LOOK: crystal-clear, almost colorless liquid, smooth velvety foam on top.
+GARNISH: lemon twist.
+
+137 · WARD EIGHT
+   (Variação consagrada · copo clássico: Taça coupe)
+Photo of the Ward Eight cocktail, a classic variation of the Whiskey Sour, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear stemmed coupe glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 60 ml Bourbon; 15 ml Lemon; 15 ml Orange; 10 ml Grenadine (pomegranate syrup).
+LOOK: amber-orange liquid.
+GARNISH: cherry.
+
+138 · WHISKEY SMASH
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Whiskey Smash cocktail, a classic variation of the Mint Julep, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: packed with crushed ice.
+RECIPE: 60 ml Bourbon; ½ lemon in wedges Lemon; 20 ml Sugar; 6 leaves Mint.
+LOOK: amber-orange liquid.
+GARNISH: mint sprig.
+
+139 · WHISKY HIGHBALL
+   (Variação consagrada · copo clássico: Copo highball)
+Photo of the Whisky Highball cocktail, a classic variation of the Horse's Neck, made as the classic recipe.
+GLASS (mandatory, classic standard): a tall straight crystal highball glass. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 45 ml Scotch whisky; 120 ml Soda water.
+LOOK: light amber-orange liquid, fine rising bubbles.
+GARNISH: lemon twist.
+
+140 · WHITE RUSSIAN
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the White Russian cocktail, a classic variation of the Black Russian, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 50 ml Vodka; 20 ml Coffee liqueur; 30 ml Fresh cream.
+LOOK: very dark, almost black liquid, with a crystal-clear, almost colorless layer floating on top.
+GARNISH: none.
+
+141 · YELLOW BIRD
+   (Variação consagrada · copo clássico: Taça coupe)
+Photo of the Yellow Bird cocktail, a classic variation of the Daiquiri, made as the classic recipe.
+GLASS (mandatory, classic standard): a crystal-clear stemmed coupe glass. Use exactly this glass, do not replace it with another type.
+SERVE: served straight up without ice.
+RECIPE: 30 ml White rum; 15 ml Galliano; 15 ml Triple sec; 15 ml Lime.
+LOOK: golden amber liquid.
+GARNISH: none.
 

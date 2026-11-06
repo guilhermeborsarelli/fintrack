@@ -3,9 +3,10 @@ import unforgettables from './unforgettables.js';
 import contemporary from './contemporary.js';
 import newera from './newera.js';
 import variations from './variations.js';
+import iba2024 from './iba2024.js';
 
 const L = {pt: 0, en: 1, es: 2};
-export const STORIES = {...unforgettables, ...contemporary, ...newera, ...variations};
+export const STORIES = {...unforgettables, ...contemporary, ...newera, ...variations, ...iba2024};
 export const storyFor = (id, lang) => STORIES[id]?.[L[lang] ?? 0] || '';
 
 // Nomes que mudam de idioma
@@ -82,6 +83,16 @@ const GLASS_WHY = {
 
 // Casos com explicação própria
 const DRINK_GLASS_WHY = {
+  'sherry-cobbler': [
+    'A IBA manda servir em copo julep com gelo picado: o metal gela e conserva o frio, e o gelo picado, novidade dos anos 1830, é parte da identidade do drink, assim como o canudo, que se popularizou junto com o Cobbler.',
+    'The IBA calls for a julep cup with crushed ice: the metal chills and holds the cold, and crushed ice, a novelty in the 1830s, is part of the drink’s identity, as is the straw, which became popular along with the Cobbler.',
+    'La IBA indica servirlo en vaso julep con hielo picado: el metal enfría y conserva el frío, y el hielo picado, novedad de los años 1830, es parte de la identidad del trago, igual que la pajita, que se popularizó junto con el Cobbler.'
+  ],
+  'rabo-de-galo': [
+    'Como nos botecos, vai num copo baixo com gelo: montado e mexido no próprio copo, sem cerimônia, com uma torção de laranja para perfumar.',
+    'As in Brazilian bars, it goes in a short rocks glass with ice: built and stirred in the glass, no fuss, with an orange twist for aroma.',
+    'Como en los botecos, va en un vaso bajo con hielo: montado y mezclado en el propio vaso, sin ceremonias, con un twist de naranja para perfumar.'
+  ],
   'dry-martini': [
     'A taça em V é o próprio símbolo do Martini. A haste longa mantém o drink gelado, já que ele é servido sem gelo; a boca larga deixa o aroma do gin e do vermute chegar ao nariz, e o cone segura a azeitona no espeto.',
     'The V-shaped glass is the very symbol of the Martini. The long stem keeps the drink cold, since it is served without ice; the wide mouth lets the aroma of gin and vermouth reach your nose, and the cone holds the olive on its pick.',

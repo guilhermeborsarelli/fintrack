@@ -7,7 +7,7 @@ App de coquetéis clássicos em `public/drinks/` (publicado em `/drinks/`). Mód
 
 ## Conteúdo
 
-* **Receitas**: lista oficial da IBA (The Unforgettables, Contemporary Classics, New Era Drinks), em ml, mais variações consagradas fora da lista, cada uma ligada ao clássico de origem (`parent`).
+* **Receitas**: os 102 coquetéis da lista oficial da IBA (34 em cada categoria: The Unforgettables, Contemporary Classics, New Era Drinks), conferidos um a um com as fichas de iba-world.com (copo, medidas, guarnição; cópia em `tools/generate-photos/iba-specs.json`), em ml, mais variações consagradas fora da lista, cada uma ligada ao clássico de origem (`parent`).
 * **Histórias e "por que este copo"**: `stories/` (português, inglês e espanhol). Origens disputadas são apresentadas como tal.
 * **Introdução**: `content.js`. Conceito, linha do tempo, livros de referência (Jerry Thomas, Savoy, Embury, DeGroff, Wondrich, Dave Arnold, Cocktail Codex) e a tendência de fazer drinks em casa.
 

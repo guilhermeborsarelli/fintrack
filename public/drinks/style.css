@@ -1,4 +1,4 @@
-/* Bar Noir — o salão é noir (anos 40: preto, fumaça, luz de persiana) e o cardápio
+/* Home Tender — o salão é noir (anos 40: preto, fumaça, luz de persiana) e o cardápio
    é papel de aquarela marfim, com filigrana dourada e tipografia itálica clássica. */
 :root {
   --night: #0c0b0a;
@@ -69,7 +69,7 @@ button { font: inherit; color: inherit; }
 .masthead { position: relative; z-index: 1; text-align: center; padding: calc(30px + env(safe-area-inset-top)) 16px 8px; }
 .masthead-kicker { margin: 0; font-size: 13px; letter-spacing: .32em; text-transform: uppercase; color: var(--smoke); }
 .masthead-title {
-  margin: 4px 0 0; font-family: var(--title); font-style: italic; font-weight: 500; font-size: clamp(56px, 15vw, 100px); line-height: 1.05; letter-spacing: .01em;
+  margin: 4px 0 0; font-family: var(--title); font-style: italic; font-weight: 500; font-size: clamp(48px, 13.5vw, 96px); line-height: 1.05; letter-spacing: .01em;
   background: linear-gradient(180deg, #f3dfb0 0%, #d6b273 45%, #a98146 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
   filter: drop-shadow(0 2px 0 rgba(0, 0, 0, .6)) drop-shadow(0 0 24px rgba(216, 184, 120, .18));
 }

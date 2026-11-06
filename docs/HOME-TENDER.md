@@ -1,4 +1,4 @@
-# Bar Noir · Coquetéis Clássicos
+# Home Tender · Coquetéis Clássicos
 
 App de drinks independente, em `public/drinks/`, com estética noir dos anos 40. Não usa build nem dependências: são módulos ES estáticos que o Vite copia para `dist/drinks/`.
 

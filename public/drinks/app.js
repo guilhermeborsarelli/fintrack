@@ -248,7 +248,7 @@ function openDrink(id) {
   sheetCard.scrollTop = 0;
   sheetCard.querySelector('.close').addEventListener('click', closeDrink);
   sheetCard.querySelector('.close').focus({preventScroll: true});
-  document.title = `${d.name} · Bar Noir`;
+  document.title = `${d.name} · Home Tender`;
 }
 
 let lastTab = 'cardapio';
@@ -268,7 +268,7 @@ function route() {
     return;
   }
   hideSheet();
-  document.title = 'Bar Noir · Coquetéis Clássicos';
+  document.title = 'Home Tender · Coquetéis Clássicos';
   const t = TABS[tab] ? tab : 'cardapio';
   if (rendered !== t) { TABS[t](); rendered = t; }
   if (lastTab !== t) window.scrollTo({top: 0});

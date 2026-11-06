@@ -1,4 +1,4 @@
-// Bar Noir — regras: o que dá para fazer com o bar do usuário, utensílios e preparo.
+// Home Tender — regras: o que dá para fazer com o bar do usuário, utensílios e preparo.
 import {DRINKS, DRINK_BY_ID, INGREDIENTS, GLASSES, TOOLS, BASICS} from './data.js';
 
 const CITRUS = new Set(['limao', 'siciliano', 'laranja', 'toranja']);

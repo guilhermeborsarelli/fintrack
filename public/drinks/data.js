@@ -1,4 +1,4 @@
-// Bar Noir — base de dados.
+// Home Tender — base de dados.
 // Receitas seguem as especificações da IBA (International Bartenders Association),
 // a lista oficial de coquetéis da coquetelaria internacional, dividida em
 // "The Unforgettables", "Contemporary Classics" e "New Era Drinks".

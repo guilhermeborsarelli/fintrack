@@ -1,4 +1,4 @@
-// Bar Noir — ilustrações em SVG no estilo aquarela dos cardápios impressos:
+// Home Tender — ilustrações em SVG no estilo aquarela dos cardápios impressos:
 // copo de vidro com traço fino e reflexos, líquido em aguada com granulação de pigmento
 // e borda escurecida, e uma mancha de tinta na base. Os filtros ficam em artDefs(),
 // inseridos uma única vez no documento.

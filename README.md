@@ -2,6 +2,8 @@
 
 Aplicativo de finanças pessoais em português para navegador, com interface para iPhone e computador. Organiza gastos de diferentes bancos, renda líquida, orçamentos e projetos futuros. Os lançamentos, PDFs e cálculos ficam no aparelho, sem sincronização bancária. Há um servidor opcional de pesquisa de estabelecimentos, com API de busca e análise contextual opcional; ele recebe nomes/cidade, nunca PDFs, valores ou dados de conta.
 
+> **Bar Noir:** este repositório também publica um app de coquetéis clássicos (lista oficial IBA) em `/drinks/`. Veja docs/BAR-NOIR.md.
+
 ## Executar e validar
 
 Requer Node.js 24.5+ (validado em Node 24) e npm. O servidor usa o suporte nativo a proxy HTTPS do Node.

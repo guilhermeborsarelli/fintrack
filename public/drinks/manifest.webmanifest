@@ -1,0 +1,11 @@
+{
+  "name": "Home Tender · Coquetéis Clássicos",
+  "short_name": "Home Tender",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c0b0a",
+  "theme_color": "#0c0b0a",
+  "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}]
+}

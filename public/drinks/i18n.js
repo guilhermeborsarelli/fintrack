@@ -44,7 +44,19 @@ const UI = {
     usedIn: n => `Usado em ${n} receita${n === 1 ? '' : 's'}`, photoCredits: 'Créditos das fotos',
     methods: {shake: 'Batido', stir: 'Mexido', build: 'Montado no copo', muddle: 'Macerado', blend: 'Batido no liquidificador'},
     serveLabel: {up: 'Sem gelo', neat: 'Sem gelo', rocks: 'Com gelo', big: 'Pedra de gelo', crushed: 'Gelo picado', hot: 'Quente'},
-    language: 'Idioma'
+    language: 'Idioma',
+    recipeKicker: 'A receita', recipeTitle: 'Mãos à obra', difficulty: 'Dificuldade', diffLevels: ['Fácil', 'Médio', 'Avançado'], time: 'Tempo', yieldLabel: 'Rende', yieldValue: '1 drink',
+    youNeed: 'Você vai precisar', stepByStep: 'Passo a passo', stepsHint: 'Toque em cada passo quando terminar.', tipTitle: 'Dica do bartender', improvise: 'Sem utensílios de bar? Improvise:',
+    units: ['colher de sopa', 'colheres de sopa', 'colher de chá', 'colheres de chá'], homeMeasureNote: 'Medidas caseiras aproximadas: 1 colher de sopa ≈ 15 ml.',
+    tips: {
+      shake: 'Bata com vontade, segurando as duas partes da coqueteleira. Quando ela ficar gelada e embaçada por fora, está no ponto.',
+      stir: 'Mexa com calma, girando a colher rente à parede do copo. A ideia é gelar e diluir sem criar bolhas: o drink fica sedoso e transparente.',
+      build: 'Gelo primeiro, bebidas depois: o drink já nasce gelado. Use bastante gelo; pouco gelo derrete rápido e deixa o drink aguado.',
+      muddle: 'Pressione, não triture: o socador só precisa liberar os sucos e os óleos. Ervas esmagadas demais deixam o drink amargo.',
+      blend: 'Use gelo picado e bata em pulsos curtos. Pare assim que ficar cremoso: bater demais derrete o gelo e deixa aguado.',
+      egg: 'Use ovo bem fresco e separe só a clara. O primeiro batido, sem gelo, é o que cria a espuma; não pule essa etapa.'
+    },
+    impro: {coqueteleira: 'Pote de vidro com tampa bem fechada.', dosador: 'Colher de sopa (15 ml) e de chá (5 ml).', socador: 'O cabo de uma colher de pau.', peneira: 'Uma peneirinha de chá.', hawthorne: 'A tampa do pote entreaberta segura o gelo.', julep_strainer: 'Uma colher grande segurando o gelo.', misturador: 'Qualquer copo alto e firme.', bailarina: 'Uma colher comprida ou um hashi.', espremedor: 'Esprema com a mão, sobre uma peneira.', descascador: 'Uma faca pequena, tirando só a parte colorida da casca.', pinca: 'Os dedos limpos, com delicadeza.', chaleira: 'Uma panela no fogo.'}
   },
   en: {
     tagline: 'Your bartender at home', eyebrow: 'Classic mixology',
@@ -75,7 +87,19 @@ const UI = {
     usedIn: n => `Used in ${n} recipe${n === 1 ? '' : 's'}`, photoCredits: 'Photo credits',
     methods: {shake: 'Shaken', stir: 'Stirred', build: 'Built in the glass', muddle: 'Muddled', blend: 'Blended'},
     serveLabel: {up: 'Straight up', neat: 'Neat', rocks: 'On the rocks', big: 'Large ice cube', crushed: 'Crushed ice', hot: 'Hot'},
-    language: 'Language'
+    language: 'Language',
+    recipeKicker: 'The recipe', recipeTitle: 'Let’s make it', difficulty: 'Difficulty', diffLevels: ['Easy', 'Medium', 'Advanced'], time: 'Time', yieldLabel: 'Makes', yieldValue: '1 drink',
+    youNeed: 'You will need', stepByStep: 'Step by step', stepsHint: 'Tap each step as you finish it.', tipTitle: 'Bartender’s tip', improvise: 'No bar tools? Improvise:',
+    units: ['tbsp', 'tbsp', 'tsp', 'tsp'], homeMeasureNote: 'Approximate kitchen measures: 1 tbsp ≈ 15 ml.',
+    tips: {
+      shake: 'Shake hard, holding both parts of the shaker. When it feels ice-cold and frosts on the outside, it’s ready.',
+      stir: 'Stir calmly, gliding the spoon around the inside of the glass. The goal is to chill and dilute without adding bubbles, so the drink stays silky and clear.',
+      build: 'Ice first, then the drinks: it starts cold from the first pour. Use plenty of ice; too little melts fast and waters the drink down.',
+      muddle: 'Press, don’t pulverise: the muddler only needs to release juices and oils. Over-crushed herbs turn the drink bitter.',
+      blend: 'Use crushed ice and blend in short pulses. Stop as soon as it turns creamy: blending too long melts the ice and waters it down.',
+      egg: 'Use a very fresh egg and separate just the white. The first shake, without ice, is what builds the foam, so don’t skip it.'
+    },
+    impro: {coqueteleira: 'A glass jar with a tight lid.', dosador: 'A tablespoon (15 ml) and teaspoon (5 ml).', socador: 'The handle of a wooden spoon.', peneira: 'A small tea strainer.', hawthorne: 'Hold the ice back with the jar lid slightly open.', julep_strainer: 'A large spoon holding back the ice.', misturador: 'Any tall, sturdy glass.', bailarina: 'A long spoon or a chopstick.', espremedor: 'Squeeze by hand over a sieve.', descascador: 'A small knife, taking only the coloured part of the peel.', pinca: 'Clean fingers and a gentle touch.', chaleira: 'A pan on the stove.'}
   },
   es: {
     tagline: 'El bartender de tu casa', eyebrow: 'Coctelería clásica',
@@ -106,7 +130,19 @@ const UI = {
     usedIn: n => `Se usa en ${n} receta${n === 1 ? '' : 's'}`, photoCredits: 'Créditos de las fotos',
     methods: {shake: 'Agitado', stir: 'Revuelto', build: 'Directo en la copa', muddle: 'Macerado', blend: 'En licuadora'},
     serveLabel: {up: 'Sin hielo', neat: 'Sin hielo', rocks: 'Con hielo', big: 'Hielo grande', crushed: 'Hielo picado', hot: 'Caliente'},
-    language: 'Idioma'
+    language: 'Idioma',
+    recipeKicker: 'La receta', recipeTitle: 'Manos a la obra', difficulty: 'Dificultad', diffLevels: ['Fácil', 'Media', 'Avanzada'], time: 'Tiempo', yieldLabel: 'Rinde', yieldValue: '1 cóctel',
+    youNeed: 'Vas a necesitar', stepByStep: 'Paso a paso', stepsHint: 'Toca cada paso al terminarlo.', tipTitle: 'Consejo del bartender', improvise: '¿Sin utensilios de bar? Improvisa:',
+    units: ['cucharada', 'cucharadas', 'cucharadita', 'cucharaditas'], homeMeasureNote: 'Medidas caseras aproximadas: 1 cucharada ≈ 15 ml.',
+    tips: {
+      shake: 'Agita con energía, sujetando las dos partes de la coctelera. Cuando esté helada y empañada por fuera, está lista.',
+      stir: 'Revuelve con calma, deslizando la cuchara por la pared del vaso. La idea es enfriar y diluir sin crear burbujas: el cóctel queda sedoso y transparente.',
+      build: 'Primero el hielo, después las bebidas: el cóctel nace frío. Usa mucho hielo; poco hielo se derrite rápido y lo agua.',
+      muddle: 'Presiona, no tritures: el muddler solo tiene que liberar jugos y aceites. Las hierbas demasiado machacadas amargan el cóctel.',
+      blend: 'Usa hielo picado y licúa en pulsos cortos. Para en cuanto quede cremoso: licuar de más derrite el hielo y lo agua.',
+      egg: 'Usa un huevo muy fresco y separa solo la clara. El primer agitado, sin hielo, es el que crea la espuma: no te lo saltes.'
+    },
+    impro: {coqueteleira: 'Un frasco de vidrio con tapa bien cerrada.', dosador: 'Una cuchara (15 ml) y una cucharita (5 ml).', socador: 'El mango de una cuchara de madera.', peneira: 'Un colador de té.', hawthorne: 'La tapa del frasco entreabierta retiene el hielo.', julep_strainer: 'Una cuchara grande reteniendo el hielo.', misturador: 'Cualquier vaso alto y firme.', bailarina: 'Una cuchara larga o un palillo chino.', espremedor: 'Exprime a mano, sobre un colador.', descascador: 'Un cuchillo pequeño, quitando solo la parte de color de la cáscara.', pinca: 'Los dedos limpios, con delicadeza.', chaleira: 'Una olla al fuego.'}
   }
 };
 

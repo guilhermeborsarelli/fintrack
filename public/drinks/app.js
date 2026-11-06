@@ -1,6 +1,6 @@
 import {DRINKS, DRINK_BY_ID, INGREDIENTS, GROUPS, GLASSES, TOOLS, BASICS, BASE_LABEL} from './data.js';
 import {analyzeBar, toolsFor, stepsFor, amount, ingredientName, parentOf, childrenOf, searchDrinks, normalize, missingFor} from './engine.js';
-import {toolSVG} from './art.js';
+import {toolSVG, glassSVG, ornament, cornerFlourish} from './art.js';
 import {createAuth} from './auth.js';
 import {introHTML, creditsHTML} from './content.js';
 import {storyFor, glassWhyFor, nameFor} from './stories/index.js';
@@ -121,14 +121,57 @@ function renderDrink(id) {
   const g = glassOf(d);
   const showHave = state.bar.size > 0;
   const missing = showHave ? missingFor(d, state.bar) : [];
+  const tools = toolsFor(d);
+  const steps = stepsFor(d, lang);
   const ingRows = d.ing.filter(l => !(l.id === 'agua' && !l.q && !l.ml)).map(l => {
     const has = BASICS.has(l.id) || [l.id, ...(l.alt || [])].some(x => state.bar.has(x));
     const mark = showHave ? `<span class="have ${has ? 'yes' : l.opt ? 'opt' : 'no'}" title="${esc(has ? t('youHave') : t('youLack'))}"></span>` : '';
     const alt = l.alt ? ` <em>${esc(t('or'))} ${esc(l.alt.map(ingName).join(' / '))}</em>` : '';
     const note = l.note ? ` <em>(${esc(trPhrase(l.note))})</em>` : '';
     const qty = l.ml != null ? `${String(l.ml).replace('.', lang === 'en' ? '.' : ',')} ml` : trPhrase(amount(l));
-    return `<li>${mark}<span class="ing-name">${esc(l.note ? ingName(l.id).replace(/\s*\([^()]*\/[^()]*\)$/, '') : ingName(l.id))}${alt}${note}${l.opt ? ` <em>· ${esc(t('optional'))}</em>` : ''}</span><span class="ing-qty">${esc(qty)}</span></li>`;
+    const home = homeMeasure(l.ml);
+    const name = l.note ? ingName(l.id).replace(/\s*\([^()]*\/[^()]*\)$/, '') : ingName(l.id);
+    return `<li>${mark}<span class="ing-name">${esc(name)}${alt}${note}${l.opt ? ` <em>· ${esc(t('optional'))}</em>` : ''}</span><span class="dots" aria-hidden="true"></span><span class="ing-qty">${esc(qty)}${home ? `<small>${esc(home)}</small>` : ''}</span></li>`;
   }).join('');
+  const level = difficulty(d);
+  const egg = d.egg && d.ing.some(l => l.id === 'ovo' && !l.opt);
+  const impro = tools.map(tid => [tid, tm('impro', tid)]).filter(([, txt]) => txt);
+  const anyHome = d.ing.some(l => homeMeasure(l.ml));
+  const corner = `<span class="corner tl">${cornerFlourish(54)}</span><span class="corner tr">${cornerFlourish(54)}</span><span class="corner bl">${cornerFlourish(54)}</span><span class="corner br">${cornerFlourish(54)}</span>`;
+  const recipe = `
+      <section class="recipe-sheet" aria-labelledby="recipe-h">
+        <div class="sheet-inner">
+        ${corner}
+        <p class="sheet-cat">${esc(t('recipeKicker'))}</p>
+        <h2 id="recipe-h" class="sheet-title">${esc(dName(d))}</h2>
+        <p class="sheet-meta"><span class="diff" data-level="${level}" aria-hidden="true"><i></i><i></i><i></i></span>${esc(t('diffLevels')[level])} · ≈ ${prepMinutes(d)} min · ${esc(tm('methods', d.method))}</p>
+        <div class="sheet-orn">${ornament(180)}</div>
+        <div class="sheet-grid">
+          <section class="sheet-block">
+            <h3>${esc(t('glass'))}</h3>
+            <div class="glass-row"><span class="glass-mini">${glassSVG(d.glass, 46)}</span><div><strong>${esc(g.name)}</strong><p>${esc(g.desc)}</p></div></div>
+          </section>
+          <section class="sheet-block">
+            <h3>${esc(t('tools'))}</h3>
+            <ul class="sheet-tools">${tools.map(tid => `<li>${toolSVG(tid, 26)}<span>${esc(trTool(tid, TOOLS[tid]).name)}</span></li>`).join('')}</ul>
+            ${impro.length ? `<details class="impro"><summary>${esc(t('improvise'))}</summary><ul>${impro.map(([tid, txt]) => `<li><strong>${esc(trTool(tid, TOOLS[tid]).name)}:</strong> ${esc(txt)}</li>`).join('')}</ul></details>` : ''}
+          </section>
+        </div>
+        <section class="sheet-block">
+          <h3>${esc(t('ingredients'))}</h3>
+          <ul class="sheet-ing">${ingRows}</ul>
+          ${anyHome ? `<p class="sheet-small">${esc(t('homeMeasureNote'))}</p>` : ''}
+        </section>
+        <section class="sheet-block">
+          <h3>${esc(t('method'))}</h3>
+          <ol class="sheet-steps">${steps.map((st, k) => `<li><button type="button" class="tut-step" aria-pressed="false"><span class="tut-num">${ROMAN[k] || k + 1}</span><span class="tut-txt">${esc(st)}</span></button></li>`).join('')}</ol>
+          <p class="sheet-small">${esc(t('stepsHint'))}</p>
+          ${d.gtext ? `<p class="garnish"><span>${esc(t('garnish'))}</span> ${esc(cap(trPhrase(d.gtext)))}</p>` : ''}
+          <p class="sheet-tip"><span>${esc(t('tipTitle'))}</span> ${esc(tm('tips', egg ? 'egg' : d.method))}</p>
+        </section>
+        <div class="sheet-orn">${ornament(180)}</div>
+        </div>
+      </section>`;
   view.innerHTML = `
     <article class="drink">
       <a class="back" href="#/${state.lastList}">← ${esc(t('back'))}</a>
@@ -151,20 +194,42 @@ function renderDrink(id) {
 
       <section class="drink-sec story"><h2>${esc(t('story'))}</h2><p>${esc(storyFor(d.id, lang))}</p></section>
 
-      <div class="drink-cols">
-        <section class="drink-sec"><h2>${esc(t('ingredients'))}</h2><ul class="ing-list">${ingRows}</ul></section>
-        <section class="drink-sec"><h2>${esc(t('method'))}</h2><ol class="steps">${stepsFor(d, lang).map(s => `<li>${esc(s)}</li>`).join('')}</ol></section>
-      </div>
+      ${recipe}
 
-      <div class="drink-cols">
-        <section class="drink-sec glass-sec"><h2>${esc(t('whyGlass'))}</h2><h3>${esc(g.name)}</h3><p>${esc(glassWhyFor(d, lang))}</p></section>
-        <section class="drink-sec"><h2>${esc(t('tools'))}</h2><ul class="tool-list">${toolsFor(d).map(tid => `<li>${toolSVG(tid, 26)}<span>${esc(trTool(tid, TOOLS[tid]).name)}</span></li>`).join('')}</ul></section>
-      </div>
+      <section class="drink-sec glass-sec"><h2>${esc(t('whyGlass'))}</h2><h3>${esc(g.name)}</h3><p>${esc(glassWhyFor(d, lang))}</p></section>
 
       ${parent ? `<section class="drink-sec related"><h2>${esc(t('originClassic'))}</h2><div class="grid small">${card(parent)}</div></section>` : ''}
       ${kids.length ? `<section class="drink-sec related"><h2>${esc(t('riffsOfThis'))}</h2><div class="grid small">${kids.map(k => card(k)).join('')}</div></section>` : ''}
     </article>`;
+  view.querySelectorAll('.tut-step').forEach(b => b.addEventListener('click', () => {
+    const on = b.getAttribute('aria-pressed') !== 'true';
+    b.setAttribute('aria-pressed', String(on));
+  }));
   document.title = `${dName(d)} · Home Tender`;
+}
+
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+/** Nível para o amador: 0 fácil, 1 médio, 2 avançado. */
+function difficulty(d) {
+  let s = {build: 0, muddle: .5, stir: 1, shake: 1, blend: 1}[d.method] ?? 1;
+  if (d.egg && d.ing.some(l => l.id === 'ovo' && !l.opt)) s += 1;
+  if (d.rim) s += .5;
+  if (d.ing.filter(l => !l.opt).length >= 6) s += 1;
+  return s < 1 ? 0 : s < 2 ? 1 : 2;
+}
+function prepMinutes(d) {
+  return ({build: 2, muddle: 3, stir: 3, shake: 3, blend: 4}[d.method] ?? 3) + (d.egg ? 2 : 0) + (d.rim ? 1 : 0);
+}
+/** Equivalente em colheres de cozinha para quem não tem dosador. */
+function homeMeasure(ml) {
+  if (ml == null || ml < 5 || ml > 75) return '';
+  const U = t('units');
+  const half = n => { const w = Math.floor(n + 1e-9); return `${w || ''}${n - w > .25 ? '½' : ''}` || '½'; };
+  let n, unit;
+  if (Math.abs(ml / 7.5 - Math.round(ml / 7.5)) < 1e-9) { n = ml / 15; unit = 0; }
+  else if (ml < 15 && ml % 5 === 0) { n = ml / 5; unit = 2; }
+  else { n = Math.max(.5, Math.round(ml / 7.5) / 2); unit = 0; }
+  return `≈ ${half(n)} ${U[unit + (n > 1 ? 1 : 0)]}`;
 }
 
 // ── Meu Bar ──

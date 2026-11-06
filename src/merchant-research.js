@@ -1,6 +1,7 @@
 import {merchantKey} from './intelligence.js';
 const clean=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
 export function researchName(description){
+ if(/@|(?:\d[\s./-]*){8,}/.test(description))return null;
  const name=merchantKey(description);
  if(!name||name.length<4||name.length>80||/\d|@|PIX|TRANSFER|PAGAMENTO|SALARIO|BOLETO|CPF|CNPJ|\b(?:TED|DOC)\b/.test(name))return null;
  if(/^(?:MERCADO PAGO|MERCADOPAGO|PAGSEGURO|PICPAY|PAYPAL|SUMUP|STONE|TON|EBANX)$/.test(name))return null;
@@ -10,11 +11,13 @@ const types=[
  [/supermercad|hipermercad|atacadista de alimentos/i,'Alimentação','Supermercado'],
  [/restaurante|lanchonete|cafeteria|rede de fast.food/i,'Alimentação','Restaurantes'],
  [/farmacia|drogaria|farmaceutic/i,'Saúde','Farmácia'],
- [/vestuario|roupas|calcados|artigos esportivos/i,'Compras','Vestuário'],
+ [/vestuario|roupas|calcados|artigos esportivos|confecc|loja de moda/i,'Compras','Vestuário'],
  [/comercio eletronico|e.commerce|loja virtual|marketplace/i,'Compras','Compras online'],
  [/cinema|rede de cinemas/i,'Lazer','Entretenimento'],
  [/companhia aerea|companhia de aviacao|rede hoteleira|hoteis/i,'Lazer','Viagens'],
  [/telecomunicac|telefonia|provedor de internet/i,'Moradia','Internet'],
+ [/aulas de tenis|escola de tenis|academia de ginastica|centro esportivo/i,'Lazer','Esportes e aulas'],
+ [/eletronicos|informatica|equipamentos de informatica/i,'Compras','Eletrônicos'],
  [/livraria/i,'Educação','Livros'],[/pet shop|produtos para animais/i,'Pets','Cuidados e produtos']
 ];
 export function evidenceCategory(text){return types.find(([re])=>re.test(clean(text)));}

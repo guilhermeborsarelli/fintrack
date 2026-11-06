@@ -109,6 +109,13 @@ export function validateBackup(data) {
   }
   for(const r of data.rules) if(typeof r.match!=='string'||typeof r.category!=='string'||typeof r.subcategory!=='string'||!['expense','payment','transfer','income','refund'].includes(r.kind)) throw new Error('Regras inválidas no backup.');
   for(const t of data.transactions)if(t.purchaseTotal!==undefined&&(!Number.isSafeInteger(t.purchaseTotal)||t.purchaseTotal<0))throw new Error('Valor total de parcela inválido.');
+  if(data.researchAuto!==undefined&&typeof data.researchAuto!=='boolean')throw new Error('Preferência de pesquisa inválida.');
+  if(data.researchCity!==undefined&&(typeof data.researchCity!=='string'||data.researchCity.length>60))throw new Error('Localidade de pesquisa inválida.');
+  if(data.researchAttempts!==undefined&&(!Array.isArray(data.researchAttempts)||data.researchAttempts.length>500||data.researchAttempts.some(a=>typeof a.name!=='string'||a.name.length>100||!Number.isFinite(a.at))))throw new Error('Histórico de consultas inválido.');
+  if(data.researchSuggestions!==undefined){
+    if(!Array.isArray(data.researchSuggestions)||data.researchSuggestions.length>100)throw new Error('Sugestões de pesquisa inválidas.');
+    for(const s of data.researchSuggestions){if(typeof s.name!=='string'||s.name.length>100||!Array.isArray(s.candidates)||s.candidates.length>3)throw new Error('Sugestão inválida.');for(const c of s.candidates){if(typeof c.category!=='string'||typeof c.subcategory!=='string'||typeof c.rationale!=='string'||!Array.isArray(c.evidence)||c.evidence.length>20)throw new Error('Evidência inválida.');for(const e of c.evidence)if(typeof e.url!=='string'||typeof e.title!=='string'||typeof e.content!=='string')throw new Error('Fonte inválida.');}}
+  }
   if(data.finance!==undefined)validateFinance(data.finance);
   else data.finance=emptyFinance();
   for(const t of data.transactions)if((t.bank!==undefined&&typeof t.bank!=='string')||(t.account!==undefined&&typeof t.account!=='string')||(t.importKey!==undefined&&typeof t.importKey!=='string'))throw new Error('Identificação bancária inválida.');

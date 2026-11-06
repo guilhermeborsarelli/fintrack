@@ -1,0 +1,23 @@
+# Blueprint opcional: exige conta de hospedagem e valores seguros no painel.
+# Não foi implantado automaticamente. Revise o plano/custo antes de criar o serviço.
+services:
+  - type: web
+    name: meu-bolso-fintrack
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: '24'
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: RESEARCH_SEARCH_KEY
+        sync: false
+      - key: RESEARCH_PASSWORD
+        sync: false
+      - key: RESEARCH_MAX_HOURLY
+        value: '60'

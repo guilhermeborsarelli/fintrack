@@ -1,6 +1,7 @@
+import {calculateIncomeSet} from './tax/engine.js';
 import {forMonth,summary,shiftMonth,money} from './core.js';
 export {emptyFinance,validateFinance} from './finance-schema.js';
-export function incomeFor(f,month){return f.incomes.filter(i=>i.start<=month&&(!i.end||i.end>=month)&&(i.frequency==='monthly'||i.start===month)).reduce((a,i)=>a+i.amount,0);}
+export function incomeFor(f,month){const result=calculateIncomeSet(f.incomes,month);return Math.max(0,result.total-(f.taxReserveEnabled!==false?result.complementaryReserve:0));}
 export const monthDiff=(from,to)=>(+to.slice(0,4)- +from.slice(0,4))*12+ +to.slice(5)- +from.slice(5);
 export function spendingBaseline(transactions,month){
   // Only imported months in the latest three-month window; partial history is explicit in the UI.

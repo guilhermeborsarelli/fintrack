@@ -25,6 +25,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - run: npm run test:server
       - run: VITE_APP_BUILD="$GITHUB_SHA" npm run build -- --base=/fintrack/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

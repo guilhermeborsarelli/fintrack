@@ -32,25 +32,8 @@ A documentação web de outros produtos e as fontes governamentais não puderam 
 4. Calibrar confiança com resultados reais; não converter rótulos heurísticos em probabilidades inventadas.
 5. Não atingir cobertura à custa de erros: Mercado Pago, PIX e lojas com múltiplos ramos exigem contexto adicional.
 
-## Rendas e tributos — estado e escopo
+## Rendas e tributos — implementação atual
 
-A aba Rendas permite CLT, autônomo PF (clientes PF, PJ/RPA ou ambos), MEI e PJ Simples. O planejamento recebe o líquido calculado por **bruto menos valores de descontos/custos informados**, sem dupla contagem com o extrato. Isso não é cálculo automático da tributação.
+O motor mensal automático está documentado em [MOTOR-FISCAL.md](MOTOR-FISCAL.md). Parâmetros de 2026 foram conferidos por fontes secundárias abertas e aritmética independente; a consulta primária governamental continuou bloqueada. Os cálculos cobrem cenários regulares de CLT, PF, MEI e Simples, com limites explícitos. Apuração anual e regimes especiais não são apresentados como concluídos.
 
-O usuário informou pessoa física e São Paulo capital como primeiro município. Para uma apuração automática confiável, ainda é necessário confirmar:
-
-- INSS progressivo CLT, teto e vínculos concomitantes, dependentes, pensão e descontos de folha;
-- tabela IRRF, desconto simplificado versus deduções legais, reduções vigentes na competência, rendimentos de múltiplas fontes e ajuste anual;
-- autônomo PF: contratante PF/PJ, retenções, contribuição previdenciária efetiva, livro-caixa/deduções admitidas, Carnê-Leão e ISS municipal/condição de profissional autônomo;
-- MEI: ocupação, elegibilidade, DAS conforme atividade, faturamento e limite, parcela tributável/isenta dos rendimentos da pessoa física;
-- Simples: atividade, anexo, RBT12, fator R quando aplicável, faixa e parcela a deduzir, pró-labore/INSS e distribuição de lucros. Faturamento da PJ não é automaticamente renda disponível da pessoa física.
-
-Não foi inserida uma tabela fiscal de memória nem apresentada subtração de descontos como apuração exata. O cálculo anual de CLT + autônomo não é a simples soma dos impostos isolados mensais.
-
-### Fontes cuja consulta permanece bloqueada
-
-- Receita Federal, tabelas: https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026
-- Portal da legislação federal: https://www.planalto.gov.br/
-- Legislação municipal: https://legislacao.prefeitura.sp.gov.br/
-- Prefeitura de São Paulo: https://capital.sp.gov.br/
-
-Domínios foram acrescentados ao rascunho de rede, preservando os anteriores. É necessário revisar, salvar e publicar o ambiente para aplicar o rascunho. Salvar o rascunho não libera a rede da instância atual automaticamente. Até lá, a pesquisa fiscal e o cálculo automático de alíquotas permanecem bloqueados.
+A busca ampliada passou a usar o serviço descrito em [PESQUISA-WEB.md](PESQUISA-WEB.md), com credenciais no servidor, hipóteses e fontes. Foi testada com provedores simulados; conexão real e hospedagem permanecem pré-requisitos externos.

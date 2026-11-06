@@ -1,10 +1,10 @@
 # Meu Bolso · Fintrack
 
-Aplicativo de finanças pessoais em português para navegador, com interface para iPhone e computador. Organiza gastos de diferentes bancos, renda líquida, orçamentos e projetos futuros. Dados ficam no aparelho: não há backend, conta, sincronização nem conexão com APIs bancárias ou de IA.
+Aplicativo de finanças pessoais em português para navegador, com interface para iPhone e computador. Organiza gastos de diferentes bancos, renda líquida, orçamentos e projetos futuros. Os lançamentos, PDFs e cálculos ficam no aparelho, sem sincronização bancária. Há um servidor opcional de pesquisa de estabelecimentos, com API de busca e análise contextual opcional; ele recebe nomes/cidade, nunca PDFs, valores ou dados de conta.
 
 ## Executar e validar
 
-Requer Node.js 22.12+ (validado em Node 24) e npm.
+Requer Node.js 24.5+ (validado em Node 24) e npm. O servidor usa o suporte nativo a proxy HTTPS do Node.
 
 ```sh
 cd /workspace/fintrack
@@ -12,11 +12,12 @@ npm ci
 npm run dev
 ```
 
-O servidor usa a porta 5173. `npm run build` gera `dist`, publicável em hospedagem estática HTTPS. `npm run preview` permite conferir o build local. O código foi enviado ao GitHub para preparar a publicação. A ativação do GitHub Pages ainda precisa ser concluída; não há link público verificado neste momento. Consulte PUBLICACAO.md.
+O servidor usa a porta 5173. `npm run build` gera `dist`, publicável em hospedagem estática HTTPS. `npm run preview` permite conferir o build local. O código foi enviado ao GitHub para preparar a publicação. O frontend usa GitHub Pages. A API de pesquisa exige hospedagem Node; o GitHub Pages não executa a API. Consulte PUBLICACAO.md e docs/PESQUISA-WEB.md.
 
 ```sh
 npm test           # lógica financeira, importadores e migração de backups
 npm run build
+npm run test:server
 npm run test:e2e   # fluxos reais no Chromium
 ```
 
@@ -50,7 +51,7 @@ Cada parcela conta somente pelo valor mensal no mês da fatura selecionado. Ex.:
 
 Na aba **Planejamento**:
 
-1. Em **Salário e rendas**, cadastre valores **líquidos**: salário, aluguel, freelas etc., mensais ou pontuais, com início e fim opcionais. Receitas importadas continuam disponíveis em Análises, mas não são adicionadas novamente à renda planejada.
+1. Em **Rendas**, informe o bruto e escolha cálculo automático de 2026 para CLT, autônomo PF, MEI ou Simples; ou use líquido/descontos já conhecidos. O formulário calcula o líquido, que alimenta o planejamento. Receitas importadas continuam em Análises e não são somadas novamente.
 2. Em **Orçamento**, defina limites mensais por categoria, incluindo contas fixas. Categorias sem limite usam a média dos meses com despesas disponíveis na janela de três meses até a referência selecionada. Histórico parcial pode subestimar despesas; o app informa quantos meses estão disponíveis.
 3. Ajuste a **margem de segurança** mensal que deve ficar fora dos aportes.
 4. Em **Projetos e metas**, inclua viagem, casamento, reserva ou qualquer projeto com custo, valor já reservado, prazo e prioridade.
@@ -88,16 +89,25 @@ A demonstração usa dados fictícios separados; edições não são permitidas 
 
 - “Inclusão de Pagamento”, abreviações e outras descrições de pagamento de cartão ficam fora dos gastos. O carregamento reclassifica lançamentos antigos reconhecidos, sem exigir reimportação; correções explicitamente travadas pelo usuário são preservadas.
 - Nomes são normalizados para reconhecer intermediadores como `PAG*`/`SUMUP*`. Correções aprendidas resolvem descrições equivalentes. Intermediador sem estabelecimento continua ambíguo. Evidência de classificação não elimina pendências financeiras de saldo, PIX ou valores ambíguos.
-- Na prévia e em Lançamentos, **Pesquisar estabelecimentos desconhecidos** oferece grupos únicos de nomes para seleção. Só os nomes selecionados são consultados na API pública da Wikipédia; nunca são enviados PDF, senha, data ou valor. Números, PIX e descrições sensíveis são excluídos. A consulta exige nome exato e contexto de empresa/atividade, mostra link da fonte, aprende o resultado e mantém desconhecidos pendentes. É uma consulta restrita à Wikipédia, não busca geral na web nem um modelo de IA. Empresas locais podem não ter verbete. Falhas de rede/CORS são informadas, sem inventar categorias. O teste automatizado usa resposta simulada para a consulta externa; disponibilidade da API ao vivo não foi verificada neste ambiente.
+- Na prévia há consulta limitada pela Wikipédia. Em Lançamentos, a pesquisa ampliada usa consultas sobre cobrança de cartão/estabelecimento, retorna fontes e hipóteses e pode ser autorizada para próximas importações. Ela exige o servidor e credencial de busca; a versão estática indica quando não está conectada. Citações e CNPJ são verificados pelo serviço antes de permitir aplicação automática. Veja [docs/PESQUISA-WEB.md](docs/PESQUISA-WEB.md).
 - Em documentos cujos valores parcelados já são mensais (padrão), não dividimos novamente. A tela mostra a parcela atual e total, como “3 de 10”. Ao importar ou editar, é possível informar explicitamente que o valor é o **custo total da compra**, para dividi-lo pelas parcelas. Restos de centavos são distribuídos nas primeiras parcelas. Essa conversão não é aplicada automaticamente ao histórico, pois não é seguro inferir se um valor antigo é mensal ou total.
 
 ## Revisão em lote e aba Rendas
 
 A aba Lançamentos mostra a taxa real de pendências e, em **Para conferir**, agrupa estabelecimentos equivalentes: uma decisão pode classificar várias compras de uma vez. Isso não equivale a atingir automaticamente 95–97% de cobertura. Pendências financeiras exigem confirmação explícita de valores/sentido de movimentação. CSV com `MCC` e OFX com `SIC` usam um mapa inicial de ramos bancários; PDFs sem esse código continuam dependendo de nomes e regras.
 
-A aba **Rendas**, separada do planejamento, permite CLT, autônomo pessoa física, MEI e Simples. **Ainda não calcula automaticamente as alíquotas e obrigações fiscais.** Até a verificação das fontes vigentes, calcula o líquido somente subtraindo do bruto os tributos/descontos/custos informados pelo usuário. Isso não é apuração tributária nem substitui ajuste anual. Rendas antigas permanecem como líquidos já informados.
+A aba **Rendas** oferece:
 
-A pesquisa técnica, evidências, limitações e requisitos para o motor fiscal de São Paulo capital estão em [docs/PESQUISA-CLASSIFICACAO-E-TRIBUTOS.md](docs/PESQUISA-CLASSIFICACAO-E-TRIBUTOS.md). Fontes governamentais foram bloqueadas pela política de rede; os domínios necessários foram salvos no rascunho do ambiente e ainda precisam de aplicação pelo produto.
+- **CLT:** INSS progressivo, teto, IR com dedução mais favorável e redução de 2026, dependentes, pensão e VT percentual/custo real. Um salário bruto de R$ 5.000 com VT de 1% resulta em R$ 4.448,49 no cenário regular.
+- **Autônomo PF:** cenários separados para PF/exterior e PJ/RPA, contribuição previdenciária, despesas documentadas e situação do ISS em São Paulo.
+- **MEI:** DAS fixo por atividade, limite proporcional, custos da empresa e provisão pessoal sobre a parcela de lucro potencialmente tributável.
+- **Simples:** anexos I–V dentro do sublimite suportado, fator R, início de atividade, folha, encargos e pró-labore; separa lucro e caixa da empresa do dinheiro do sócio.
+- **Várias fontes:** coordenação de contribuições automáticas e provisão complementar mensal de IR, reservada no orçamento por padrão.
+- **Descontos já apurados / outros regimes:** opção explícita para casos com dados fiscais próprios. Backups antigos preservam o líquido informado, sem interpretar líquido como bruto.
+
+É uma simulação mensal versionada, não declaração anual nem apuração universal de todo CNPJ. Não gera guias ou recolhimentos. Parâmetros foram corroborados em fontes secundárias abertas e por aritmética independente; a verificação direta das páginas governamentais permaneceu bloqueada nesta sessão. Detalhes, fontes, regras e limites em [docs/MOTOR-FISCAL.md](docs/MOTOR-FISCAL.md).
+
+A pesquisa comparativa e critérios de cobertura estão em [docs/PESQUISA-CLASSIFICACAO-E-TRIBUTOS.md](docs/PESQUISA-CLASSIFICACAO-E-TRIBUTOS.md). A arquitetura e os pré-requisitos reais de busca estão em [docs/PESQUISA-WEB.md](docs/PESQUISA-WEB.md).
 
 ### Analisar todas as pendências de uma vez
 
@@ -108,3 +118,14 @@ Em **Lançamentos → Compartilhar pendências**, o app gera uma prévia editáv
 O catálogo reconhece assinaturas de software e criadores, reservas de viagem, companhias aéreas, trens, transporte público, pontos/milhas, loterias, eletrônicos, delivery, doces e lojas de conveniência. Prefixos numéricos são removidos para marcas já confirmadas; por exemplo, um identificador de filial antes de BF Shop não impede a correspondência com Brooksfield. O intermediador `TON` é tratado como prefixo, não como qualquer ocorrência dessas letras dentro de outro estabelecimento. Em compras com prefixo IFD, atividades específicas como farmácia, produtos para pets e entretenimento têm precedência sobre o canal de delivery.
 
 Essas regras também reclassificam o histórico pendente ao carregar o app, preservando valores, datas, parcelas e correções manuais. Reconhecer o estabelecimento não encerra pendências sobre valor em reais, cotação ou saldo. A redução das pendências depende das descrições de cada arquivo; não há garantia de atingir a meta de 5% em todo extrato.
+
+## Versão com pesquisa integrada
+
+```sh
+npm run build
+npm start
+```
+
+O servidor usa a porta 8787 e serve o frontend com a API na mesma origem. Configure as credenciais somente no ambiente do servidor, conforme `.env.example`; senha é obrigatória em produção e a hospedagem pública deve fornecer HTTPS. O blueprint `render.yaml` é opcional e não foi implantado nesta sessão. Falta credencial real de busca e hospedagem para verificar consultas ao vivo. Uma integração de provedor não deve ser descrita como ativa apenas porque os testes com respostas simuladas passaram.
+
+Dados de navegador não acompanham mudança de origem: exporte o backup no endereço antigo e restaure no novo antes de limpar qualquer armazenamento.

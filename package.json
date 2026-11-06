@@ -5,20 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build && node tools/version-drinks.mjs",
+    "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test": "node tests/all.test.js",
     "test:e2e": "playwright test",
     "start": "node --use-env-proxy --env-file-if-exists=.env server/index.js",
-    "test:server": "node tests/server.test.js",
-    "render:drinks": "node tools/render-drinks/render.cjs"
+    "test:server": "node tests/server.test.js"
   },
   "dependencies": {
     "pdfjs-dist": "^5.4.530"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
-    "three": "^0.170.0",
     "vite": "^7.2.2"
   },
   "engines": {

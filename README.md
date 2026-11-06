@@ -2,7 +2,7 @@
 
 Aplicativo de finanças pessoais em português para navegador, com interface para iPhone e computador. Organiza gastos de diferentes bancos, renda líquida, orçamentos e projetos futuros. Os lançamentos, PDFs e cálculos ficam no aparelho, sem sincronização bancária. Há um servidor opcional de pesquisa de estabelecimentos, com API de busca e análise contextual opcional; ele recebe nomes/cidade, nunca PDFs, valores ou dados de conta.
 
-> **Home Tender:** este repositório também publica um app de coquetéis clássicos (lista oficial IBA) em `/drinks/`. Veja docs/HOME-TENDER.md.
+> O app de coquetéis **Home Tender**, que morava em `/drinks/`, agora tem repositório próprio: https://github.com/guilhermeborsarelli/hometender (o endereço antigo redireciona).
 
 ## Executar e validar
 

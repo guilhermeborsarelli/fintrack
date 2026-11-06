@@ -53,6 +53,8 @@ export const INGREDIENTS = {
   amaretto: {name: 'Amaretto', group: 'Licores'},
   galliano: {name: 'Galliano', group: 'Licores'},
   licor_cafe: {name: 'Licor de café', group: 'Licores'},
+  licor_43: {name: 'Licor 43', group: 'Licores'},
+  baileys: {name: 'Baileys (licor de creme irlandês)', group: 'Licores'},
   cassis: {name: 'Crème de cassis', group: 'Licores'},
   mure: {name: 'Crème de mûre (amora)', group: 'Licores'},
   framboesa_licor: {name: 'Licor de framboesa', group: 'Licores'},
@@ -598,6 +600,10 @@ export const DRINKS = [
   {id: 'white-russian', name: 'White Russian', cat: 'adaptation', parent: 'black-russian', base: 'vodka', glass: 'rocks', method: 'build', serve: 'rocks',
     ing: [i('vodka', 50), i('licor_cafe', 20), i('creme_leite', 30)], garnish: [], gtext: '', color: '#3a2014', color2: '#efe6d2', layerTop: true, layerH: 16,
     steps: ['No copo old fashioned com gelo, adicione a vodka e o licor de café.', 'Despeje o creme por cima, sobre o dorso da colher bailarina.', 'Sirva com a camada; mexa ao beber.']},
+  {id: 'mudslide', name: 'Mudslide', cat: 'adaptation', parent: 'white-russian', base: 'vodka', glass: 'rocks', method: 'shake', serve: 'rocks',
+    ing: [i('vodka', 30), i('licor_cafe', 30), i('baileys', 30)], garnish: [], gtext: 'chocolate ralado (opcional)', color: '#8a6446', creamy: true},
+  {id: 'carajillo', name: 'Carajillo', cat: 'adaptation', parent: 'espresso-martini', base: 'licor_43', glass: 'rocks', method: 'shake', serve: 'rocks',
+    ing: [i('licor_43', 45), i('cafe', 45, {note: 'espresso recém-tirado'})], garnish: ['coffee_beans'], gtext: 'três grãos de café', color: '#3b2112', foam: true, foamColor: '#b98a5a'},
   {id: 'godfather', name: 'Godfather', cat: 'adaptation', parent: 'french-connection', base: 'scotch', glass: 'rocks', method: 'build', serve: 'rocks',
     ing: [i('scotch', 45), i('amaretto', 25)], garnish: [], gtext: '', color: '#a35a22'},
   {id: 'godmother', name: 'Godmother', cat: 'adaptation', parent: 'french-connection', base: 'vodka', glass: 'rocks', method: 'build', serve: 'rocks',
@@ -633,5 +639,5 @@ export const BASE_LABEL = {
   bourbon: 'Whiskey', scotch: 'Whiskey', irish: 'Whiskey', conhaque: 'Conhaque & Brandy', calvados: 'Conhaque & Brandy', pisco: 'Conhaque & Brandy',
   espumante: 'Vinhos & Espumantes', vinho_branco: 'Vinhos & Espumantes', porto: 'Vinhos & Espumantes',
   chartreuse_verde: 'Aperitivos & Licores', angostura: 'Aperitivos & Licores', grappa: 'Conhaque & Brandy', jerez: 'Vinhos & Espumantes',
-  campari: 'Aperitivos & Licores', aperol: 'Aperitivos & Licores', fernet: 'Aperitivos & Licores', galliano: 'Aperitivos & Licores', menta: 'Aperitivos & Licores', amaretto: 'Aperitivos & Licores'
+  campari: 'Aperitivos & Licores', aperol: 'Aperitivos & Licores', fernet: 'Aperitivos & Licores', galliano: 'Aperitivos & Licores', menta: 'Aperitivos & Licores', amaretto: 'Aperitivos & Licores', licor_43: 'Aperitivos & Licores', baileys: 'Aperitivos & Licores'
 };

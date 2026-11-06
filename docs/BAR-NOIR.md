@@ -25,7 +25,7 @@ Toda ficha de drink mostra o desenho, o copo, os utensílios, os ingredientes co
 | --- | --- |
 | `data.js` | Ingredientes, copos, utensílios e receitas |
 | `engine.js` | Correspondência com o bar do usuário, utensílios derivados do método, passo a passo |
-| `art.js` | Ilustrações SVG geradas (copo, líquido, gelo, guarnições) |
+| `art.js` | Ilustrações SVG em aquarela (copo, líquido, gelo, guarnições, arabescos dourados) |
 | `app.js`, `style.css`, `index.html` | Interface |
 
 Testes: `tests/drinks.test.js` (rodam junto com `npm test`).

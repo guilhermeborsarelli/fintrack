@@ -1,11 +1,13 @@
 import {CATEGORIES, DRINKS, DRINK_BY_ID, INGREDIENTS, GROUPS, GLASSES, TOOLS, BASICS, BASE_LABEL} from './data.js';
 import {analyzeBar, toolsFor, stepsFor, amount, ingredientName, parentOf, childrenOf, searchDrinks, normalize, missingFor} from './engine.js';
-import {drinkSVG, glassSVG, toolSVG, ornament} from './art.js';
+import {drinkSVG, glassSVG, toolSVG, ornament, divider, cornerFlourish, artDefs} from './art.js';
 
 const view = document.getElementById('view');
 const sheet = document.getElementById('sheet');
 const sheetCard = sheet.querySelector('.sheet');
+document.body.insertAdjacentHTML('afterbegin', artDefs());
 document.getElementById('mast-orn').innerHTML = ornament(240);
+const CORNERS = ['tl', 'tr', 'bl', 'br'].map(c => `<span class="corner ${c}" aria-hidden="true">${cornerFlourish(58)}</span>`).join('');
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 
@@ -39,7 +41,7 @@ function renderMenu() {
     if (!items.length) return '';
     const c = CATEGORIES[cat];
     return `<section class="menu-card" aria-labelledby="h-${cat}">
-      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      ${CORNERS}
       <p class="menu-script">Cardápio</p>
       <h2 class="menu-cat" id="h-${cat}">${esc(c.label)}</h2>
       <p class="menu-en">${esc(c.en)}${cat === 'adaptation' ? '' : ' · lista oficial IBA'}</p>
@@ -69,11 +71,14 @@ function rerenderMenuKeepFocus() {
 
 function menuItem(d) {
   return `<li><a class="menu-item" href="#/drink/${d.id}">
-    <span class="menu-art">${drinkSVG(d, {size: 84})}</span>
-    <span class="menu-name">${esc(d.name)}</span>
-    <span class="menu-ing">${esc(ingredientLine(d))}</span>
-    <span class="menu-glass">${esc(GLASSES[d.glass].name)}</span>
-  </a></li>`;
+    <span class="menu-art">${drinkSVG(d, {size: 104})}</span>
+    <span class="menu-text">
+      <span class="menu-name">${esc(d.name)}</span>
+      <span class="menu-rule" aria-hidden="true"></span>
+      <span class="menu-ing">${esc(ingredientLine(d))}</span>
+      <span class="menu-glass">${esc(GLASSES[d.glass].name)}</span>
+    </span>
+  </a><span class="menu-div">${divider(220)}</span></li>`;
 }
 
 // ── Meu Bar ──
@@ -142,7 +147,7 @@ function renderResults() {
   if (r.featured) {
     const d = r.featured.drink; const parent = parentOf(d);
     html += `<article class="featured paper">
-      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      ${CORNERS}
       <p class="menu-script">Sugestão da casa</p>
       ${r.mode === 'adaptation' ? `<p class="verdict">Nenhum clássico da IBA fecha com a sua prateleira. Mas a coquetelaria tem resposta: uma adaptação reconhecida${parent ? ` do <strong>${esc(parent.name)}</strong>` : ''}.</p>` : `<p class="verdict">Com o que você tem, dá para servir um clássico oficial.</p>`}
       <a class="featured-link" href="#/drink/${d.id}">
@@ -168,7 +173,7 @@ function renderGlossary() {
   const toolUse = id => DRINKS.filter(d => toolsFor(d).includes(id)).length;
   view.innerHTML = `
     <section class="menu-card">
-      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      ${CORNERS}
       <p class="menu-script">A casa</p><h2 class="menu-cat">Os Copos</h2><p class="menu-en">Glassware</p>
       <div class="menu-orn">${ornament(200)}</div>
       <ul class="gloss-grid">${Object.entries(GLASSES).map(([id, g]) => `<li class="gloss">
@@ -178,7 +183,7 @@ function renderGlossary() {
       </li>`).join('')}</ul>
     </section>
     <section class="menu-card">
-      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      ${CORNERS}
       <p class="menu-script">Atrás do balcão</p><h2 class="menu-cat">Os Utensílios</h2><p class="menu-en">Barware</p>
       <div class="menu-orn">${ornament(200)}</div>
       <ul class="gloss-grid tools">${Object.entries(TOOLS).map(([id, t]) => `<li class="gloss">
@@ -208,7 +213,7 @@ function openDrink(id) {
   sheetCard.innerHTML = `
     <button class="close" type="button" aria-label="Fechar">✕</button>
     <div class="sheet-inner">
-    <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    ${CORNERS}
     <p class="sheet-cat">${esc(CATEGORIES[d.cat].short)}</p>
     <div class="sheet-art">${drinkSVG(d, {size: 190})}</div>
     <h2 id="sheet-title" class="sheet-title">${esc(d.name)}</h2>

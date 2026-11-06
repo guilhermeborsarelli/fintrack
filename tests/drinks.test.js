@@ -139,3 +139,19 @@ test('nome da marca não muda e o preparo traduzido sai sem resíduos', async ()
   }
   setLang('pt');
 });
+
+test('lista de roteiros das fotos cobre todos os drinks sem foto real', () => {
+  const numbers = JSON.parse(readFileSync(new URL('../tools/generate-photos/numbers.json', import.meta.url), 'utf8'));
+  const photos = JSON.parse(readFileSync(new URL('../public/drinks/img/drinks/photos.json', import.meta.url), 'utf8'));
+  const mapped = new Set(Object.values(numbers));
+  for (const id of mapped) assert.ok(DRINK_BY_ID[id], `numbers.json aponta para drink inexistente: ${id}`);
+  for (const d of DRINKS) assert.ok(mapped.has(d.id) || photos.includes(d.id), `${d.id} sem número na lista de fotos`);
+});
+
+test('service worker e manifesto prontos para instalar o app', () => {
+  const sw = readFileSync(new URL('../public/drinks/sw.js', import.meta.url), 'utf8');
+  assert.match(sw, /__HT_VERSION__/); assert.match(sw, /__HT_FILES__/);
+  const manifest = JSON.parse(readFileSync(new URL('../public/drinks/manifest.webmanifest', import.meta.url), 'utf8'));
+  for (const icon of manifest.icons) assert.ok(existsSync(new URL(`../public/drinks/${icon.src}`, import.meta.url)), icon.src);
+  assert.ok(manifest.icons.some(i => i.purpose === 'maskable'));
+});

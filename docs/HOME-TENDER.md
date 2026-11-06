@@ -51,3 +51,32 @@ Para um app pago é preciso um backend:
 | `img/` | Fotos de abertura (Wikimedia Commons, créditos no app) e renders 3D dos drinks |
 
 Testes: `tests/drinks.test.js` (rodam com `npm test`).
+
+## Fotos feitas à mão (ChatGPT ou outra ferramenta)
+
+1. Os roteiros estão em `docs/FOTOS-ROTEIROS.txt`, numerados de 001 a 143.
+2. Salve cada imagem com o número do roteiro (ex.: `017.png`) ou com o nome do drink (ex.: `negroni.jpg`) e junte tudo num `.zip`.
+3. Importe com `node tools/generate-photos/import.mjs fotos.zip` (use `--dry` para só conferir).
+   Cada imagem é recortada em 4:5, reduzida para 960×1200, salva em WebP em `public/drinks/img/drinks/<id>.webp`
+   e entra em `photos.json`, que impede o render 3D de sobrescrevê-la. O número → drink está em
+   `tools/generate-photos/numbers.json`. Precisa do ImageMagick (`convert`).
+
+## App instalável e sem internet
+
+- `manifest.webmanifest` com ícones PNG (192, 512 e maskable) e `apple-touch-icon.png` para o iPhone.
+- `sw.js` (service worker): a página vem da rede quando há conexão; módulos, imagens e ícones ficam guardados no aparelho.
+  O build (`tools/version-drinks.mjs`) carimba a versão e a lista de arquivos; versões antigas são apagadas sozinhas.
+  O service worker só é registrado na versão publicada (com import map), nunca no servidor de desenvolvimento.
+- Na tela Início aparece o convite para instalar (botão no Android/Chrome; instruções no iPhone). Fechar o convite é lembrado.
+
+## Favoritos, "Já fiz", quantidade e próxima compra
+
+- Favoritos e "Já fiz" ficam por usuário em `hometender.fav.<email>` e `hometender.done.<email>`; aparecem em "Meus drinks", no topo do Meu Bar.
+  Concluir todos os passos da receita marca "Já fiz" sozinho.
+- A folha da receita tem o seletor 1 / 2 / 4 / 6 drinks: multiplica as medidas em ml e a medida caseira; doses em texto ganham "× n".
+- "Próxima compra" (Meu Bar): os ingredientes que, comprados, completam mais receitas com o que a pessoa já tem.
+
+## Entrada sem cadastro (só durante o desenvolvimento)
+
+`DEV_FREE_ENTRY = true` em `public/drinks/app.js` mostra na capa o botão "Entrar sem cadastro (versão de teste)".
+Mude para `false` antes do lançamento.

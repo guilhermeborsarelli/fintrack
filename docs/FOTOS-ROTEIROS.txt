@@ -1282,7 +1282,7 @@ Photo of the White Russian cocktail, a classic variation of the Black Russian, m
 GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
 SERVE: with clear ice cubes.
 RECIPE: 50 ml Vodka; 20 ml Coffee liqueur; 30 ml Fresh cream.
-LOOK: very dark, almost black liquid, with a crystal-clear, almost colorless layer floating on top.
+LOOK: very dark, almost black liquid, with a thick layer of fresh white cream floating on top.
 GARNISH: none.
 
 141 · YELLOW BIRD
@@ -1294,3 +1294,20 @@ RECIPE: 30 ml White rum; 15 ml Galliano; 15 ml Triple sec; 15 ml Lime.
 LOOK: golden amber liquid.
 GARNISH: none.
 
+142 · CARAJILLO
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Carajillo cocktail, a classic variation of the Espresso Martini, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 45 ml Licor 43; 45 ml Espresso.
+LOOK: very dark, almost black liquid, smooth velvety foam on top.
+GARNISH: three coffee beans.
+
+143 · MUDSLIDE
+   (Variação consagrada · copo clássico: Copo old fashioned)
+Photo of the Mudslide cocktail, a classic variation of the White Russian, made as the classic recipe.
+GLASS (mandatory, classic standard): a heavy crystal old fashioned rocks glass with a thick cut-glass base. Use exactly this glass, do not replace it with another type.
+SERVE: with clear ice cubes.
+RECIPE: 30 ml Vodka; 30 ml Coffee liqueur; 30 ml Baileys Irish Cream.
+LOOK: creamy, opaque, milky light coffee-brown liquid.
+GARNISH: grated chocolate (optional).

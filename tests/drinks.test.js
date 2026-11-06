@@ -53,3 +53,24 @@ test('todo drink tem copo, utensílios, preparo e desenho', () => {
     assert.doesNotMatch(svg, /NaN|undefined/, d.id);
   }
 });
+
+import {createAuth} from '../public/drinks/auth.js';
+const memoryStorage = () => { const m = new Map(); return {getItem: k => m.has(k) ? m.get(k) : null, setItem: (k, v) => m.set(k, String(v)), removeItem: k => m.delete(k), dump: m}; };
+
+test('conta local: cria, entra, recusa senha errada e não guarda a senha', async () => {
+  const storage = memoryStorage();
+  const auth = createAuth(storage);
+  assert.equal(auth.current(), null);
+  const user = await auth.register({name: 'Ana Brito', email: ' Ana@Exemplo.com ', password: 'segredo1'});
+  assert.deepEqual(user, {email: 'ana@exemplo.com', name: 'Ana Brito'});
+  assert.equal(auth.current().name, 'Ana Brito');
+  assert.doesNotMatch([...storage.dump.values()].join(''), /segredo1/);
+  auth.logout();
+  assert.equal(auth.current(), null);
+  await assert.rejects(auth.login({email: 'ana@exemplo.com', password: 'errada'}), /incorretos/);
+  await assert.rejects(auth.login({email: 'ninguem@exemplo.com', password: 'segredo1'}), /incorretos/);
+  assert.equal((await auth.login({email: 'ANA@exemplo.com', password: 'segredo1'})).name, 'Ana Brito');
+  await assert.rejects(auth.register({name: 'Ana', email: 'ana@exemplo.com', password: 'outra123'}), /Já existe/);
+  await assert.rejects(auth.register({name: 'Bia', email: 'bia@', password: 'segredo1'}), /e-mail/);
+  await assert.rejects(auth.register({name: 'Bia', email: 'bia@exemplo.com', password: '123'}), /6 caracteres/);
+});

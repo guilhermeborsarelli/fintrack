@@ -1,12 +1,13 @@
 import {CATEGORIES, DRINKS, DRINK_BY_ID, INGREDIENTS, GROUPS, GLASSES, TOOLS, BASICS, BASE_LABEL} from './data.js';
 import {analyzeBar, toolsFor, stepsFor, amount, ingredientName, parentOf, childrenOf, searchDrinks, normalize, missingFor} from './engine.js';
 import {drinkSVG, glassSVG, toolSVG, ornament, divider, cornerFlourish, artDefs} from './art.js';
+import {createAuth} from './auth.js';
+import {introHTML, creditsHTML} from './content.js';
 
 const view = document.getElementById('view');
 const sheet = document.getElementById('sheet');
 const sheetCard = sheet.querySelector('.sheet');
 document.body.insertAdjacentHTML('afterbegin', artDefs());
-document.getElementById('mast-orn').innerHTML = ornament(240);
 const CORNERS = ['tl', 'tr', 'bl', 'br'].map(c => `<span class="corner ${c}" aria-hidden="true">${cornerFlourish(58)}</span>`).join('');
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
@@ -16,11 +17,19 @@ const store = {
   get(key, fallback) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch { return fallback; } },
   set(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* modo privado */ } }
 };
+const auth = createAuth();
 const state = {
-  bar: new Set(store.get('barnoir.bar', []).filter(id => INGREDIENTS[id])),
-  cat: 'all', base: 'all', q: '', barQ: ''
+  user: null, bar: new Set(),
+  cat: {classicos: 'all', adaptacoes: 'adaptation'}, base: 'all', q: '', barQ: ''
 };
-const saveBar = () => store.set('barnoir.bar', [...state.bar]);
+const barKey = () => `hometender.bar.${state.user?.email || 'convidado'}`;
+function loadBar() {
+  // O bar de cada pessoa fica separado; o bar salvo antes das contas passa para a primeira conta.
+  const saved = store.get(barKey(), null) ?? store.get('barnoir.bar', []);
+  state.bar = new Set(saved.filter(id => INGREDIENTS[id]));
+}
+const saveBar = () => store.set(barKey(), [...state.bar]);
+const IBA_CATS = ['unforgettable', 'contemporary', 'newera'];
 
 const PRESETS = {
   'Bar de casa': ['cachaca', 'vodka', 'limao', 'acucar', 'laranja', 'soda', 'cola', 'hortela'],
@@ -30,37 +39,59 @@ const PRESETS = {
 
 const ingredientLine = d => [...new Set(d.ing.filter(l => !l.opt && !BASICS.has(l.id)).map(l => ingredientName(l.id).split(' / ')[0].replace(/\s*\(.*\)$/, '')))].join(' · ');
 
-// ── Cardápio ──
-function renderMenu() {
-  const bases = [...new Set(DRINKS.map(d => BASE_LABEL[d.base]).filter(Boolean))];
-  let list = searchDrinks(state.q);
+// ── Cabeçalho editorial das páginas ──
+const pageHead = (kicker, title, lede) => `<header class="page-head"><p class="kicker">${kicker}</p><h1>${title}</h1>${lede ? `<p>${lede}</p>` : ''}<div class="page-orn">${ornament(200)}</div></header>`;
+
+// ── Início ──
+function renderIntro() {
+  const iba = DRINKS.filter(d => d.cat !== 'adaptation').length;
+  view.innerHTML = introHTML({name: state.user?.name, counts: {iba, adapt: DRINKS.length - iba}});
+  view.querySelectorAll('.intro-index a').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); view.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }));
+}
+
+// ── Cardápio (Clássicos IBA ou Adaptações) ──
+let menuMode = 'classicos';
+function renderMenu(mode = menuMode) {
+  if (mode !== menuMode) { state.q = ''; state.base = 'all'; }
+  menuMode = mode;
+  const adapt = mode === 'adaptacoes';
+  const pool = DRINKS.filter(d => adapt ? d.cat === 'adaptation' : d.cat !== 'adaptation');
+  const bases = [...new Set(pool.map(d => BASE_LABEL[d.base]).filter(Boolean))];
+  let list = searchDrinks(state.q, pool);
   if (state.base !== 'all') list = list.filter(d => BASE_LABEL[d.base] === state.base);
-  const cats = state.cat === 'all' ? Object.keys(CATEGORIES) : [state.cat];
+  const sel = state.cat[mode];
+  const cats = adapt ? ['adaptation'] : sel === 'all' ? IBA_CATS : [sel];
   const sections = cats.map(cat => {
     const items = list.filter(d => d.cat === cat);
     if (!items.length) return '';
     const c = CATEGORIES[cat];
     return `<section class="menu-card" aria-labelledby="h-${cat}">
       ${CORNERS}
-      <p class="menu-script">Cardápio</p>
+      <p class="menu-script">${adapt ? 'Fora da lista, dentro do cânone' : 'Lista oficial IBA'}</p>
       <h2 class="menu-cat" id="h-${cat}">${esc(c.label)}</h2>
-      <p class="menu-en">${esc(c.en)}${cat === 'adaptation' ? '' : ' · lista oficial IBA'}</p>
+      <p class="menu-en">${esc(c.en)} · ${items.length} receita${items.length > 1 ? 's' : ''}</p>
       <div class="menu-orn">${ornament(200)}</div>
       <ul class="menu-list">${items.map(menuItem).join('')}</ul>
     </section>`;
   }).join('');
-  view.innerHTML = `
+  const head = adapt
+    ? pageHead('Variações consagradas', 'Adaptações reconhecidas', 'Drinks que não estão na lista oficial da IBA, mas que qualquer bartender de respeito conhece. Cada um nasce de um clássico: troca-se a base, ajusta-se o doce, muda-se o copo. Quando o seu bar não fecha um clássico, é daqui que vem a resposta.')
+    : pageHead('O cânone', 'Clássicos IBA', 'A lista oficial da International Bartenders Association em três capítulos: os inesquecíveis da Era de Ouro, os clássicos contemporâneos do século XX e os drinks da nova era que já viraram referência. Toque em um drink para ver copo, utensílios e preparo.');
+  const chips = adapt ? '' : `<div class="chips" role="group" aria-label="Categoria">
+      ${[['all', 'Todos'], ...IBA_CATS.map(k => [k, CATEGORIES[k].label])].map(([k, label]) => `<button class="chip ${sel === k ? 'on' : ''}" data-cat="${k}" aria-pressed="${sel === k}">${esc(label)}</button>`).join('')}
+    </div>`;
+  view.innerHTML = `${head}
     <div class="toolbar" role="search">
       <label class="field"><span class="sr">Buscar</span><input id="q" type="search" placeholder="Buscar drink ou ingrediente…" value="${esc(state.q)}" autocomplete="off"></label>
       <label class="field select"><span class="sr">Destilado base</span><select id="base"><option value="all">Todas as bases</option>${bases.map(b => `<option ${state.base === b ? 'selected' : ''}>${esc(b)}</option>`).join('')}</select></label>
     </div>
-    <div class="chips" role="group" aria-label="Categoria">
-      ${[['all', 'Todos'], ...Object.entries(CATEGORIES).map(([k, v]) => [k, v.label])].map(([k, label]) => `<button class="chip ${state.cat === k ? 'on' : ''}" data-cat="${k}" aria-pressed="${state.cat === k}">${esc(label)}</button>`).join('')}
-    </div>
-    ${sections || `<p class="empty">Nenhum drink com esse nome no cardápio da casa.</p>`}`;
+    ${chips}
+    ${sections || `<p class="empty">Nenhum drink com esse nome por aqui.</p>`}`;
   view.querySelector('#q').addEventListener('input', e => { state.q = e.target.value; rerenderMenuKeepFocus(); });
   view.querySelector('#base').addEventListener('change', e => { state.base = e.target.value; renderMenu(); });
-  view.querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', () => { state.cat = b.dataset.cat; renderMenu(); }));
+  view.querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', () => { state.cat[mode] = b.dataset.cat; renderMenu(); }));
 }
 
 function rerenderMenuKeepFocus() {
@@ -90,6 +121,7 @@ function renderBar() {
     return `<fieldset class="ing-group"><legend>${esc(g)}</legend><div class="ing-chips">${ids.map(([id, v]) => `<button type="button" class="ing ${state.bar.has(id) ? 'on' : ''}" data-ing="${id}" aria-pressed="${state.bar.has(id)}">${esc(v.name)}</button>`).join('')}</div></fieldset>`;
   }).join('');
   view.innerHTML = `
+    ${pageHead('Personalizado', 'Meu Bar', 'Marque o que existe na sua prateleira. O Home Tender procura primeiro um clássico da IBA; se nenhum fechar, sugere uma adaptação reconhecida.')}
     <div class="bar-layout">
       <section class="bar-picker paper" aria-labelledby="bar-h">
         <p class="menu-script">Meu Bar</p>
@@ -171,7 +203,7 @@ function renderResults() {
 function renderGlossary() {
   const usage = id => DRINKS.filter(d => d.glass === id);
   const toolUse = id => DRINKS.filter(d => toolsFor(d).includes(id)).length;
-  view.innerHTML = `
+  view.innerHTML = `${pageHead('Atrás do balcão', 'Copos & Utensílios', 'Cada drink clássico tem o seu copo e as suas ferramentas. Conheça o que cada um faz e em quais receitas aparece.')}
     <section class="menu-card">
       ${CORNERS}
       <p class="menu-script">A casa</p><h2 class="menu-cat">Os Copos</h2><p class="menu-en">Glassware</p>
@@ -190,13 +222,14 @@ function renderGlossary() {
         <span class="gloss-art tool">${toolSVG(id, 48)}</span>
         <h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p><p class="gloss-uses">Usado em ${toolUse(id)} receita${toolUse(id) === 1 ? '' : 's'}</p>
       </li>`).join('')}</ul>
-    </section>`;
+    </section>
+    ${creditsHTML()}`;
 }
 
 // ── Ficha do drink ──
 function openDrink(id) {
   const d = DRINK_BY_ID[id];
-  if (!d) { location.hash = '#/cardapio'; return; }
+  if (!d) { location.hash = '#/classicos'; return; }
   const parent = parentOf(d);
   const kids = childrenOf(d);
   const tools = toolsFor(d);
@@ -251,17 +284,74 @@ function openDrink(id) {
   document.title = `${d.name} · Home Tender`;
 }
 
-let lastTab = 'cardapio';
+let lastTab = 'inicio';
 function closeDrink() { location.hash = `#/${lastTab}`; }
 function hideSheet() { sheet.hidden = true; document.body.classList.remove('locked'); }
 sheet.addEventListener('click', e => { if (e.target === sheet) closeDrink(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !sheet.hidden) closeDrink(); });
 
+// ── Capa e login ──
+const cover = document.getElementById('cover');
+const shell = document.getElementById('shell');
+const form = document.getElementById('auth-form');
+const authError = document.getElementById('auth-error');
+let authMode = 'login';
+
+function setAuthMode(mode) {
+  authMode = mode;
+  document.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.mode === mode)));
+  form.querySelectorAll('[data-only="register"]').forEach(el => { el.hidden = mode !== 'register'; });
+  form.elements['password'].autocomplete = mode === 'register' ? 'new-password' : 'current-password';
+  document.getElementById('auth-submit').textContent = mode === 'register' ? 'Criar conta e entrar' : 'Entrar';
+  authError.hidden = true;
+}
+document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => setAuthMode(b.dataset.mode)));
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const submit = document.getElementById('auth-submit');
+  authError.hidden = true; submit.disabled = true;
+  try {
+    const f = form.elements;
+    const data = {name: f['name'].value, email: f['email'].value, password: f['password'].value};
+    if (authMode === 'register' && !f['adult'].checked) throw new Error('O Home Tender é para maiores de 18 anos.');
+    state.user = authMode === 'register' ? await auth.register(data) : await auth.login(data);
+    form.reset();
+    enterApp();
+  } catch (err) {
+    authError.textContent = err.message; authError.hidden = false;
+  } finally { submit.disabled = false; }
+});
+
+document.getElementById('logout').addEventListener('click', () => {
+  auth.logout(); state.user = null; rendered = null; state.bar = new Set();
+  location.hash = '#/inicio'; showCover();
+});
+
+function showCover() {
+  hideSheet();
+  shell.hidden = true; cover.hidden = false;
+  setAuthMode(auth.hasAccounts() ? 'login' : 'register');
+  document.title = 'Home Tender · O bartender da sua casa';
+}
+
+function enterApp() {
+  cover.hidden = true; shell.hidden = false;
+  document.getElementById('user-name').textContent = state.user.name.split(' ')[0];
+  loadBar(); rendered = null;
+  if (!location.hash || location.hash === '#/' ) location.hash = '#/inicio';
+  route();
+  window.scrollTo({top: 0});
+}
+
 // ── Rotas ──
-const TABS = {cardapio: renderMenu, bar: renderBar, utensilios: renderGlossary};
+const TABS = {inicio: renderIntro, classicos: () => renderMenu('classicos'), adaptacoes: () => renderMenu('adaptacoes'), bar: renderBar, utensilios: renderGlossary};
+const ALIASES = {cardapio: 'classicos'};
 let rendered = null;
 function route() {
-  const [, tab = 'cardapio', id] = location.hash.replace(/^#/, '').split('/');
+  if (!state.user) { showCover(); return; }
+  let [, tab = 'inicio', id] = location.hash.replace(/^#/, '').split('/');
+  tab = ALIASES[tab] || tab;
   if (tab === 'drink') {
     if (!rendered) { TABS[lastTab](); rendered = lastTab; markTab(lastTab); }
     openDrink(decodeURIComponent(id || ''));
@@ -269,7 +359,7 @@ function route() {
   }
   hideSheet();
   document.title = 'Home Tender · Coquetéis Clássicos';
-  const t = TABS[tab] ? tab : 'cardapio';
+  const t = TABS[tab] ? tab : 'inicio';
   if (rendered !== t) { TABS[t](); rendered = t; }
   if (lastTab !== t) window.scrollTo({top: 0});
   lastTab = t;
@@ -279,4 +369,5 @@ function markTab(t) {
   document.querySelectorAll('[data-tab]').forEach(a => { const on = a.dataset.tab === t; a.classList.toggle('on', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'); });
 }
 window.addEventListener('hashchange', route);
-route();
+state.user = auth.current();
+if (state.user) enterApp(); else showCover();

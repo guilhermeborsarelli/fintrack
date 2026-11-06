@@ -468,7 +468,7 @@ export const DRINKS = [
     garnish: [], gtext: '', color: '#ead79b', tools: ['socador'],
     steps: ['Na coqueteleira, amasse levemente o xarope com os cravos.', 'Adicione o pisco, o abacaxi e o limão-siciliano; bata vigorosamente com gelo.', 'Faça a dupla coagem para uma taça grande.', 'Complete com o vinho branco e mexa delicadamente.']},
   {id: 'porn-star-martini', name: 'Porn Star Martini', cat: 'newera', base: 'vodka', glass: 'coupe', method: 'shake', serve: 'up',
-    ing: [i('vodka', 50, {note: 'de baunilha'}), i('licor_maracuja', 20), i('maracuja', 50, {note: 'purê'}), t('acucar', '2 colheres bailarina (açúcar de baunilha)'), i('espumante', 50, {note: 'servido à parte, num copinho'})],
+    ing: [i('vodka', 50, {note: 'de baunilha'}), i('licor_maracuja', 20), i('maracuja', 50, {note: 'purê'}), t('acucar', '2 colheres bailarina (açúcar de baunilha)'), i('espumante', 50, {side: true, note: 'servido à parte, num copinho'})],
     garnish: ['passion_fruit'], gtext: 'meio maracujá polvilhado com açúcar', color: '#f0b64e', foam: true},
   {id: 'sherry-cobbler', name: 'Sherry Cobbler', cat: 'newera', base: 'jerez', glass: 'julep', method: 'shake', serve: 'crushed',
     ing: [i('jerez', 45, {note: 'amontillado'}), i('jerez', 45, {note: 'palo cortado'}), t('acucar', '1 colher de chá'), t('laranja', '½ rodela'), t('siciliano', '½ rodela'), t('amora', 'frutas vermelhas frescas', {opt: true})],

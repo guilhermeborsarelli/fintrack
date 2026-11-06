@@ -73,7 +73,9 @@ export function amount(line) {
 
 export function ingredientName(id) { return INGREDIENTS[id]?.name || id; }
 
-const lower = s => s.charAt(0).toLowerCase() + s.slice(1);
+// Marcas e nomes próprios mantêm a maiúscula dentro da frase (Campari, Angostura, Scotch...).
+const PROPER = /^(Campari|Aperol|Cynar|Fernet|Drambuie|Bénédictine|Galliano|Grand Marnier|Frangelico|Angostura|Peychaud|Lillet|Tabasco|Worcestershire|Scotch|Irish|Champagne|Cointreau|Chartreuse|Prosecco|Cherry Heering)/;
+const lower = s => PROPER.test(s) ? s : s.charAt(0).toLowerCase() + s.slice(1);
 
 /** Passo a passo no idioma pedido: roteiro próprio do drink (traduzido) ou gerado a partir do método. */
 export function stepsFor(drink, lang = getLang()) {
@@ -82,9 +84,9 @@ export function stepsFor(drink, lang = getLang()) {
   const prevLang = getLang(); setLang(lang);
   try {
     const glass = trGlass(drink.glass, GLASSES[drink.glass]);
-    const shortName = id => lower(trIngredient(id, ingredientName(id)).split(' / ')[0].replace(/\s*\(.*\)$/, ''));
+    const shortName = id => lower(trIngredient(id, ingredientName(id)).replace(/\s*\(.*\)$/, '').split(' / ')[0]);
     const joinL = parts => parts.length <= 1 ? parts.join('') : parts.slice(0, -1).join(', ') + ` ${T.and} ` + parts.at(-1);
-    const main = [...new Set(drink.ing.filter(l => !l.top && !l.opt && l.id !== 'ovo').map(l => shortName(l.id)))];
+    const main = [...new Set(drink.ing.filter(l => !l.top && !l.side && !l.opt && l.id !== 'ovo').map(l => shortName(l.id)))];
     const tops = drink.ing.filter(l => l.top).map(l => shortName(l.id));
     const steps = [];
     const up = drink.serve === 'up' || drink.serve === 'neat';
@@ -113,6 +115,8 @@ export function stepsFor(drink, lang = getLang()) {
       if (!tops.length) steps.push(T.stirGently);
     }
     if (tops.length) steps.push(T.top(joinL(tops)));
+    const sides = drink.ing.filter(l => l.side).map(l => shortName(l.id));
+    if (sides.length) steps.push(T.side(joinL(sides)));
     if (drink.gtext) steps.push(T.garnish(trPhrase(drink.gtext)));
     return steps;
   } finally { setLang(prevLang); }

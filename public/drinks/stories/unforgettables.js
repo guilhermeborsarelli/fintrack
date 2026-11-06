@@ -3,22 +3,22 @@ export default {
   alexander: [
     'Nasceu no começo do século XX em Nova York, atribuído a Troy Alexander, bartender do Hotel Rector, que teria criado um drink branco para um jantar em homenagem à ferrovia Lackawanna. A versão original levava gin; a troca pelo conhaque, que virou o padrão, deu ao Alexander a cara de sobremesa elegante que o tornou um sucesso nos anos 1920.',
     'Born in early 20th-century New York, it is credited to Troy Alexander, bartender at the Hotel Rector, who supposedly created a white drink for a dinner honouring the Lackawanna railroad. The original used gin; switching to cognac, now the standard, gave the Alexander the elegant dessert profile that made it a 1920s hit.',
-    'Nació a principios del siglo XX en Nueva York y se atribuye a Troy Alexander, bartender del Hotel Rector, que habría creado un trago blanco para una cena en honor al ferrocarril Lackawanna. La versión original llevaba ginebra; el cambio al coñac, hoy el estándar, le dio al Alexander el perfil de postre elegante que lo hizo triunfar en los años 20.'
+    'Nació a principios del siglo XX en Nueva York y se atribuye a Troy Alexander, bartender del Hotel Rector, que habría creado un cóctel blanco para una cena en honor al ferrocarril Lackawanna. La versión original llevaba ginebra; el cambio al coñac, hoy el estándar, le dio al Alexander el perfil de postre elegante que lo hizo triunfar en los años 20.'
   ],
   americano: [
     'Descende do Milano-Torino servido no Caffè Campari, em Milão, nos anos 1860: Campari de Milão e vermute de Turim. Com um toque de água com gás, ganhou o nome de Americano, segundo a tradição pela popularidade entre turistas americanos. É também o drink que James Bond pede primeiro em Casino Royale.',
     'It descends from the Milano-Torino served at Caffè Campari in Milan in the 1860s: Campari from Milan and vermouth from Turin. With a splash of soda it became the Americano, traditionally said to be because of its popularity with American tourists. It is also the first drink James Bond orders in Casino Royale.',
-    'Desciende del Milano-Torino que se servía en el Caffè Campari de Milán en la década de 1860: Campari de Milán y vermut de Turín. Con un toque de soda pasó a llamarse Americano, según la tradición por su éxito entre los turistas estadounidenses. Es también el primer trago que pide James Bond en Casino Royale.'
+    'Desciende del Milano-Torino que se servía en el Caffè Campari de Milán en la década de 1860: Campari de Milán y vermut de Turín. Con un toque de soda pasó a llamarse Americano, según la tradición por su éxito entre los turistas estadounidenses. Es también el primer cóctel que pide James Bond en Casino Royale.'
   ],
   'angel-face': [
     'Aparece no The Savoy Cocktail Book, de Harry Craddock (1930), um dos registros mais importantes da coquetelaria do entreguerras. Partes iguais de gin, apricot brandy e calvados: um drink seco, frutado e perfumado, típico do estilo europeu da época, quando os bartenders americanos trabalhavam em Londres e Paris por causa da Lei Seca.',
     'It appears in Harry Craddock’s The Savoy Cocktail Book (1930), one of the key records of interwar mixology. Equal parts gin, apricot brandy and calvados: a dry, fruity, perfumed drink typical of the European style of the time, when American bartenders worked in London and Paris because of Prohibition.',
-    'Aparece en The Savoy Cocktail Book de Harry Craddock (1930), uno de los registros clave de la coctelería de entreguerras. Partes iguales de ginebra, licor de albaricoque y calvados: un trago seco, frutal y perfumado, típico del estilo europeo de la época, cuando los bartenders estadounidenses trabajaban en Londres y París por la Ley Seca.'
+    'Aparece en The Savoy Cocktail Book de Harry Craddock (1930), uno de los registros clave de la coctelería de entreguerras. Partes iguales de ginebra, licor de albaricoque y calvados: un cóctel seco, frutal y perfumado, típico del estilo europeo de la época, cuando los bartenders estadounidenses trabajaban en Londres y París por la Ley Seca.'
   ],
   aviation: [
     'Criado por Hugo Ensslin, chefe de bar do Hotel Wallick, em Nova York, e publicado no seu livro Recipes for Mixed Drinks (1916). A crème de violette dá o tom lilás que lembra o céu, homenagem à aviação, novidade da época. O licor sumiu do mercado por décadas e o drink só renasceu nos anos 2000, com a volta da violette.',
     'Created by Hugo Ensslin, head bartender at New York’s Hotel Wallick, and published in his book Recipes for Mixed Drinks (1916). Crème de violette gives the sky-like lilac hue, a tribute to the new age of flight. The liqueur vanished for decades and the drink only returned in the 2000s, when violette came back.',
-    'Creado por Hugo Ensslin, jefe de barra del Hotel Wallick de Nueva York, y publicado en su libro Recipes for Mixed Drinks (1916). La crème de violette da el tono lila que recuerda al cielo, homenaje a la aviación, novedad de la época. El licor desapareció durante décadas y el trago solo renació en los años 2000, con el regreso de la violette.'
+    'Creado por Hugo Ensslin, jefe de barra del Hotel Wallick de Nueva York, y publicado en su libro Recipes for Mixed Drinks (1916). La crème de violette da el tono lila que recuerda al cielo, homenaje a la aviación, novedad de la época. El licor desapareció durante décadas y el cóctel solo renació en los años 2000, con el regreso de la violette.'
   ],
   'between-the-sheets': [
     'Um primo mais ousado do Sidecar, popular nos anos 1930 e atribuído ao Harry’s New York Bar, em Paris. Ao conhaque soma-se rum branco, e o nome malicioso ("entre os lençóis") é bem a cara dos bares europeus da era do jazz. Forte, cítrico e seco.',
@@ -28,7 +28,7 @@ export default {
   boulevardier: [
     'Registrado por Harry MacElhone em Barflies and Cocktails (1927), em Paris. Era o drink de Erskine Gwynne, sobrinho de milionários americanos que editava a revista The Boulevardier. É um Negroni com bourbon no lugar do gin: mais encorpado, mais quente, ideal para noites frias.',
     'Recorded by Harry MacElhone in Barflies and Cocktails (1927), in Paris. It was the drink of Erskine Gwynne, nephew of American millionaires and editor of a magazine called The Boulevardier. It is a Negroni with bourbon instead of gin: richer and warmer, made for cold nights.',
-    'Registrado por Harry MacElhone en Barflies and Cocktails (1927), en París. Era el trago de Erskine Gwynne, sobrino de millonarios estadounidenses que editaba la revista The Boulevardier. Es un Negroni con bourbon en lugar de ginebra: más robusto y cálido, ideal para noches frías.'
+    'Registrado por Harry MacElhone en Barflies and Cocktails (1927), en París. Era el cóctel de Erskine Gwynne, sobrino de millonarios estadounidenses que editaba la revista The Boulevardier. Es un Negroni con bourbon en lugar de ginebra: más robusto y cálido, ideal para noches frías.'
   ],
   'brandy-crusta': [
     'Inventado nos anos 1850 por Joseph Santini, em Nova Orleans, e eternizado no livro de Jerry Thomas (1862). Foi o primeiro coquetel a usar suco de limão e é considerado o avô do Sidecar e da Margarita. A borda de açúcar e a longa casca de limão forrando a taça são a sua assinatura teatral.',
@@ -43,7 +43,7 @@ export default {
   'clover-club': [
     'Nome de um clube de cavalheiros de Filadélfia que se reunia no Hotel Bellevue-Stratford entre 1882 e o início do século XX: advogados, jornalistas e empresários. O drink rosado, com framboesa e espuma de clara, foi desprezado como "drink de senhora" por décadas e voltou com força no renascimento da coquetelaria.',
     'Named after a Philadelphia gentlemen’s club that met at the Bellevue-Stratford Hotel from 1882 into the early 20th century: lawyers, journalists and businessmen. The pink drink with raspberry and egg-white foam was dismissed as a "ladies’ drink" for decades and came roaring back in the cocktail revival.',
-    'Debe su nombre a un club de caballeros de Filadelfia que se reunía en el Hotel Bellevue-Stratford desde 1882 hasta inicios del siglo XX: abogados, periodistas y empresarios. El trago rosado, con frambuesa y espuma de clara, fue despreciado como "trago de señoras" durante décadas y volvió con fuerza en el renacimiento de la coctelería.'
+    'Debe su nombre a un club de caballeros de Filadelfia que se reunía en el Hotel Bellevue-Stratford desde 1882 hasta inicios del siglo XX: abogados, periodistas y empresarios. El cóctel rosado, con frambuesa y espuma de clara, fue despreciado como "cóctel de señoras" durante décadas y volvió con fuerza en el renacimiento de la coctelería.'
   ],
   daiquiri: [
     'Leva o nome de uma praia e de minas de ferro perto de Santiago de Cuba, onde, por volta de 1898, o engenheiro americano Jennings Cox teria misturado rum, limão e açúcar. Chegou aos EUA pela Marinha e foi eternizado no El Floridita, em Havana, por Constante Ribalaigua e por Hemingway. Três ingredientes, equilíbrio perfeito: é o teste de todo bartender.',
@@ -53,7 +53,7 @@ export default {
   'dry-martini': [
     'Evoluiu do Martinez no fim do século XIX: o vermute doce deu lugar ao seco, e o drink foi ficando cada vez mais seco ao longo do século XX. Virou símbolo de sofisticação, dos almoços de negócios em Nova York ao cinema. Churchill dizia que bastava olhar para a garrafa de vermute; a IBA prefere a medida exata.',
     'It evolved from the Martinez at the end of the 19th century: sweet vermouth gave way to dry, and the drink grew ever drier through the 20th century. It became the symbol of sophistication, from New York business lunches to the movies. Churchill joked it was enough to glance at the vermouth bottle; the IBA prefers an exact measure.',
-    'Evolucionó del Martinez a finales del siglo XIX: el vermut dulce dio paso al seco, y el trago se volvió cada vez más seco a lo largo del siglo XX. Se convirtió en símbolo de sofisticación, de los almuerzos de negocios en Nueva York al cine. Churchill bromeaba con que bastaba mirar la botella de vermut; la IBA prefiere la medida exacta.'
+    'Evolucionó del Martinez a finales del siglo XIX: el vermut dulce dio paso al seco, y el cóctel se volvió cada vez más seco a lo largo del siglo XX. Se convirtió en símbolo de sofisticación, de los almuerzos de negocios en Nueva York al cine. Churchill bromeaba con que bastaba mirar la botella de vermut; la IBA prefiere la medida exacta.'
   ],
   'gin-fizz': [
     'Aparece pela primeira vez na edição de 1876 do guia de Jerry Thomas. Os fizzes eram a bebida da moda na virada do século, sobretudo em Nova Orleans, e o nome vem do chiado da água com gás. É um sour alongado, servido curto e bebido rápido, enquanto as bolhas estão vivas.',
@@ -78,7 +78,7 @@ export default {
   manhattan: [
     'Surgiu em Nova York por volta de 1870–1880, provavelmente no Manhattan Club. A história de que foi criado para uma festa de Jennie Jerome, mãe de Winston Churchill, é lenda: ela estava na Inglaterra na época. Whiskey de centeno, vermute tinto e bitters: o pai de toda a família dos drinks mexidos.',
     'It appeared in New York around 1870–1880, probably at the Manhattan Club. The story that it was created for a party thrown by Jennie Jerome, Winston Churchill’s mother, is a legend: she was in England at the time. Rye whiskey, sweet vermouth and bitters: the father of the whole stirred family.',
-    'Surgió en Nueva York hacia 1870–1880, probablemente en el Manhattan Club. La historia de que fue creado para una fiesta de Jennie Jerome, madre de Winston Churchill, es una leyenda: ella estaba en Inglaterra en esa época. Whiskey de centeno, vermut rojo y amargo: el padre de toda la familia de los tragos mezclados.'
+    'Surgió en Nueva York hacia 1870–1880, probablemente en el Manhattan Club. La historia de que fue creado para una fiesta de Jennie Jerome, madre de Winston Churchill, es una leyenda: ella estaba en Inglaterra en esa época. Whiskey de centeno, vermut rojo y amargo: el padre de toda la familia de los cócteles revueltos.'
   ],
   martinez: [
     'O elo entre o Manhattan e o Dry Martini. Publicado em 1884 no livro de O. H. Byron e na edição de 1887 do guia de Jerry Thomas, que o liga à cidade de Martinez, na Califórnia, da época da corrida do ouro. Gin, vermute tinto e maraschino: mais doce e redondo que o Martini que viria depois.',
@@ -98,17 +98,17 @@ export default {
   negroni: [
     'Florença, por volta de 1919: o conde Camillo Negroni pediu ao bartender Fosco Scarselli, do Caffè Casoni, que reforçasse o seu Americano trocando a água com gás por gin. Nascia o aperitivo mais famoso da Itália. Partes iguais, amargo, doce e seco ao mesmo tempo: hoje é um dos drinks mais pedidos do mundo.',
     'Florence, around 1919: Count Camillo Negroni asked bartender Fosco Scarselli at Caffè Casoni to strengthen his Americano by swapping the soda for gin. Italy’s most famous aperitivo was born. Equal parts, bitter, sweet and dry all at once: today it is one of the most ordered drinks in the world.',
-    'Florencia, hacia 1919: el conde Camillo Negroni pidió al bartender Fosco Scarselli, del Caffè Casoni, que reforzara su Americano cambiando la soda por ginebra. Nacía el aperitivo más famoso de Italia. Partes iguales, amargo, dulce y seco a la vez: hoy es uno de los tragos más pedidos del mundo.'
+    'Florencia, hacia 1919: el conde Camillo Negroni pidió al bartender Fosco Scarselli, del Caffè Casoni, que reforzara su Americano cambiando la soda por ginebra. Nacía el aperitivo más famoso de Italia. Partes iguales, amargo, dulce y seco a la vez: hoy es uno de los cócteles más pedidos del mundo.'
   ],
   'old-fashioned': [
     'É a fórmula original do coquetel, definida em 1806: destilado, açúcar, água e bitters. Quando, nos anos 1880, os bares começaram a enfeitar os drinks com licores e frutas, os clientes passaram a pedir o whiskey cocktail "do jeito antigo" (old-fashioned). O Pendennis Club de Louisville reivindica a receita, mas a ideia é bem mais antiga.',
     'It is the original cocktail formula, defined in 1806: spirit, sugar, water and bitters. When bars in the 1880s began dressing drinks up with liqueurs and fruit, customers started asking for the whiskey cocktail "the old-fashioned way". Louisville’s Pendennis Club claims the recipe, but the idea is much older.',
-    'Es la fórmula original del cóctel, definida en 1806: destilado, azúcar, agua y amargo. Cuando en la década de 1880 los bares empezaron a adornar los tragos con licores y frutas, los clientes pedían el whiskey cocktail "a la antigua" (old-fashioned). El Pendennis Club de Louisville reclama la receta, pero la idea es mucho más antigua.'
+    'Es la fórmula original del cóctel, definida en 1806: destilado, azúcar, agua y amargo. Cuando en la década de 1880 los bares empezaron a adornar los cócteles con licores y frutas, los clientes pedían el whiskey cocktail "a la antigua" (old-fashioned). El Pendennis Club de Louisville reclama la receta, pero la idea es mucho más antigua.'
   ],
   paradise: [
     'Aparece em livros dos anos 1920 e no Savoy Cocktail Book (1930) de Harry Craddock. Gin, apricot brandy e suco de laranja: um drink de frutas maduras e perfume de damasco, típico da era em que o gin era rei nos bares de hotel de Londres.',
     'It appears in 1920s books and in Harry Craddock’s Savoy Cocktail Book (1930). Gin, apricot brandy and orange juice: a drink of ripe fruit and apricot perfume, typical of the era when gin was king in London’s hotel bars.',
-    'Aparece en libros de los años 20 y en el Savoy Cocktail Book (1930) de Harry Craddock. Ginebra, licor de albaricoque y jugo de naranja: un trago de fruta madura y perfume de albaricoque, típico de la época en que la ginebra reinaba en los bares de hotel de Londres.'
+    'Aparece en libros de los años 20 y en el Savoy Cocktail Book (1930) de Harry Craddock. Ginebra, licor de albaricoque y jugo de naranja: un cóctel de fruta madura y perfume de albaricoque, típico de la época en que la ginebra reinaba en los bares de hotel de Londres.'
   ],
   'planters-punch': [
     'O punch jamaicano por excelência, associado ao rum escuro da ilha desde o fim do século XIX. A receita era guardada em versos: "um de azedo, dois de doce, três de forte, quatro de fraco". Foi popularizado pela Myers’s e pelos hotéis de Kingston e virou base de toda a coquetelaria tiki.',
@@ -123,7 +123,7 @@ export default {
   'ramos-fizz': [
     'Criado em 1888 por Henry C. Ramos, no Imperial Cabinet Saloon, em Nova Orleans. Batê-lo leva minutos: no Carnaval de 1915, o bar dele chegou a ter dezenas de "shaker boys" batendo os drinks em fila. Cremoso, floral (água de flor de laranjeira) e com uma espuma que sobe acima da borda.',
     'Created in 1888 by Henry C. Ramos at the Imperial Cabinet Saloon in New Orleans. Shaking it takes minutes: during the 1915 Mardi Gras his bar had dozens of "shaker boys" shaking drinks in a line. Creamy, floral (orange flower water) and crowned with foam that rises above the rim.',
-    'Creado en 1888 por Henry C. Ramos en el Imperial Cabinet Saloon de Nueva Orleans. Agitarlo lleva minutos: en el Carnaval de 1915 su bar llegó a tener decenas de "shaker boys" agitando tragos en fila. Cremoso, floral (agua de azahar) y con una espuma que sube por encima del borde.'
+    'Creado en 1888 por Henry C. Ramos en el Imperial Cabinet Saloon de Nueva Orleans. Agitarlo lleva minutos: en el Carnaval de 1915 su bar llegó a tener decenas de "shaker boys" agitando cócteles en fila. Cremoso, floral (agua de azahar) y con una espuma que sube por encima del borde.'
   ],
   'rusty-nail': [
     'Scotch e Drambuie, o licor de whisky com mel e ervas que a lenda liga ao príncipe Charles Edward Stuart. A combinação circulava desde os anos 1930, mas o nome Rusty Nail ("prego enferrujado") pegou nos anos 1960, quando o drink virou o favorito do Rat Pack de Frank Sinatra.',
@@ -143,7 +143,7 @@ export default {
   stinger: [
     'Drink da alta sociedade nova-iorquina da virada do século XX, servido como digestivo depois do jantar. Conhaque e crème de menthe branca: fresco e forte ao mesmo tempo. Aparece em filmes como Alta Sociedade (1956), símbolo de glamour e de quem sabe beber.',
     'A drink of New York high society at the turn of the 20th century, served as a digestif after dinner. Cognac and white crème de menthe: cool and strong at once. It appears in films such as High Society (1956) as a symbol of glamour and of knowing how to drink.',
-    'Trago de la alta sociedad neoyorquina del cambio del siglo XX, servido como digestivo después de la cena. Coñac y crema de menta blanca: fresco y fuerte a la vez. Aparece en películas como Alta sociedad (1956), símbolo de glamour y de saber beber.'
+    'Cóctel de la alta sociedad neoyorquina del cambio del siglo XX, servido como digestivo después de la cena. Coñac y crema de menta blanca: fresco y fuerte a la vez. Aparece en películas como Alta sociedad (1956), símbolo de glamour y de saber beber.'
   ],
   tuxedo: [
     'Associado ao Tuxedo Club, um refúgio da elite nova-iorquina fundado em 1886 em Tuxedo Park, o mesmo lugar que deu nome ao smoking (tuxedo, em inglês). Um primo do Martini com maraschino, absinto e orange bitters: aromático, seco e cheio de nuances.',

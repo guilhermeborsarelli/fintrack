@@ -127,7 +127,7 @@ function renderDrink(id) {
     const alt = l.alt ? ` <em>${esc(t('or'))} ${esc(l.alt.map(ingName).join(' / '))}</em>` : '';
     const note = l.note ? ` <em>(${esc(trPhrase(l.note))})</em>` : '';
     const qty = l.ml != null ? `${String(l.ml).replace('.', lang === 'en' ? '.' : ',')} ml` : trPhrase(amount(l));
-    return `<li>${mark}<span class="ing-name">${esc(ingName(l.id))}${alt}${note}${l.opt ? ` <em>· ${esc(t('optional'))}</em>` : ''}</span><span class="ing-qty">${esc(qty)}</span></li>`;
+    return `<li>${mark}<span class="ing-name">${esc(l.note ? ingName(l.id).replace(/\s*\([^()]*\/[^()]*\)$/, '') : ingName(l.id))}${alt}${note}${l.opt ? ` <em>· ${esc(t('optional'))}</em>` : ''}</span><span class="ing-qty">${esc(qty)}</span></li>`;
   }).join('');
   view.innerHTML = `
     <article class="drink">

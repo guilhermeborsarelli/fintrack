@@ -1,5 +1,5 @@
 import {DRINKS, DRINK_BY_ID, INGREDIENTS, GROUPS, GLASSES, TOOLS, BASICS, BASE_LABEL} from './data.js';
-import {analyzeBar, toolsFor, stepsFor, amount, ingredientName, parentOf, childrenOf, searchDrinks, normalize, missingFor} from './engine.js';
+import {analyzeBar, toolsFor, stepsFor, amount, ingredientName, parentOf, childrenOf, searchDrinks, normalize, missingFor, requiredIds} from './engine.js';
 import {toolSVG, glassSVG, ornament, cornerFlourish} from './art.js';
 import {createAuth} from './auth.js';
 import {introHTML, creditsHTML} from './content.js';
@@ -22,7 +22,7 @@ const store = {
 
 const auth = createAuth();
 const IBA_CATS = ['unforgettable', 'contemporary', 'newera'];
-const state = {user: null, bar: new Set(), cat: 'all', base: 'all', q: '', barQ: '', lastList: 'classicos', openGroups: new Set(['Destilados'])};
+const state = {user: null, bar: new Set(), cat: 'all', base: 'all', q: '', barQ: '', lastList: 'classicos', openGroups: new Set(['Destilados']), fav: new Set(), done: new Set(), servings: 1, myTab: 'fav'};
 const wide = () => globalThis.matchMedia?.('(min-width: 960px)').matches;
 // Altura real da barra superior, para os filtros fixos logo abaixo dela no celular.
 const topbarEl = document.querySelector('.topbar');
@@ -35,6 +35,18 @@ function loadBar() {
   state.bar = new Set(saved.filter(id => INGREDIENTS[id]));
 }
 const saveBar = () => store.set(barKey(), [...state.bar]);
+// Favoritos e "Já fiz", por usuário
+const listKey = kind => `hometender.${kind}.${state.user?.email || 'convidado'}`;
+function loadLists() { for (const k of ['fav', 'done']) state[k] = new Set(store.get(listKey(k), []).filter(id => DRINK_BY_ID[id])); }
+const saveList = k => store.set(listKey(k), [...state[k]]);
+function toast(text) {
+  let el = document.getElementById('toast');
+  if (!el) { el = document.createElement('div'); el.id = 'toast'; el.className = 'toast'; el.setAttribute('role', 'status'); document.body.append(el); }
+  el.textContent = text; el.classList.add('show');
+  clearTimeout(toast.timer); toast.timer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.4-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.8-7.5 10.2-7.5 10.2z"/></svg>';
+const CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>';
 
 // ── Textos traduzidos ──
 const dName = d => nameFor(d, getLang());
@@ -69,7 +81,7 @@ function card(d, {sub = null} = {}) {
   const parent = parentOf(d);
   const kicker = sub ?? (d.cat === 'adaptation' ? t('riffOf', parent ? dName(parent) : '') : catShort(d.cat));
   return `<a class="card" href="#/drink/${d.id}">
-    <span class="card-img"><img src="${img(d.id)}" alt="${esc(dName(d))}" loading="lazy" decoding="async"></span>
+    <span class="card-img"><img src="${img(d.id)}" alt="${esc(dName(d))}" loading="lazy" decoding="async">${state.fav.has(d.id) ? `<span class="card-fav" title="${esc(t('favorites'))}">${HEART}</span>` : ''}</span>
     <span class="card-body">${kicker ? `<span class="card-kicker">${esc(kicker)}</span>` : ''}<span class="card-name">${esc(dName(d))}</span><span class="card-ing">${esc(ingredientLine(d))}</span></span>
   </a>`;
 }
@@ -78,7 +90,8 @@ function card(d, {sub = null} = {}) {
 function renderIntro() {
   const iba = DRINKS.filter(d => d.cat !== 'adaptation').length;
   const showcase = ['negroni', 'dry-martini', 'old-fashioned', 'margarita', 'mojito', 'espresso-martini'].map(id => ({id, name: dName(DRINK_BY_ID[id])}));
-  view.innerHTML = introHTML({name: state.user?.name, counts: {iba, adapt: DRINKS.length - iba}, showcase, labels: {classics: t('classicsTitle'), riffs: t('riffsTitle'), bar: t('barTitle')}});
+  view.innerHTML = installBanner() + introHTML({name: state.user?.name, counts: {iba, adapt: DRINKS.length - iba}, showcase, labels: {classics: t('classicsTitle'), riffs: t('riffsTitle'), bar: t('barTitle')}});
+  wireInstallBanner();
   view.querySelectorAll('.intro-index a').forEach(a => a.addEventListener('click', e => {
     e.preventDefault(); view.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior: 'smooth', block: 'start'});
   }));
@@ -134,13 +147,14 @@ function renderDrink(id) {
   const missing = showHave ? missingFor(d, state.bar) : [];
   const tools = toolsFor(d);
   const steps = stepsFor(d, lang);
-  const ingRows = d.ing.filter(l => !(l.id === 'agua' && !l.q && !l.ml)).map(l => {
+  const ingRows = (n = state.servings) => d.ing.filter(l => !(l.id === 'agua' && !l.q && !l.ml)).map(l => {
     const has = BASICS.has(l.id) || [l.id, ...(l.alt || [])].some(x => state.bar.has(x));
     const mark = showHave ? `<span class="have ${has ? 'yes' : l.opt ? 'opt' : 'no'}" title="${esc(has ? t('youHave') : t('youLack'))}"></span>` : '';
     const alt = l.alt ? ` <em>${esc(t('or'))} ${esc(l.alt.map(ingName).join(' / '))}</em>` : '';
     const note = l.note ? ` <em>(${esc(trPhrase(l.note))})</em>` : '';
-    const qty = l.ml != null ? `${String(l.ml).replace('.', lang === 'en' ? '.' : ',')} ml` : trPhrase(amount(l));
-    const home = homeMeasure(l.ml);
+    const ml = l.ml != null ? Math.round(l.ml * n * 10) / 10 : null;
+    const qty = ml != null ? `${String(ml).replace('.', lang === 'en' ? '.' : ',')} ml` : (p => `${p}${n > 1 && /^[\d½¼¾]/.test(p) ? ` × ${n}` : ''}`)(trPhrase(amount(l)));
+    const home = homeMeasure(ml);
     const name = l.note ? ingName(l.id).replace(/\s*\([^()]*\/[^()]*\)$/, '') : ingName(l.id);
     return `<li>${mark}<span class="ing-name">${esc(name)}${alt}${note}${l.opt ? ` <em>· ${esc(t('optional'))}</em>` : ''}</span><span class="dots" aria-hidden="true"></span><span class="ing-qty">${esc(qty)}${home ? `<small>${esc(home)}</small>` : ''}</span></li>`;
   }).join('');
@@ -168,7 +182,9 @@ function renderDrink(id) {
         </section>
         <section class="sheet-block">
           <h3>${esc(t('ingredients'))}</h3>
-          <ul class="sheet-ing">${ingRows}</ul>
+          <div class="servings" role="group" aria-label="${esc(t('servings'))}"><span>${esc(t('servings'))}</span>${[1, 2, 4, 6].map(n => `<button type="button" data-serv="${n}" aria-pressed="${state.servings === n}">${esc(t('servingsUnit', n))}</button>`).join('')}</div>
+          <ul class="sheet-ing" id="sheet-ing">${ingRows()}</ul>
+          <p class="sheet-small batch" id="batch-note" ${state.servings > 1 ? '' : 'hidden'}>${esc(batchNote(d))}</p>
           ${anyHome ? `<p class="sheet-small">${esc(t('homeMeasureNote'))}</p>` : ''}
         </section>
         <section class="sheet-block">
@@ -191,6 +207,10 @@ function renderDrink(id) {
           <h1>${esc(dName(d))}</h1>
           ${parent ? `<p class="drink-parent">${esc(t('riffPrefix', dName(parent)))}<a href="#/drink/${parent.id}">${esc(dName(parent))}</a></p>` : ''}
           <p class="drink-ing">${esc(ingredientLine(d))}</p>
+          <div class="drink-actions">
+            <button type="button" class="act" id="act-fav" aria-pressed="${state.fav.has(d.id)}">${HEART}<span>${esc(t(state.fav.has(d.id) ? 'faved' : 'fav'))}</span></button>
+            <button type="button" class="act" id="act-done" aria-pressed="${state.done.has(d.id)}">${CHECK}<span>${esc(t('madeIt'))}</span></button>
+          </div>
           ${showHave ? `<p class="status ${missing.length ? 'no' : 'yes'}">${esc(missing.length ? t('lacks', missing.map(ingName).join(', ')) : t('canMake'))}</p>` : ''}
         </div>
       </header>
@@ -203,13 +223,36 @@ function renderDrink(id) {
       ${parent ? `<section class="drink-sec related"><h2>${esc(t('originClassic'))}</h2><div class="grid small">${card(parent)}</div></section>` : ''}
       ${kids.length ? `<section class="drink-sec related"><h2>${esc(t('riffsOfThis'))}</h2><div class="grid small">${kids.map(k => card(k)).join('')}</div></section>` : ''}
     </article>`;
+  const setDone = on => {
+    on ? state.done.add(d.id) : state.done.delete(d.id); saveList('done');
+    view.querySelector('#act-done').setAttribute('aria-pressed', String(on));
+  };
   view.querySelectorAll('.tut-step').forEach(b => b.addEventListener('click', () => {
     const on = b.getAttribute('aria-pressed') !== 'true';
     b.setAttribute('aria-pressed', String(on));
+    const all = [...view.querySelectorAll('.tut-step')].every(x => x.getAttribute('aria-pressed') === 'true');
+    if (all && !state.done.has(d.id)) { setDone(true); toast(t('markedDone')); }
+  }));
+  view.querySelector('#act-fav').addEventListener('click', e => {
+    const on = !state.fav.has(d.id);
+    on ? state.fav.add(d.id) : state.fav.delete(d.id); saveList('fav');
+    e.currentTarget.setAttribute('aria-pressed', String(on));
+    e.currentTarget.querySelector('span').textContent = t(on ? 'faved' : 'fav');
+    toast(t(on ? 'addedFav' : 'removedFav'));
+  });
+  view.querySelector('#act-done').addEventListener('click', () => { const on = !state.done.has(d.id); setDone(on); toast(t(on ? 'markedDone' : 'unmarkedDone')); });
+  view.querySelectorAll('[data-serv]').forEach(b => b.addEventListener('click', () => {
+    state.servings = Number(b.dataset.serv);
+    view.querySelectorAll('[data-serv]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    view.querySelector('#sheet-ing').innerHTML = ingRows();
+    view.querySelector('#batch-note').hidden = state.servings === 1;
   }));
   document.title = `${dName(d)} · Home Tender`;
 }
 
+function batchNote(d) {
+  return t(d.method === 'shake' ? 'batchShake' : d.method === 'stir' ? 'batchStir' : d.method === 'blend' ? 'batchBlend' : 'batchBuild');
+}
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 /** Nível para o amador: 0 fácil, 1 médio, 2 avançado. */
 function difficulty(d) {
@@ -224,7 +267,7 @@ function prepMinutes(d) {
 }
 /** Equivalente em colheres de cozinha para quem não tem dosador. */
 function homeMeasure(ml) {
-  if (ml == null || ml < 5 || ml > 75) return '';
+  if (ml == null || ml < 5 || ml > 120) return '';
   const U = t('units');
   const half = n => { const w = Math.floor(n + 1e-9); return `${w || ''}${n - w > .25 ? '½' : ''}` || '½'; };
   let n, unit;
@@ -251,6 +294,7 @@ function renderBar() {
     return `<details class="ing-group" data-group="${esc(gp)}" ${open ? 'open' : ''}><summary><span class="grp-name">${esc(trGroup(gp))}</span><span class="grp-count" ${n ? '' : 'hidden'}>${n}</span></summary><div class="ing-chips">${ids.map(([id]) => `<button type="button" class="ing ${state.bar.has(id) ? 'on' : ''}" data-ing="${id}" aria-pressed="${state.bar.has(id)}">${esc(ingName(id))}</button>`).join('')}</div></details>`;
   }).join('');
   view.innerHTML = `${pageHead(t('barKicker'), t('barTitle'), t('barLede'))}
+    <section class="my-drinks" id="my-drinks">${myDrinksHTML()}</section>
     <div class="bar-layout">
       <section class="panel bar-picker" aria-labelledby="bar-h">
         <div class="panel-head"><h2 id="bar-h">${esc(t('barShelf'))}</h2><span id="bar-count">${esc(t('selected', state.bar.size))}</span></div>
@@ -277,6 +321,10 @@ function renderBar() {
     view.querySelector('#bar-count').textContent = t('selected', state.bar.size);
   });
   view.querySelectorAll('.ing-group').forEach(g => g.addEventListener('toggle', () => { g.open ? state.openGroups.add(g.dataset.group) : state.openGroups.delete(g.dataset.group); }));
+  view.querySelector('#my-drinks').addEventListener('click', e => {
+    const b = e.target.closest('[data-my]'); if (!b) return;
+    state.myTab = b.dataset.my; view.querySelector('#my-drinks').innerHTML = myDrinksHTML();
+  });
   view.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => { PRESETS[b.dataset.preset].forEach(id => state.bar.add(id)); saveBar(); renderBar(); }));
   view.querySelector('#clear').addEventListener('click', () => { state.bar.clear(); saveBar(); renderBar(); });
   view.querySelector('#fab').addEventListener('click', e => { e.preventDefault(); view.querySelector('#results').scrollIntoView({behavior: 'smooth'}); });
@@ -315,8 +363,36 @@ function renderResults() {
   } else html += `<article class="panel"><p class="verdict">${esc(t('pickNone'))}</p></article>`;
   if (r.classics.length) html += `<h3 class="res-h">${esc(t('possibleClassics'))} <span>${r.classics.length}</span></h3><ul class="results">${r.classics.map(x => resultRow(x)).join('')}</ul>`;
   if (r.adaptations.length) html += `<h3 class="res-h">${esc(t('possibleRiffs'))} <span>${r.adaptations.length}</span></h3><ul class="results">${r.adaptations.map(x => resultRow(x)).join('')}</ul>`;
+  const buys = nextBuys();
+  if (buys.length) html += `<section class="next-buy"><h3 class="res-h">${esc(t('nextBuy'))}</h3><p class="next-buy-lede">${esc(t('nextBuyLede'))}</p><ul>${buys.map(b => `<li>
+      <div class="nb-body"><strong>${esc(ingName(b.id))}</strong><span class="nb-gain">${esc(t('unlocks', b.drinks.length, b.classics))}</span>
+      <span class="nb-list">${b.drinks.slice(0, 4).map(d => `<a href="#/drink/${d.id}">${esc(dName(d))}</a>`).join(' · ')}${b.drinks.length > 4 ? ' …' : ''}</span></div>
+      <button type="button" class="chip ghost" data-have="${b.id}">+ ${esc(t('iHave'))}</button></li>`).join('')}</ul></section>`;
   if (r.near.length) html += `<h3 class="res-h">${esc(t('almost'))} <span>${r.near.length}</span></h3><ul class="results">${r.near.map(x => resultRow(x, true)).join('')}</ul>`;
   box.innerHTML = html;
+  box.querySelectorAll('[data-have]').forEach(b => b.addEventListener('click', () => { state.bar.add(b.dataset.have); saveBar(); toast(t('addedToBar', ingName(b.dataset.have))); renderBar(); }));
+}
+
+/** Ingredientes que, comprados, completam mais receitas com o que já há no bar. */
+function nextBuys(limit = 5) {
+  const gain = new Map();
+  for (const d of DRINKS) {
+    const miss = missingFor(d, state.bar);
+    if (miss.length !== 1 || !requiredIds(d).some(id => state.bar.has(id))) continue;
+    const id = miss[0];
+    if (!gain.has(id)) gain.set(id, []);
+    gain.get(id).push(d);
+  }
+  return [...gain].map(([id, drinks]) => ({id, drinks: drinks.sort((a, b) => (a.cat === 'adaptation') - (b.cat === 'adaptation') || dName(a).localeCompare(dName(b))), classics: drinks.filter(d => d.cat !== 'adaptation').length}))
+    .sort((a, b) => b.drinks.length - a.drinks.length || b.classics - a.classics).slice(0, limit);
+}
+
+/** "Meus drinks": favoritos e já feitos. */
+function myDrinksHTML() {
+  const ids = [...state[state.myTab]].filter(id => DRINK_BY_ID[id]);
+  const tabs = [['fav', t('favorites'), state.fav.size], ['done', t('madeIt'), state.done.size]];
+  return `<div class="my-head"><h2>${esc(t('myDrinks'))}</h2><div class="seg" role="tablist">${tabs.map(([k, label, n]) => `<button type="button" role="tab" data-my="${k}" aria-selected="${state.myTab === k}">${esc(label)} <span>${n}</span></button>`).join('')}</div></div>
+    ${ids.length ? `<div class="grid small">${ids.map(id => card(DRINK_BY_ID[id], {sub: ''})).join('')}</div>` : `<p class="my-empty">${esc(t(state.myTab === 'fav' ? 'emptyFav' : 'emptyDone'))}</p>`}`;
 }
 
 // ── Copos e utensílios ──
@@ -390,9 +466,42 @@ function showCover() {
 function enterApp() {
   cover.hidden = true; shell.hidden = false;
   document.getElementById('user-name').textContent = state.user.name.split(' ')[0];
-  loadBar(); rendered = null;
+  loadBar(); loadLists(); rendered = null;
   if (!location.hash || location.hash === '#/') location.hash = '#/inicio';
   route(); window.scrollTo({top: 0});
+}
+
+// ── Instalar como app e funcionar sem internet ──
+let installEvent = null;
+const standalone = () => globalThis.matchMedia?.('(display-mode: standalone)').matches || navigator.standalone === true;
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvent = e; if (rendered === 'inicio') { rendered = null; route(); } });
+window.addEventListener('appinstalled', () => { installEvent = null; document.querySelector('.install')?.remove(); });
+function installBanner() {
+  if (standalone() || store.get('hometender.installDismissed', false)) return '';
+  if (!installEvent && !isIOS()) return '';
+  return `<aside class="install" role="region" aria-label="${esc(t('installTitle'))}">
+    <img src="icon-192.png" alt="" width="48" height="48">
+    <div><strong>${esc(t('installTitle'))}</strong><p>${esc(installEvent ? t('installText') : t('installIOS'))}</p></div>
+    ${installEvent ? `<button type="button" class="btn" id="install-go">${esc(t('installBtn'))}</button>` : ''}
+    <button type="button" class="install-x" id="install-x" aria-label="${esc(t('close'))}">✕</button>
+  </aside>`;
+}
+function wireInstallBanner() {
+  view.querySelector('#install-go')?.addEventListener('click', async () => { const e = installEvent; installEvent = null; await e?.prompt(); view.querySelector('.install')?.remove(); });
+  view.querySelector('#install-x')?.addEventListener('click', () => { store.set('hometender.installDismissed', true); view.querySelector('.install')?.remove(); });
+}
+// O service worker só existe na versão publicada (o build carimba a versão e o import map).
+if ('serviceWorker' in navigator && document.querySelector('script[type="importmap"]')) {
+  const hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController) return;
+    const bar = document.createElement('button');
+    bar.type = 'button'; bar.className = 'update-bar'; bar.textContent = t('updateReady');
+    bar.addEventListener('click', () => location.reload());
+    document.body.append(bar);
+  }, {once: true});
 }
 
 // ── Rotas ──

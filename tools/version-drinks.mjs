@@ -9,10 +9,12 @@ import {join, relative} from 'node:path';
 const dir = process.argv[2] || 'dist/drinks';
 if (!existsSync(join(dir, 'index.html'))) { console.log(`version-drinks: ${dir}/index.html não existe, nada a fazer`); process.exit(0); }
 
-const walk = d => readdirSync(d).flatMap(f => { const p = join(d, f); return statSync(p).isDirectory() ? (f === 'img' ? [] : walk(p)) : [p]; });
-const files = walk(dir).filter(f => /\.(js|css)$/.test(f)).sort();
+const walk = d => readdirSync(d).flatMap(f => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
+const all = walk(dir).filter(f => !/(^|[\\/])(sw\.js|index\.html|photos\.json)$/.test(f) && !/[\\/]\./.test(f)).sort();
+const files = all.filter(f => /\.(js|css)$/.test(f));
 const hash = createHash('sha256');
-for (const f of files) hash.update(f).update(readFileSync(f));
+for (const f of all) hash.update(f).update(readFileSync(f));
+hash.update(readFileSync(join(dir, 'index.html')));
 const v = hash.digest('hex').slice(0, 10);
 
 const rel = f => relative(dir, f).split('\\').join('/');
@@ -25,4 +27,11 @@ let html = readFileSync(indexPath, 'utf8')
   .replace('<script type="module" src="app.js"></script>', `${map}\n  <script type="module" src="app.js?v=${v}"></script>`);
 if (!html.includes(`app.js?v=${v}`)) throw new Error('version-drinks: não encontrei <script type="module" src="app.js">');
 writeFileSync(indexPath, html);
-console.log(`version-drinks: ${files.length} arquivos, versão ${v}`);
+
+// Service worker: versão e lista de arquivos para guardar no aparelho (módulos com ?v=, imagens e ícones).
+const swPath = join(dir, 'sw.js');
+if (existsSync(swPath)) {
+  const precache = all.map(f => /\.(js|css)$/.test(f) ? `${rel(f)}?v=${v}` : rel(f));
+  writeFileSync(swPath, readFileSync(swPath, 'utf8').replace('__HT_VERSION__', v).replace('__HT_FILES__', precache.join('|')));
+}
+console.log(`version-drinks: ${files.length} módulos, ${all.length} arquivos no cache offline, versão ${v}`);

@@ -68,10 +68,11 @@ export function drinkBlock(d) {
   const parent = d.parent ? DRINK_BY_ID[d.parent] : null;
   const recipe = spec ? spec.ingredients.join('; ')
     : d.ing.filter(l => !['agua', 'agua_quente'].includes(l.id)).map(l => `${l.ml != null ? l.ml + ' ml' : trPhrase(amount(l))} ${trIngredient(l.id, ingredientName(l.id)).split(' / ')[0]}${l.opt ? ' (optional)' : ''}`).join('; ');
+  const creamTop = d.layerTop && d.ing.some(l => ['creme_leite', 'baileys'].includes(l.id));
   const look = [
-    `${colorWord(d.color)} liquid`,
+    `${d.creamy ? 'creamy, opaque, milky ' : ''}${d.creamy && /amber|orange|golden/.test(colorWord(d.color)) ? 'light coffee-brown' : colorWord(d.color)} liquid`,
     d.color2 && !d.layerTop ? `fading to ${colorWord(d.color2)} at the bottom` : '',
-    d.layerTop && d.color2 ? `with a ${colorWord(d.color2)} layer floating on top` : '',
+    creamTop ? 'with a thick layer of fresh white cream floating on top' : d.layerTop && d.color2 ? `with a ${colorWord(d.color2)} layer floating on top` : '',
     d.foam ? 'smooth velvety foam on top' : '',
     d.bubbles ? 'fine rising bubbles' : '',
     d.rim === 'salt' ? 'salt-rimmed glass' : d.rim === 'sugar' ? 'sugar-rimmed glass' : ''
